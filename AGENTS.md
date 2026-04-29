@@ -59,6 +59,24 @@ git commit -m "chore: update .opencode submodule pointer"
 - **tracked branch**: `dev` (never detached HEAD, never `main`)
 - **API routing**: Files inside `.opencode/` belong to `michael-conrad/.opencode`, NOT `michael-conrad/opencode-config`
 
+**Tag-Based Hash Permanence:** Submodule SHAs are preserved via parent-repo-prefixed tags — no separate submodule dev → main PRs are needed. At every transition point, submodule SHAs are verified reachable via tags. If unreachable, they are tagged idempotently (tag-if-untagged) before proceeding.
+
+**Tag Layers:**
+
+| Tag | When Created | Example |
+|-----|-------------|---------|
+| `<parent-repo>/<issue-number>` | Pre-work (feature dev start) | `opencode-config/221` |
+| `<parent-repo>/<issue-number>-<sub>` | Feature-branch push | `opencode-config/221-opencode` |
+| `<parent-repo>/v<N.N.N>` | Release promotion | `opencode-config/v0.1.1` |
+
+**Idempotent tag-if-untagged rule:** At any transition point, for each submodule SHA, check if it is reachable via a tag. If not, tag it with the appropriate context tag and push. Skip if already tagged.
+
+**Release promotion:** Tag submodule SHAs with release tags, NOT separate dev → main PRs. The parent release PR can be created and merged independently once submodule SHAs are verified reachable.
+
+**Dev parking:** `git checkout dev && git pull && git submodule init && git submodule foreach "git checkout dev && git pull"`
+
+**Release:** Lock submodule SHAs to current checkout state (NOT a fresh pull). Tag with release tags. No submodule PRs needed.
+
 ### Worktree Considerations
 
 When creating a worktree of the parent repo, `.opencode/` will be absent or empty until initialized:
