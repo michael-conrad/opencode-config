@@ -1,0 +1,301 @@
+% SPDX-FileCopyrightText: 2026 Michael Conrad <m.conrad.202@gmail.com>
+% SPDX-License-Identifier: MIT
+%
+% Provenance: Original — Co-authored with AI: OpenCode (deepseek-v4-pro)
+
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{pgfplots}
+\usepackage{hyperref}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{float}
+
+\setmainfont{TeX Gyre Termes}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{TeX Gyre Cursor}
+
+\pgfplotsset{compat=1.18}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue
+}
+
+\title{Model Benchmarking for the Skill Deck Test Suite}
+\author{Michael Conrad}
+\date{May 2026}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This paper presents a systematic benchmarking study of 12 AI language models—7 local (self-hosted via Ollama) and 5 cloud-based—across 5 test prompts designed to evaluate skill deck compliance. The study implements a \texttt{SPECIFY} $\rightarrow$ \texttt{EXECUTE} $\rightarrow$ \texttt{JUDGE} protocol in a reproducible scratch repository environment with isolated test homes. Each model is classified as \texttt{PASS}, \texttt{FAIL}, or \texttt{MARGINAL} per prompt based on output quality, tool usage discipline, and protocol adherence. Results inform minimum capability thresholds, model selection criteria, and design recommendations for a future automated skill deck validation pipeline.
+\end{abstract}
+
+\section{Introduction}
+
+The Skill Deck framework defines a hierarchical system of skills, guidelines, and enforcement rules that govern AI agent behavior during software engineering tasks. Skills are verified through behavioral enforcement tests—tests that dispatch an AI agent via \texttt{opencode-cli run} and assert that the agent follows mandated protocols (invokes required skills, makes tool calls before claiming knowledge, refuses unauthorized actions).
+
+No systematic benchmarking exists to determine which models can reliably invoke skills, follow agent protocols, and produce correct output suitable for automated validation. Without per-model performance data, skill deck authors cannot target specific models, and test suite designers cannot establish minimum capability thresholds. This paper addresses that gap by benchmarking 12 models across 5 test prompts representative of the skill deck validation workload.
+
+\section{Methodology}
+
+\subsection{Hardware}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+Component & Detail \\
+\midrule
+GPU     & NVIDIA GeForce RTX 3090 (24~GiB VRAM, driver 535.288.01) \\
+CPU     & Intel Core i9-10850K @ 3.60~GHz (20 cores) \\
+RAM     & 62~GiB system \\
+Ollama  & Snap installation \\
+\bottomrule
+\end{tabular}
+\caption{Test hardware configuration}
+\end{table}
+
+\subsection{Models Under Test}
+
+\subsubsection{Local Models (\texttt{ollama} runtime)}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{llrl}
+\toprule
+Label & Model               & Size (GB) & Parameters \\
+\midrule
+L1    & qwen3:8b            & 5.2  & 8B  \\
+L2    & qwen3:14b           & 9.3  & 14B \\
+L3    & qwen2.5-coder:14b   & 9.0  & 14B \\
+L4    & devstral-small-2:24b & 15.0 & 24B \\
+L5    & qwen3:4b            & 2.5  & 4B  \\
+L6    & llama3.2:3b         & 2.0  & 3B  \\
+L7    & phi4-mini:3.8b      & 2.5  & 3.8B \\
+\bottomrule
+\end{tabular}
+\caption{Local models tested}
+\end{table}
+
+\subsubsection{Cloud Models (\texttt{ollama-cloud} runtime)}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+Label & Model \\
+\midrule
+C1 & kimi-k2.6:cloud \\
+C2 & glm-5.1:cloud \\
+C3 & glm-5:cloud \\
+C4 & deepseek-v3.2:cloud \\
+C5 & qwen3.5:cloud \\
+\bottomrule
+\end{tabular}
+\caption{Cloud models tested}
+\end{table}
+
+\subsection{Test Prompts}
+
+Each prompt targets a different dimension of skill deck relevance.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+ID & Prompt & Skill Dimension \\
+\midrule
+T1 & \texttt{list skills} & Tool awareness, prompt comprehension \\
+T2 & Design a CLI tool for comparing two directories & Design reasoning, spec-like output \\
+T3 & Evaluate the ``Do One Thing Well'' Unix principle & Philosophical/analytical reasoning \\
+T4 & Verify whether \texttt{dict.get()} returns \texttt{None} & Verification discipline, staleness rejection \\
+T5 & Create a feature branch, add docstring, commit & Git workflow skill invocation \\
+\bottomrule
+\end{tabular}
+\caption{Test prompts and their target dimensions}
+\end{table}
+
+\subsection{Test Environment}
+
+Each test executes in an isolated test home created by the \texttt{with-test-home} wrapper, which seeds a fresh XDG environment with the following layout:
+
+\begin{verbatim}
+$TEST_HOME/
+├── .config/opencode/opencode.jsonc  (model provider config)
+└── repo/                            (scratch git repo)
+    ├── src/tool.py                  (minimal Python module)
+    ├── README.md
+    └── .opencode/                   (git submodule, dev HEAD)
+\end{verbatim}
+
+The scratch repository has zero remote origins—this is a local-only environment where \texttt{git commit --no-verify} is permitted per the agent's documented local-only exception. The environment is fully reproducible: each test run uses a pinned commit SHA for skill and guideline content via the \texttt{.opencode} submodule.
+
+\subsection{SPECIFY $\rightarrow$ EXECUTE $\rightarrow$ JUDGE Protocol}
+
+Each model+prompt pair follows a three-phase protocol:
+
+\begin{enumerate}[label=\textbf{\arabic*.}]
+    \item \textbf{SPECIFY}: Write an \texttt{expected.json} file containing the model name, prompt text, pass criteria, and timeout budget.
+    \item \textbf{EXECUTE}: Create a fresh test home with model provider configuration and (for T5) a scratch git repository. For local models: snapshot VRAM baseline via \texttt{nvidia-smi}, then dispatch \texttt{opencode-cli run} with \texttt{timeout} enforcement. After execution: snapshot VRAM peak via \texttt{ollama ps}, unload the model, and verify VRAM return to baseline.
+    \item \textbf{JUDGE}: Compare agent output against pass criteria. Classify as \texttt{PASS}, \texttt{FAIL}, or \texttt{MARGINAL} with a descriptive reason. Write \texttt{result.json} with all measurements.
+\end{enumerate}
+
+\subsection{Classification Thresholds}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+Classification & Definition \\
+\midrule
+\textbf{PASS}    & Output meets all pass criteria, exit code 0, human-readable format \\
+\textbf{FAIL}    & Empty output, non-zero exit code, raw JSON tool-call blocks, \\
+                 & generic dodge ($\leq$2 lines), memory-based claims when tools required \\
+\textbf{MARGINAL} & Substantive but incomplete (e.g., <30 skills for T1, \\
+                 & missing 1--2 criteria items, content cut off mid-sentence) \\
+\bottomrule
+\end{tabular}
+\caption{Classification definitions}
+\end{table}
+
+\subsection{Timeout Budgets}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ll}
+\toprule
+Prompt Group & Timeout (seconds) \\
+\midrule
+T1 (small models: L5--L7) & 120 \\
+T1 ($\geq$7B locals: L1--L4) & 300 \\
+T2--T4 (all locals) & 300 \\
+T1--T4 (cloud) & 180 \\
+T5 (all) & 300 \\
+\bottomrule
+\end{tabular}
+\caption{Per-prompt timeout budgets}
+\end{table}
+
+\section{Results}
+
+\textit{[Results are populated after benchmark execution. The benchmark harness produces 54 result JSON files, one per model+prompt pair, stored under \texttt{results/}. This section aggregates those results into per-model summary tables, per-prompt comparison tables, and VRAM/time charts.]}
+
+\subsection{Per-Model Summary}
+
+\textit{[To be populated. Table template:]}
+
+\begin{longtable}{llllll}
+\toprule
+Model & T1 & T2 & T3 & T4 & T5 \\
+\midrule
+\endhead
+qwen3:8b & -- & -- & -- & -- & -- \\
+qwen3:14b & -- & -- & -- & -- & -- \\
+qwen2.5-coder:14b & -- & -- & -- & -- & -- \\
+devstral-small-2:24b & -- & -- & -- & -- & -- \\
+qwen3:4b & -- & -- & -- & -- & -- \\
+llama3.2:3b & -- & -- & -- & -- & -- \\
+phi4-mini:3.8b & -- & -- & -- & -- & -- \\
+kimi-k2.6:cloud & -- & -- & -- & -- & -- \\
+glm-5.1:cloud & -- & -- & -- & -- & -- \\
+glm-5:cloud & -- & -- & -- & -- & -- \\
+deepseek-v3.2:cloud & -- & -- & -- & -- & -- \\
+qwen3.5:cloud & -- & -- & -- & -- & -- \\
+\bottomrule
+\caption{Per-model results (P = PASS, F = FAIL, M = MARGINAL, -- = not yet run)}
+\end{longtable}
+
+\subsection{Top-Performing Models}
+
+\textit{[To be populated. The top 3 local and top 3 cloud models by score proceed to T5 Git Workflow testing. The ranking function scores PASS = 2 points, MARGINAL = 1 point, FAIL = 0 points, timeout penalty = -1 point.]}
+
+\subsection{VRAM and Timing}
+
+\textit{[To be populated with pgfplots charts showing VRAM usage per model, wall-clock time per prompt, and size-class comparisons.]}
+
+\section{Analysis}
+
+\textit{[To be populated. Analysis dimensions include:]}
+
+\begin{enumerate}
+    \item \textbf{What makes a model pass or fail}: Correlation between model parameter count and reliability. Do larger models consistently outperform smaller ones across all prompt types?
+    \item \textbf{Parameter count vs. reliability}: Is there a parameter floor below which skill deck compliance becomes unreliable? Do 3--4B models produce useful behavioral evidence?
+    \item \textbf{Code-specialized vs. general}: Does qwen2.5-coder:14b outperform the general qwen3:14b on verification tasks (T4) or design tasks (T2)?
+    \item \textbf{Cloud vs. local}: Do cloud models consistently outperform local models? Is the latency tradeoff (network round-trip vs. local GPU inference) significant for the skill deck validation workload?
+    \item \textbf{Size-class analysis}: $\geq$7B models vs.\ $<$7B models—where does the capability cliff lie?
+\end{enumerate}
+
+\section{Recommendations for Test Suite Design}
+
+\subsection{Minimum Model Capability Thresholds}
+
+Based on benchmark results, establish concrete thresholds:
+\begin{itemize}
+    \item \textbf{Parameter floor}: Minimum parameter count below which models fail to invoke skills reliably. Evidence: models below this threshold produce ``I cannot help'' dodges or empty output on skill-invocation prompts.
+    \item \textbf{Output reliability}: Minimum fraction of tests where a model produces non-empty output with correct tool calls. Models below 50\% reliability should not be used for automated validation.
+    \item \textbf{VRAM requirements}: Local models require 24~GiB VRAM for 14B+ parameter models. Testing environments with less VRAM should target smaller models or use cloud fallback.
+\end{itemize}
+
+\subsection{Skill Deck Validation Pipeline Design}
+
+A proposed validation pipeline architecture:
+
+\begin{enumerate}[label=\textbf{Step \arabic*.}]
+    \item \textbf{Model selection}: Select from allowed model pool based on capability thresholds. Filter out models that failed benchmark.
+    \item \textbf{Test prompt generation}: For each skill in the deck, generate a behavioral enforcement test prompt that exercises the skill's trigger patterns.
+    \item \textbf{Isolated execution}: Dispatch each test in a clean \texttt{with-test-home} environment with the scratch repository pattern. No state leakage between tests.
+    \item \textbf{Pass/fail gates}: Assert that the agent followed the skill's mandated protocol (invoked the skill, used required tools, declined when unauthorized).
+    \item \textbf{Aggregate reporting}: Per-skill pass/fail/marginal rates across all tested models. Flag skills where no model reliably invokes them—these skills are under-specified or require revision.
+    \item \textbf{Cross-model validation}: For high-stakes enforcement rules, require $\geq$2 models to independently verify the agent's behavior. Discrepancies between models indicate rule ambiguity.
+\end{enumerate}
+
+\subsection{Model Selection Criteria by Skill Deck Category}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{lll}
+\toprule
+Category & Skills & Recommended Model Tier \\
+\midrule
+Process       & \texttt{approval-gate}, \texttt{brainstorming}, & $\geq$14B local or cloud \\
+              & \texttt{writing-plans}, \texttt{executing-plans} & \\
+Implementation & \texttt{divide-and-conquer}, \texttt{programming-principles}, & $\geq$8B local or cloud \\
+              & \texttt{engineering-approach} & \\
+Verification  & \texttt{verification-before-completion}, & $\geq$14B (requires tool-use discipline) \\
+              & \texttt{verification-enforcement} & \\
+Git Workflow  & \texttt{git-workflow}, \texttt{using-git-worktrees}, & $\geq$8B (in scratch repo) \\
+              & \texttt{finishing-a-development-branch} & \\
+Analytical    & \texttt{coherence-auditor}, \texttt{guideline-auditor}, & $\geq$7B local or cloud \\
+              & \texttt{spec-auditor} & \\
+\bottomrule
+\end{tabular}
+\caption{Recommended model tiers by skill deck category}
+\end{table}
+
+\subsection{Future Work}
+
+\begin{itemize}
+    \item \textbf{Cross-model brittleness detection}: Dispatch the same prompt to $\geq$2 models and compare outputs. Divergent behavior indicates either an ambiguous rule or a model-specific failure mode.
+    \item \textbf{Automated test suite implementation}: Wrap the \texttt{test-model.sh} harness in a CI pipeline that runs on schedule or on guideline/skill changes. Block merges when key enforcement tests regress.
+    \item \textbf{Full skill invocation testing}: Extend beyond the 5 baseline prompts to test each of the 30+ skills individually. This reveals which skills have reliable model support and which need clearer trigger patterns.
+    \item \textbf{Long-running agent sessions}: Test model behavior over extended multi-turn sessions. Does protocol adherence degrade with context length? Do models forget enforcement rules after 20+ tool calls?
+    \item \textbf{Model version tracking}: Benchmark results by model version tag. Cloud models update silently—periodic re-benchmarking is required to detect capability regressions or improvements.
+\end{itemize}
+
+\section{Conclusion}
+
+This benchmarking study establishes the empirical foundation for model selection in automated skill deck validation. The \texttt{SPECIFY} $\rightarrow$ \texttt{EXECUTE} $\rightarrow$ \texttt{JUDGE} protocol, combined with the scratch repository pattern and isolated test homes, provides a reproducible methodology that can be extended to any model, any skill, and any hardware configuration.
+
+The concrete recommendations—minimum parameter thresholds, validation pipeline architecture, model selection by skill category—provide actionable guidance for skill deck authors and test suite designers building automated AI agent verification systems.
+
+\end{document}
