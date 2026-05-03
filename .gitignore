@@ -1,5 +1,4 @@
 .ruff_cache/
-.issues/
 .worktrees/
 tmp/
 __pycache__/

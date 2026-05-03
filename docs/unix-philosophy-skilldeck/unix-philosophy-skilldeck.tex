@@ -201,7 +201,7 @@ Modern AI coding agents are converging on structured skill-deck architectures---
 
 The Unix philosophy, articulated by Doug McIlroy in 1978 and refined through four decades of systems design, rests on a small set of principles: (1) make each program do one thing well, (2) expect the output of every program to become the input to another, (3) design programs to be used with other programs, (4) use text streams as the universal interface, and (5) build prototypes early and iterate.\footnote{McIlroy, M.~D., Pinson, E.~N., \& Tague, B.~A.  ``Unix Time-Sharing System: Forward.'' \emph{The Bell System Technical Journal}, 57(6), 1978.}
 
-These principles were devised for operating-system processes communicating through pipes.  Remarkably, they map onto the emerging field of AI agent architecture with surprising fidelity.  A skill is a ``program'' that does one thing well.  Sub-agents are ``processes'' connected by structured result contracts (``pipes'').  The orchestrator is a ``shell'' that composes them.
+These principles were devised for operating-system processes communicating through pipes.  Remarkably, they map onto the emerging field of AI agent architecture with surprising fidelity~\cite{piskala2026unix}.  A skill is a ``program'' that does one thing well.  Sub-agents are ``processes'' connected by structured result contracts (``pipes'').  The orchestrator is a ``shell'' that composes them.
 
 The opencode-config skill deck implements a protocol-enforcing agent operating system: a structured hierarchy of guidelines, skills, and tasks designed to govern an AI agent's behavior through every stage of the software development lifecycle.  At 163,000 words across 282 discrete files, it is the largest and most architecturally rigorous skill deck we have encountered in our survey of over 30 agent systems and 15 academic papers.
 
@@ -779,7 +779,7 @@ Figure~\ref{fig:triggers} illustrates the difference between the current overlap
 
 \subsection{Why Scope-Limited Single-Purpose Sub-Agents}
 
-The Unix philosophy's insight about composing small programs through pipes maps directly to sub-agent decomposition.  The research validates this:
+The Unix philosophy's insight about composing small programs through pipes maps directly to sub-agent decomposition~\cite{piskala2026unix}.  The research validates this:
 
 \begin{enumerate}[leftmargin=*]
   \item \textbf{GraSP (Xia et al.)} found that DAG-based skill composition with precondition-effect edges outperforms flat invocation in every configuration (+19 reward points, -41\% environment steps).\footnote{Xia et al.  ``GraSP: Graph-Structured Skill Compositions for LLM Agents.''  arXiv:2604.17870, April 2026.}
@@ -1122,7 +1122,7 @@ The paper recommends structural routing---fixed pipeline-stage declarations with
 %=====================================================================
 \section{Conclusion}
 
-The opencode-config skill deck represents the most architecturally ambitious agent governance system we have encountered.  Its five core innovations---pure orchestrator, pipeline-scoped authorization, tiered mandates, tool-call evidence requirements, and plan-bridge hierarchy---are validated by the emerging academic literature and have no equivalent in any surveyed system.  The Unix philosophy of ``do one thing well'' is precisely the design framework that the deck \emph{aspires} to implement.
+The opencode-config skill deck represents the most architecturally ambitious agent governance system we have encountered.  Its five core innovations---pure orchestrator, pipeline-scoped authorization, tiered mandates, tool-call evidence requirements, and plan-bridge hierarchy---are validated by the emerging academic literature and have no equivalent in any surveyed system.  The Unix philosophy of ``do one thing well'' is precisely the design framework that the deck \emph{aspires} to implement~\cite{piskala2026unix}.
 
 The gap is not in aspiration but in implementation.  The deck enforces its protocols through \textbf{text-based rules} that the agent loads, reads, and voluntarily complies with.  Text-based enforcement is rationalizable: the agent can read a rule, decide (during chain-of-thought reasoning) that it does not apply in this specific case, and proceed with the shortcut.  The academic literature confirms that this is the primary failure mode for autonomous agent systems.
 
@@ -1330,6 +1330,12 @@ arXiv:2604.02268, April 2026.
 \bibitem{neuroclaw2026}
 ``NeuroClaw: Three-Tier Skill/Agent Hierarchy for Complex Workflows.''
 arXiv:2604.24696, April 2026.
+
+\bibitem{piskala2026unix}
+Deepak Babu Piskala.
+``From Everything-is-a-File to Files-Are-All-You-Need: How Unix Philosophy
+Informs the Design of Agentic AI Systems.''
+arXiv:2601.11672, January 2026.
 
 \bibitem{smallorchestrator2026}
 ``Small Model as Master Orchestrator.''
