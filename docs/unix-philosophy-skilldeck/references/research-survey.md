@@ -20,6 +20,7 @@
 | Bug Triggers | — | Apr 2026 | arXiv:2604.08906 | 409 bugs analyzed; orchestration layer unique faults |
 | NeuroClaw | — | Apr 2026 | arXiv:2604.24696 | 3-tier hierarchy; checkpointing + post-exec verification |
 | Small Orchestrator | — | Apr 2026 | arXiv:2604.17009 | Lightweight orchestrator; decouples planning/execution |
+| Unix to Agentic AI | Piskala | Jan 2026 | arXiv:2601.11672 | File- and code-centric interaction models → maintainable, auditable agent systems |
 
 ### Industry Essays
 | Source | Date | Key Point |
