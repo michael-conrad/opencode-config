@@ -1,0 +1,12 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-133904
+Seeded opencode.jsonc with 17 model(s)
+[0m
+> build · deepseek-v4-pro:cloud
+[0m
+[0m→ [0mRead .opencode/guidelines/INDEX.md
+Platform: github, Org: michael-conrad, Repo: opencode-config
+Approximately 31 guidelines are listed in the index table (lines 10–40), spanning Tier 1 (critical/safety rules) and Tier 2 (process/convention rules).
+
+🤖 OpenCode (unknown) ✅ completed
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-133904
+Use 'bash .opencode/tests/with-test-home --clean' to remove.

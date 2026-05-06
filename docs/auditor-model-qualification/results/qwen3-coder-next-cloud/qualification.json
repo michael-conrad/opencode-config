@@ -1,0 +1,21 @@
+{
+  "model": "qwen3-coder-next:cloud",
+  "skill_list": "PASS",
+  "file_read": "FAIL",
+  "status": "LIMITED",
+  "probes": {
+    "probe1_skill_listing": {
+      "result": "PASS",
+      "details": "Candidate loaded 44 skills (approval-gate through writing-plans). Both evaluators (qwen3-coder-next:cloud, deepseek-v4-pro:cloud) independently confirmed >=5 skills."
+    },
+    "probe2_file_reading": {
+      "result": "FAIL",
+      "details": "Candidate reported 39 guidelines from INDEX.md. Actual count is 32. Both evaluators independently determined 39 is not approximately 30. Accuracy delta: +7 (21.9% overcount)."
+    }
+  },
+  "evaluators": [
+    "qwen3-coder-next:cloud",
+    "deepseek-v4-pro:cloud"
+  ],
+  "recommendation": "LIMITED — adequate for skill routing but unreliable for file-level accuracy. Do NOT use as adversarial auditor."
+}

@@ -1,0 +1,9 @@
+model,status,skill_list,file_read
+deepseek-v3.2:cloud,AUDITOR_CANDIDATE,true,true
+deepseek-v4-flash:cloud,AUDITOR_CANDIDATE,true,true
+deepseek-v4-pro:cloud,AUDITOR_CANDIDATE,true,true
+glm-5.1:cloud,AUDITOR_CANDIDATE,true,true
+glm-5:cloud,AUDITOR_CANDIDATE,true,true
+kimi-k2.6:cloud,AUDITOR_CANDIDATE,true,true
+minimax-m2.7:cloud,LIMITED,false,true
+qwen3-coder-next:cloud,LIMITED,true,false

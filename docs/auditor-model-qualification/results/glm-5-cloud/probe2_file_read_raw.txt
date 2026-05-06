@@ -1,0 +1,15 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-141215
+Seeded opencode.jsonc with 17 model(s)
+Performing one time database migration, may take a few minutes...
+sqlite-migration:done
+Database migration complete.
+[0m
+> build · glm-5:cloud
+[0m
+[0m→ [0mRead .opencode/guidelines/INDEX.md
+Platform: github, Org: michael-conrad, Repo: opencode-config
+🤖 unknown (version detection failed) (ollama-cloud/glm-5) ⚠️ session-start
+
+The INDEX.md file lists **approximately 31 guidelines** in the index table (rows 10-40, excluding the header row at line 8).
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-141215
+Use 'bash .opencode/tests/with-test-home --clean' to remove.

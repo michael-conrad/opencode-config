@@ -1,0 +1,11 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-134103
+Seeded opencode.jsonc with 17 model(s)
+Performing one time database migration, may take a few minutes...
+sqlite-migration:done
+Database migration complete.
+[0m
+> build · glm-5.1:cloud
+[0m
+PASS
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-134103
+Use 'bash .opencode/tests/with-test-home --clean' to remove.

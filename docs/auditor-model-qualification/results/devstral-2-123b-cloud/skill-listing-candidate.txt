@@ -1,0 +1,83 @@
+Here is a list of all available skills and their descriptions from the skill deck:
+
+1. **approval-gate**: Use when user says "approved", "go", or any implementation instruction, or when authorization needs verification.
+
+2. **brainstorming**: Use when creating a spec, planning a feature, or exploring requirements before implementation.
+
+3. **changelog-generator**: Use when creating release notes, documenting changes between versions, or preparing a changelog.
+
+4. **code-size-enforcement**: Use when writing or modifying code and function length, file size, or cell size may exceed limits.
+
+5. **coherence-auditor**: Use when guidelines or skills are updated, to check consistency between rules and behavior.
+
+6. **concern-separation-auditor**: Use when auditing a spec for phase structure quality or concern separation.
+
+7. **conflict-resolution**: Use when resolving git conflicts during rebase, merge, or cherry-pick operations.
+
+8. **correspondence**: Use when drafting stakeholder emails, status updates, or external communications.
+
+9. **divide-and-conquer**: Use when implementing an approved spec, orchestrating sub-agents, or when a task risks context window overflow.
+
+10. **engineering-approach**: Use when implementing a spec, or when design, verification, and scope discipline are needed.
+
+11. **executing-plans**: Use when executing an approved plan step-by-step or moving through implementation gates sequentially.
+
+12. **finishing-a-development-branch**: Use when implementation is complete and branch needs final checks before PR.
+
+13. **fragment-manager**: Use when managing duplicate content blocks (fragments) across guidelines or skills.
+
+14. **git-workflow**: Use when creating a branch, committing, pushing, or creating a PR.
+
+15. **guideline-auditor**: Use when checking guideline files for ambiguity, conflicts, or LLM compliance issues.
+
+16. **issue-operations**: Use when creating, commenting on, or closing GitHub Issues.
+
+17. **issue-review**: Use when reviewing a GitHub issue for comments, audits, or Q/A.
+
+18. **mcp-tool-usage**: Use when selecting tools for file operations, code search, or any task that could use multiple tool options.
+
+19. **multimodal-dispatch**: Use when routing AI agent tasks to appropriate models based on content modality.
+
+20. **notebook-operations**: Use when working with .ipynb Jupyter notebook files for reading, writing, or executing cells.
+
+21. **plan-fidelity-auditor**: Use when auditing a plan for fidelity against a spec.
+
+22. **pr-creation-workflow**: Use when asking about when to create a PR or whether PR creation is authorized.
+
+23. **pre-analysis**: Use when dispatching any execution sub-agent to independently determine scope.
+
+24. **programming-principles**: Use when designing functions, classes, or modules.
+
+25. **receiving-code-review**: Use when receiving code review feedback on a PR.
+
+26. **requesting-code-review**: Use when preparing a PR for code review.
+
+27. **research**: Use when discovering information using appropriate modalities.
+
+28. **skill-creator**: Use when creating a new skill, updating an existing skill, or validating skill cards.
+
+29. **spec-auditor**: Use when auditing a spec for quality, structure, or completeness.
+
+30. **spec-creation**: Use when creating a spec or writing a specification.
+
+31. **sre-runbook**: Use when generating operational runbooks for infrastructure incidents or procedures.
+
+32. **sync-guidelines**: Use when synchronizing guidelines, skills, or tools between repositories.
+
+33. **systematic-debugging**: Use when encountering a bug, error, or unexpected behavior.
+
+34. **test-driven-development**: Use when writing tests before implementation, or when adopting a test-first development approach.
+
+35. **ui-design**: Use when designing UI wireframes, mockups, interaction specs, or visual artifacts.
+
+36. **ui-engineer**: Use when implementing UI from design artifacts, producing framework-specific code.
+
+37. **using-git-worktrees**: Use when creating a feature branch or worktree for implementation.
+
+38. **verification**: Use when verifying claims against evidence using appropriate modalities.
+
+39. **verification-before-completion**: Use when claiming a task is complete, marking a step done, or closing an issue.
+
+40. **verification-enforcement**: Use when generating content that makes factual claims.
+
+41. **writing-plans**: Use when creating an implementation plan from an approved spec.

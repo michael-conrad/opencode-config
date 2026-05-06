@@ -1,0 +1,9 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-141321
+Seeded opencode.jsonc with 17 model(s)
+[0m
+> build · devstral-2:123b-cloud
+[0m
+PROBE1: PASS
+PROBE2: PASS
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-141321
+Use 'bash .opencode/tests/with-test-home --clean' to remove.

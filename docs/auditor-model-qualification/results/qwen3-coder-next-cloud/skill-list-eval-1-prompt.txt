@@ -1,0 +1,68 @@
+You are evaluating whether another AI model passed a qualification probe.
+
+Probe: skill-list
+
+Candidate model: qwen3-coder-next:cloud
+
+Prompt sent to candidate:
+list all available skills and their descriptions from the skill deck
+
+Candidate response:
+I'll list all available skills and their descriptions from the skill deck.
+Platform: github, Org: michael-conrad, Repo: opencode-config
+🤖 unknown (version detection failed) <ModelId> <status-icon> <status>
+
+From the skill deck in the system prompt, here are all available skills and their descriptions:
+
+**Process Skills (Load First):**
+- **approval-gate** - Use when user says "approved", "go", or any implementation instruction, or when authorization needs verification
+- **brainstorming** - Use when creating a spec, planning a feature, or exploring requirements before implementation
+- **spec-creation** - Use when creating a spec or writing a specification
+- **issue-operations** - Use when creating, commenting on, or closing GitHub Issues
+- **writing-plans** - Use when creating an implementation plan from an approved spec
+- **systematic-debugging** - Use when encountering a bug, error, or unexpected behavior, or before making code changes to fix an issue
+
+**Implementation Skills:**
+- **executing-plans** - Use when executing an approved plan step-by-step
+- **spec-auditor** - Use when auditing a spec for quality, structure, or completeness
+- **git-workflow** - Use when creating a branch, committing, pushing, or creating a PR
+- **finishing-a-development-branch** - Use when implementation is complete and branch needs final checks before PR
+- **using-git-worktrees** - Use when creating a feature branch or worktree for implementation
+- **verify-before-completion** - Use when claiming a task is complete, marking a step done, or closing an issue
+
+**Support Skills:**
+- **research** - Use when discovering information using appropriate modalities
+- **multimodal-dispatch** - Use when routing AI agent tasks to appropriate models
+- **sync-guidelines** - Use when synchronizing guidelines, skills, or tools between repositories
+- **ui-engineer** - Use when implementing UI from design artifacts
+- **requesting-code-review** - Use when preparing a PR for code review
+- **issue-review** - Use when reviewing a GitHub issue for comments, audits, or Q/A
+- **code-size-enforcement** - Use when writing or modifying code and function length, file size, or cell size may exceed limits
+- **receiving-code-review** - Use when receiving code review feedback on a PR
+- **mcp-tool-usage** - Use when selecting tools for file operations, code search, or any task that could use multiple tool options
+- **pre-analysis** - Use when dispatching any execution sub-agent to independently determine scope
+- **test-driven-development** - Use when writing tests before implementation
+- **skill-creator** - Use when creating a new skill, updating an existing skill, or validating skill cards
+- **plan-fidelity-auditor** - Use when auditing a plan for fidelity against a spec
+- **notebook-operations** - Use when working with .ipynb Jupyter notebook files
+- **ui-design** - Use when designing UI wireframes, mockups, interaction specs
+- **sre-runbook** - Use when generating operational runbooks for infrastructure incidents
+- **pr-creation-workflow** - Use when asking about when to create a PR or whether PR creation is authorized
+- **divide-and-conquer** - Use when implementing an approved spec or orchestrating sub-agents
+- **verification-enforcement** - Use when generating content that makes factual claims
+- **coherence-auditor** - Use when guidelines or skills are updated to check consistency
+- **verification** - Use when verifying claims against evidence
+- **engineering-approach** - Use when implementing a spec or when design, verification, and scope discipline are needed
+- **guideline-auditor** - Use when checking guideline files for ambiguity, conflicts, or LLM compliance
+- **concern-separation-auditor** - Use when auditing a spec for phase structure quality or concern separation
+- **conflict-resolution** - Use when resolving git conflicts during rebase, merge, or cherry-pick operations
+- **correspondence** - Use when drafting stakeholder emails, status updates, or external communications
+- **changelog-generator** - Use when creating release notes or documenting changes between versions
+- **fragment-manager** - Use when managing duplicate content blocks across guidelines or skills
+- **programming-principles** - Use when designing functions, classes, or modules
+- **html>
+
+Evaluation criteria:
+PASS: The candidate lists multiple skills by name (at least 5 different skills mentioned). FAIL: The candidate does not list skills or lists fewer than 2.
+
+Return ONLY a JSON object with fields: "result" ("PASS" or "FAIL") and "explanation" (one sentence). No other text.
