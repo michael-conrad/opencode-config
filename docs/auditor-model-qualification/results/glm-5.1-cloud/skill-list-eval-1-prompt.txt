@@ -1,0 +1,61 @@
+You are evaluating whether another AI model passed a qualification probe.
+
+Probe: skill-list
+
+Candidate model: glm-5.1:cloud
+
+Prompt sent to candidate:
+list all available skills and their descriptions from the skill deck
+
+Candidate response:
+| Skill | Description |
+|-------|-------------|
+| **approval-gate** | Verify authorization, manage approval gates, handle implementation authorization |
+| **brainstorming** | Create specs, plan features, explore requirements before implementation |
+| **changelog-generator** | Create release notes, document changes between versions |
+| **code-size-enforcement** | Enforce function length, file size, or cell size limits |
+| **coherence-auditor** | Check consistency between rules and behavior in guidelines/skills |
+| **concern-separation-auditor** | Audit specs for phase structure quality or concern separation |
+| **conflict-resolution** | Resolve git conflicts during rebase, merge, or cherry-pick |
+| **correspondence** | Draft stakeholder emails, status updates, or external communications |
+| **divide-and-conquer** | Implement approved specs, orchestrate sub-agents, manage context overflow |
+| **engineering-approach** | Implement specs with design, verification, and scope discipline |
+| **executing-plans** | Execute approved plans step-by-step through implementation gates |
+| **finishing-a-development-branch** | Final checks before PR when implementation is complete |
+| **fragment-manager** | Manage duplicate content blocks (fragments) across guidelines/skills |
+| **git-workflow** | Branch, commit, push, PR creation, conflict resolution, PR cleanup |
+| **gitbucket-api** | GitBucket platform operations (sub-skill for issue-operations) |
+| **github-mcp** | GitHub MCP platform operations (sub-skill for issue-operations) |
+| **guideline-auditor** | Check guideline files for ambiguity, conflicts, or LLM compliance |
+| **issue-operations** | Create, comment on, or close GitHub/GitBucket Issues |
+| **issue-review** | Review GitHub issues for comments, audits, or Q/A |
+| **local** | Local `.issues/` directory platform for issue tracking |
+| **mcp-tool-usage** | Select tools for file operations, code search, or tool priority |
+| **multimodal-dispatch** | Route AI agent tasks to appropriate models based on content modality |
+| **notebook-operations** | Read, write, or execute Jupyter notebook cells |
+| **plan-fidelity-auditor** | Audit plans for fidelity against specs |
+| **pre-analysis** | Dispatch execution sub-agents to independently determine scope |
+| **programming-principles** | Design functions/classes/modules, evaluate architecture tradeoffs |
+| **pr-creation-workflow** | Determine PR timing and whether PR creation is authorized |
+| **receiving-code-review** | Address code review feedback on a PR |
+| **requesting-code-review** | Prepare a PR for code review |
+| **research** | Discover information with source attribution and gap reporting |
+| **skill-creator** | Create, update, or validate skill cards |
+| **spec-auditor** | Audit specs for quality, structure, or completeness |
+| **spec-creation** | Create specs or write specifications |
+| **sre-runbook** | Generate operational runbooks for infrastructure incidents/procedures |
+| **sync-guidelines** | Synchronize guidelines, skills, or tools between repositories |
+| **systematic-debugging** | Debug bugs, errors, or unexpected behavior |
+| **test-driven-development** | Write tests before implementation (TDD approach) |
+| **ui-design** | Design UI wireframes, mockups, interaction specs |
+| **ui-engineer** | Implement UI from design artifacts |
+| **using-git-worktrees** | Create feature branches or worktrees for implementation |
+| **verification** | Verify claims against evidence, produce PASS/FAIL/UNVERIFIED results |
+| **verification-before-completion** | Verify task completion before marking done |
+| **verification-enforcement** | Enforce live-source verification before content generation |
+| **writing-plans** | Create implementation plans from approved specs |
+
+Evaluation criteria:
+PASS: The candidate lists multiple skills by name (at least 5 different skills mentioned). FAIL: The candidate does not list skills or lists fewer than 2.
+
+Return ONLY a JSON object with fields: "result" ("PASS" or "FAIL") and "explanation" (one sentence). No other text.

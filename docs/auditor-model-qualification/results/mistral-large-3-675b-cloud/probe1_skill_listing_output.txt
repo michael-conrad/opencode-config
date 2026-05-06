@@ -1,0 +1,23 @@
+Candidate: mistral-large-3:675b-cloud
+Probe: SKILL LISTING
+Prompt: "list all available skills and their descriptions from the skill deck"
+
+Output summary: The candidate produced a comprehensive, well-organized listing of skills grouped by category:
+- Approval & Authorization (1)
+- Planning & Spec Creation (6) 
+- Issue & GitHub Operations (5)
+- Git Workflow & Branch Management (4)
+- Implementation & Execution (8)
+- Verification & Completion (3)
+- Code Review & Collaboration (2)
+- Documentation & Communication (3)
+- UI & Frontend Development (2)
+- Research & Analysis (2)
+- Content & Guideline Management (4)
+- Notebook Operations (1)
+- Multimodal & Advanced Dispatch (1)
+- Skill & Tool Management (2)
+
+Total: 44 skills listed by name with descriptions and trigger patterns.
+
+Named skills include: approval-gate, brainstorming, spec-creation, writing-plans, spec-auditor, plan-fidelity-auditor, concern-separation-auditor, issue-operations, issue-review, github-mcp, gitbucket-api, local, git-workflow, using-git-worktrees, conflict-resolution, pr-creation-workflow, executing-plans, divide-and-conquer, finishing-a-development-branch, pre-analysis, programming-principles, test-driven-development, code-size-enforcement, engineering-approach, verification-before-completion, verification-enforcement, verification, requesting-code-review, receiving-code-review, changelog-generator, correspondence, sre-runbook, ui-design, ui-engineer, research, systematic-debugging, fragment-manager, sync-guidelines, guideline-auditor, coherence-auditor, notebook-operations, multimodal-dispatch, skill-creator, mcp-tool-usage

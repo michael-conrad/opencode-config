@@ -1,0 +1,30 @@
+{
+  "model": "mistral-large-3:675b-cloud",
+  "skill_list": "PASS",
+  "file_read": "PASS",
+  "status": "AUDITOR_CANDIDATE",
+  "skill_verdicts": [
+    {
+      "auditor": "deepseek-v4-flash:cloud",
+      "verdict": "PASS",
+      "explanation": "Candidate listed 44 skills by name, well exceeding the minimum threshold of 5."
+    },
+    {
+      "auditor": "qwen3.5:397b-cloud",
+      "verdict": "PASS",
+      "explanation": "Candidate listed 44 skills by name, far exceeding the minimum requirement of 5 skills."
+    }
+  ],
+  "file_verdicts": [
+    {
+      "auditor": "deepseek-v4-flash:cloud",
+      "verdict": "PASS",
+      "explanation": "Candidate reported 28, which falls within the acceptable range of 25-35."
+    },
+    {
+      "auditor": "qwen3.5:397b-cloud",
+      "verdict": "PASS",
+      "explanation": "Candidate reported 28 guidelines, which falls within the acceptable range of 25-35."
+    }
+  ]
+}

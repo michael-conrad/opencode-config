@@ -1,0 +1,14 @@
+{
+  "model": "deepseek-v4-flash:cloud",
+  "skill_list": "PASS",
+  "file_read": "PASS",
+  "status": "AUDITOR_CANDIDATE",
+  "skill_verdicts": [
+    {"evaluator": "eval1", "result": "PASS", "explanation": "Candidate listed 40 skills, exceeding the minimum requirement of 5."},
+    {"evaluator": "eval2", "result": "PASS", "explanation": "The candidate listed all 40 skills by name with descriptions and trigger patterns, well exceeding the minimum threshold of 5 different skills."}
+  ],
+  "file_verdicts": [
+    {"evaluator": "eval1", "result": "PASS", "explanation": "The candidate correctly reported approximately 32 guidelines, which falls within the acceptable range of 28-32 guidelines in the INDEX.md table."},
+    {"evaluator": "eval2", "result": "PASS", "explanation": "The candidate correctly counted 32 guidelines, which falls within the acceptable range of 28-32 entries in the index table."}
+  ]
+}

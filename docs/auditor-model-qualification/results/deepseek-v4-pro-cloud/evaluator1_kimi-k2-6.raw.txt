@@ -1,0 +1,12 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-134445
+Seeded opencode.jsonc with 17 model(s)
+[0m
+> build · kimi-k2.6:cloud
+[0m
+[0m→ [0mRead .opencode/guidelines/INDEX.md
+Platform: github, Org: michael-conrad, Repo: opencode-config
+🤖 OpenCode (ollama/kimi-k2.6:cloud) ✅ completed
+
+{"probe1": "PASS", "probe2": "PASS", "explanation": "Candidate listed 41 skills by name (exceeds the 5-skill minimum) and accurately reported 31 guidelines (within the [25,35] tolerance band)."}
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-134445
+Use 'bash .opencode/tests/with-test-home --clean' to remove.

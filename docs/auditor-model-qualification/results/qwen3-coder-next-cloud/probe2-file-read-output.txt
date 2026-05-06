@@ -1,0 +1,24 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-143159
+Seeded opencode.jsonc with 17 model(s)
+Performing one time database migration, may take a few minutes...
+sqlite-migration:done
+Database migration complete.
+[0m
+> build · qwen3-coder-next:cloud
+[0m
+[0m→ [0mRead .opencode/guidelines/INDEX.md
+Platform: github, Org: michael-conrad, Repo: opencode-config
+🤖 OpenCode (ollama-qwen3-coder-next:cloud) 🔄 working
+**Summary:**
+
+The `INDEX.md` file lists **39 guidelines** (rows 1-39 in the index table).
+
+The file structure shows:
+- Guidelines 000-210 are numbered with gaps (e.g., no 030s, no 095s, no 105s, 110s, etc.)
+- The trigger patterns indicate purpose: critical rules (000), approval/gates (010, 020), tool usage (060), verification (065, 075), code standards (080), incremental build (091), etc.
+
+**Outcome:** 39 guidelines listed in the index
+
+🤖 OpenCode (ollama-qwen3-coder-next:cloud) ✅ completed
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-143159
+Use 'bash .opencode/tests/with-test-home --clean' to remove.

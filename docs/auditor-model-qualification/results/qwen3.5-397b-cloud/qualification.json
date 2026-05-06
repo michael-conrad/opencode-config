@@ -1,0 +1,21 @@
+{
+  "model": "qwen3.5:397b-cloud",
+  "skill_list": "PASS",
+  "file_read": "PASS",
+  "status": "AUDITOR_CANDIDATE",
+  "probes": {
+    "probe1_skill_listing": {
+      "result": "PASS",
+      "details": "Candidate listed 44 skills by name (approval-gate through writing-plans) in a structured table with descriptions and trigger patterns. Threshold: >=5 skills. Both evaluations independently confirmed PASS.",
+      "evaluators": ["open-code/deepseek-v4-pro (primary)", "open-code/deepseek-v4-pro (cross-validation)"],
+      "cross_check": "CONSISTENT — both evaluation passes agreed."
+    },
+    "probe2_file_reading": {
+      "result": "PASS",
+      "details": "Candidate reported 31 guidelines from INDEX.md. Actual count: 32. Deviation: -1 (3.1% undercount). Threshold: 25-35 acceptable range. Both evaluations independently confirmed PASS.",
+      "evaluators": ["open-code/deepseek-v4-pro (primary)", "open-code/deepseek-v4-pro (cross-validation)"],
+      "cross_check": "CONSISTENT — both evaluation passes agreed."
+    }
+  },
+  "recommendation": "AUDITOR_CANDIDATE — candidate demonstrates basic skill enumeration and approximate file-content awareness. Suitable for skill-aware routing and guideline-aware advisory tasks."
+}

@@ -1,0 +1,5 @@
+Candidate: mistral-large-3:675b-cloud
+Probe: FILE READING
+Prompt: "read .opencode/guidelines/INDEX.md and report approximately how many guidelines are listed"
+
+Output: "There are **28 guidelines** listed in the INDEX.md file."

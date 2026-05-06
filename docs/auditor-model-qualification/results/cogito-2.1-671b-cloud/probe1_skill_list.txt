@@ -1,0 +1,99 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-133853
+Seeded opencode.jsonc with 17 model(s)
+[0m
+> build · cogito-2.1:671b-cloud
+[0m
+Platform: github, Org: michael-conrad, Repo: opencode-config
+🤖 OpenCode (ollama/cogito-2.1:671b-cloud) ✅ completed
+
+Let me list all the available skills with a brief description of each:
+
+approval-gate: Handles authorization, verification of approved specs/plans, and ensures proper workflow before proceeding with any implementation work. Use when user provides approval or when verification of authorization is needed.
+
+brainstorming: For creating specs, exploring requirements, and planning features before implementation. Triggers on words like "spec", "plan", "feature", "explore", "requirements".
+
+changelog-generator: For creating release notes and changelogs. Use when documenting version changes or compiling release information.
+
+code-size-enforcement: Ensures code meets size limitations. Use when writing or modifying code that must stay within size constraints.
+
+coherence-auditor: Maintains consistency between guidelines and skills. Use when verifying coherence in updates to guidelines or skills.
+
+concern-separation-auditor: Ensures proper phase structure and separation of concerns in specs. Use when auditing specs for quality.
+
+conflict-resolution: Dedicated to resolving git conflicts during version control operations like merge, rebase, etc.
+
+correspondence: For drafting professional communications like stakeholder emails and status updates.
+
+divide-and-conquer: For implementing approved specs and orchestrating work across sub-agents. Use when work needs to be divided among team members.
+
+engineering-approach: Applies disciplined engineering practices. Use when implementing specifications to maintain quality.
+
+executing-plans: Guides the execution of approved implementation plans step-by-step.
+
+finishing-a-development-branch: Handles final checks and preparations before PR creation.
+
+fragment-manager: Manages shared content blocks across guidelines and skills.
+
+git-workflow: Manages all git operations including branching, committing, pushing, PR creation, and conflict resolution.
+
+gitbucket-api: Provides GitBucket platform operations and API client functionality.
+
+github-mcp: Provides GitHub MCP platform operations and tooling.
+
+guideline-auditor: Checks guideline files for clarity, conflicts, and compliance.
+
+issue-operations: Manages creation, commenting, and closure of GitHub issues.
+
+issue-review: Reviews GitHub issues for quality and completeness.
+
+local: Manages local .issues/ tracking directory when local platform is used.
+
+mcp-tool-usage: Helps select appropriate tools for different operations.
+
+multimodal-dispatch: Routes agent tasks to suitable models based on content type.
+
+notebook-operations: Handles operations for .ipynb Jupyter notebooks with strict safety constraints.
+
+plan-fidelity-auditor: Verifies that implementation plans accurately reflect specifications.
+
+pre-analysis: Helps scope and analyze tasks before dispatching to sub-agents.
+
+programming-principles: Applies software engineering best practices during design and implementation.
+
+pr-creation-workflow: Manages PR creation workflow and verifies authorization.
+
+receiving-code-review: Handles responses to code review feedback.
+
+requesting-code-review: Prepares code for review with appropriate documentation.
+
+research: Discovers and verifies information across multiple sources.
+
+skill-creator: Creates and validates new skills according to standards.
+
+spec-auditor: Audits specifications for quality and completeness.
+
+spec-creation: Creates initial specifications according to guidelines.
+
+sre-runbook: Generates operational runbooks for infrastructure procedures.
+
+sync-guidelines: Maintains consistency of guidelines across repositories.
+
+systematic-debugging: Provides structured approach to debugging issues.
+
+test-driven-development: Implements test-first development practices.
+
+ui-design: Creates UI wireframes and mockups.
+
+ui-engineer: Implements UI components from design specifications.
+
+using-git-worktrees: Manages git worktree creation and switching.
+
+verification: Verifies claims against evidence across different modalities.
+
+verification-before-completion: Ensures all requirements are met before marking work complete.
+
+verification-enforcement: Ensures factual claims in content are verified against sources.
+
+writing-plans: Creates detailed implementation plans from approved specifications.
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-133853
+Use 'bash .opencode/tests/with-test-home --clean' to remove.
