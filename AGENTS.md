@@ -73,7 +73,9 @@ git commit -m "chore: update .opencode submodule pointer"
 
 **Release promotion:** Tag submodule SHAs with release tags, NOT separate dev → main PRs. The parent release PR can be created and merged independently once submodule SHAs are verified reachable.
 
-**Dev parking:** `git checkout dev && git pull && git submodule init && git submodule foreach "git checkout dev && git pull"`
+**Sub-agent dispatch requirement:** All submodule git operations (checkout, add, commit, push, tag, status checks) MUST be dispatched to clean-room sub-agents — never performed inline by the orchestrator.
+
+**Dev parking:** `git checkout dev && git pull && git submodule init && git submodule update`
 
 **Release:** Lock submodule SHAs to current checkout state (NOT a fresh pull). Tag with release tags. No submodule PRs needed.
 
