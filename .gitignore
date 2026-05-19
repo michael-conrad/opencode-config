@@ -19,3 +19,19 @@ htmlcov/
 *.log
 *.out
 *.synctex.gz
+
+# Project-local isolated tool installations
+.tools/
+.node/
+.uv/
+.jdk/
+
+# Srclight index artifacts
+.srclight/
+/ast
+/os
+/subprocess
+/sys
+/tarfile
+/tempfile
+/urllib.request
