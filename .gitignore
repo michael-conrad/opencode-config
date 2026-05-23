@@ -35,3 +35,6 @@ htmlcov/
 /tarfile
 /tempfile
 /urllib.request
+
+# Local issue tracking (workspace metadata)
+.issues/
