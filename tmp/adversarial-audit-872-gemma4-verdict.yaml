@@ -1,0 +1,16 @@
+---
+status: FAIL
+finding_summary: "The issue body does not contain a specification. It contains a previous audit verdict in YAML format, likely as a result of an accidental overwrite or a misconfigured update. No problem statement, requirements, phases, or success criteria are present."
+dimensions:
+  clarity: { verdict: FAIL, detail: "No problem statement or requirements present; the body is a YAML audit verdict." }
+  completeness: { verdict: FAIL, detail: "Missing all spec elements: goals, requirements, phases, and success criteria." }
+  coherence: { verdict: FAIL, detail: "No phases or logic to evaluate." }
+  feasibility: { verdict: FAIL, detail: "Cannot evaluate feasibility of a non-existent proposal." }
+  safety_edge_cases: { verdict: FAIL, detail: "No failure modes or boundary conditions addressed." }
+  evidence_type_coverage: { verdict: FAIL, detail: "No success criteria present to verify evidence types." }
+findings:
+  - severity: critical
+    id: "FIND-1"
+    description: "The issue body is not a specification. It contains a YAML block that appears to be a prior audit report. This is a total failure of the artifact's primary purpose."
+    location: "Entire Body"
+---
