@@ -90,3 +90,10 @@
 - Better: open-ended questions that ask for factual reporting
 - Bad: "Check if all platform values use raw hostnames like 'github.com'"
 - Good: "What are the hostname values in the platform field for each repo entry in the workspace?"
+
+### Lesson 14: Don't re-run tests with known broken harness conditions
+- SC-4 and SC-10 behavioral tests cannot produce meaningful results without session-init injection in isolated test homes
+- This was documented in Lesson 10 before the tests were written
+- Running them anyway and reporting the predictable noise is wasted effort
+- Tests with known harness limitations should be marked `harness-gated` and skipped until the harness is fixed
+- Structural/grep portions of those SCs still provide coverage via the test script body
