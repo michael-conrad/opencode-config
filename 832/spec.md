@@ -142,19 +142,54 @@ Files likely needing updates:
 - `.opencode/skills/issue-operations/` (platform routing)
 - `.opencode/plugins/session-enforcement.ts` (if it parses session-init output)
 
+## Behavioral Tests
+
+Five behavioral test scripts in `.opencode/tests/behaviors/` verify the session-init changes through the agent's consumption path:
+
+| Script | SC | Prompt | Verified |
+|--------|-----|--------|----------|
+| `832-sc1-repo-information-section.sh` | SC-1 | "What git repository are you working in?" | ✅ PASS — agent reports correct owner/repo/platform from session context |
+| `832-sc2-no-github-flat-keys.sh` | SC-2 | "What owner/repo for root vs submodule issues?" | ✅ PASS — correctly disambiguates entries |
+| `832-sc4-platform-raw-hostname.sh` | SC-4 | "What are the hostname values in the platform field?" | ✅ PASS — lists `github.com`, `github.com`, `gitbucket.internal.dev` |
+| `832-sc10-local-only-degraded.sh` | SC-10 | "Can you push to GitHub?" | ✅ PASS — declines without push attempt (local-only) |
+
+Additional test infrastructure:
+- **Fixture**: `fixtures/gitbucket-fake-repo/` — empty repo with `git@gitbucket.internal.dev:my-org/some-repo.git` remote for multi-platform testing
+- **Helpers fix**: `helpers.sh:behavior_run` changed to always clone `.opencode` submodule even when custom workdir is provided (was skipping all setup before)
+
+## Test Harness Changes
+
+### helpers.sh — behavior_run always sets up submodule
+
+The `behavior_run` function previously skipped ALL setup (clone .opencode, checkout commit, submodule add, commit, story fixtures) when a custom `workdir` was passed as the 4th argument. This meant test scripts that pre-built custom workdirs (SC-4 gitbucket fixture, SC-10 local-only repo) ran without `.opencode` in the test repo — no session-init, no plugins.
+
+**Fix**: Setup now always runs. Only `git init`/`git config` is skipped when workdir is pre-provided. The `.opencode` clone, submodule commit checkout, submodule add, git commit, and story fixtures all run unconditionally.
+
+### Test Script Pattern
+
+All SC test scripts follow this pattern:
+
+1. Create temp workdir with `git init` + optional remote + optional fixtures
+2. Call `behavior_run`, which clones `.opencode` from remote, checks out the pinned commit, adds it as a submodule, commits, injects story fixtures
+3. The `with-test-home` wrapper runs opencode-cli with the workdir as TEST_WORKDIR
+4. session-init runs from the cloned `.opencode` feature branch — output injected into model context
+5. Model answers from injected session context
+
+Set `BEHAVIOR_SUBMODULE_COMMIT=<sha>` to pin the `.opencode` checkout to the feature branch commit.
+
 ## Success Criteria
 
 | ID | Criterion | Evidence Type | Behavioral Test |
 |----|-----------|---------------|-----------------|
-| SC-1 | session-init emits single `## Repo Information` section with uniform schema | `string + behavioral` | Agent asked "What git repository are you working in?" — answers owner/repo/platform from session context without running git commands |
-| SC-2 | No `github.*` flat keys in session-init output | `string + behavioral` | Agent asked for owner/repo values to file issues in root vs submodule repos — correctly disambiguates between multiple ## Repo Information entries |
+| SC-1 | session-init emits single `## Repo Information` section with uniform schema | `string + behavioral` | ✅ PASS — agent answers from session context |
+| SC-2 | No `github.*` flat keys in session-init output | `string + behavioral` | ✅ PASS — agent disambiguates root/submodule |
 | SC-3 | No `## Sub-folder Repo Mappings` section in output | `string` | — |
-| SC-4 | `platform` values are raw hostnames (e.g., `github.com` not `github`) | `string + behavioral` | Multi-platform test repo (github.com + gitbucket.internal.dev fixtures), agent asked "What SCM platforms are in use?" — reports raw hostnames |
+| SC-4 | `platform` values are raw hostnames (e.g., `github.com` not `github`) | `string + behavioral` | ✅ PASS — agent reports `gitbucket.internal.dev` |
 | SC-5 | `parse_repo_url()` is the only URL parser — all others removed | `string` | — |
 | SC-6 | Root repo entry has `path: .` | `string` | — |
 | SC-7 | Submodule/subdirectory entries have `path:` matching their directory name | `string` | — |
 | SC-8 | Preamble comment present with routing convention explanation | `string` | — |
 | SC-9 | No `identity_source`, `branch`, credential status, `html_url`, or `srclight` fields in repo info | `string` | — |
-| SC-10 | Local-only repo (no remote) produces entry with `owner: "(none)"`, `repo: "(none)"`, `platform: "local"`, `url: "(none)"` | `string + behavioral` | Agent in local-only repo asked "Can you push to GitHub?" — declines based on `platform: local` in session context |
+| SC-10 | Local-only repo (no remote) produces entry with `owner: "(none)"`, `repo: "(none)"`, `platform: "local"`, `url: "(none)"` | `string + behavioral` | ✅ PASS — agent declines push in local-only repo |
 
 🤖 Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)
