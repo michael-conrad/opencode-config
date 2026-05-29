@@ -1,5 +1,4 @@
 .ruff_cache/
-.issues/
 .worktrees/
 tmp/
 __pycache__/
@@ -14,3 +13,28 @@ build/
 Thumbs.db
 .coverage
 htmlcov/
+
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+
+# Project-local isolated tool installations
+.tools/
+.node/
+.uv/
+.jdk/
+
+# Srclight index artifacts
+.srclight/
+/ast
+/os
+/subprocess
+/sys
+/tarfile
+/tempfile
+/urllib.request
+
+# Local issue tracking (workspace metadata)
+.issues/

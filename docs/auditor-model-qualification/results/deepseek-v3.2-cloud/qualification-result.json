@@ -1,0 +1,16 @@
+{
+  "model": "deepseek-v3.2:cloud",
+  "skill_list": "PASS",
+  "file_read": "PASS",
+  "status": "AUDITOR_CANDIDATE",
+  "cross_validation": {
+    "glm-5-cloud": {
+      "skill_list": "PASS",
+      "file_read": "PASS"
+    },
+    "kimi-k2.6-cloud": {
+      "skill_list": "PASS",
+      "file_read": "PASS"
+    }
+  }
+}

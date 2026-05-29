@@ -1,0 +1,97 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-140923
+Seeded opencode.jsonc with 17 model(s)
+Performing one time database migration, may take a few minutes...
+sqlite-migration:done
+Database migration complete.
+[0m
+> build · glm-5:cloud
+[0m
+[0m✱ [0mGlob ".opencode/skills/*/SKILL.md"[90m 41 matches[0m
+[0m→ [0mRead .opencode/skills/verification/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/spec-creation/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/verification-enforcement/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/sync-guidelines/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/ui-design/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/requesting-code-review/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/skill-creator/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/ui-engineer/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/research/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/receiving-code-review/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/pr-creation-workflow/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/pre-analysis/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/writing-plans/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/programming-principles/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/mcp-tool-usage/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/executing-plans/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/guideline-auditor/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/issue-review/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/issue-operations/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/multimodal-dispatch/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/fragment-manager/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/finishing-a-development-branch/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/engineering-approach/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/changelog-generator/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/brainstorming/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/using-git-worktrees/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/verification-before-completion/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/systematic-debugging/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/spec-auditor/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/plan-fidelity-auditor/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/test-driven-development/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/sre-runbook/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/notebook-operations/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/git-workflow/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/correspondence/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/conflict-resolution/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/concern-separation-auditor/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/approval-gate/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/coherence-auditor/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/code-size-enforcement/SKILL.md[90m [limit=50][0m
+[0m→ [0mRead .opencode/skills/divide-and-conquer/SKILL.md[90m [limit=50][0m
+## Skills from `.opencode/skills/`
+
+| Skill | Description |
+|-------|-------------|
+| **verification** | Verify claims against evidence using appropriate modalities. Produces PASS/FAIL/UNVERIFIED per claim with evidence artifacts. |
+| **spec-creation** | Create specs or write specifications. Structured discipline for spec writing with requirements extraction, problem decomposition, and traceability. |
+| **verification-enforcement** | Enforce live-source verification before generating content that makes factual claims — specs, plans, runbooks, docs, correspondence. |
+| **sync-guidelines** | Synchronize guidelines, skills, or tools between repositories. Classifies files as core (syncable) vs project-specific (protected). |
+| **ui-design** | Design UI wireframes, mockups, interaction specs, or visual artifacts. Toolkit-agnostic design artifacts. |
+| **requesting-code-review** | Prepare a PR for code review, or request code review with reviewer context and documentation. |
+| **skill-creator** | Create a new skill, update an existing skill, or validate skill cards. TDD applied to process documentation. |
+| **ui-engineer** | Implement UI from design artifacts, producing framework-specific code. Currently Streamlit-focused. |
+| **research** | Discover information using appropriate modalities, producing findings with source attribution and explicit gap reporting. |
+| **receiving-code-review** | Receive code review feedback on a PR, or address review comments systematically. |
+| **pr-creation-workflow** | Ask about when to create a PR or whether PR creation is authorized. Feature PRs target dev only. |
+| **pre-analysis** | Dispatch execution sub-agents to independently determine scope. Gate that prevents orchestrators from preloading context. |
+| **writing-plans** | Create an implementation plan from an approved spec. Transforms specs into phased plans with TDD steps. |
+| **programming-principles** | Design functions, classes, or modules; write/review implementation code; make architecture decisions; evaluate tradeoffs. |
+| **mcp-tool-usage** | Select tools for file operations, code search, or any task with multiple tool options. Five-tier tool priority hierarchy. |
+| **executing-plans** | Execute an approved plan step-by-step or move through implementation gates sequentially. |
+| **guideline-auditor** | Check guideline files for ambiguity, conflicts, or LLM compliance issues. |
+| **issue-review** | Review a GitHub issue for comments, audits, or Q/A. Gathers issue data, classifies path, delegates downstream. |
+| **issue-operations** | Create, comment on, or close GitHub Issues. Platform-agnostic routing to GitHub MCP or GitBucket API. |
+| **multimodal-dispatch** | Route AI agent tasks to appropriate models based on content modality, probe Ollama capabilities, dispatch sub-agents with modality-aware selection. |
+| **fragment-manager** | Manage duplicate content blocks (fragments) across guidelines or skills. CRUD on master files, sync, drift detection. |
+| **finishing-a-development-branch** | Implementation complete and branch needs final checks before PR. Verifies all changes committed, tested, pushed. |
+| **engineering-approach** | Implement a spec with design, verification, and scope discipline. Enforces: understand before solving, design before implementing. |
+| **changelog-generator** | Create release notes, document changes between versions, or prepare a changelog. Category-based organization. |
+| **brainstorming** | Create a spec, plan a feature, or explore requirements before implementation. Conversational-first exploration workflow. |
+| **using-git-worktrees** | Create a feature branch or worktree for implementation. Opt-in only — default is direct-branch. |
+| **verification-before-completion** | Claim a task is complete, mark a step done, or close an issue. Evidence-based verification preventing premature completion. |
+| **systematic-debugging** | Encounter a bug, error, or unexpected behavior. Enforces root cause analysis before fixing. |
+| **spec-auditor** | Audit a spec for quality, structure, or completeness. Content-aware audit with auto-detection and auto-fix. |
+| **plan-fidelity-auditor** | Audit a plan for fidelity against a spec. Clean-room plan generation and comparison. |
+| **test-driven-development** | Write tests before implementation, or adopt test-first development. RED→GREEN→REFACTOR cycle. |
+| **sre-runbook** | Generate operational runbooks for infrastructure incidents or procedures. Commands verified against live docs. |
+| **notebook-operations** | Work with .ipynb Jupyter notebook files for reading, writing, or executing cells. ZERO TOLERANCE — the-notebook-mcp mandatory. |
+| **git-workflow** | Create branch, commit, push, or create PR. Also rebase/merge conflicts, check PRs, release PR promotion. Three-branch model. |
+| **correspondence** | Draft stakeholder emails, status updates, or external communications. Audience-aware content with verification gate. |
+| **conflict-resolution** | Resolve git conflicts during rebase, merge, or cherry-pick operations. Three-tier classification with intent preservation. |
+| **concern-separation-auditor** | Audit a spec for phase structure quality or concern separation. Report-only, analyzes deployment independence. |
+| **approval-gate** | User says "approved", "go", or any implementation instruction. Authorization gatekeeper enforcing spec + plan + authorization workflow. |
+| **coherence-auditor** | Guidelines or skills are updated, check consistency between rules and behavior. Identifies drift and extraction candidates. |
+| **code-size-enforcement** | Write or modify code and function length, file size, or cell size may exceed limits. Enforces size limits. |
+| **divide-and-conquer** | Implement an approved spec, orchestrate sub-agents, or when a task risks context window overflow. Context window safety. |
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-140923
+Use 'bash .opencode/tests/with-test-home --clean' to remove.

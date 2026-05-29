@@ -1,0 +1,12 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-133853
+Seeded opencode.jsonc with 17 model(s)
+Performing one time database migration, may take a few minutes...
+sqlite-migration:done
+Database migration complete.
+[0m
+> build · cogito-2.1:671b-cloud
+[0m
+[0m→ [0mRead .opencode/guidelines/INDEX.md
+There are 41 guidelines listed in the index table.
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-133853
+Use 'bash .opencode/tests/with-test-home --clean' to remove.

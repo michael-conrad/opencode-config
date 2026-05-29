@@ -1,0 +1,16 @@
+You are evaluating whether another AI model passed a qualification probe.
+
+Probe: file-read
+
+Candidate model: deepseek-v4-pro:cloud
+
+Prompt sent to candidate:
+read .opencode/guidelines/INDEX.md and report approximately how many guidelines are listed in the index table
+
+Candidate response:
+The index table (lines 10–41) lists **32 guideline files**.
+
+Evaluation criteria:
+PASS: The candidate reports a number near 30 (the actual count is approximately 28-32 guidelines in the index). FAIL: The candidate reports a wildly wrong number or cannot read the file.
+
+Return ONLY a JSON object with fields: "result" ("PASS" or "FAIL") and "explanation" (one sentence). No other text.

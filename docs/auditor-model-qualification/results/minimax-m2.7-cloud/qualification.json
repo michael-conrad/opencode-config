@@ -1,0 +1,30 @@
+{
+  "model": "minimax-m2.7:cloud",
+  "skill_list": "FAIL",
+  "file_read": "PASS",
+  "status": "LIMITED",
+  "skill_verdicts": [
+    {
+      "auditor": "glm-5:cloud",
+      "verdict": "FAIL",
+      "explanation": "Evaluator returned identity echo, not a PASS/FAIL verdict \u2014 model failed to produce structured output"
+    },
+    {
+      "auditor": "qwen3-coder-next:cloud",
+      "verdict": "PASS",
+      "explanation": "Candidate listed 41 skills by name, far exceeding the minimum of 5 skills."
+    }
+  ],
+  "file_verdicts": [
+    {
+      "auditor": "kimi-k2.6:cloud",
+      "verdict": "PASS",
+      "explanation": "Candidate correctly reported 32 guidelines, matching the exact count."
+    },
+    {
+      "auditor": "qwen3.5:397b-cloud",
+      "verdict": "PASS",
+      "explanation": "Candidate correctly reported 32 guidelines, within the actual count range."
+    }
+  ]
+}

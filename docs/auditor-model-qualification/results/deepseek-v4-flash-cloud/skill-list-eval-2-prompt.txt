@@ -1,0 +1,62 @@
+You are evaluating whether another AI model passed a qualification probe.
+
+Probe: skill-list
+
+Candidate model: deepseek-v4-flash:cloud
+
+Prompt sent to candidate:
+list all available skills and their descriptions from the skill deck
+
+Candidate response:
+Here is the complete skill deck:
+
+| Skill | Trigger On | Description |
+|---|---|---|
+| **approval-gate** | approval, authorized, implement, start work, go ahead, etc. | Verifies authorization before implementation |
+| **brainstorming** | spec, plan, feature, brainstorm, explore, requirements, ideate | Explores requirements before spec creation |
+| **changelog-generator** | changelog, release notes, what changed, version history | Creates release notes and change summaries |
+| **code-size-enforcement** | long function, big file, too many lines, size limit | Enforces function/file/cell size limits |
+| **coherence-auditor** | coherence, consistency, audit guidelines, drift detection | Checks consistency between rules and behavior |
+| **concern-separation-auditor** | concern separation, phase structure, spec audit, mixed concerns | Audits spec phase structure quality |
+| **conflict-resolution** | conflict, merge conflict, rebase conflict, resolve conflict | Resolves git conflicts by tier classification |
+| **correspondence** | email, correspondence, stakeholder email, status update | Drafts stakeholder communications |
+| **divide-and-conquer** | implement, build, orchestrate, context overflow, decompose | Orchestrates sub-agents for implementation |
+| **engineering-approach** | implement, build, develop, engineering checklist | Enforces engineering discipline |
+| **executing-plans** | execute plan, next step, continue implementation, plan approved | Steps through approved plan gates |
+| **finishing-a-development-branch** | done, finished, ready for PR, implementation complete | Final branch checks before PR |
+| **fragment-manager** | fragment, duplicate content, sync content, content block | Manages duplicate content across files |
+| **git-workflow** | branch, commit, push, PR, pre-work, review-prep, check pr, release | Full git lifecycle (branch → PR → cleanup) |
+| **guideline-auditor** | audit guidelines, guideline quality, ambiguous rule | Checks guidelines for ambiguity/conflicts |
+| **issue-operations** | create issue, spec creation, comment, sub-issue, close issue | CRUD operations on GitHub/GitBucket issues |
+| **issue-review** | review issue, check issue, audit issue | Reviews issues for comments and audits |
+| **mcp-tool-usage** | which tool, tool priority, MCP, PyCharm, JetBrains | Five-tier tool selection hierarchy |
+| **multimodal-dispatch** | multimodal, modality routing, capability probe, model selection | Routes tasks to appropriate models by modality |
+| **notebook-operations** | notebook, ipynb, Jupyter, cell, execute cell | Read/write/execute .ipynb files |
+| **plan-fidelity-auditor** | plan fidelity, plan audit, spec vs plan, discrepancy | Audits plan alignment with spec |
+| **pr-creation-workflow** | create PR, make PR, pull request, PR timing | PR timing and authorization |
+| **pre-analysis** | pre-analysis, pre-analyze, dispatch analysis, scope discovery | Independent scope discovery for sub-agents |
+| **programming-principles** | design, implement, refactor, architecture, tradeoff | KISS, DRY, SRP, YAGNI enforcement |
+| **receiving-code-review** | code review, PR feedback, review comment, address feedback | Responds to review feedback |
+| **requesting-code-review** | request review, code review, ready for review | Prepares PRs for reviewer |
+| **research** | research, discover, investigate, find information | Multimodal information discovery |
+| **skill-creator** | new skill, update skill, create skill, SKILL.md | Creates/validates skill cards |
+| **spec-auditor** | audit spec, review spec, spec quality, validate spec | Three-tier spec quality audit |
+| **spec-creation** | create spec, write spec, spec creation, structure spec | Writes structured specifications |
+| **sre-runbook** | runbook, SRE, on-call, incident, outage, escalate | Generates operational runbooks |
+| **sync-guidelines** | sync guidelines, cross-repo sync, multi-repo | Synchronizes guidelines across repos |
+| **systematic-debugging** | bug, error, fix, debug, diagnose, crash, failure | Structured debugging workflow |
+| **test-driven-development** | TDD, test first, red green refactor, write test | Test-first development cycle |
+| **ui-design** | ui design, wireframe, mockup, interaction spec | Wireframe and interaction specs |
+| **ui-engineer** | implement UI, UI code, frontend code, Streamlit | Framework-specific UI implementation |
+| **using-git-worktrees** | branch, worktree, feature branch, create worktree | Git worktree creation |
+| **verification** | verify claim, claim verification, evidence verification | PASS/FAIL/UNVERIFIED per claim |
+| **verification-before-completion** | task complete, done, finished, step complete, mark done | Verifies success criteria before closing |
+| **verification-enforcement** | verify before generation, content generation, evidence collection | Enforces live-source verification for generated content |
+| **writing-plans** | write plan, create plan, implementation plan, approved plan | Creates implementation plans from specs |
+
+That is 40 skills total.
+
+Evaluation criteria:
+PASS: The candidate lists multiple skills by name (at least 5 different skills mentioned). FAIL: The candidate does not list skills or lists fewer than 2.
+
+Return ONLY a JSON object with fields: "result" ("PASS" or "FAIL") and "explanation" (one sentence). No other text.

@@ -1,0 +1,57 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-143307
+Seeded opencode.jsonc with 17 model(s)
+Performing one time database migration, may take a few minutes...
+sqlite-migration:done
+Database migration complete.
+[0m
+> build · qwen3-coder-next:cloud
+[0m
+[0m→ [0mSkill "approval-gate"
+[0m→ [0mSkill "brainstorming"
+[0m→ [0mSkill "changelog-generator"
+[0m→ [0mSkill "code-size-enforcement"
+[0m→ [0mSkill "coherence-auditor"
+[0m→ [0mSkill "concern-separation-auditor"
+[0m→ [0mSkill "conflict-resolution"
+[0m→ [0mSkill "correspondence"
+[0m→ [0mSkill "divide-and-conquer"
+[0m→ [0mSkill "engineering-approach"
+[0m→ [0mSkill "executing-plans"
+[0m→ [0mSkill "finishing-a-development-branch"
+[0m→ [0mSkill "fragment-manager"
+[0m→ [0mSkill "git-workflow"
+[0m→ [0mSkill "gitbucket-api"
+[0m→ [0mSkill "github-mcp"
+[0m→ [0mSkill "guideline-auditor"
+[0m→ [0mSkill "issue-operations"
+[0m→ [0mSkill "issue-review"
+[0m→ [0mSkill "local"
+[0m→ [0mSkill "mcp-tool-usage"
+[0m→ [0mSkill "multimodal-dispatch"
+[0m→ [0mSkill "notebook-operations"
+[0m→ [0mSkill "plan-fidelity-auditor"
+[0m→ [0mSkill "pr-creation-workflow"
+[0m→ [0mSkill "pre-analysis"
+[0m→ [0mSkill "programming-principles"
+[0m→ [0mSkill "receiving-code-review"
+[0m→ [0mSkill "requesting-code-review"
+[0m→ [0mSkill "research"
+[0m→ [0mSkill "skill-creator"
+[0m→ [0mSkill "spec-auditor"
+[0m→ [0mSkill "spec-creation"
+[0m→ [0mSkill "sre-runbook"
+[0m→ [0mSkill "sync-guidelines"
+[0m→ [0mSkill "systematic-debugging"
+[0m→ [0mSkill "test-driven-development"
+[0m→ [0mSkill "ui-design"
+[0m→ [0mSkill "ui-engineer"
+[0m→ [0mSkill "using-git-worktrees"
+[0m→ [0mSkill "verification"
+[0m→ [0mSkill "verification-before-completion"
+[0m→ [0mSkill "verification-enforcement"
+[0m→ [0mSkill "writing-plans"
+I'll list all available skills from the skill deck.
+Platform: github, Org: michael-conrad, Repo: opencode-config
+🤖 OpenCode (ollama/qwen3-coder-next:cloud) 🔄 working
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-143307
+Use 'bash .opencode/tests/with-test-home --clean' to remove.

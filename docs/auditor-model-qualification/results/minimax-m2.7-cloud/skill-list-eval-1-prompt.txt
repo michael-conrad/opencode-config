@@ -1,0 +1,68 @@
+You are evaluating whether another AI model passed a qualification probe.
+
+Probe: skill-list
+
+Candidate model: minimax-m2.7:cloud
+
+Prompt sent to candidate:
+list all available skills and their descriptions from the skill deck
+
+Candidate response:
+Platform: github, Org: michael-conrad, Repo: opencode-config
+🤖 OpenCode (ollama-cloud/minimax-m2.7:cloud) ✅ session_start
+
+Here are all available skills and their descriptions:
+
+| Skill | Description |
+|-------|-------------|
+| **approval-gate** | Use when user says "approved", "go", or any implementation instruction, or when authorization needs verification. Triggers on: approval, authorized, implement, start work, go ahead, no approved-for-* label, authorization set, multiple issues approved, interdependency analysis. |
+| **brainstorming** | Use when creating a spec, planning a feature, or exploring requirements before implementation. Triggers on: spec, plan, feature, brainstorm, explore, requirements, ideate, think through, what should. |
+| **changelog-generator** | Use when creating release notes, documenting changes between versions, or preparing a changelog. Triggers on: changelog, release notes, what changed, version history, commit summary, release. |
+| **code-size-enforcement** | Use when writing or modifying code and function length, file size, or cell size may exceed limits. Triggers on: long function, big file, too many lines, size limit, code size, function length, cell size. |
+| **coherence-auditor** | Use when guidelines or skills are updated, to check consistency between rules and behavior. Triggers on: coherence, consistency, audit guidelines, skill extraction, drift detection, guideline update, skill update. |
+| **concern-separation-auditor** | Use when auditing a spec for phase structure quality or concern separation. Triggers on: concern separation, phase structure, spec audit, mixed concerns. |
+| **conflict-resolution** | Use when resolving git conflicts during rebase, merge, or cherry-pick operations. Triggers on: conflict, merge conflict, rebase conflict, resolve conflict, cherry-pick conflict, conflict resolution, intent conflict, conflict classification. |
+| **correspondence** | Use when drafting stakeholder emails, status updates, or external communications. Triggers on: email, correspondence, stakeholder email, status update, communication, draft email, reply, notification. |
+| **divide-and-conquer** | Use when implementing an approved spec, orchestrating sub-agents, or when a task risks context window overflow. Triggers on: implement, build, orchestrate, context overflow, decompose, dispatch subagent, work execution. |
+| **engineering-approach** | Use when implementing a spec, or when design, verification, and scope discipline are needed. Triggers on: implement, build, develop, engineering checklist, design before code, verify before complete. |
+| **executing-plans** | Use when executing an approved plan step-by-step or moving through implementation gates sequentially. Triggers on: execute plan, next step, continue implementation, plan approved, start implementation. |
+| **finishing-a-development-branch** | Use when implementation is complete and branch needs final checks before PR. Triggers on: done, finished, ready for PR, implementation complete, branch ready, push changes, final check. |
+| **fragment-manager** | Use when managing duplicate content blocks (fragments) across guidelines or skills. Triggers on: fragment, duplicate content, sync content, content block, shared content, master copy, synchronize. |
+| **git-workflow** | Use when creating a branch, committing, pushing, or creating a PR. Also for rebase/merge conflicts (invoke conflict-resolution). Also for "check pr"/"check prs"/"check merged prs" (PR state verification + cleanup). Also for "release PR"/"promote to main"/"dev to main" (release-promotion). Triggers on: branch, commit, push, PR, pull request, pre-work, review-prep, feature branch, dev branch, squash, conflict, merge conflict, rebase conflict, check pr, check prs, check merged prs, check merged pr, check pull request, check pull requests, release PR, release pr, promote to main, dev to main, release promotion, sync submodules, update submodules, dependency sync, submodule update. |
+| **gitbucket-api** | Use when GitBucket platform operations are needed. GitBucket platform sub-skill for issue-operations. Provides capability manifest and Python client for GitBucket API operations. |
+| **github-mcp** | Use when GitHub MCP platform operations are needed. GitHub MCP platform sub-skill for issue-operations. Provides capability manifest and thin wrappers around github_* MCP tools. |
+| **guideline-auditor** | Use when checking guideline files for ambiguity, conflicts, or LLM compliance issues. Triggers on: audit guidelines, guideline quality, guideline conflict, ambiguous rule, LLM compliance. |
+| **issue-operations** | Use when creating, commenting on, or closing GitHub Issues. Routes to GitHub MCP or GitBucket API based on github.platform. Triggers on: create issue, new issue, spec creation, submit issue, issue, bug report, comment, progress update, issue comment, PR comment, post to GitHub, byline, status indicator, sub-issue, phase issue, multi-task, create sub issue, link issue, task breakdown, subtask, parent issue, close issue, verify merge. |
+| **issue-review** | Use when reviewing a GitHub issue for comments, audits, or Q/A. Triggers on: review issue, review spec, check issue, issue review, audit issue. |
+| **local** | Use when local .issues/ tracking is needed. Local .issues/ directory platform for issue tracking. Used when github.platform is local or unset. Routes all issue operations to .issues/ directory with YAML frontmatter and markdown files. |
+| **mcp-tool-usage** | Use when selecting tools for file operations, code search, or any task that could use multiple tool options. Triggers on: which tool, tool priority, MCP, PyCharm, JetBrains, read file, write file, search code, tool selection. |
+| **multimodal-dispatch** | Use when routing AI agent tasks to appropriate models based on content modality, probing Ollama model capabilities, or dispatching sub-agents with modality-aware model selection. Triggers on: multimodal dispatch, modality routing, capability probe, model selection, sub-agent dispatch, content modality, vision task, audio task. |
+| **notebook-operations** | Use when working with .ipynb Jupyter notebook files for reading, writing, or executing cells. Triggers on: notebook, ipynb, Jupyter, cell, execute cell, kernel, zero tolerance, forbidden operations. |
+| **plan-fidelity-auditor** | Use when auditing a plan for fidelity against a spec. Triggers on: plan fidelity, plan audit, spec vs plan, discrepancy, clean-room plan. |
+| **pr-creation-workflow** | Use when asking about when to create a PR or whether PR creation is authorized. Triggers on: create PR, make PR, pull request, PR timing, when to PR, PR authorized. Feature branch PRs targeting dev only. Release PRs handled by git-workflow --task release-promotion. |
+| **pre-analysis** | Use when dispatching any execution sub-agent to independently determine scope. Triggers on: pre-analysis, pre-analyze, dispatch analysis, scope discovery. |
+| **programming-principles** | Use when designing functions, classes, or modules; writing or reviewing implementation code; making architecture decisions; or evaluating tradeoffs. Triggers on: design, implement, refactor, architecture, tradeoff, principle, KISS, DRY, SRP, coupling, cohesion, YAGNI. |
+| **receiving-code-review** | Use when receiving code review feedback on a PR, or when addressing review comments. Triggers on: code review, PR feedback, review comment, address feedback, fix review, respond to review. |
+| **requesting-code-review** | Use when preparing a PR for code review, or when reviewer context and documentation are needed. Triggers on: request review, code review, review request, ready for review, review preparation. |
+| **research** | Use when discovering information using appropriate modalities, producing findings with source attribution and explicit gap reporting. Triggers on: research, discover, investigate, find information, multimodal research, information discovery. |
+| **skill-creator** | Use when creating a new skill, updating an existing skill, or validating skill cards. Triggers on: new skill, update skill, create skill, skill template, skill structure, SKILL.md, validate skill cards, review skills, skill card review. |
+| **spec-auditor** | Use when auditing a spec for quality, structure, or completeness. Triggers on: audit spec, review spec, spec quality, validate spec, check spec, audit issue, revisit spec, audit plan, audit runbook, audit SOP, audit checklist, audit document, content-aware audit. |
+| **spec-creation** | Use when creating a spec or writing a specification. Triggers on: create spec, write spec, spec creation, spec writing, structure spec, specification. |
+| **sre-runbook** | Use when generating operational runbooks for infrastructure incidents or procedures. Triggers on: runbook, SRE, on-call, incident, outage, escalation, playbook, procedure, operation, diagnose, troubleshoot, debug |
+| **sync-guidelines** | Use when synchronizing guidelines, skills, or tools between repositories. Triggers on: sync guidelines, cross-repo sync, guideline update, skill update, multi-repo, consistency between repos. |
+| **systematic-debugging** | Use when encountering a bug, error, or unexpected behavior, or before making code changes to fix an issue. Triggers on: bug, error, fix, debug, diagnose, crash, failure, unexpected behavior, vibe debugging. |
+| **test-driven-development** | Use when writing tests before implementation, or when adopting a test-first development approach. Triggers on: TDD, test first, red green refactor, write test, test-driven, unit test, regression. |
+| **ui-design** | Use when designing UI wireframes, mockups, interaction specs, or visual artifacts. Triggers on: ui design, wireframe, mockup, interaction spec, visual layout, UI mock, screenshot capture, sidebar navigation, page layout. |
+| **ui-engineer** | Use when implementing UI from design artifacts, producing framework-specific code. Triggers on: implement UI, UI implementation, UI code, frontend code, Streamlit component, framework implementation, build page, create view. |
+| **using-git-worktrees** | Use when creating a feature branch or worktree for implementation. Always invoke before git-workflow pre-work. Triggers on: branch, worktree, feature branch, create worktree, pre-work, worktree.path. |
+| **verification** | Use when verifying claims against evidence using appropriate modalities. Produces PASS/FAIL/UNVERIFIED per claim with evidence artifacts. Triggers on: verify claim, claim verification, evidence verification, verify against source, multimodal verification. |
+| **verification-before-completion** | Use when claiming a task is complete, marking a step done, or closing an issue. Triggers on: task complete, done, finished, step complete, mark done, verify completion, success criteria. |
+| **verification-enforcement** | Use when generating content that makes factual claims — specs, plans, runbooks, docs, or correspondence — to enforce live-source verification before generation. Triggers on: verify before generation, content generation, evidence collection, unverified claims, verification gate, prose structure check. |
+| **writing-plans** | Use when creating an implementation plan from an approved spec. Triggers on: write plan, create plan, implementation plan, plan spec, approved plan, plan creation. |
+
+🤖 OpenCode (ollama-cloud/minimax-m2.7:cloud) ✅ completed
+
+Evaluation criteria:
+PASS: The candidate lists multiple skills by name (at least 5 different skills mentioned). FAIL: The candidate does not list skills or lists fewer than 2.
+
+Return ONLY a JSON object with fields: "result" ("PASS" or "FAIL") and "explanation" (one sentence). No other text.

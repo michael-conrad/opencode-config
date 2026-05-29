@@ -1,0 +1,20 @@
+{
+  "model": "cogito-2.1:671b-cloud",
+  "skill_list": "PASS",
+  "file_read": "PASS",
+  "status": "AUDITOR_CANDIDATE",
+  "cross_validation": {
+    "probe1_skill_list": {
+      "candidate_result": "Listed 42 skills by name with descriptions",
+      "evaluator_1": { "model": "devstral-2:123b-cloud", "result": "PASS" },
+      "evaluator_2": { "model": "glm-5.1:cloud", "result": "PASS" },
+      "agreement": true
+    },
+    "probe2_file_read": {
+      "candidate_result": "Reported 41 guidelines",
+      "evaluator_1": { "model": "devstral-2:123b-cloud", "result": "PASS" },
+      "evaluator_2": { "model": "glm-5.1:cloud", "result": "PASS" },
+      "agreement": true
+    }
+  }
+}

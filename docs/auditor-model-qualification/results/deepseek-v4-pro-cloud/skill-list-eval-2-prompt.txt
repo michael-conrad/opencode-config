@@ -1,0 +1,63 @@
+You are evaluating whether another AI model passed a qualification probe.
+
+Probe: skill-list
+
+Candidate model: deepseek-v4-pro:cloud
+
+Prompt sent to candidate:
+list all available skills and their descriptions from the skill deck
+
+Candidate response:
+Here are all available skills from the skill deck:
+
+| Skill | Description |
+|-------|-------------|
+| **approval-gate** | Authorization verification, spec-before-code enforcement, approval labels, multi-task plan authorization cascade, pipeline-scoped authorization, bug discovery protocol. |
+| **brainstorming** | Creating specs, planning features, exploring requirements before implementation, autonomous structural classification. |
+| **changelog-generator** | Creating release notes, documenting changes between versions, preparing changelogs. |
+| **code-size-enforcement** | Enforcing function length, file size, and cell size limits during code writing. |
+| **coherence-auditor** | Checking consistency between guidelines, skills, and behavior after updates; drift detection. |
+| **concern-separation-auditor** | Auditing specs for phase structure quality and concern separation. |
+| **conflict-resolution** | Resolving git conflicts during rebase, merge, or cherry-pick with three-tier classification. |
+| **correspondence** | Drafting stakeholder emails, status updates, external communications with audience separation. |
+| **divide-and-conquer** | Orchestrating sub-agents for implementation, preventing context window overflow, work decomposition. |
+| **engineering-approach** | Engineering discipline: understand, design, verify, communicate; scope discipline. |
+| **executing-plans** | Step-by-step execution of approved plans through implementation gates. |
+| **finishing-a-development-branch** | Final branch checks before PR: linting, testing, commit verification. |
+| **fragment-manager** | Managing duplicate content blocks across guidelines and skills; master-copy synchronization. |
+| **git-workflow** | Branch creation, commits, push, PR creation, review-prep, cleanup, release promotion, submodule sync. |
+| **github-mcp** | GitHub MCP platform operations for issue-operations; thin wrappers around github_* MCP tools. |
+| **gitbucket-api** | GitBucket platform operations; Python client for GitBucket API. |
+| **guideline-auditor** | Checking guideline files for ambiguity, conflicts, or LLM compliance issues. |
+| **issue-operations** | Creating, commenting on, and closing GitHub Issues; routes to platform-specific backends. |
+| **issue-review** | Reviewing GitHub issues for comments, audits, or Q/A; root cause analysis via analyze-and-spec. |
+| **local** | Local .issues/ directory platform for issue tracking when github.platform is local or unset. |
+| **mcp-tool-usage** | Five-tier tool priority hierarchy for file operations, code search, and tool selection. |
+| **multimodal-dispatch** | Routing tasks to appropriate models based on content modality; Ollama capability probing. |
+| **notebook-operations** | Working with .ipynb Jupyter notebook files for reading, writing, or executing cells. |
+| **plan-fidelity-auditor** | Auditing a plan for fidelity against its linked spec; discrepancy detection. |
+| **pr-creation-workflow** | PR creation timing, authorization boundaries, format requirements. |
+| **pre-analysis** | Gating execution sub-agent dispatch behind independent scope discovery. |
+| **programming-principles** | KISS, DRY, SRP, coupling, cohesion, YAGNI — design and architecture decisions. |
+| **receiving-code-review** | Addressing code review feedback on a PR; responding to review comments. |
+| **requesting-code-review** | Preparing a PR for code review; reviewer context and documentation. |
+| **research** | Discovering information using appropriate modalities; source attribution and gap reporting. |
+| **skill-creator** | Creating new skills, updating existing skills, validating skill cards. |
+| **spec-auditor** | Auditing specs, plans, runbooks, SOPs, checklists for quality, structure, completeness; three-tier auto-fix model. |
+| **spec-creation** | Creating specs and writing specifications with proper structure. |
+| **sre-runbook** | Generating operational runbooks for infrastructure incidents or procedures. |
+| **sync-guidelines** | Synchronizing guidelines, skills, or tools between repositories. |
+| **systematic-debugging** | Root-cause debugging with hypothesis-driven approach; no vibe debugging. |
+| **test-driven-development** | Test-first development: RED → GREEN → REFACTOR cycle. |
+| **ui-design** | Designing UI wireframes, mockups, interaction specs, visual artifacts. |
+| **ui-engineer** | Implementing UI from design artifacts; framework-specific frontend code. |
+| **using-git-worktrees** | Creating feature branches and worktrees for implementation; path resolution rules. |
+| **verification** | Verifying claims against evidence using appropriate modalities; PASS/FAIL/UNVERIFIED output. |
+| **verification-before-completion** | Verifying success criteria before marking a task complete or closing an issue. |
+| **verification-enforcement** | Enforcing live-source verification before content generation; evidence artifact collection. |
+| **writing-plans** | Creating implementation plans from approved specs; plan-bridge hierarchy. |
+
+Evaluation criteria:
+PASS: The candidate lists multiple skills by name (at least 5 different skills mentioned). FAIL: The candidate does not list skills or lists fewer than 2.
+
+Return ONLY a JSON object with fields: "result" ("PASS" or "FAIL") and "explanation" (one sentence). No other text.

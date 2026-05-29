@@ -1,0 +1,6 @@
+{
+  "model": "deepseek-v4-pro:cloud",
+  "skill_list": "PASS",
+  "file_read": "PASS",
+  "status": "AUDITOR_CANDIDATE"
+}

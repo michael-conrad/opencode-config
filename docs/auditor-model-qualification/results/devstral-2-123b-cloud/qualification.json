@@ -1,0 +1,30 @@
+{
+  "model": "devstral-2:123b-cloud",
+  "skill_list": "PASS",
+  "file_read": "PASS",
+  "status": "AUDITOR_CANDIDATE",
+  "skill_verdicts": [
+    {
+      "auditor": "mistral-large-3:675b-cloud",
+      "verdict": "PASS",
+      "explanation": "candidate listed 41 skills by name including approval-gate, brainstorming, changelog-generator, code-size-enforcement, and coherence-auditor."
+    },
+    {
+      "auditor": "kimi-k2.6:cloud",
+      "verdict": "PASS",
+      "explanation": "candidate listed 41 skills by name including approval-gate, brainstorming, changelog-generator, code-size-enforcement, coherence-auditor"
+    }
+  ],
+  "file_verdicts": [
+    {
+      "auditor": "qwen3.5:397b-cloud",
+      "verdict": "PASS",
+      "explanation": "Candidate reported approximately 32 guidelines, which falls within the acceptable range of 25-35."
+    },
+    {
+      "auditor": "cogito-2.1:671b-cloud",
+      "verdict": "PASS",
+      "explanation": "The candidate reported 32 guidelines which falls within the acceptable range of 25-35 guidelines."
+    }
+  ]
+}

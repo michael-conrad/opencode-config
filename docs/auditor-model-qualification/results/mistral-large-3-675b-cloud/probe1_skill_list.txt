@@ -1,0 +1,273 @@
+Test home: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-141739
+Seeded opencode.jsonc with 17 model(s)
+[0m
+> build · mistral-large-3:675b-cloud
+[0m
+[0m→ [0mSkill "skill-creator"
+Platform: github, Org: michael-conrad, Repo: opencode-config
+🤖 OpenCode (ollama/mistral-large-3:675b-cloud) 🔄 working
+Here is the list of all available skills and their descriptions from the skill deck:
+
+---
+
+### **1. approval-gate**
+Use when the user says "approved," "go," or any implementation instruction, or when authorization needs verification.
+**Triggers:** `approval`, `authorized`, `implement`, `start work`, `go ahead`, `no approved-for-* label`, `authorization set`, `multiple issues approved`, `interdependency analysis`.
+
+---
+
+### **2. brainstorming**
+Use when creating a spec, planning a feature, or exploring requirements before implementation.
+**Triggers:** `spec`, `plan`, `feature`, `brainstorm`, `explore`, `requirements`, `ideate`, `think through`, `what should`.
+
+---
+
+### **3. changelog-generator**
+Use when creating release notes, documenting changes between versions, or preparing a changelog.
+**Triggers:** `changelog`, `release notes`, `what changed`, `version history`, `commit summary`, `release`.
+
+---
+
+### **4. code-size-enforcement**
+Use when writing or modifying code and function length, file size, or cell size may exceed limits.
+**Triggers:** `long function`, `big file`, `too many lines`, `size limit`, `code size`, `function length`, `cell size`.
+
+---
+
+### **5. coherence-auditor**
+Use when guidelines or skills are updated to check consistency between rules and behavior.
+**Triggers:** `coherence`, `consistency`, `audit guidelines`, `skill extraction`, `drift detection`, `guideline update`, `skill update`.
+
+---
+
+### **6. concern-separation-auditor**
+Use when auditing a spec for phase structure quality or concern separation.
+**Triggers:** `concern separation`, `phase structure`, `spec audit`, `mixed concerns`.
+
+---
+
+### **7. conflict-resolution**
+Use when resolving git conflicts during rebase, merge, or cherry-pick operations.
+**Triggers:** `conflict`, `merge conflict`, `rebase conflict`, `resolve conflict`, `cherry-pick conflict`, `conflict resolution`, `intent conflict`, `conflict classification`.
+
+---
+
+### **8. correspondence**
+Use when drafting stakeholder emails, status updates, or external communications.
+**Triggers:** `email`, `correspondence`, `stakeholder email`, `status update`, `communication`, `draft email`, `reply`, `notification`.
+
+---
+
+### **9. divide-and-conquer**
+Use when implementing an approved spec, orchestrating sub-agents, or when a task risks context window overflow.
+**Triggers:** `implement`, `build`, `orchestrate`, `context overflow`, `decompose`, `dispatch subagent`, `work execution`.
+
+---
+
+### **10. engineering-approach**
+Use when implementing a spec or when design, verification, and scope discipline are needed.
+**Triggers:** `implement`, `build`, `develop`, `engineering checklist`, `design before code`, `verify before complete`.
+
+---
+
+### **11. executing-plans**
+Use when executing an approved plan step-by-step or moving through implementation gates sequentially.
+**Triggers:** `execute plan`, `next step`, `continue implementation`, `plan approved`, `start implementation`.
+
+---
+
+### **12. finishing-a-development-branch**
+Use when implementation is complete and the branch needs final checks before PR.
+**Triggers:** `done`, `finished`, `ready for PR`, `implementation complete`, `branch ready`, `push changes`, `final check`.
+
+---
+
+### **13. fragment-manager**
+Use when managing duplicate content blocks (fragments) across guidelines or skills.
+**Triggers:** `fragment`, `duplicate content`, `sync content`, `content block`, `shared content`, `master copy`, `synchronize`.
+
+---
+
+### **14. git-workflow**
+Use when creating a branch, committing, pushing, or creating a PR. Also for rebase/merge conflicts (invoke `conflict-resolution`). Also for "check pr"/"check prs"/"check merged prs" (PR state verification + cleanup). Also for "release PR"/"promote to main"/"dev to main" (release-promotion).
+**Triggers:** `branch`, `commit`, `push`, `PR`, `pull request`, `pre-work`, `review-prep`, `feature branch`, `dev branch`, `squash`, `conflict`, `merge conflict`, `rebase conflict`, `check pr`, `check prs`, `check merged prs`, `check merged pr`, `check pull request`, `check pull requests`, `release PR`, `release pr`, `promote to main`, `dev to main`, `release promotion`, `sync submodules`, `update submodules`, `dependency sync`, `submodule update`.
+
+---
+
+### **15. gitbucket-api**
+Use when GitBucket platform operations are needed. GitBucket platform sub-skill for `issue-operations`. Provides capability manifest and Python client for GitBucket API operations.
+
+---
+
+### **16. github-mcp**
+Use when GitHub MCP platform operations are needed. GitHub MCP platform sub-skill for `issue-operations`. Provides capability manifest and thin wrappers around `github_*` MCP tools.
+
+---
+
+### **17. guideline-auditor**
+Use when checking guideline files for ambiguity, conflicts, or LLM compliance issues.
+**Triggers:** `audit guidelines`, `guideline quality`, `guideline conflict`, `ambiguous rule`, `LLM compliance`.
+
+---
+
+### **18. issue-operations**
+Use when creating, commenting on, or closing GitHub Issues. Routes to GitHub MCP or GitBucket API based on `github.platform`.
+**Triggers:** `create issue`, `new issue`, `spec creation`, `submit issue`, `issue`, `bug report`, `comment`, `progress update`, `issue comment`, `PR comment`, `post to GitHub`, `byline`, `status indicator`, `sub-issue`, `phase issue`, `multi-task`, `create sub issue`, `link issue`, `task breakdown`, `subtask`, `parent issue`, `close issue`, `verify merge`.
+
+---
+
+### **19. issue-review**
+Use when reviewing a GitHub issue for comments, audits, or Q/A.
+**Triggers:** `review issue`, `review spec`, `check issue`, `issue review`, `audit issue`.
+
+---
+
+### **20. local**
+Use when local `.issues/` tracking is needed. Local `.issues/` directory platform for issue tracking. Used when `github.platform` is `local` or unset. Routes all issue operations to `.issues/` directory with YAML frontmatter and markdown files.
+
+---
+
+### **21. mcp-tool-usage**
+Use when selecting tools for file operations, code search, or any task that could use multiple tool options.
+**Triggers:** `which tool`, `tool priority`, `MCP`, `PyCharm`, `JetBrains`, `read file`, `write file`, `search code`, `tool selection`.
+
+---
+
+### **22. multimodal-dispatch**
+Use when routing AI agent tasks to appropriate models based on content modality, probing Ollama model capabilities, or dispatching sub-agents with modality-aware model selection.
+**Triggers:** `multimodal dispatch`, `modality routing`, `capability probe`, `model selection`, `sub-agent dispatch`, `content modality`, `vision task`, `audio task`.
+
+---
+
+### **23. notebook-operations**
+Use when working with `.ipynb` Jupyter notebook files for reading, writing, or executing cells.
+**Triggers:** `notebook`, `ipynb`, `Jupyter`, `cell`, `execute cell`, `kernel`, `zero tolerance`, `forbidden operations`.
+
+---
+
+### **24. plan-fidelity-auditor**
+Use when auditing a plan for fidelity against a spec.
+**Triggers:** `plan fidelity`, `plan audit`, `spec vs plan`, `discrepancy`, `clean-room plan`.
+
+---
+
+### **25. pr-creation-workflow**
+Use when asking about when to create a PR or whether PR creation is authorized.
+**Triggers:** `create PR`, `make PR`, `pull request`, `PR timing`, `when to PR`, `PR authorized`.
+**Note:** Feature branch PRs targeting `dev` only. Release PRs are handled by `git-workflow --task release-promotion`.
+
+---
+
+### **26. pre-analysis**
+Use when dispatching any execution sub-agent to independently determine scope.
+**Triggers:** `pre-analysis`, `pre-analyze`, `dispatch analysis`, `scope discovery`.
+
+---
+
+### **27. programming-principles**
+Use when designing functions, classes, or modules; writing or reviewing implementation code; making architecture decisions; or evaluating tradeoffs.
+**Triggers:** `design`, `implement`, `refactor`, `architecture`, `tradeoff`, `principle`, `KISS`, `DRY`, `SRP`, `coupling`, `cohesion`, `YAGNI`.
+
+---
+
+### **28. receiving-code-review**
+Use when receiving code review feedback on a PR or when addressing review comments.
+**Triggers:** `code review`, `PR feedback`, `review comment`, `address feedback`, `fix review`, `respond to review`.
+
+---
+
+### **29. requesting-code-review**
+Use when preparing a PR for code review or when reviewer context and documentation are needed.
+**Triggers:** `request review`, `code review`, `review request`, `ready for review`, `review preparation`.
+
+---
+
+### **30. research**
+Use when discovering information using appropriate modalities, producing findings with source attribution and explicit gap reporting.
+**Triggers:** `research`, `discover`, `investigate`, `find information`, `multimodal research`, `information discovery`.
+
+---
+
+### **31. skill-creator**
+Use when creating a new skill, updating an existing skill, or validating skill cards.
+**Triggers:** `new skill`, `update skill`, `create skill`, `skill template`, `skill structure`, `SKILL.md`, `validate skill cards`, `review skills`, `skill card review`.
+
+---
+
+### **32. spec-auditor**
+Use when auditing a spec for quality, structure, or completeness.
+**Triggers:** `audit spec`, `review spec`, `spec quality`, `validate spec`, `check spec`, `audit issue`, `revisit spec`, `audit plan`, `audit runbook`, `audit SOP`, `audit checklist`, `audit document`, `content-aware audit`.
+
+---
+
+### **33. spec-creation**
+Use when creating a spec or writing a specification.
+**Triggers:** `create spec`, `write spec`, `spec creation`, `spec writing`, `structure spec`, `specification`.
+
+---
+
+### **34. sre-runbook**
+Use when generating operational runbooks for infrastructure incidents or procedures.
+**Triggers:** `runbook`, `SRE`, `on-call`, `incident`, `outage`, `escalation`, `playbook`, `procedure`, `operation`, `diagnose`, `troubleshoot`, `debug`.
+
+---
+
+### **35. sync-guidelines**
+Use when synchronizing guidelines, skills, or tools between repositories.
+**Triggers:** `sync guidelines`, `cross-repo sync`, `guideline update`, `skill update`, `multi-repo`, `consistency between repos`.
+
+---
+
+### **36. systematic-debugging**
+Use when encountering a bug, error, or unexpected behavior, or before making code changes to fix an issue.
+**Triggers:** `bug`, `error`, `fix`, `debug`, `diagnose`, `crash`, `failure`, `unexpected behavior`, `vibe debugging`.
+
+---
+
+### **37. test-driven-development**
+Use when writing tests before implementation or when adopting a test-first development approach.
+**Triggers:** `TDD`, `test first`, `red green refactor`, `write test`, `test-driven`, `unit test`, `regression`.
+
+---
+
+### **38. ui-design**
+Use when designing UI wireframes, mockups, interaction specs, or visual artifacts.
+**Triggers:** `ui design`, `wireframe`, `mockup`, `interaction spec`, `visual layout`, `UI mock`, `screenshot capture`, `sidebar navigation`, `page layout`.
+
+---
+
+### **39. ui-engineer**
+Use when implementing UI from design artifacts, producing framework-specific code.
+**Triggers:** `implement UI`, `UI implementation`, `UI code`, `frontend code`, `Streamlit component`, `framework implementation`, `build page`, `create view`.
+
+---
+
+### **40. using-git-worktrees**
+Use when creating a feature branch or worktree for implementation. Always invoke before `git-workflow pre-work`.
+**Triggers:** `branch`, `worktree`, `feature branch`, `create worktree`, `pre-work`, `worktree.path`.
+
+---
+
+### **41. verification**
+Use when verifying claims against evidence using appropriate modalities. Produces `PASS/FAIL/UNVERIFIED` per claim with evidence artifacts.
+**Triggers:** `verify claim`, `claim verification`, `evidence verification`, `verify against source`, `multimodal verification`.
+
+---
+
+### **42. verification-before-completion**
+Use when claiming a task is complete, marking a step done, or closing an issue.
+**Triggers:** `task complete`, `done`, `finished`, `step complete`, `mark done`, `verify completion`, `success criteria`.
+
+---
+
+### **43. verification-enforcement**
+Use when generating content that makes factual claims — specs, plans, runbooks, docs, or correspondence — to enforce live-source verification before generation.
+**Triggers:** `verify before generation`, `content generation`, `evidence collection`, `unverified claims`, `verification gate`, `prose structure check`.
+
+---
+
+### **44. writing-plans**
+Use when creating an implementation plan from an approved spec.
+**Triggers:** `write plan`, `create plan`, `implementation plan`, `plan spec`, `approved plan`, `plan creation`.
+Test home preserved at: /home/muksihs/git/opencode-config/.opencode/tmp/test-home-20260503-141739
+Use 'bash .opencode/tests/with-test-home --clean' to remove.
