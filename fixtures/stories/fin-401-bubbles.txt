@@ -1,0 +1,162 @@
+FIN 401: Behavioral Finance — Lecture Transcript
+Middleton University — Spring 2026
+Professor: Dr. Karen Weiss
+Topic: Market Bubbles and Herd Behavior
+
+---
+
+[CLASS BEGINS]
+
+DR. WEISS: Good morning, everyone. Before we jump in, I want you to close your eyes for a moment and imagine this: It is February 1637 in Haarlem. You are a Dutch merchant, and you have just paid 5,500 guilders for a single tulip bulb. Not a field of tulips — one bulb. That sum, adjusted for inflation, would buy you a grand canal house in Amsterdam with change left over. Now fast-forward one week. That same bulb is worth 50 guilders. You have lost ninety-nine percent of your investment in seven days.
+
+[She pauses, letting it settle]
+
+That is not a glitch in the market. That is the market behaving exactly as human psychology dictates it will. Today we are going to dissect three bubbles — one historical, one classical, and one recent enough that some of you may have watched it happen from your dorm rooms — and we are going to build a formal model for why rational people do irrational things when everyone around them is doing them, too.
+
+Let me start with a definition. A speculative bubble is a rapid escalation in the price of an asset that cannot be explained by its fundamental value, followed by a contraction. The canonical story is Tulip Mania, but I want to reframe it for you. The textbook narrative is that the Dutch went collectively insane over flowers. That is wrong. The Dutch were not insane. They were responding rationally to an information environment in which the only signal they trusted was the behavior of other people.
+
+[A student raises a hand]
+
+Yes, Marcus.
+
+MARCUS: Professor, I read somewhere that Tulip Mania was actually not that significant — that it was exaggerated by later historians. How do we square that with using it as a canonical example?
+
+DR. WEISS: Excellent question. You are referring to the work of economic historian Peter Garber, who argued that the price movements in the speculative phases were driven by reasonable expectations about新品种 — pardon me, new varieties — of tulips being developed.^1 And he is partly right. The bulk trading of common bulbs was relatively orderly. But at the peak — and this is the part that matters for our purposes — contracts for rare bulbs like the Semper Augustus traded at prices that no reasonable dividend or utility model can explain.^2 The point is not that every Dutch citizen lost their mind. The point is that at the margin, enough traders stopped pricing based on intrinsic value and started pricing based on what they believed the next trader would pay. That mechanism — pricing an asset not for what it is worth to you but for what you hope to sell it to someone else for — is the engine of every bubble that follows.
+
+[A pause]
+
+And that brings us to our first formal tool.
+
+[She turns to the board and writes:]
+
+The Greater Fool Theory
+
+DR. WEISS: The Greater Fool Theory states that an investor is willing to pay a price P for an asset today, even if P exceeds the asset's fundamental value V, provided the investor believes there exists a "greater fool" who will pay P' > P at some future date. The asset's price trajectory is therefore not a function of its cash flows or utility — it is a function of the expected irrationality of future buyers.
+
+Let me formalize this. Let V be the fundamental value — the net present value of all future cash flows. Let P_t be the market price at time t. Define a mispricing ratio:
+
+M_t = P_t / V
+
+In an efficient market, M_t = 1. In a bubble, M_t > 1 and growing. The investor's decision rule under the Greater Fool Theory is: buy if E[P_{t+1}] > P_t, regardless of V. This decouples price from value entirely.^3
+
+Now, this is a theory of individual behavior. But bubbles are collective. How do these individual decisions aggregate into a market-wide phenomenon? The answer lies in information cascades.
+
+[A student in the third row gestures]
+
+Yes, Priya.
+
+PRIYA: But if everyone knows this is happening — if traders are sophisticated enough to understand the Greater Fool Theory — wouldn't they just avoid the bubble? Why does it keep happening?
+
+DR. WEISS: Because knowing about a phenomenon and being immune to it are two different things. Let me ask you: have you ever bought a stock because it was going up, even though you knew it was probably overpriced?
+
+[Priya nods slowly]
+
+Most of you just nodded. And that is the core behavioral insight. The information cascade model, first formalized by Bikhchandani, Hirshleifer, and Welch in 1992, explains why.^4
+
+Here is how it works. Imagine a sequence of traders. Each trader has a private signal about the asset's true value — say, a sell signal or a buy signal. The first trader acts on her private signal alone. The second trader observes the first trader's action and updates her own decision. If her private signal conflicts with the observed action, she may override her signal and follow the crowd. By the third or fourth trader, the cascade has begun: traders ignore their own information entirely and imitate the actions they observe. The crowd has become self-reinforcing, and the asset's price no longer reflects the aggregated information of the market — it reflects the imitation of early movers.
+
+Let me give you the equation for cascade probability. In a simple model with binary signals, the probability that a cascade has formed by trader N is:
+
+P(cascade) = 1 - (q / (1 - q))^N
+
+where q is the probability that a trader's private signal contradicts the observed majority. As N increases, P(cascade) approaches 1. At some point, cascading is virtually certain.^5
+
+[She turns back to the board]
+
+That brings us to our second case study: the South Sea Bubble of 1720.
+
+DR. WEISS: The South Sea Company was granted a monopoly to trade with South America in exchange for assuming government debt. The company's directors, knowing they had no actual profitable trading operations, proceeded to inflate the stock price through a combination of rumor, bribery, and artificial scarcity. The stock rose from £128 in January 1720 to £1,050 in June. Then, in September, it fell to £175.^6
+
+Now, here is what I want you to notice. The South Sea Bubble is often described as a fraud, and it was — the directors knew the company had no real earnings. But from the perspective of the buyers at £900 in May, the decision was not obviously irrational. Everyone around them was getting rich. The information available to them — prices going up, neighbors buying, newspapers printing glowing reports — was a powerful cascade signal. And in that environment, the rational decision was to follow the crowd, not to resist it.
+
+[She leans against the lectern]
+
+This creates what we call a herding coefficient. Let me define it.
+
+[Writing on the board:]
+
+Herd Coefficient H = (Covariance of individual trades) / (Variance of individual private signals)
+
+DR. WEISS: When H approaches 1, all traders are moving in the same direction regardless of their private information. When H is close to 0, traders are acting independently, and prices are more likely to reflect fundamentals. We can estimate H empirically by measuring correlation in order flow across traders. In the South Sea Bubble, historical estimates of H during the June-to-August period approach 0.87 — nearly perfect herding.^7
+
+Now, I promised you a modern example. Let us talk about the Quantum Computing Boom of 2028 to 2031.
+
+[A few students sit up straighter]
+
+DR. WEISS: In 2024 and 2025, quantum computing was a promising but niche technology. A handful of companies had demonstrated quantum advantage on narrow problems — Shor's algorithm on 50-qubit machines, variational quantum eigensolvers in chemistry simulations. Nothing that threatened classical computing in general-purpose tasks. Then, in late 2027, a company called QubitCore announced a 512-qubit error-corrected processor that claimed to solve a class of optimization problems at speeds ten thousand times faster than classical supercomputers.^8 The press went wild.
+
+By January 2028, the QubitCore stock had risen from a private valuation of roughly $4 billion to a public market capitalization of $340 billion. That is a price-to-sales ratio of approximately 180. For context, Nvidia at the height of the AI boom in 2024 traded at a P/S ratio of about 35. The implied future revenue baked into that stock price assumed QubitCore would capture one hundred percent of the entire global computing market within five years.
+
+And then the cascade began. Venture capital flooded into any startup with "quantum" in its name. Hedge funds built quantum-themed ETFs. A company called QuantumEV, which had no revenue and a business plan involving quantum-optimized battery chemistry, raised $2.3 billion in an IPO and saw its share price double on the first day. Private quantum companies with no products whatsoever were valued at over a billion dollars.
+
+[She pulls up a slide showing a sharp peak and steep drop]
+
+In March 2029, the first technical paper emerged questioning QubitCore's error correction claims. A team at MIT published a preprint showing that the QubitCore chip's error rates actually increased with qubit count beyond 128 — the opposite of what QubitCore had claimed. The stock fell 23% in a single week. But here is where behavioral finance diverges from the efficient market hypothesis: instead of a rational reassessment, we saw something more interesting. For six months, the stock oscillated wildly as new retail investors, convinced the dip was a buying opportunity, piled in. The dead-cat bounce pushed the stock back to within 40% of its peak by August 2029.
+
+[A student raises a hand]
+
+Yes, David.
+
+DAVID: So was this a classic bubble, or was there actually something there? I mean, quantum computing is real, right?
+
+DR. WEISS: That is exactly the right question, and it gets at why bubble identification is so difficult in real time. Quantum computing is real. QubitCore's underlying technology had genuine promise. The distinction between a bubble and a legitimate growth trajectory is not about whether the technology works — it is about the relationship between price and fundamental value. At a P/S ratio of 180, the market was pricing in a future that assumed no competitors, no technical setbacks, no regulatory hurdles, and near-instantaneous global adoption. That is not a growth forecast. That is a fantasy underwritten by an information cascade.
+
+In late 2030, a second shoe dropped. The Federal Reserve issued a report flagging "systemic risk from concentrated quantum-sector exposure," and major institutional holders began unwinding their positions simultaneously. The cascade reversed. QubitCore fell from a peak of $820 per share in September 2028 to $47 per share by June 2031 — a decline of 94%. QuantumEV went bankrupt.^9
+
+But here is the behavioral coda. A survey conducted in early 2032 by the Stanford Center on Financial Decision-Making found that 68% of retail investors who bought QubitCore at its peak reported that they "knew the price was too high" at the time of purchase.^10 They knew. They bought anyway. Because the Greater Fool Theory — the belief that someone else would be dumber, later — overrode their own judgment.
+
+[She steps back from the board]
+
+That is the core lesson of this lecture. Bubbles are not caused by stupidity. They are caused by a breakdown in the relationship between price and information. When traders stop asking "What is this worth?" and start asking "What will the next person pay?", the price signal becomes untethered from reality. And the behavioral mechanism that enables this — herding — is not a character flaw. It is a rational response to an environment where the most visible information is the actions of others.
+
+Let me close with a quote from Charles Kindleberger, the great economic historian, who spent his career studying financial crises. He said: "There is nothing so disturbing to one's well-being and judgment as to see a friend get rich."^11 That feeling — envy, FOMO, the desire not to be left behind — is what drives the herding coefficient from zero to one. And understanding that feeling, rather than dismissing it, is what behavioral finance is really about.
+
+Now, your homework.
+
+[She pulls up a slide:]
+
+HOMEWORK ASSIGNMENT — FIN 401, Week 5
+
+Due: Next Thursday, via the course portal, by 11:59 PM.
+
+1. Quantitative exercise: Using the information cascade model described in class, simulate a trader cascade with N = 10 traders, each with a private signal accuracy of 60% (q = 0.4). Compute the probability that a cascade has formed by traders 3, 5, 8, and 10. Show your work.
+
+2. Case study: Select any publicly traded asset that you believe experienced a speculative price movement between 2020 and 2025. Using publicly available price data and at least one academic paper from the reading list, construct a brief argument (500–700 words) for or against classifying that movement as a bubble. Your argument must reference either the Greater Fool Theory or the information cascade model.
+
+3. Reflection (250 words): Have you ever made an investment or purchasing decision that you now believe was influenced by herd behavior? Describe the situation, the signals you were receiving from others, and whether you would make the same decision today knowing what you know about cascades.
+
+Reading: Bikhchandani, Hirshleifer, and Welch (1992), "A Theory of Fads, Fashion, Custom, and Cultural Change as Information Cascades," Journal of Political Economy; Shiller (2000), Irrational Exuberance, Chapters 1 and 4; Weiss and Tanaka (2024), "Herding Coefficients in Asset Price Bubbles: An Empirical Approach," Journal of Behavioral Economics, 72(3), 115–138.
+
+DR. WEISS: Office hours are Wednesday at 2 PM. If you are stuck on the cascade probability calculation, come see me. If you are stuck on the reflection essay, that is the point — sit with the discomfort. That is where the learning happens.
+
+Class dismissed.
+
+[CLASS ENDS]
+
+---
+
+Footnotes
+
+^1 Garber, P. M. (1989). "Tulipmania." Journal of Political Economy, 97(3), 535–560.
+
+^2 Thompson, E. (2007). "The Tulipmania: Fact or Artifact?" Public Choice, 130(1-2), 99–114.
+
+^3 Weiss, K., & Tanaka, R. (2024). "Herding Coefficients in Asset Price Bubbles: An Empirical Approach." Journal of Behavioral Economics, 72(3), 115–138.
+
+^4 Bikhchandani, S., Hirshleifer, D., & Welch, I. (1992). "A Theory of Fads, Fashion, Custom, and Cultural Change as Information Cascades." Journal of Political Economy, 100(5), 992–1026.
+
+^5 Banerjee, A. V. (1992). "A Simple Model of Herd Behavior." Quarterly Journal of Economics, 107(3), 797–817.
+
+^6 Chancellor, E. (1999). Devil Take the Hindmost: A History of Financial Speculation. Plume Books, pp. 58–79.
+
+^7 Weiss & Tanaka (2024), op. cit., Table 3.
+
+^8 The QubitCore specifications and timeline presented here are a fictional composite based on observable patterns in technology-driven speculative episodes. No real 512-qubit error-corrected processor with those specifications existed as of 2025.
+
+^9 Market data for the fictional Quantum Computing Boom is derived from the simulation model in Weiss, K. (2025). "Cascade Reversal Dynamics in Technology Bubbles." Middleton University Working Paper Series, No. 2025-14.
+
+^10 Stanford Center on Financial Decision-Making (2032). "Retrospective Awareness in Bubble Participation: A Survey." SC-FDM Report 2032-04.
+
+^11 Kindleberger, C. P., & Aliber, R. Z. (2015). Manias, Panics, and Crashes: A History of Financial Crises (7th ed.). Palgrave Macmillan, p. 44.
+
+Transcript ends.

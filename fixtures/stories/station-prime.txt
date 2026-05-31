@@ -1,0 +1,181 @@
+# Station Prime
+
+## 1. Discovery
+
+Europa Station, 2147. Jupiter's largest moon filled the observation window like a bruised eye, its cracked ice surface glowing faintly in the light of a sun that was barely more than a bright star at this distance.
+
+Dr. Elara Voss leaned over the ice-penetrating radar display, her breath fogging the edge of her coffee cup. "There. Do you see it?"
+
+Commander James Okafor stepped up behind her, arms crossed. "I see a lot of things on that display, Elara."
+
+"It's not noise." She tapped the screen, highlighting a cluster of returns twelve kilometers beneath the ice shelf. "Same depth. Same composition signature. Synthetic." She turned to face him. "Nothing natural echoes like that."
+
+Okafor's jaw tightened. In four years commanding this station, he'd learned to trust the quiet intensity of his lead geologist. "How deep did you say?"
+
+"Twelve point four kilometers. Which means it's been there longer than we have. Longer than any human probe, anyway."
+
+An hour later, the full science team gathered in the common module. The station's physicist, Dr. Rina Okonkwo, was already running simulations on her tablet, muttering to herself between sips of nutrient paste.
+
+"What have we got, Rina?" asked Dr. Theo Chen, the station's biologist, pulling himself into a seat and strapping in.
+
+"The object is roughly cylindrical, three point eight meters in length, one point two meters in diameter." Rina projected a crude wireframe onto the wall screen. "Composition is unknown — the radar signature doesn't match any element or alloy in our database. It's not ice. It's not rock. It's not metal as we know it."
+
+"So not a natural formation," said Sato, the station engineer, a wiry man who spoke only when he had something worth saying. He was already sketching notes on his arm with a marker.
+
+"Definitely not natural," Elara confirmed.
+
+The sixth person in the room — Dr. Amara Patel, the team's linguist and communications specialist — had been silent until now. "How do we get to it?"
+
+"Drill team," Okafor said. "We've got the thermal boring equipment. It'll take three weeks to reach that depth, maybe less if the ice is stable."
+
+"Three weeks," Amara repeated. "And when we reach it?"
+
+"Then we find out what's waiting for us."
+
+## 2. The Artifact
+
+Twenty-two days later, the drill punctured through the final layer of ice into a cavern that the radar had not predicted. The cavity was spherical, exactly sixty meters in diameter, with walls of polished ice so clear they looked like glass. And in the center, suspended by no visible means, hung the object.
+
+It was beautiful. Cylindrical, as predicted, but its surface rippled with a faint blue luminescence that pulsed in a steady rhythm — slow, patient, inhuman.
+
+The retrieval team brought core samples and high-resolution scans back to the station. Elara and Rina spent the next forty-eight hours running every test they could.
+
+"It's emitting something," Rina said, staring at a spectrum analyzer. "A signal. Radio frequency, very low power. But there's structure to it."
+
+Amara had been waiting for this. "Put it on the main speaker."
+
+The room filled with a series of low tones. Beeps. Pauses. More beeps.
+
+"It's repeating," Amara said, her voice barely above a whisper. She was counting on her fingers. "The pattern length is... seventy-three pulses, then a long pause, then repeats."
+
+Rina was already typing. "Seventy-three is prime."
+
+Elara looked up. "What?"
+
+"Seventy-three. It's a prime number. Divisible only by itself and one." Rina's eyes were wide in the dim light. "The first sequence is seventy-three pulses. The second is seventy-nine. Then eighty-three. Eighty-nine. Ninety-seven. Every sequence is a different prime. Ascending."
+
+For a long moment, nobody spoke.
+
+"It's counting," Amara said finally. "It's establishing that it understands mathematics. This is a greeting."
+
+"A greeting?" Okafor leaned forward. "We've been here for three years with no sign of anything, and now there's a prime-number generator twelve kilometers under the ice, and you're calling it a *greeting*?"
+
+"What else would you call it?" Amara shot back. "It's demonstrating intelligence. It's saying 'I can count. I know primes. Talk to me.'"
+
+"Can we talk back?" Sato asked. He'd been quiet, but now he had an engineer's gleam in his eye. "We have a radio transceiver powerful enough to reach this depth. If we send pulses back—"
+
+"We don't even know if it's listening," Okafor said.
+
+"We don't know it's *not*," Amara replied.
+
+## 3. The Conversation
+
+The first reply was clumsy. Sato jury-rigged the station's main communications array to pulse downward through the borehole — a simple sequence. Two pulses. The smallest prime.
+
+For eight hours, nothing.
+
+Then the artifact changed frequency.
+
+The second transmission was a single pulse. Then a pause. Two pulses. Then another pause. Three pulses.
+
+"Two, then three," Amara whispered. "It's acknowledging our transmission. Two is prime. Three is prime. It's saying 'I received your signal. Continue.'"
+
+Okafor gave the order. "Keep going."
+
+What followed was the most intense three days of Amara Patel's career. Each transmission built on the last. The artifact demonstrated multiplication by sending four pulses — grouped as two, then two more — then a long pause. Division: eight pulses, four pulses, two pulses. It taught them prime factorization. It showed them exponentiation. It mapped out the first twenty primes in sequence.
+
+They learned to listen differently. The artifact wasn't just broadcasting prime numbers. It was broadcasting a language built on them. Every concept had a prime-number address. Every statement was a product of primes.
+
+"The number twelve," Rina explained to the team during a break, "is two squared times three. In their system, that's not just a number — it's a sentence. 'Two instances of object-1, co-occurring with three instances of object-2.' It's a grammar. A mathematical grammar."
+
+"So what do we ask it?" Elara asked.
+
+"Start simple," Okafor said. "Ask what it is."
+
+Amara composed the message carefully. She assigned "origin" the prime-index 11. "Purpose" became 17. "Identity" was 23 — deliberately, because 23 was the ninth prime, and she wanted to imply that the concept of "self" was the ninth fundamental. The message came out as a long sequence of primes, concatenated: 11, 17, 23 — each separated by the pause that meant "next concept."
+
+The artifact's reply came after only twenty minutes.
+
+The sequence was thirty-three primes long. Rina's analysis terminal nearly crashed trying to process it.
+
+"It's a map," Rina said, her voice hollow. "A timeline. Each prime sequence corresponds to a point in space-time. The distances are encoded in the intervals between primes. The directions are encoded in the prime-value ratios."
+
+"A map to what?" Okafor asked.
+
+Rina pointed to the final entry in the sequence. "Whatever this is, it's marked with the highest-value prime in the message. Prime number 7919."
+
+"The thousandth prime," Amara said quietly.
+
+"It's the destination," Rina continued. "And I've plotted its location against known stellar coordinates. It's approximately forty-seven light-years from here. A star system with at least three planets in the habitable zone."
+
+Silence filled the room.
+
+"It's a invitation," Amara said finally.
+
+"Or a warning," Elara countered. "We don't know what's there."
+
+"We don't know what's here, either," Okafor replied. "But we know it's been waiting. Possibly for a very long time."
+
+## 4. The Revelation
+
+They kept the channel open. Over the next week, the artifact transmitted more. Star charts. Biological schematics — alien anatomies that made Theo Chen weep with wonder and frustration. A star whose spectral signature matched none in any human database.
+
+And then, on the seventh day, something changed.
+
+The pulse pattern shifted. The primes became larger — much larger. The artifact began transmitting sequences so long and complex that Rina's equipment struggled to record them without error.
+
+"It's trying to tell us something different," Amara said, staring at a printout that snaked across the floor. "The vocabulary has changed. It's no longer teaching. It's... narrating."
+
+"Narrating what?" Okafor asked.
+
+Amara didn't answer. She was already deep in analysis, cross-referencing prime groupings against the earlier grammar rules the artifact had established. It took her twelve hours.
+
+"The artifact is a containment seal," she said finally.
+
+The room went very quiet.
+
+"I'm sorry?"
+
+"A containment seal." Amara's voice was steady, but her hands were shaking. "It's not a transmitter. It's not a beacon. It's a lock. The thing under the ice — the *thing* itself — is a barrier. There's something on the other side."
+
+"Other side of what?" Elara demanded.
+
+"The cavity we found wasn't a hollow space. It's a dimensional interface. The artifact wasn't emitting the primes. It was *decoding* them — converting energy from... somewhere else... into mathematical proof of contact. Every prime we received was a verification step."
+
+Rina had gone pale. "A verification step for what?"
+
+"For proving that whoever received the transmission could understand higher mathematics." Amara tapped the printout. "The prime-number language isn't a language. It's a handshake protocol. And we completed it."
+
+"Completed it when?" Okafor asked.
+
+"Seven days ago." Amara's voice dropped. "When we sent back the reply confirming we understood the star map. That was the last verification step. We proved we were an intelligent species capable of interstellar mathematics."
+
+"And what happens now?" Theo asked, his biologist's calm cracking for the first time.
+
+Amara pointed at the artifact's data stream. "The 'invitation' we decoded isn't an invitation. It's a transfer. The destination star system — it's not out there. It's *here*. The coordinates were relative. The destination was always this location. They're not inviting us to come to them. They're coming to us. Through this."
+
+Sato spoke up. "How long do we have?"
+
+"The artifact is already drawing power from somewhere. The dimensional interface is opening. If the energy patterns I'm seeing are correct..." Amara swallowed. "We have maybe seventy-two hours before whatever's on the other side arrives."
+
+Okafor stood up. "Evacuation protocol. I'm calling Earth."
+
+"And if Earth can't get us out in time?" Elara asked.
+
+"Then we're going to meet whatever's on the other side of that artifact." Okafor looked at his team — exhausted, brilliant, frightened. "And we're going to do it as scientists. We found it. We talked to it. Now we find out what it actually wants."
+
+"We already know what it wants," Amara said quietly, still staring at the data. "It wants in. The question is — is it bringing guests or a flood?"
+
+The artifact pulsed steadily in the ice below, counting primes that no human had ever named, and the team of Europa Station began their final seventy-two hours of uncertainty.
+
+In the end, they did not evacuate. Earth's nearest transport was eleven days out, and the artifact gave them only three. So they stayed — scientists to the last — and they watched.
+
+The dimensional interface opened on schedule. It did not consume the station. It did not unleash an alien invasion. What emerged was a single object: a small crystalline prism, exactly the size of a human hand, containing a compressed data library that would take human scholars centuries to fully unpack.
+
+The artifact's makers had gone extinct eight hundred million years before Earth formed. The containment seal had preserved their final transmission — their complete scientific, cultural, and historical knowledge — for an audience that had not yet evolved. The prime-number handshake was their insurance policy: a filter ensuring that only a mathematically sophisticated species could receive the legacy.
+
+The invitation, in the end, was not to travel. It was to inherit.
+
+Amara Patel would later write in her personal log: "They built a library, not a weapon. They trusted that whatever found it would be worthy — not because of moral character, but because mathematics is the only universal language, and anyone who speaks it is already part of the conversation."
+
+The prism now sits in the station's vault, humming faintly in the deep silence of Europa, waiting for the next question.

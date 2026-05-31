@@ -1,0 +1,265 @@
+## Decision 1: The Fog-Choked City
+
+You are Detective Inspector Thomas Croft, and London is drowning in fog. Not the ordinary kind — this fog has been here for fourteen weeks, clinging to gaslights and curling under doors. It does not move like weather; it moves like something watching. People report seeing their own memories projected onto the mist — a dead mother's face, a childhood street, a long-forgotten kiss reflected in the grey.
+
+Lord Ashworth is dead in his Bloomsbury townhouse. The doors were bolted from inside. The windows were sealed with wax. No one entered. No one left. Yet he lies slumped over his desk, a glass of sherry beside him, no wound, no blood, no cause of death the doctors can name.
+
+The fog outside the townhouse has been observed pressing against the window of his study every night since the body was found — like a face trying to get in.
+
+You have three leads.
+
+**If you visit Lord Ashworth's townhouse to examine the crime scene, go to Decision 2.**
+**If you interview Lady Eleanor Ashworth, who was in the house when her husband died, go to Decision 3.**
+**If you consult Dr. Elijah Pendleton, the fog scholar at the Royal Institute, go to Decision 5.**
+
+---
+
+## Decision 2: The Townhouse
+
+The townhouse at 14 Woburn Square is a museum of the dead. Lord Ashworth's body lay undiscovered for three days before the fog cleared enough for the milkman to raise the alarm. The front door is bolted from inside with a heavy iron bar. The windows are latched and sealed with red wax — Ashworth's own seal, according to the butler.
+
+The study is on the ground floor, facing the square. Lord Ashworth sits in a high-backed leather chair, his head resting on a copy of *Principia Mathematica* open to a page on non-Euclidean geometry. A crystal sherry decanter sits beside him, untouched except for the single glass. The fire has long gone cold.
+
+Two things catch your attention immediately. The first is a brass sphere on the desk — a foot in diameter, covered in dials and etched with symbols that do not correspond to any language you recognise. It hums at a frequency you feel in your teeth. The second is the bookshelf: rows upon rows of leather-bound volumes on alchemy, clockwork, and the physics of memory. One spine reads *The Preservation of Thought in Crystalline Structures, 1847*.
+
+Sergeant Finch, your constable, stands by the door with his helmet in his hands. "The coroner says no poison in the glass, sir. No poison in the body. No marks of violence. It's as if his soul simply departed and the flesh forgot to follow."
+
+**If you examine the brass sphere, go to Decision 4.**
+**If you search the bookshelves for a diary or journal, go to Decision 6.**
+
+---
+
+## Decision 3: Lady Ashworth
+
+Lady Eleanor Ashworth receives you in the drawing room on the first floor. She is a striking woman in her forties, dressed in black, her hands folded in her lap with the composure of someone who has rehearsed this interview. But her eyes are red, and the handkerchief in her hands is torn at the edges from twisting.
+
+"Thomas was obsessed," she says without preamble. "With the fog, with his machines, with the idea that thought could be captured like butterflies in a jar. He spent the last six months of his life in that study, speaking to no one, eating when the servants reminded him. I do not think he saw me for the last three months. He only saw the fog."
+
+She looks at the window. The fog presses against it, thicker here than anywhere else in the square.
+
+"The night he died, I was reading in my bedroom. I heard a cry — not loud, more like a sigh. By the time I reached the study, he was gone. The doors were bolted. The windows were sealed. There was no one else in the house. I checked every room."
+
+Her hands stop twisting the handkerchief. She looks at you directly.
+
+"I know what that sounds like, Inspector. But I am telling you the truth. The only person who could have killed my husband was my husband."
+
+**If you ask about the Memory Engine, go to Decision 7.**
+**If you ask about her husband's enemies, go to Decision 8.**
+
+---
+
+## Decision 4: The Brass Sphere
+
+The sphere is heavier than it looks — at least twenty pounds of brass and glass. The dials are set to specific positions: 7, 12, 3, and 19. You recognise the sequence: prime numbers. The fourth dial is halfway between 19 and 23, as if someone was interrupted while adjusting it.
+
+The sphere is warm. The humming is not a mechanical sound — it is a voice, slowed down thousands of times, stretched into a continuous note. You press your ear to the brass and hear words: *"...remember...remember...she...she..."*
+
+The fog outside the window reacts. It swirls, coalesces, and shapes itself into a face — Lord Ashworth's face, gaunt and grey, his mouth moving soundlessly. Then the sound comes through the glass, a whisper that fills the room:
+
+*"She did it. My wife and the doctor. Together. They were in the drawing room while I died. The fog remembers everything. The fog remembers the poison in the decanter. The fog remembers her hands on the door, pretending to open it, pretending she had just arrived."*
+
+The face dissolves into mist. The sphere in your hand cracks — a hairline fracture running from the 7 dial to the 19. The humming stops.
+
+Sergeant Finch crosses himself. "Sir, did you see that? Did you hear — "
+
+You hold up a hand. You are thinking.
+
+**If you confront Lady Ashworth with what the fog showed you, go to Decision 9.**
+**If you go to Dr. Pendleton's flat to ask about the fog's memory, go to Decision 10.**
+
+---
+
+## Decision 5: Dr. Pendleton
+
+Dr. Elijah Pendleton lives above a bookshop on Greek Street, Soho. His rooms are a chaos of instruments — barometers, thermographs, devices that measure electromagnetic fields, brass contraptions that no one but he can name. He is sixty, with wild white hair and eyes that have the dilated look of a man who has seen too much.
+
+"The fog is not a meteorological phenomenon," he says before you can ask. "I proved that six weeks ago. It does not obey wind patterns. It does not condense or dissipate according to temperature. It is a leak — a perforation in the membrane between the living world and the world of dead thought."
+
+He hands you a journal page without being asked. "Lord Ashworth sent this to me three days before he died. I did not understand it until now."
+
+You read the page. It is Ashworth's handwriting, hurried and uneven:
+
+*"The engine works. Beyond my expectations. I have captured the fog's memory of the murder — a murder that has not yet happened. The fog remembers the future. I have seen my own death, Pendleton. A locked room. A glass of sherry. And no one there. Because the murderer is not a person. The murderer is a thought — a thought I will create when I build the engine too well. I have written this to warn you: if you are reading this, I have created my own murderer."*
+
+You look up. Pendleton's eyes are unreadable.
+
+**If you go to the townhouse to find the engine and destroy it, go to Decision 11.**
+**If you go to the morgue to examine the body with this new information, go to Decision 12.**
+**If you realise that reading this journal entry means Ashworth predicted his own death with supernatural accuracy, go to Decision 13.**
+
+---
+
+## Decision 6: The Bookshelves
+
+You search the bookshelves methodically. Behind a first edition of Newton's *Opticks* you find what you are looking for: a leather-bound journal with no title, its pages yellowed and stained. The first entry is dated six months ago:
+
+*"Today I succeeded. The crystal held a memory for seventeen seconds — my memory of my mother's face. I played it back through the sphere and saw her as clearly as if she were in the room. This is not science. This is something beyond science."*
+
+The entries grow stranger. Ashworth began testing the engine on other subjects — first servants, then strangers paid to participate. He discovered that the engine did not just store memories. It created new ones. A man who had never been to Paris remembered the smell of croissants on the Rue de Rivoli. A woman who had never married remembered her wedding day.
+
+The final entry, dated the day of his death, reads:
+
+*"I put the poison in the sherry. I remember doing it. But I never did. The engine remembered for me. It has been remembering for me for weeks. I cannot tell which memories are mine and which are the engine's. If you are reading this, burn it all. Do not let the engine remember anyone else. I am going to destroy it tonight."*
+
+The journal ends mid-sentence.
+
+**If you go upstairs to find the engine in Ashworth's private laboratory, go to Decision 4.**
+**If you take the diary to Dr. Pendleton for his analysis, go to Decision 10.**
+
+---
+
+## Decision 7: The Memory Engine
+
+Lady Ashworth's composure cracks when you mention the engine. Her hands resume twisting the handkerchief. Her eyes flick to the ceiling — toward the top floor of the townhouse.
+
+"He built it in the laboratory upstairs. I was never allowed inside. But I heard it every night. A humming sound that went through the walls, through the floorboards, through my bones. It started three days before the fog. I told him the engine was causing it. He said the engine was the only thing that could stop it."
+
+She stands, walks to the window, and presses her palm against the glass. The fog on the other side darkens, swirling around her hand as if responding to her warmth.
+
+"The fog watches me, Inspector. It knows things about me that no one should know. It knows about the letters I burned. It knows about the nights I walked to the garden gate and stood there, waiting. It knows what I wished would happen to my husband."
+
+She turns. Her face is pale.
+
+"I did not kill Thomas. But I wanted him dead. And the fog — the fog remembers that I wanted it."
+
+**If you press her on what she wished, go to Decision 8.**
+**If you go upstairs to see the engine, go to Decision 4.**
+
+---
+
+## Decision 8: The Confession
+
+Lady Ashworth confesses in a voice so quiet you have to lean forward. "I was having an affair. With Dr. Pendleton. It began six months ago, when Thomas first brought the fog scholar to the house. I thought Elijah understood me. I thought he saw me as a person, not as an obstacle to his work."
+
+She does not cry. She speaks as if reading a deposition. "Thomas found out the week before he died. He was calm. That is what terrified me. He said he would divorce me. He said he would expose us both to the Royal Society. My reputation would be destroyed. My children would never speak to me again."
+
+She meets your eyes. "I did not kill him, Inspector. But I wished him dead. I wished it every night, in my prayers, in my thoughts, in the silence of my bedroom. And now the fog has made those wishes into something real. The fog has turned my thoughts into evidence."
+
+Her voice breaks. "Is that a crime? Wishing? Is that what you will arrest me for?"
+
+**If you believe her and focus on the engine as the true cause, go to Decision 6.**
+**If you suspect she is manipulating you and orchestrated the murder with Pendleton, go to Decision 9.**
+
+---
+
+## Decision 9: The Confrontation
+
+You confront Lady Ashworth in the drawing room, reciting what the fog showed you — Ashworth's face, the accusation, the poison in the decanter. You expect her to break, to confess, to fall to her knees.
+
+Instead, she laughs.
+
+It is not a hysterical laugh. It is cold, precise, and utterly confident. "You think I killed him? You think I would poison the man whose face I still see every time I close my eyes? Inspector, I loved my husband. I loved him despite his obsessions, despite his coldness, despite the fact that he had not touched me in a year. The fog showed you his face because the fog IS his memory. His. Not mine. He is the one who will not let go."
+
+She walks to the window and throws it open. The fog pours in like a living thing, swirling around her but never touching her. She stands in the centre of the grey cloud, unharmed, unwatched.
+
+"The fog does not accuse me, Inspector. It protects me. Because it is HIS love for me, preserved in crystal and mist. Your witness is a dead man who still adores his wife."
+
+The sphere in your hand goes cold. The humming stops. The fog outside the window begins to thin, and through the clearing mist you see stars — the first stars London has seen in fourteen weeks.
+
+**THIS IS A DEAD END.** The fog clears because the engine has stopped. Lord Ashworth's final memory — projected through the fog — was not an accusation but a warning. The case closes as death by misadventure. You never find the murderer because there was never a murderer to find.
+
+**THE END — DEAD END BRANCH**
+
+---
+
+## Decision 10: Pendleton's Flat
+
+You arrive at Greek Street to find the door unlocked. Dr. Pendleton is dead in his chair, a glass of sherry beside him. The same pose as Ashworth. The same expression of surprise frozen on his face.
+
+On his desk is a note, written in his own hand:
+
+*"I built the engine with Ashworth. I knew what it would do when we first theorised it — capture not just memory, but the shape of thought itself. I lied to the inspector about when I understood. I understood from the beginning. The fog is my fault. The fog is every thought I ever had that I did not act on — every unspoken word, every withheld confession, every cowardly silence. It has come back to fill the city until there is no room left for anything else. If you are reading this, I am already gone. The same way Ashworth went. The engine does not kill you. It simply remembers you until there is nothing left to remember."*
+
+The fog outside the window thickens. Through it, you hear Pendleton's voice: *"We killed ourselves, inspector. Every thought we never acted on became a weapon. The engine just gave those thoughts a door."*
+
+**If you return to the townhouse to destroy the engine before it remembers anyone else, go to Decision 11.**
+**If you leave London and let the fog have the city, go to Decision 14.**
+
+---
+
+## Decision 11: The Engine Room
+
+The top floor of Ashworth's townhouse has been converted into a single room. The engine fills it — a monstrous construction of brass, copper, and crystal, twelve feet tall, pulsing with a light that seems to come from inside the metal itself. The fog outside the windows swirls in perfect rhythm with the engine's beat, like a heart pumping mist through the city's veins.
+
+A central crystal, the size of a man's torso, is inscribed with the same runes as the smaller sphere. It glows with a cold blue light. The dials are set to the same prime numbers: 7, 12, 3, 19. A lever on the side is engraved with a single word: *DRAINING*.
+
+You pull the lever.
+
+The engine shrieks. Metal grinds against metal. The crystal cracks — a spiderweb of fractures spreading from its core. The light dies. The humming stops. The fog outside the window begins to thin, slowly at first, then faster, as if a great weight is being lifted from the city.
+
+A voice behind you says: "Thank you, Inspector."
+
+You turn. No one is there. But the fog, as it fades through the window, shapes itself into the figure of a man — Lord Ashworth, young and whole, his face peaceful. He raises a hand in farewell. And then the fog dissolves into clean morning air, and London wakes to its first clear dawn in months.
+
+You never find the murderer. Because the murderer was a thought — Ashworth's own thought, given form by his own creation. Some cases are not solved, you realise. They are ended.
+
+**THIS IS THE TRUE ENDING.**
+**THE END — TRUE ENDING**
+
+---
+
+## Decision 12: The Morgue
+
+At St. Bartholomew's, the coroner, Dr. Hargreaves, is baffled. "I have run every test available to modern medicine, Inspector. There is no poison in the blood. No wound on the body. No sign of asphyxiation, blunt trauma, or any other cause of death. Lord Ashworth simply stopped living. His heart gave out, but there is no physiological reason for it. It is as if his will to live was removed."
+
+You think of Pendleton's words: *A thought killed him. A thought given form.*
+
+"Heart failure," you say.
+
+"Technically, yes. But — "
+
+"It is the answer I am putting in the file, Dr. Hargreaves. Heart failure. Unknown cause."
+
+You walk out into the fog. It parts around you, as if it knows who you are. You have a choice to make.
+
+**If you conclude the case is supernatural and beyond your jurisdiction, go to Decision 14.**
+**If you return to the townhouse to destroy the engine, go to Decision 11.**
+
+---
+
+## Decision 13: The Prediction
+
+You stop reading. You read Pendleton's journal page again. And again. The words do not change: *"I have created my own murderer."*
+
+Ashworth wrote this BEFORE he died. He knew, with perfect certainty, how and when and by what means he would die. The engine did not store memories of the past. It stored memories of the future. And if the future could be stored, it could be read. And if it could be read, it could be changed.
+
+You return to the townhouse alone. The laboratory is dark, the engine silent but waiting. You approach the dials. The prime numbers stare back at you — 7, 12, 3, 19 — Ashworth's death encoded in mathematics.
+
+You could set the dials to something else. A different future. One where Ashworth never built the engine. One where the fog never came. One where the case file closes cleanly.
+
+But as you reach for the dials, you see something in the crystal. A reflection. Yourself. Older. Standing in this exact spot. In that future, you do not change the dials. You step back. You leave the engine intact.
+
+You realise: the future you would choose does not exist. The engine showed you a choice, but the choice was never yours. Ashworth built a machine that remembered what would happen. You cannot change the future because the future has already been remembered.
+
+You step back from the dials. You walk out of the laboratory. Three days later, the fog lifts on its own. Ashworth is still dead. The engine is intact. You seal the laboratory door, mark the case as unsolved, and spend the rest of your career wondering if the future is a thing that happens or a thing that has already happened.
+
+**THIS IS A RE-CONVERGENCE BRANCH.**
+**If you want a final reflection, go to Decision 14.**
+
+---
+
+## Decision 14: Leaving London
+
+You resign from the Metropolitan Police. The Ashworth case follows you — not in files, not in questions from your superiors, but in the fog that never quite leaves your dreams. You move to Brighton. You take a room above a pub. You do not speak of the engine or the sphere or the dead man who predicted his own murder.
+
+Six months later, a letter arrives. No return address. Inside, a single sheet of paper with no signature:
+
+*"There are seven engines, Inspector Croft. Seven cities. Seven fogs that remember. You stopped one in London. The others are waking. Paris. Vienna. St. Petersburg. Cairo. Shanghai. San Francisco. And one more — a city that does not yet have a name. The fog does not forget. And we who built them do not forgive."*
+
+You fold the letter and place it in the fire. The flame turns blue for a moment, then green, then back to ordinary orange. The fog over Brighton that night is thicker than usual, and it presses against your window like a hand testing the glass.
+
+You do not sleep.
+
+**THE END — CONTINUATION BRANCH**
+
+---
+
+## The Final Reflection
+
+Regardless of the path you chose, one truth remains: London was never the same after the fog of '94. The story became a legend, a tale told in pubs, a footnote in the meteorological records. But some inspectors — the ones who were there — know the truth.
+
+The fog was memory. Memory of the dead. Memory of the living. Memory of things that never happened but might yet happen still. And memory, once released, does not truly dissipate. It waits. In the mist over the Thames on winter mornings. In the condensation on a windowpane. In the space between one thought and the next.
+
+The fog remembers.
+
+And one day, it will return.
