@@ -14,12 +14,12 @@ author: Michael Conrad
 **Branch:** (none yet — spec stage)
 **Workflow Phase:** spec-design
 **Created:** 2026-06-01T00:00:00Z
-**Last Updated:** 2026-06-01T00:00:00Z
+**Last Updated:** 2026-06-01T23:45:00Z
 **Status:** designing
 
 ## Current State
 
-Spec being designed interactively. Card catalogue contains 11 cards covering:
+Card catalogue contains 11 cards covering:
 
 1. Data model (files + markdown + YAML)
 2. Worktree model (single orphan issues-data branch)
@@ -31,13 +31,14 @@ Spec being designed interactively. Card catalogue contains 11 cards covering:
 8. Sync redesign (three disjoint operations unified)
 9. Directory naming normalization
 10. Creation skill card — three-scenario dispatch (create-local, promote-to-remote, import-remote)
-11. (reserved for next topic)
+11. Stale worktree remediation — real-world validation
 
 ## Recently Completed
 
-- Designed `creation.md` dispatcher with three scenarios
-- Designed `create-local` (draft), `promote-to-remote` (promotion), `pre-creation` (dedup), and `import-remote` (remote-first) tasks
-- Established gate pattern: internal gates in task, cross-context gates as separate sub-agents
+- Creation skill card with three-scenario dispatch: create-local (draft), promote-to-remote (promotion), pre-creation (cross-context dedup), import-remote (remote-first mirror)
+- Real-world stale worktree remediation: discovered `.issues/` worktree was stale (`.git` link missing). All commits had landed on `dev` instead of `issues-data`. Zero data loss after recovery.
+- Worktree now active on `issues-data` with all 979 content migrated.
+- Tag `opencode-config/979/spec-created` re-created on correct `issues-data` commit.
 
 ## Blockers
 
