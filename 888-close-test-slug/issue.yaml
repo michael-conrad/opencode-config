@@ -1,6 +1,8 @@
 title: Close Test Slug
-status: open
+status: closed
 labels: []
 body: ''
 created_at: '2026-06-03T21:52:07+00:00'
 updated_at: '2026-06-03T21:52:07+00:00'
+closed_at: '2026-06-03T21:52:07+00:00'
+close_reason: completed
