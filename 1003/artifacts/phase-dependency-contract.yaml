@@ -1,0 +1,72 @@
+# Phase Dependency Contract for Z3 Validation — Issue #1003
+# SPDX-FileCopyrightText: 2026 Michael Conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated
+# Co-authored with AI: OpenCode (deepseek-v4-flash)
+schema_version: "1.0"
+last_updated: "2026-06-05T00:00:00Z"
+issue: 1003
+description: >
+  Z3 contract for phase dependency analysis of #1003 implementation.
+  Six phases: each phase can run a full 14-stage pipeline.
+  Some phases have RED/GREEN pairs per file; some share a single cycle.
+  Dependencies determine sequencing: PHI_i must be complete before PHI_j starts.
+
+variables:
+  # Phase completion states
+  PHI1_complete: { type: bool, description: "Phase 1 — default.txt (delete line 146 + add startup mode + condense)" }
+  PHI2_complete: { type: bool, description: "Phase 2 — Rename investigate→observe across all files" }
+  PHI3_complete: { type: bool, description: "Phase 3 — Guideline file trims (13 files)" }
+  PHI3_N1_complete: { type: bool, description: "Phase 3 sub-step — 000-critical-rules.md trim" }
+  PHI3_N2_complete: { type: bool, description: "Phase 3 sub-step — 010-approval-gate.md trim" }
+  PHI3_N3_complete: { type: bool, description: "Phase 3 sub-step — 020-go-prohibitions.md trim" }
+  PHI3_N4_complete: { type: bool, description: "Phase 3 sub-step — 060-tool-usage.md trim" }
+  PHI3_N5_complete: { type: bool, description: "Phase 3 sub-step — 065-verification-honesty.md trim" }
+  PHI3_N6_complete: { type: bool, description: "Phase 3 sub-step — 067-context-completeness.md trim" }
+  PHI3_N7_complete: { type: bool, description: "Phase 3 sub-step — 075-docs-verification.md trim" }
+  PHI3_N8_complete: { type: bool, description: "Phase 3 sub-step — 080-code-standards.md trim" }
+  PHI3_N9_complete: { type: bool, description: "Phase 3 sub-step — 090-data-integrity.md trim" }
+  PHI3_N10_complete: { type: bool, description: "Phase 3 sub-step — 091-incremental-build.md trim" }
+  PHI3_N11_complete: { type: bool, description: "Phase 3 sub-step — 117-session-trigger-behavior.md trim" }
+  PHI3_N12_complete: { type: bool, description: "Phase 3 sub-step — 130-authority-source.md trim" }
+  PHI3_N13_complete: { type: bool, description: "Phase 3 sub-step — AGENTS.md trim" }
+  PHI4_complete: { type: bool, description: "Phase 4 — Auth edge case documentation in approval-gate skill" }
+  PHI5_complete: { type: bool, description: "Phase 5 — Behavioral tests (SC-4, SC-5, SC-11)" }
+  PHI6_complete: { type: bool, description: "Phase 6 — String tests (SC-1, SC-6, SC-9)" }
+
+preconditions:
+  # Phase 1: default.txt changes — independent, no dependency
+  - "z3.Not(z3.And(PHI1_complete, z3.Not(z3.BoolVal(True))))"  # tautology — no precondition
+
+  # Phase 2: rename investigate→observe — no dependency on Phase 1 (different files)
+  - "z3.Not(z3.And(PHI2_complete, z3.Not(z3.BoolVal(True))))"
+
+  # Phase 3: guideline trims — depends on Phase 1 (startup mode identity affects trim decisions)
+  - "z3.Implies(PHI3_complete, PHI1_complete)"
+
+  # Phase 3 sub-steps: individual file trims are INDEPENDENT within Phase 3
+  # They can run in any order, or in parallel sub-agents
+  # PHI3_complete requires ALL sub-steps complete
+  - "z3.Implies(PHI3_complete, z3.And(PHI3_N1_complete, PHI3_N2_complete, PHI3_N3_complete, PHI3_N4_complete, PHI3_N5_complete, PHI3_N6_complete, PHI3_N7_complete, PHI3_N8_complete, PHI3_N9_complete, PHI3_N10_complete, PHI3_N11_complete, PHI3_N12_complete, PHI3_N13_complete))"
+
+  # No ordering constraints between sub-steps — they are independent
+  # (No z3.Implies chains between PHI3_N* variables)
+
+  # Phase 4: auth edge case in approval-gate — depends on Phase 3 trim of 010-approval-gate.md
+  - "z3.Implies(PHI4_complete, PHI3_N2_complete)"
+
+  # Phase 5: behavioral tests — depend on Phase 1, Phase 2, Phase 3 (all actual changes)
+  # Behavioral tests verify the agent behaves differently after the changes
+  - "z3.Implies(PHI5_complete, z3.And(PHI1_complete, PHI2_complete, PHI3_complete, PHI4_complete))"
+
+  # Phase 6: string tests — depend on Phase 1, Phase 2 (text changes must be in place)
+  - "z3.Implies(PHI6_complete, z3.And(PHI1_complete, PHI2_complete))"
+  # String tests do NOT depend on Phase 3+ since they only check text patterns
+  # PHI6 can overlap with PHI3, PHI4 (parallel execution possible)
+
+  # Atomic RED/GREEN independence: each Phase 3 sub-step can have its own RED/GREEN cycle
+  # Verified: no PHI3_Nx depends on another PHI3_Ny
+
+postconditions:
+  # All phases complete = full implementation done
+  - "z3.Implies(z3.And(PHI1_complete, PHI2_complete, PHI3_complete, PHI4_complete, PHI5_complete, PHI6_complete), z3.BoolVal(True))"
