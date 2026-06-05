@@ -33,7 +33,7 @@ RED:
 GREEN:
 - Add a function that runs `./.opencode/tools/help` and returns its output
 - Emit the output in a `## Agent Tools` section from `main()` after `## Repo Information`
-- Handle errors gracefully (return empty string, print warning to stderr, never crash session-init)
+- On failure: emit `## Agent Tools` section with error message explaining why tools list is unavailable (e.g. "WARNING: tools/help not found"). Do NOT silently omit the section — if the section is missing, the agent has no way to know tools exist.
 - Path resolution must work from any CWD (resolve relative to script location or project root)
 
 VERIFY:
