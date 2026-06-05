@@ -1,13 +1,70 @@
 variables:
-  item_A_done:
+  # ── Pipeline gates ──
+  auth_verified:
     type: bool
-    description: "## Agent Tools emission added to session-init"
-  item_B_done:
+    description: "Phase 2: authorization scope + SC evidence types + traceability verified"
+  plan_audited:
     type: bool
-    description: "Content-verification scenario registered in test-enforcement.sh"
-  item_C_done:
+    description: "Phase 4: plan-fidelity + concern-separation audits PASS"
+  completeness_checked:
     type: bool
-    description: "Behavioral test script exists with correct prompt"
+    description: "Phase 6: completeness gate — all items present, no scope creep"
+  impl_audited:
+    type: bool
+    description: "Phase 7: adversarial audit of implementation — spec-audit + coherence-maintenance"
+  vbc_complete:
+    type: bool
+    description: "Phase 8: verification-before-completion — per-SC evidence table"
+  finishing_checked:
+    type: bool
+    description: "Phase 9: finishing checklist — no uncommitted, branch ahead, commit message"
+  review_ready:
+    type: bool
+    description: "Phase 10: review prep — compare URL, PR body format, squash"
+
+  # ── Item A phases ──
+  A_red:
+    type: bool
+    description: "RED: session-init lacks ## Agent Tools"
+  A_green:
+    type: bool
+    description: "GREEN: get_agent_tools_help() + emit block"
+  A_verify:
+    type: bool
+    description: "VERIFY: grep + lint + typecheck"
+  A_done:
+    type: bool
+    description: "Item A complete"
+
+  # ── Item B phases ──
+  B_red:
+    type: bool
+    description: "RED: session-init-tools-section absent from test-enforcement.sh"
+  B_green:
+    type: bool
+    description: "GREEN: SCENARIOS + FILE_SCENARIO_MAP entries"
+  B_verify:
+    type: bool
+    description: "VERIFY: grep 2+ matches"
+  B_done:
+    type: bool
+    description: "Item B complete"
+
+  # ── Item C phases ──
+  C_red:
+    type: bool
+    description: "RED: tool-injection-red.sh exists with correct prompt"
+  C_green:
+    type: bool
+    description: "GREEN: no file changes needed"
+  C_verify:
+    type: bool
+    description: "VERIFY: SPDX header, helpers.sh, behavior_run, exit 0"
+  C_done:
+    type: bool
+    description: "Item C complete"
+
+  # ── SC verifications ──
   sc_1_verified:
     type: bool
     description: "SC-1: session-init stdout contains ## Agent Tools"
@@ -18,21 +75,49 @@ variables:
     type: bool
     description: "SC-2: behavioral test stdout shows .opencode/tools/* names"
 
-preconditions:
-  - "z3.Not(item_A_done)"
-  - "z3.Not(item_B_done)"
-  - "z3.Not(item_C_done)"
-  - "z3.Not(sc_1_verified)"
-  - "z3.Not(sc_3_verified)"
-  - "z3.Not(sc_2_verified)"
-
 invariants:
-  # Items can only be done in order A → B → C
-  - "z3.Implies(item_B_done, item_A_done)"
-  - "z3.Implies(item_C_done, item_B_done)"
-  # SCs can only be verified after their enabling items are done
-  - "z3.Implies(sc_1_verified, item_A_done)"
-  - "z3.Implies(sc_3_verified, z3.And(item_A_done, item_B_done))"
-  - "z3.Implies(sc_2_verified, z3.And(item_A_done, item_C_done))"
-  # SCs can only be verified after the preceding SCs
+  # ── Pipeline gate ordering ──
+  # 1. Auth before any implementation
+  - "z3.Implies(A_red, auth_verified)"
+  # 2. Plan audit before implementation
+  - "z3.Implies(A_red, plan_audited)"
+  # 3. Completeness gate after implementation, before VbC
+  - "z3.Implies(completeness_checked, A_done)"
+  - "z3.Implies(completeness_checked, B_done)"
+  - "z3.Implies(completeness_checked, C_done)"
+  - "z3.Implies(vbc_complete, completeness_checked)"
+  # 4. Implementation audit after VbC
+  - "z3.Implies(impl_audited, vbc_complete)"
+  # 5. Finishing checklist after impl audit
+  - "z3.Implies(finishing_checked, impl_audited)"
+  # 6. Review prep is final pipeline gate
+  - "z3.Implies(review_ready, finishing_checked)"
+
+  # ── Per-item phase ordering: RED → GREEN → VERIFY → done ──
+  - "z3.Implies(A_green, A_red)"
+  - "z3.Implies(A_verify, A_green)"
+  - "z3.Implies(A_done, A_verify)"
+  - "z3.Implies(B_green, B_red)"
+  - "z3.Implies(B_verify, B_green)"
+  - "z3.Implies(B_done, B_verify)"
+  - "z3.Implies(C_green, C_red)"
+  - "z3.Implies(C_verify, C_green)"
+  - "z3.Implies(C_done, C_verify)"
+
+  # ── Cross-item ordering: B requires A done; C requires B done ──
+  - "z3.Implies(B_red, A_done)"
+  - "z3.Implies(C_red, B_done)"
+
+  # ── SCs require enabling items ──
+  - "z3.Implies(sc_1_verified, A_done)"
+  - "z3.Implies(sc_3_verified, z3.And(A_done, B_done))"
+  - "z3.Implies(sc_2_verified, z3.And(A_done, B_done, C_done))"
   - "z3.Implies(sc_3_verified, sc_1_verified)"
+
+  # ── SC verification is part of VbC ──
+  - "z3.Implies(sc_1_verified, vbc_complete)"
+  - "z3.Implies(sc_3_verified, vbc_complete)"
+  - "z3.Implies(sc_2_verified, vbc_complete)"
+
+  # ── All items done before VbC ──
+  - "z3.Implies(vbc_complete, z3.And(A_done, B_done, C_done))"
