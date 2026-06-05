@@ -11,7 +11,7 @@
 | SC | Evidence Type | Item | Description | Verification |
 |----|--------------|------|-------------|-------------|
 | SC-1 | `string` | A | session-init stdout contains `## Agent Tools` section with tool listing | `grep -A 30 '## Agent Tools'` on session-init output |
-| SC-2 | `behavioral` | C | Agent answers tool-preference question using specific tool names from injected listing | `behavior_run` with prompt "what tools are preferred to grep, cat, find, sed" |
+| SC-2 | `behavioral` | C | Agent answers tool-preference question using specific tool names from injected listing | `behavior_run` → evaluator reads stdout for `.opencode/tools/*` names |
 | SC-3 | `string` | B | Content-verification assertion in test-enforcement.sh | `--scenario session-init-tools-section` |
 
 ## Dependency Order
