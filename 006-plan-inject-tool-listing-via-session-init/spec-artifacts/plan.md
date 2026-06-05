@@ -82,10 +82,10 @@ VERIFY:
 
 ## Execution Order
 
-1. Item A: RED → GREEN → VERIFY → (intermediate commit: session-init only)
-2. Item B: RED → GREEN → VERIFY → (intermediate commit: test-enforcement only)
-3. Item C: VERIFY → (no file changes needed unless file missing/broken)
-4. Squash to single commit for PR
+1. Item A: RED → GREEN → VERIFY (no commit)
+2. Item B: RED → GREEN → VERIFY (no commit)
+3. Item C: RED → GREEN → VERIFY (no commit)
+4. Single commit containing all changed files
 
 ## Final Verification Checklist
 
