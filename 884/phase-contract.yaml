@@ -1,0 +1,47 @@
+---
+schema_version: "1.0"
+last_updated: "2026-06-04"
+description: "#884 Pair 0-5 phase ordering contract"
+
+variables:
+  pair0_red:
+    type: bool
+  pair0_green:
+    type: bool
+  pair1_red:
+    type: bool
+  pair1_green:
+    type: bool
+  pair2_red:
+    type: bool
+  pair2_green:
+    type: bool
+  pair3_red:
+    type: bool
+  pair3_green:
+    type: bool
+  pair4_red:
+    type: bool
+  pair4_green:
+    type: bool
+  pair5_red:
+    type: bool
+  pair5_green:
+    type: bool
+
+preconditions:
+  # RED before GREEN within each pair
+  - "z3.Implies(pair0_green, pair0_red)"
+  - "z3.Implies(pair1_green, pair1_red)"
+  - "z3.Implies(pair2_green, pair2_red)"
+  - "z3.Implies(pair3_green, pair3_red)"
+  - "z3.Implies(pair4_green, pair4_red)"
+  - "z3.Implies(pair5_green, pair5_red)"
+
+  # Shared resource conflicts:
+  # Pair 2 RED (confirm timeout binary exists) — BLOCKED if Pair 0 GREEN has run (removes timeout)
+  - "z3.Not(z3.And(pair2_red, pair0_green))"
+  # Pair 4 RED (confirm bash wrapper exists) — BLOCKED if Pair 0 GREEN has run (removes wrapper)
+  - "z3.Not(z3.And(pair4_red, pair0_green))"
+
+  # Independent pairs: 1 (_setup), 3 (PGID), 5 (flock) — no cross-pair constraints
