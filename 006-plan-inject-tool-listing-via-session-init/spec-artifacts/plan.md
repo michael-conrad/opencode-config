@@ -28,7 +28,7 @@ Item A must complete before B. Item C depends on A's behavioral effect at runtim
 
 RED:
 - Verify session-init currently has no `## Agent Tools` section: `./.opencode/tools/session-init 2>/dev/null | grep -q '## Agent Tools'` → expect exit 1
-- If section already exists, skip to REFACTOR
+- If section unexpectedly exists: HALT — branch is contaminated
 
 GREEN:
 - Add a function that runs `./.opencode/tools/help` and returns its output
@@ -53,7 +53,7 @@ REMEDIATION (2 attempts max, then HALT):
 
 RED:
 - `grep 'session-init-tools-section' .opencode/tests/test-enforcement.sh` → expect 0 matches
-- If already registered, skip to REFACTOR
+- If already registered: HALT — branch is contaminated
 
 GREEN:
 - Register `session-init-tools-section` in SCENARIOS, SCENARIO_TAGS, and FILE_SCENARIO_MAP for `tools/session-init`
