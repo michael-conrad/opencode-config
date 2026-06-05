@@ -16,7 +16,7 @@
 
 ## Dependency Order
 
-Item A must complete before B. Item C depends on A's behavioral effect at runtime (test script itself is independent).
+Item A first (create the section). Item B second (test that the section exists). Item C last (verify agent uses the section).
 
 ## Items
 
@@ -24,65 +24,73 @@ Item A must complete before B. Item C depends on A's behavioral effect at runtim
 
 **File**: `.opencode/tools/session-init`
 
-**What must be achieved**: `session-init` stdout must contain a `## Agent Tools` section after `## Repo Information` with the output of `./.opencode/tools/help`.
+**What must be achieved**: session-init stdout emits `## Agent Tools` section after `## Repo Information` with `./.opencode/tools/help` output.
 
 RED:
-- Verify session-init currently has no `## Agent Tools` section: `./.opencode/tools/session-init 2>/dev/null | grep -q '## Agent Tools'` → expect exit 1
-- If section unexpectedly exists: HALT — branch is contaminated
+- Verify session-init lacks section: `./.opencode/tools/session-init 2>/dev/null | grep -q '## Agent Tools'` → exit 1
+- If section exists: HALT — branch contaminated
 
 GREEN:
-- Add a function that runs `./.opencode/tools/help` and returns its output
-- Emit the output in a `## Agent Tools` section from `main()` after `## Repo Information`
-- On failure: emit `## Agent Tools` section with error message explaining why tools list is unavailable (e.g. "WARNING: tools/help not found"). Do NOT silently omit the section — if the section is missing, the agent has no way to know tools exist.
-- Path resolution must work from any CWD (resolve relative to script location or project root)
+- Add function to run `./.opencode/tools/help` and return output
+- Emit `## Agent Tools` section from `main()` after `## Repo Information`
+- On failure: emit section with error message, never silently omit
+- Path: resolve relative to `__file__` (existing sentinel pattern)
 
 VERIFY:
-- `./.opencode/tools/session-init 2>/dev/null | grep -A 30 '## Agent Tools'` → shows tool names
-- Existing output sections (Developer, Email, Git branch, ## Repo Information) are intact
-- `uvx ruff check --fix` and `uvx pyright` pass
+- `grep -A 30 '## Agent Tools'` shows tool names
+- Developer/Email/Git branch/Repo Information sections intact
+- `ruff check --fix` and `pyright` pass
 
 REMEDIATION (2 attempts max, then HALT):
-- If section missing: check help tool path, subprocess error, stdio interference
-- If existing output corrupted: revert and re-attempt with smaller change
+- Missing section: check path resolution, subprocess error
+- Existing sections corrupted: revert and re-attempt
 
 ### Item B: Add content-verification test (SC-3)
 
 **File**: `.opencode/tests/test-enforcement.sh`
 
-**What must be achieved**: A content-verification scenario `session-init-tools-section` that greps session-init output for the `## Agent Tools` section.
+**What must be achieved**: SCENARIOS entry `session-init-tools-section` and FILE_SCENARIO_MAP registration.
 
 RED:
-- `grep 'session-init-tools-section' .opencode/tests/test-enforcement.sh` → expect 0 matches
-- If already registered: HALT — branch is contaminated
+- `grep -c 'session-init-tools-section' .opencode/tests/test-enforcement.sh` → 0
+- If already registered: HALT — branch contaminated
 
 GREEN:
-- Register `session-init-tools-section` in SCENARIOS, SCENARIO_TAGS, and FILE_SCENARIO_MAP for `tools/session-init`
+- Add SCENARIO entry for `session-init-tools-section`
+- Add FILE_SCENARIO_MAP entry for `tools/session-init`
 
 VERIFY:
-- `grep 'session-init-tools-section' .opencode/tests/test-enforcement.sh` → 2+ matches (SCENARIO + FILE_SCENARIO_MAP)
+- `grep -c 'session-init-tools-section' .opencode/tests/test-enforcement.sh` → 2 (SCENARIOS + FILE_SCENARIO_MAP)
 
 ### Item C: Behavioral test for SC-2 (SC-2)
 
 **File**: `.opencode/tests/behaviors/tool-injection-red.sh`
 
-**What must be achieved**: An artifact-only behavioral test script exists that sends the prompt "what tools are preferred to grep, cat, find, sed".
+**What must be achieved**: Artifact-only behavioral test with prompt "what tools are preferred to grep, cat, find, sed".
+
+RED:
+- Verify file exists with current prompt
+- If prompt is wrong or file missing: HALT
 
 GREEN:
-- Ensure `tool-injection-red.sh` exists with the correct SCENARIO_PROMPT
-- Script must be an artifact-only generator (no assertions, exit 0)
+- File already exists with correct prompt — no changes needed to test script
+- The behavioral difference comes from session-init injection (Item A), not test script changes
 
 VERIFY:
-- `grep 'SCENARIO_PROMPT' .opencode/tests/behaviors/tool-injection-red.sh` → contains "what tools are preferred to grep, cat, find, sed"
-- Script has SPDX header, cross-reference header, sources helpers.sh, calls behavior_run, exits 0
+- `grep 'SCENARIO_PROMPT' .opencode/tests/behaviors/tool-injection-red.sh` → contains correct prompt
+- SPDX header, cross-reference header, helpers.sh sourced, behavior_run called
+
+## Execution Order
+
+1. Item A: RED → GREEN → VERIFY → (intermediate commit: session-init only)
+2. Item B: RED → GREEN → VERIFY → (intermediate commit: test-enforcement only)
+3. Item C: VERIFY → (no file changes needed unless file missing/broken)
+4. Squash to single commit for PR
 
 ## Final Verification Checklist
 
-- [ ] SC-1: `./.opencode/tools/session-init 2>/dev/null | grep -q '## Agent Tools'` → exit 0
-- [ ] SC-2: Behavioral test artifacts generated; stdout evaluated for `.opencode/tools/*` names
+- [ ] SC-1: `grep -q '## Agent Tools' <(./.opencode/tools/session-init 2>/dev/null)` → exit 0
+- [ ] SC-2: Behavioral artifact stdout shows `.opencode/tools/*` names
 - [ ] SC-3: `bash .opencode/tests/test-enforcement.sh --scenario session-init-tools-section` → PASS
-- [ ] Lint: `uvx ruff check --fix .opencode/tools/session-init` → clean
-- [ ] Typecheck: `uvx pyright .opencode/tools/session-init` → clean
-
-## Final COMMIT
-
-Single commit on `feature/1038-session-init-tools` containing all three items.
+- [ ] Lint: `ruff check --fix .opencode/tools/session-init` → clean
+- [ ] Typecheck: `pyright .opencode/tools/session-init` → clean
