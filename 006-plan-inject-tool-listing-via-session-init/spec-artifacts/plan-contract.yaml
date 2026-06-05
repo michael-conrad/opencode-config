@@ -1,0 +1,38 @@
+variables:
+  item_A_done:
+    type: bool
+    description: "## Agent Tools emission added to session-init"
+  item_B_done:
+    type: bool
+    description: "Content-verification scenario registered in test-enforcement.sh"
+  item_C_done:
+    type: bool
+    description: "Behavioral test script exists with correct prompt"
+  sc_1_verified:
+    type: bool
+    description: "SC-1: session-init stdout contains ## Agent Tools"
+  sc_3_verified:
+    type: bool
+    description: "SC-3: content-verification assertion passes"
+  sc_2_verified:
+    type: bool
+    description: "SC-2: behavioral test stdout shows .opencode/tools/* names"
+
+preconditions:
+  - "z3.Not(item_A_done)"
+  - "z3.Not(item_B_done)"
+  - "z3.Not(item_C_done)"
+  - "z3.Not(sc_1_verified)"
+  - "z3.Not(sc_3_verified)"
+  - "z3.Not(sc_2_verified)"
+
+invariants:
+  # Items can only be done in order A → B → C
+  - "z3.Implies(item_B_done, item_A_done)"
+  - "z3.Implies(item_C_done, item_B_done)"
+  # SCs can only be verified after their enabling items are done
+  - "z3.Implies(sc_1_verified, item_A_done)"
+  - "z3.Implies(sc_3_verified, z3.And(item_A_done, item_B_done))"
+  - "z3.Implies(sc_2_verified, z3.And(item_A_done, item_C_done))"
+  # SCs can only be verified after the preceding SCs
+  - "z3.Implies(sc_3_verified, sc_1_verified)"
