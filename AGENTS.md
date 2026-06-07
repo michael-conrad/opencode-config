@@ -111,6 +111,7 @@ This is the ONLY manual `git -C .issues` command needed.
   AGENTS.md                    — This file
   open/                        — Symlinks or references to open issues
   closed/                      — Archived issues
+  lessons-learned/             — Per-session correction catalog for clean-room review (see `lessons-learned/README.md`)
 ```
 
 ### Example: Spec-Artifact Placement
