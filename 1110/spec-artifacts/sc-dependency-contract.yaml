@@ -1,0 +1,26 @@
+variables:
+  SC_1_DONE: {type: bool, nullable: false}
+  SC_2_DONE: {type: bool, nullable: false}
+  SC_3_DONE: {type: bool, nullable: false}
+  SC_4_DONE: {type: bool, nullable: false}
+  SC_5_DONE: {type: bool, nullable: false}
+  SC_6_DONE: {type: bool, nullable: false}
+  SC_7_DONE: {type: bool, nullable: false}
+  SC_8_DONE: {type: bool, nullable: false}
+  SC_9_DONE: {type: bool, nullable: false}
+  SC_10_DONE: {type: bool, nullable: false}
+  SC_11_DONE: {type: bool, nullable: false}
+  SC_12_DONE: {type: bool, nullable: false}
+  SC_13_DONE: {type: bool, nullable: false}
+invariants:
+  - "z3.Implies(SC_3_DONE == True, SC_1_DONE == True)"
+  - "z3.Implies(SC_4_DONE == True, SC_1_DONE == True)"
+  - "z3.Implies(SC_5_DONE == True, SC_1_DONE == True)"
+  - "z3.Implies(SC_6_DONE == True, SC_1_DONE == True)"
+  - "z3.Implies(SC_7_DONE == True, SC_1_DONE == True)"
+  - "z3.Implies(SC_8_DONE == True, SC_1_DONE == True)"
+  - "z3.Implies(SC_9_DONE == True, SC_1_DONE == True)"
+  - "z3.Implies(SC_10_DONE == True, SC_9_DONE == True)"
+  - "z3.Implies(SC_11_DONE == True, SC_9_DONE == True)"
+  - "z3.Implies(SC_12_DONE == True, z3.And(SC_1_DONE == True, SC_7_DONE == True, SC_9_DONE == True))"
+  - "z3.Implies(SC_13_DONE == True, SC_12_DONE == True)"

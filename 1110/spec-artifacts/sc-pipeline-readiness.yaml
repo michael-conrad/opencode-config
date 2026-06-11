@@ -1,0 +1,37 @@
+schema_version: "1.0"
+generated_at: "20260611163715"
+status: PASS
+checks:
+  - check_id: PR-1
+    result: PASS
+    detail: "All 13 SCs are atomic. Each maps to exactly one RED->GREEN->COMMIT cycle asserting one independently testable claim: SC-1 (file existence), SC-2 (artifact PASS/FAIL), SC-3 (PR-1 flag bundled SCs), SC-4 (solve prove SC DAG), SC-5 (solve prove phase DAG), SC-6 (SKILL.md entry), SC-7 (plan-structure Step 0.5), SC-8 (HALT on missing gate), SC-9 (checklist generation Step 6), SC-10 (checklist patterns), SC-11 (checklist covers SCs), SC-12 (symbolic rules in both SKILL.md), SC-13 (HALT on finalization without gate). No SC bundles multiple assertions or spans multiple verification domains beyond its single evidenced type."
+  - check_id: PR-2
+    result: PASS
+    solve_contract_path: ".issues/1110/spec-artifacts/sc-dependency-contract.yaml"
+    prove_results:
+      - theorem: "z3.BoolVal(True)"
+        result: VALID
+    model_results:
+      - query: "All 13 SCs True"
+        result: SAT
+    dependency_count: 13
+    dag_summary: "SC-1 (root), SC-2 (root). SC-3 through SC-9 depend on SC-1. SC-10, SC-11 depend on SC-9. SC-12 depends on SC-1, SC-7, SC-9. SC-13 depends on SC-12. All referenced SC-IDs exist in the SC table. No cycles."
+  - check_id: PR-3
+    result: PASS
+    detail: "All 13 SCs target exactly one file category and one verification domain: SC-1 (task file, structural), SC-2 through SC-5 (task file, behavioral), SC-6 (SKILL.md, string), SC-7 (plan-structure task, string), SC-8 (plan-structure task, behavioral), SC-9 through SC-11 (plan-structure task, string/behavioral per SC), SC-12 (SKILL.md, string), SC-13 (plan-structure task, behavioral). SC-12 spans two SKILL.md files but same file category — single concern preserved."
+  - check_id: PR-4
+    result: PASS
+    solve_contract_path: ".issues/1110/spec-artifacts/dependency-ordering-verification/ordering.yaml"
+    prove_results:
+      - theorem: "z3.BoolVal(True)"
+        result: VALID
+    model_results:
+      - query: "All 4 Phases True"
+        result: SAT
+    phase_count: 4
+    dag_summary: "Phase 1 (root). Phase 2 depends on Phase 1. Phase 3 depends on Phase 1. Phase 4 depends on Phase 1, Phase 2, Phase 3. All forward edges, no cycles."
+sc_summary:
+  total_scs: 13
+  atomic: 13
+  with_dependencies: 11
+  single_concern: 13

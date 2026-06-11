@@ -1,0 +1,9 @@
+variables:
+  PHASE_1_DONE: {type: bool, nullable: false}
+  PHASE_2_DONE: {type: bool, nullable: false}
+  PHASE_3_DONE: {type: bool, nullable: false}
+  PHASE_4_DONE: {type: bool, nullable: false}
+invariants:
+  - "z3.Implies(PHASE_2_DONE == True, PHASE_1_DONE == True)"
+  - "z3.Implies(PHASE_3_DONE == True, PHASE_1_DONE == True)"
+  - "z3.Implies(PHASE_4_DONE == True, z3.And(PHASE_1_DONE == True, PHASE_2_DONE == True, PHASE_3_DONE == True))"
