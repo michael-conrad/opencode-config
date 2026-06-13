@@ -1,1 +1,8 @@
-comments: []
+comments:
+- type: internal
+  body: 'Fixed by .opencode#1144 (commit 08836295, merge 18d097d0). _normalize_exprs()
+    uniformly rejects dict-format preconditions across all 3 actions (prove/model/check)
+    with a clear error message directing users to use flat format. Behavioral test:
+    1144-sc4-dict-format-rejected.sh. Verified: all 3 actions exit 2 with error, flat
+    format regression PASS.'
+  timestamp: '2026-06-13T19:25:26+00:00'
