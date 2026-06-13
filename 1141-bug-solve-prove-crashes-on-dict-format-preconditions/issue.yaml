@@ -1,7 +1,9 @@
 title: '[BUG] solve prove crashes on dict-format preconditions'
-status: open
+status: closed
 labels:
 - bug
 body: ''
 created_at: '2026-06-13T03:14:52+00:00'
-updated_at: '2026-06-13T03:14:52+00:00'
+updated_at: '2026-06-13T19:25:39+00:00'
+closed_at: '2026-06-13T19:25:39+00:00'
+close_reason: completed
