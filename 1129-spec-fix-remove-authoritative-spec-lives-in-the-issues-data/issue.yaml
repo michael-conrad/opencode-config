@@ -1,0 +1,8 @@
+title: '[SPEC-FIX] Remove authoritative spec lives in the issues-data branch from
+  issue body template'
+status: open
+labels:
+- spec-fix
+body: ''
+created_at: '2026-06-13T18:10:54+00:00'
+updated_at: '2026-06-13T18:10:54+00:00'
