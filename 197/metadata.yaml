@@ -1,0 +1,11 @@
+issue_number: 197
+title: "[SPEC] Enforcement-Gated Contract Schema — standardized hand-off contracts with Z3-enforced gate_result, verifier identity, and evidence-type checking"
+state: closed
+state_reason: not_planned
+labels:
+  - needs-approval
+  - spec
+author: michael-conrad
+created_at: "2026-06-15T03:22:09Z"
+updated_at: "2026-06-15T03:23:13Z"
+closed_at: "2026-06-15T03:23:13Z"

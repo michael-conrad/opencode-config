@@ -1,0 +1,50 @@
+number: 196
+title: "[SPEC] Replace .gitmodules-based submodule detection with filesystem glob scan in git-workflow tasks"
+state: open
+labels:
+  - SPEC
+  - plan
+body: |
+  ## Plan for #196: Replace .gitmodules detection with filesystem glob scan
+
+  ## Spec: #196
+
+  ## Phases
+
+  ### Phase 1: Core Detection Pattern + check-pr
+  - **Files:** `tasks/check-pr.md`
+  - **Change:** Replace undefined `submodules` pseudo-code with operational glob scan (`ls -d .git/ */.git/ */.git`), resolve remotes, query all repos for PRs
+  - **SC coverage:** SC-1, SC-2, SC-9
+
+  ### Phase 2: cleanup.md + sub-tasks
+  - **Files:** `tasks/cleanup.md`, `tasks/cleanup/branch-cleanup.md`, `tasks/cleanup/issue-closure.md`
+  - **Change:** Replace `.gitmodules` detection in Step 0 with glob scan; update `branch-cleanup.md` Step 1.9 collection; `issue-closure.md` Step 8.5 fallback uses glob-based `submodule_paths`
+  - **SC coverage:** SC-1, SC-3, SC-4, SC-9
+
+  ### Phase 3: Remaining task files
+  - **Files:** `tasks/release-promotion.md`, `tasks/review-prep/push-and-cleanup.md`, `tasks/pr-creation/enforcement-gate.md`, `tasks/pre-work.md`, `tasks/provenance.md`
+  - **Change:** Replace all `test -f .gitmodules` gates and `git config --file .gitmodules` calls with glob scan
+  - **SC coverage:** SC-1, SC-5, SC-6, SC-7, SC-9
+
+  ### Phase 4: SKILL.md tag convention
+  - **Files:** `SKILL.md`
+  - **Change:** Replace `.gitmodules` path reference in tag suffix rule with discovered repo directory name
+  - **SC coverage:** SC-1, SC-8, SC-9
+
+  ## Core Detection Pattern (shared across all phases)
+
+  ```bash
+  REPO_PATHS=$(ls -d .git/ */.git/ */.git 2>/dev/null | sed 's|/$||')
+  for RP in $REPO_PATHS; do
+      REMOTE_URL=$(git -C "$RP" remote get-url origin 2>/dev/null || echo "")
+      # Parse owner/repo from SSH (git@github.com:owner/repo.git) or HTTPS (https://github.com/owner/repo.git)
+  done
+  ```
+
+  ## Dependencies
+  - Phase 1 → Phase 2 → Phase 3 → Phase 4 (sequential)
+  - No external dependencies
+
+  ## PR Strategy
+  - Single PR with 4 commits (one per phase)
+  - Target: dev
