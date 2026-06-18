@@ -1,0 +1,20 @@
+schema_version: "1.0"
+generated_at: "2026-06-17T21:39:17Z"
+status: PASS
+sc_summary:
+  total_scs: 8
+  atomic: true
+  with_dependencies: false
+  single_concern: true
+phase_dependencies:
+  - phase: 1
+    name: "RED — Write Enforcement Tests"
+    depends_on: []
+  - phase: 2
+    name: "GREEN — Reorder check-pr.md"
+    depends_on:
+      - phase: 1
+  - phase: 3
+    name: "REFACTOR — Verify and Clean Up"
+    depends_on:
+      - phase: 2

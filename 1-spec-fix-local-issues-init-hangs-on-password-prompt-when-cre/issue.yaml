@@ -1,0 +1,8 @@
+title: '[SPEC-FIX] local-issues init hangs on password prompt when credentials not
+  configured'
+status: open
+labels:
+- spec-fix
+body: ''
+created_at: '2026-06-18T14:26:48+00:00'
+updated_at: '2026-06-18T14:26:48+00:00'
