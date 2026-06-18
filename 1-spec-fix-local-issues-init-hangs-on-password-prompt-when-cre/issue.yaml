@@ -3,6 +3,98 @@ title: '[SPEC-FIX] local-issues init hangs on password prompt when credentials n
 status: open
 labels:
 - spec-fix
-body: ''
+body: '## Problem
+
+
+  `local-issues init` and `local-issues sync` hang indefinitely when a remote is configured
+  but credentials are not set up (e.g., SSH key not loaded, no credential helper configured).
+  The `git push` and `git pull --rebase` commands prompt for a password on stdin,
+  which is non-interactive in the CLI context, causing the tool to hang until timeout.
+
+
+  ## Root Cause
+
+
+  The `_has_remote()` function (line 300) only checks whether a remote URL is configured
+  — it does NOT check whether credentials are available to authenticate against that
+  remote. All push/pull paths gate on `_has_remote()` returning True, but a configured
+  remote with no credentials will still produce a password prompt that hangs the tool.
+
+
+  The affected call sites are:
+
+
+  1. **`_push_orphan_if_needed()`** (line 723) — called during `_create_issues_worktree()`
+  which is called by `_ensure_worktree()` during `init`
+
+  2. **`_push_issues_changes()`** (line 823) — called by `_auto_commit()` after every
+  mutation
+
+  3. **`_push_issues_branch_safe()`** (line 1583) — called by `_sync_repo()` during
+  `init` and `sync`
+
+  4. **`_rebase_issues_branch()`** (line 1564) — called by `_sync_repo()` during `init`
+  and `sync`
+
+
+  ## Fix Strategy
+
+
+  Add a `_can_push()` function that checks whether credentials are available for the
+  remote before attempting push/pull. This should use `git fetch --dry-run` or check
+  for credential helpers. If credentials are not available, the push/pull is silently
+  skipped (same as the "no remote" case).
+
+
+  ## Success Criteria
+
+
+  | ID | Criterion | Evidence Type | Verification Method |
+
+  |----|-----------|---------------|---------------------|
+
+  | SC-1 | `local-issues init` does not hang when remote is configured but credentials
+  are absent | `behavioral` | Run `init` in a repo with configured remote but no credentials;
+  verify it completes within 30s with no password prompt |
+
+  | SC-2 | `local-issues sync` does not hang when remote is configured but credentials
+  are absent | `behavioral` | Run `sync` in a repo with configured remote but no credentials;
+  verify it completes within 30s with no password prompt |
+
+  | SC-3 | `local-issues create` does not hang when remote is configured but credentials
+  are absent | `behavioral` | Run `create` in a repo with configured remote but no
+  credentials; verify it completes within 30s with no password prompt |
+
+  | SC-4 | Push/pull still works normally when credentials ARE available | `behavioral`
+  | Run `init`/`sync` in a repo with valid credentials; verify push/pull succeeds
+  |
+
+  | SC-5 | No remote configured still silently skips push/pull (existing behavior
+  preserved) | `behavioral` | Run `init`/`sync` in a repo with no remote; verify no
+  push/pull attempted |
+
+  | SC-6 | The credential check does not itself hang on a password prompt | `behavioral`
+  | The credential detection mechanism must also be non-interactive; verify it completes
+  within 5s |
+
+
+  ## Implementation Notes
+
+
+  - Use `git fetch --dry-run` with a short timeout to test credential availability,
+  OR check for `GIT_SSH_COMMAND` / `SSH_AUTH_SOCK` / credential helper config
+
+  - The check must be non-interactive — use `subprocess.run` with `timeout=` and `capture_output=True`
+  to prevent password prompts from reaching the terminal
+
+  - All push/pull paths should call `_can_push()` before attempting remote operations
+
+  - The `_can_push()` function should return False if: no remote configured, OR remote
+  configured but credentials unavailable
+
+  - Existing `_has_remote()` calls should be replaced with `_can_push()` where the
+  intent is "can we actually push?"
+
+  '
 created_at: '2026-06-18T14:26:48+00:00'
-updated_at: '2026-06-18T14:26:48+00:00'
+updated_at: '2026-06-18T14:27:04+00:00'
