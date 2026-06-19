@@ -2,6 +2,156 @@ title: '[SPEC-FIX] Update root AGENTS.md and README.md with missing project docu
 status: open
 labels:
 - SPEC
-body: ''
+body: '---
+
+  number: 1000
+
+  title: "[SPEC-FIX] Update root AGENTS.md and README.md with missing project documentation"
+
+  labels: [SPEC]
+
+  status: open
+
+  ---
+
+
+  ## Objective
+
+
+  Update the root-level `AGENTS.md` and `README.md` to document directories and configuration
+  gaps discovered during exhaustive project analysis.
+
+
+  ## Problem
+
+
+  The root-level `AGENTS.md` (11 lines) and `README.md` (61 lines) omit several project
+  directories and configuration details that exist in the repository. Agents and developers
+  landing in this repo need accurate documentation to understand the full project
+  structure.
+
+
+  ## Scope
+
+
+  Two files at root level:
+
+
+  1. **`AGENTS.md`** — Expand the reference files table and add directories missing
+  from agent-context pointers
+
+  2. **`README.md`** — Update the Structure section directory tree, add missing directory
+  documentation, and correct the session-init Python version requirement
+
+
+  ## Analysis Findings
+
+
+  The following directories exist at root level but are undocumented in both `AGENTS.md`
+  and `README.md`:
+
+
+  | Directory | Contents | Notes |
+
+  |-----------|----------|-------|
+
+  | `skills/` | `approval-gate/tasks/verify-authorization/` | Root-level skill override
+  directory |
+
+  | `docs/` | `auditor-model-qualification/`, `unix-philosophy-skilldeck/` | Documentation
+  |
+
+  | `tests/` | `behaviors/` | Behavioral test scenarios |
+
+  | `opencode/` | `tmp/` | Appears to be workaround directory |
+
+  | `.worktrees/` | `main/` | Git worktree checkout |
+
+
+  Additional issues:
+
+
+  - **`opencode.jsonc` not at root**: README references `opencode.jsonc` configuration
+  but the file exists at `.opencode/opencode.jsonc`, not at root. The README should
+  clarify this.
+
+  - **`session_context_triggers.py` Python version requirement**: Script header declares
+  `requires-python = "~=3.12"` and uses Python 3.12+ syntax (`list[str]`, `str | None`),
+  but if invoked via bare `python3` on a system with Python 3.8 (as detected in this
+  session), it fails with `TypeError: ''type'' object is not subscriptable`. This
+  should be documented in both root docs and the fix mentioned.
+
+  - **`.github/ISSUE_TEMPLATE/config.yml`**: Exists but undocumented in project docs.
+
+  - **`LICENSE`**: MIT license at root — documented but brief.
+
+
+  ## Success Criteria
+
+
+  | ID | Criterion | Evidence Type | Verification Method |
+
+  |----|-----------|---------------|---------------------|
+
+  | SC-1 | Root `AGENTS.md` includes all project directories (skills/, docs/, tests/,
+  opencode/, .worktrees/) in reference table | `string` | grep confirms each directory
+  name in AGENTS.md |
+
+  | SC-2 | Root `README.md` Structure section directory tree includes skills/, docs/,
+  tests/ entries | `string` | grep confirms each directory in README.md directory
+  listing |
+
+  | SC-3 | Root `README.md` documents `.github/ISSUE_TEMPLATE/` config.yml purpose
+  | `string` | grep confirms ISSUE_TEMPLATE or config.yml in README.md |
+
+  | SC-4 | Root `README.md` clarifies that `opencode.jsonc` lives at `.opencode/opencode.jsonc`,
+  not at root | `string` | grep confirms `.opencode/opencode.jsonc` path in README.md
+  |
+
+  | SC-5 | Root `README.md` documents `scripts/session_context_triggers.py` Python
+  3.12 requirement and the invocation fix | `string` | grep confirms Python 3.12 requirement
+  mentioned in README.md |
+
+  | SC-6 | Root `AGENTS.md` references `.opencode/AGENTS.md` still resolves correctly
+  (existing reference preserved) | `string` | grep confirms `.opencode/AGENTS.md`
+  present in AGENTS.md |
+
+  | SC-7 | Both files contain proper SPDX and provenance headers | `string` | grep
+  confirms SPDX headers present |
+
+
+  ## Non-Goals
+
+
+  - Content changes to `.opencode/AGENTS.md` or `.opencode/README.md` — those are
+  submodule files
+
+  - Changes to any other root-level files (`.gitignore`, `.gitmodules`, `CHANGELOG.md`,
+  `LICENSE`)
+
+  - Code or config changes outside the two target files
+
+
+  ## Risk Assessment
+
+
+  | Risk | Likelihood | Impact | Mitigation |
+
+  |------|-----------|--------|------------|
+
+  | Root AGENTS.md becomes stale again | Medium | Low — it''s a pointer file. Staleness
+  in AGENTS.md blocks agent context but doesn''t break builds. | Keep the table minimal
+  and high-value |
+
+  | README.md drift from actual directory structure | Low | Low — structure changes
+  infrequently at root | Document as part of standard maintenance |
+
+
+  ## Author
+
+
+  🤖 OpenCode (deepseek-v4-flash-free)
+
+  '
 created_at: '2026-06-19T22:27:10+00:00'
-updated_at: '2026-06-19T22:27:10+00:00'
+updated_at: '2026-06-19T22:27:32+00:00'
