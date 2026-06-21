@@ -1,0 +1,23 @@
+schema_version: "1.0"
+generated_at: "20260621051546"
+phase_dependencies:
+  - phase: deletion
+    depends_on: []
+    constraints:
+      - "deletion_starts_immediately"
+  - phase: creation
+    depends_on: [deletion]
+    constraints:
+      - "creation_starts_after_deletion_completes"
+  - phase: reference-cleanup
+    depends_on: [deletion]
+    constraints:
+      - "reference_cleanup_starts_after_deletion_completes"
+  - phase: gitignore
+    depends_on: []
+    constraints:
+      - "gitignore_starts_immediately"
+  - phase: verification
+    depends_on: [deletion, creation, reference-cleanup, gitignore]
+    constraints:
+      - "verification_starts_after_all_phases_completes"
