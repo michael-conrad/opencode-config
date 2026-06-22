@@ -1,0 +1,6 @@
+variables:
+  deletion: 0
+  creation: 1
+  reference_cleanup: 1
+  gitignore: 0
+  verification: 2

@@ -1,0 +1,28 @@
+schema_version: "1.0"
+generated_at: "20260621T000000Z"
+sc_coverage:
+  total: 5
+  evidence_types:
+    - behavioral
+    - structural
+    - string
+  phases:
+    - phase: deletion
+      sc_ids: [SC-1]
+      concern: "Remove ui-design and ui-engineer skill directories and all references"
+    - phase: creation
+      sc_ids: [SC-2]
+      concern: "Create playwright-cli skill adapted from upstream"
+    - phase: reference-cleanup
+      sc_ids: [SC-3]
+      concern: "Remove deleted skill references from guidelines, tests, registry"
+    - phase: gitignore
+      sc_ids: [SC-4]
+      concern: "Add .tools/ to .gitignore"
+    - phase: verification
+      sc_ids: [SC-5]
+      concern: "Confirm zero references, directories absent, new skill exists"
+  atomic: true
+  with_dependencies: true
+  single_concern: false
+decomposition: multi-phase

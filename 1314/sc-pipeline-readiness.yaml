@@ -1,0 +1,19 @@
+schema_version: "1.0"
+generated_at: "20260621T000000Z"
+status: PASS
+sc_summary:
+  total_scs: 5
+  atomic: true
+  with_dependencies: true
+  single_concern: false
+phase_dependencies:
+  - phase: deletion
+    depends_on: []
+  - phase: creation
+    depends_on: [deletion]
+  - phase: reference-cleanup
+    depends_on: [deletion]
+  - phase: gitignore
+    depends_on: []
+  - phase: verification
+    depends_on: [deletion, creation, reference-cleanup, gitignore]

@@ -1,0 +1,21 @@
+variables:
+  deletion: { type: int }
+  creation: { type: int }
+  reference_cleanup: { type: int }
+  gitignore: { type: int }
+  verification: { type: int }
+
+preconditions:
+  - "deletion >= 0"
+  - "creation >= 0"
+  - "reference_cleanup >= 0"
+  - "gitignore >= 0"
+  - "verification >= 0"
+
+invariants:
+  - "deletion < creation"
+  - "deletion < reference_cleanup"
+  - "deletion < verification"
+  - "creation < verification"
+  - "reference_cleanup < verification"
+  - "gitignore < verification"

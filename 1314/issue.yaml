@@ -1,0 +1,163 @@
+body: '> Full spec and plan artifacts: [`.issues/1314/`](https://github.com/michael-conrad/.opencode/tree/issues-data/1314/)
+
+
+  > **Local artifacts:** `.issues/1314/` — implementation plan, card catalogue, dependency
+  contracts, research, designs, audit findings
+
+
+  ---
+
+
+  ## Exec Summary
+
+
+  This repo''s browser automation skills (`ui-design`, `ui-engineer`) depend on custom
+  Python Playwright scripts that are unmaintained and tightly coupled to a Python-only
+  workflow. Replacing them with `@playwright/cli` from `microsoft/playwright-cli`
+  — the upstream-maintained CLI — eliminates the Python dependency, provides native
+  session management, and aligns the skills with the upstream toolchain. Both existing
+  skills are deleted entirely; a new `playwright-cli` skill is adapted from the upstream''s
+  own skill cards.
+
+
+  ### Cards (dependency order)
+
+
+  1. **Delete `ui-design` and `ui-engineer`** — Remove both skill directories and
+  all references from guidelines, README, skill registry, and enforcement tests. This
+  is the prerequisite for all subsequent work.
+
+  2. **Create `playwright-cli` skill** — Adapt upstream skill cards from `microsoft/playwright-cli`
+  `skills/playwright-cli/` into `.opencode/` format. YAML frontmatter, dispatch tables,
+  provenance attribution. Keep upstream `references/` as-is.
+
+  3. **Update references** — Remove `ui-design`/`ui-engineer` from `000-critical-rules.md`
+  triggers list, `README.md` skill table, `tests/test-enforcement.sh` scenarios, and
+  `skill-registry-v2-skills.json` entries.
+
+  4. **Add `.tools/` to `.gitignore`** — Lazy install target for `@playwright/cli`
+  and browser cache. `rm -rf .tools/` removes all traces.
+
+  5. **Verification** — Confirm zero Python `playwright` references, zero deleted-skill
+  references, both directories absent, new skill exists with correct content.
+
+
+  ### Key Decisions
+
+
+  - **Package is `@playwright/cli` from `microsoft/playwright-cli`** — NOT `@anthropics/playwright-cli`.
+  Verified by searching GitHub for the package.
+
+  - **Both `ui-design` and `ui-engineer` deleted** — `ui-engineer` references deleted
+  `ui-design` scripts via relative paths; no standalone purpose after purge.
+
+  - **Lazy install only** — Agent detects need, installs to `.tools/`, then invokes.
+  No eager install on session start or skill load.
+
+  - **Browser cache isolated under `.tools/*/.cache`** — `rm -rf .tools/` removes
+  everything.
+
+  - **Upstream adaptation, not copy-paste** — Skill cards adapted to `.opencode/`
+  format with provenance attribution (Apache-2.0).
+
+
+  ### Risk Callouts
+
+
+  - **Upstream skill cards are monolithic** — Single SKILL.md + 10 reference files.
+  Adaptation requires adding YAML frontmatter and dispatch tables without breaking
+  content. Mitigation: preserve original structure, add metadata layer.
+
+  - **Lazy install may fail on constrained environments** — `@playwright/cli` download
+  requires internet access. Mitigation: graceful fallback with clear error message.
+
+  - **Enforcement tests reference deleted skills** — `tests/test-enforcement.sh` has
+  `ui-engineer-red-gate` scenario. Mitigation: remove scenario in Step 3.
+
+
+  ## Problem Statement
+
+
+  The repo has two browser automation skills (`ui-design`, `ui-engineer`) built around
+  custom Python Playwright scripts. These scripts are unmaintained, tightly coupled
+  to a Python-only workflow, and diverge from the upstream toolchain. `ui-engineer`
+  references `ui-design` scripts via relative paths and has no standalone purpose
+  after `ui-design` is deleted.
+
+
+  ## Scope
+
+
+  **In scope:**
+
+  - Delete `ui-design` and `ui-engineer` skills entirely
+
+  - Create `playwright-cli` skill adapted from upstream skill cards
+
+  - Remove all references to deleted skills from guidelines, tests, and registry
+
+  - Add `.tools/` to `.gitignore` for lazy install target
+
+
+  **Out of scope:**
+
+  - Modifying upstream `microsoft/playwright-cli` repository
+
+  - Changing parent project''s Playwright usage
+
+  - Creating browser automation workflows (deferred to implementation)
+
+
+  ## Approach
+
+
+  Replace the Python Playwright workflow with `@playwright/cli` from `microsoft/playwright-cli`.
+  Delete both existing skills entirely. Create a new `playwright-cli` skill by adapting
+  the upstream''s own skill cards — adding YAML frontmatter, dispatch tables, and
+  provenance attribution while preserving the original content structure. Install
+  `@playwright/cli` lazily via `npx` into `.tools/` on first use.
+
+
+  ## Impact
+
+
+  **Risks:**
+
+  1. Upstream skill cards are monolithic — adaptation may lose nuance if not carefully
+  migrated. Mitigation: preserve original structure, add metadata layer.
+
+  2. Lazy install requires internet access — constrained environments may fail. Mitigation:
+  graceful fallback with clear error message.
+
+  3. Enforcement tests reference deleted skills — CI will break if not updated. Mitigation:
+  remove scenario in Step 3.
+
+
+  **Dependencies:**
+
+  - `@playwright/cli` npm package availability (public, no access issues)
+
+  - Upstream `microsoft/playwright-cli` repository stability
+
+
+  **Call to action:** Approve spec to proceed with implementation.
+
+
+  ## AI Agent Instructions
+
+
+  This issue is an executive summary for human stakeholders.
+
+  The authoritative spec and plan artifacts are at [`.issues/1314/`](https://github.com/michael-conrad/.opencode/tree/issues-data/1314/).
+
+  After creation, `local-issues sync 1314` MUST be run and the result committed to
+  create the local `.issues/1314/` entry.
+
+  The implementation plan will be created in `.issues/1314/plan.md` after approval.
+
+  AI agents MUST read the local spec/plan files for implementation
+
+  and MUST NOT base implementation on this summary.
+
+  '
+updated_at: '2026-06-21T05:39:41+00:00'

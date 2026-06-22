@@ -1,0 +1,68 @@
+domain: phase-ordering
+types:
+  - name: phase
+objects:
+  - name: deletion
+    type: phase
+  - name: creation
+    type: phase
+  - name: reference_cleanup
+    type: phase
+  - name: gitignore
+    type: phase
+  - name: verification
+    type: phase
+fluents:
+  - name: completed
+    params:
+      - name: p
+        type: phase
+  - name: ready
+    params:
+      - name: p
+        type: phase
+actions:
+  - name: start_deletion
+    preconditions:
+      - ready(deletion)
+      - not completed(deletion)
+    effects:
+      - completed(deletion)
+      - ready(creation)
+      - ready(reference_cleanup)
+  - name: start_creation
+    preconditions:
+      - ready(creation)
+      - not completed(creation)
+    effects:
+      - completed(creation)
+      - ready(verification)
+  - name: start_reference_cleanup
+    preconditions:
+      - ready(reference_cleanup)
+      - not completed(reference_cleanup)
+    effects:
+      - completed(reference_cleanup)
+      - ready(verification)
+  - name: start_gitignore
+    preconditions:
+      - ready(gitignore)
+      - not completed(gitignore)
+    effects:
+      - completed(gitignore)
+      - ready(verification)
+  - name: start_verification
+    preconditions:
+      - ready(verification)
+      - completed(deletion)
+      - completed(creation)
+      - completed(reference_cleanup)
+      - completed(gitignore)
+      - not completed(verification)
+    effects:
+      - completed(verification)
+init:
+  - ready(deletion)
+  - ready(gitignore)
+goals:
+  - completed(verification)
