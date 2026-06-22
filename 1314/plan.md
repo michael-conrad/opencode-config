@@ -45,7 +45,7 @@ generated_at: "20260622015732"
 
 ## Phase 2: Creation
 
-**Concern:** Create `playwright-cli` skill directory adapted from upstream `viewport-editor` repo.
+**Concern:** Create `playwright-cli` skill directory adapted from upstream `microsoft/playwright-cli` repo.
 
 **SCs:** SC-2
 
