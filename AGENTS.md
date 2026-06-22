@@ -97,17 +97,18 @@ This is the ONLY manual `git -C .issues` command needed.
 
 ## Directory Layout
 
+> **See `.opencode/.issues/AGENTS.md` for the canonical directory layout.**
+
 ```
 .issues/
   {issue_number}/
     spec.md                    — The spec (authoritative, may mirror remote or be sole copy)
-    spec-artifacts/
-      plan.md                  — Implementation plan (RED/GREEN items, dependency graph)
-      cards.md                 — Card catalogue with status and decision log
-      dependency-contract.yaml — Dependency contracts and phase ordering
-      research/                — Investigation findings, capability probes, evidence notes
-      designs/                 — UI wireframes, architecture diagrams, design artifacts
-      audit/                   — Adversarial audit verdicts, cross-validate consensus
+    plan.md                    — Implementation plan (RED/GREEN items, dependency graph)
+    cards.md                   — Card catalogue with status and decision log
+    dependency-contract.yaml   — Dependency contracts and phase ordering
+    research/                  — Investigation findings, capability probes, evidence notes
+    designs/                   — UI wireframes, architecture diagrams, design artifacts
+    audit/                     — Adversarial audit verdicts, cross-validate consensus
   AGENTS.md                    — This file
   open/                        — Symlinks or references to open issues
   closed/                      — Archived issues
@@ -118,12 +119,12 @@ This is the ONLY manual `git -C .issues` command needed.
 
 | Artifact | Path |
 |----------|------|
-| Card catalogue with all card findings | `.issues/46/spec-artifacts/cards.md` |
-| Implementation plan with RED/GREEN items | `.issues/46/spec-artifacts/plan.md` |
-| Dependency contract for state machine | `.issues/46/spec-artifacts/dependency-contract.yaml` |
-| FastMCP capability probe results | `.issues/46/spec-artifacts/research/fastmcp-capabilities.md` |
-| In-memory client migration design | `.issues/46/spec-artifacts/designs/in-memory-fixture.md` |
-| Adversarial audit consensus verdict | `.issues/46/spec-artifacts/audit/consensus.yaml` |
+| Card catalogue with all card findings | `.issues/46/cards.md` |
+| Implementation plan with RED/GREEN items | `.issues/46/plan.md` |
+| Dependency contract for state machine | `.issues/46/dependency-contract.yaml` |
+| FastMCP capability probe results | `.issues/46/research/fastmcp-capabilities.md` |
+| In-memory client migration design | `.issues/46/designs/in-memory-fixture.md` |
+| Adversarial audit consensus verdict | `.issues/46/audit/consensus.yaml` |
 
 ## Authorization
 
@@ -134,6 +135,6 @@ Creating `feature/*` or `spec/*` branches for code changes still requires `for_i
 ## Relationship to Remote Issue Tracker
 
 - `.issues/{N}/spec.md` IS the spec — it may mirror a remote issue (GitHub/GitBucket) or be the sole authoritative copy. The remote is secondary.
-- `.issues/{N}/spec-artifacts/plan.md` is the local implementation plan (not mirrored to remote)
-- `.issues/{N}/spec-artifacts/cards.md` is the card catalogue with status tracking
+- `.issues/{N}/plan.md` is the local implementation plan (not mirrored to remote)
+- `.issues/{N}/cards.md` is the card catalogue with status tracking
 - Files in `.issues/` take precedence over remote issue bodies when both exist. The `.issues/` workspace is the source of truth for implementation planning.
