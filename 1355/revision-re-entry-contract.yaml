@@ -1,0 +1,29 @@
+# SPDX-FileCopyrightText: 2026 Michael Conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated
+spec: https://github.com/michael-conrad/.opencode/issues/1355
+revision_re_entry:
+  revision_scopes:
+    - scope: full
+      cascade_artifacts:
+        - plan.md
+        - sc-summary.yaml
+        - verification-consistency-contract.yaml
+        - revision-re-entry-contract.yaml
+      requires_re_approval: true
+      valid_re_entry_steps:
+        - step: verify-authorization
+      constraints:
+        - 'on_full_revision: all_artifacts_must_be_regenerated'
+    - scope: partial
+      cascade_artifacts:
+        - plan.md
+        - sc-summary.yaml
+        - verification-consistency-contract.yaml
+      requires_re_approval: true
+      valid_re_entry_steps:
+        - step: verify-authorization
+      constraints:
+        - 'on_partial_revision: cascade_is_limited_to_affected_scs'
+
+Co-authored with AI: OpenCode (deepseek-v4-pro)

@@ -1,0 +1,75 @@
+# SPDX-FileCopyrightText: 2026 Michael Conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated
+spec: https://github.com/michael-conrad/.opencode/issues/1355
+verification_consistency:
+  sc_entries:
+    - id: SC-1
+      evidence_type: behavioral
+      verification_gate: red-green
+      pipeline_step_binding: assemble-work
+      re_entry_step: assemble-work
+      phase_binding: Phase-1
+      artifact_path: .issues/1355/behavioral/
+    - id: SC-2
+      evidence_type: behavioral
+      verification_gate: red-green
+      pipeline_step_binding: assemble-work
+      re_entry_step: assemble-work
+      phase_binding: Phase-2
+      artifact_path: .issues/1355/behavioral/
+    - id: SC-3
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: verification-before-completion
+      re_entry_step: verification-before-completion
+      phase_binding: Phase-3
+      artifact_path: .issues/1355/behavioral/
+    - id: SC-4
+      evidence_type: behavioral
+      verification_gate: red-green
+      pipeline_step_binding: assemble-work
+      re_entry_step: assemble-work
+      phase_binding: Phase-4
+      artifact_path: .issues/1355/behavioral/
+    - id: SC-5
+      evidence_type: behavioral
+      verification_gate: red-green
+      pipeline_step_binding: assemble-work
+      re_entry_step: assemble-work
+      phase_binding: Phase-4
+      artifact_path: .issues/1355/behavioral/
+    - id: SC-6
+      evidence_type: behavioral
+      verification_gate: red-green
+      pipeline_step_binding: assemble-work
+      re_entry_step: assemble-work
+      phase_binding: Phase-4
+      artifact_path: .issues/1355/behavioral/
+    - id: SC-7
+      evidence_type: behavioral
+      verification_gate: red-green
+      pipeline_step_binding: approval-gate
+      re_entry_step: approval-gate
+      phase_binding: Phase-4
+      artifact_path: .issues/1355/behavioral/
+    - id: SC-8
+      evidence_type: behavioral
+      verification_gate: red-green
+      pipeline_step_binding: writing-plans
+      re_entry_step: writing-plans
+      phase_binding: Phase-5
+      artifact_path: .issues/1355/behavioral/
+    - id: SC-9
+      evidence_type: behavioral
+      verification_gate: red-green
+      pipeline_step_binding: assemble-work
+      re_entry_step: assemble-work
+      phase_binding: Phase-6
+      artifact_path: .issues/1355/behavioral/
+  constraints:
+    - 'for_every_sc: evidence_type_is_consistent_with_verification_gate'
+    - 'for_every_sc: pipeline_step_binding_is_valid_for_phase'
+    - 'all_scs_behavioral: runtime_behavioral_change_requires_behavioral_evidence'
+
+Co-authored with AI: OpenCode (deepseek-v4-pro)
