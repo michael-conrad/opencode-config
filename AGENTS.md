@@ -138,3 +138,7 @@ Creating `feature/*` or `spec/*` branches for code changes still requires `for_i
 - `.issues/{N}/plan.md` is the local implementation plan (not mirrored to remote)
 - `.issues/{N}/cards.md` is the card catalogue with status tracking
 - Files in `.issues/` take precedence over remote issue bodies when both exist. The `.issues/` workspace is the source of truth for implementation planning.
+
+## Issues Path Prefix
+
+The local issues path prefix (e.g., `.issues/` or `.opencode/.issues/`) is **not hardcoded**. It comes from the repo entry's `issues:` field in the session-init `## Repo Information` table. The submodule folder name is not known until checkout, so the prefix must never be hardcoded. When constructing issue body blockquotes, use `{issues_prefix}` resolved from the repo entry whose `path` matches the issue's repository.
