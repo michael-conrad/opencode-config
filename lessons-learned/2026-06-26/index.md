@@ -39,3 +39,13 @@
 **Fix:** Created `sc-pipeline-readiness.yaml` with all 5 PR checks (atomicity, dependency ordering, single concern, phase dependency, three-tier structure) passing.
 
 **Lesson:** The pipeline-readiness gate is mandatory before plan creation. If a spec was created without running this gate, the file must be created manually before the plan pipeline can proceed. The gate validates SC atomicity, dependency ordering, single concern, phase DAG acyclicity, and three-tier phase structure.
+
+## Inline Spec Writing — Orchestrator Bypassing Sub-Agent Dispatch
+
+**Problem:** A spec was written directly via `github_issue_write` in the orchestrator context instead of dispatching to `spec-creation --task write` as a clean-room sub-agent. The spec was flagged as defective and rejected.
+
+**Root cause:** The orchestrator treated spec content as "straightforward enough to write inline" — a rationalization that bypasses the quality gates designed to catch defects. The spec-creation write task includes mandatory steps (verification-enforcement gate, pre-spec inspection, evidence artifact collection, self-review, exec-summary format enforcement) that only fire inside the sub-agent's context. An inline-written spec skips every one of these gates.
+
+**Fix:** Closed the defective issue, created a fresh placeholder issue, and dispatched `spec-creation --task write` as a clean-room sub-agent. The sub-agent independently read the affected files, verified claims against live sources, and produced the spec with proper exec-summary format.
+
+**Lesson:** The orchestrator must never write spec content inline. Every spec must be produced by dispatching `spec-creation --task write` to a clean-room sub-agent. The sub-agent independently discovers scope, verifies claims, and produces the deliverable. An inline-written spec is defective by definition — it was never independently verified. This applies to all content generation, not just specs: if a skill task exists for it, dispatch to the skill.
