@@ -1,0 +1,59 @@
+# Planning problem for issue #1442
+# Generated from structure-output.yaml phase_structure
+domain: auditor-gate-fix
+types:
+  - name: phase
+objects:
+  - name: phase_1
+    type: phase
+  - name: phase_2
+    type: phase
+fluents:
+  - name: sc_1_done
+  - name: sc_2_done
+  - name: sc_3_done
+  - name: sc_4_done
+  - name: sc_5_done
+  - name: sc_6_done
+  - name: phase_1_done
+  - name: phase_2_done
+actions:
+  - name: complete_sc_1
+    effects:
+      - sc_1_done
+  - name: complete_sc_2
+    effects:
+      - sc_2_done
+  - name: complete_sc_3
+    effects:
+      - sc_3_done
+  - name: complete_sc_4
+    effects:
+      - sc_4_done
+  - name: complete_sc_5
+    effects:
+      - sc_5_done
+  - name: complete_sc_6
+    preconditions:
+      - sc_3_done
+      - sc_4_done
+    effects:
+      - sc_6_done
+  - name: finish_phase_1
+    preconditions:
+      - sc_1_done
+      - sc_2_done
+      - sc_5_done
+    effects:
+      - phase_1_done
+  - name: finish_phase_2
+    preconditions:
+      - phase_1_done
+      - sc_3_done
+      - sc_4_done
+      - sc_6_done
+    effects:
+      - phase_2_done
+goals:
+  - phase_1_done
+  - phase_2_done

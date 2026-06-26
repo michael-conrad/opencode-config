@@ -1,0 +1,40 @@
+schema_version: "1.0"
+generated_at: "20260626203514"
+status: PASS
+checks:
+  - check_id: PR-1
+    result: PASS
+    detail: "All 6 SCs map to exactly one RED→GREEN→COMMIT cycle each"
+  - check_id: PR-2
+    result: PASS
+    detail: "Linear dependency chain: SC-1→SC-3, SC-2→SC-4, SC-5→SC-6. No cycles."
+  - check_id: PR-3
+    result: PASS
+    detail: "Each SC targets one file category (task files) and one verification domain (string or behavioral)"
+  - check_id: PR-4
+    result: PASS
+    detail: "Phase-2 depends on Phase-1. Acyclic DAG."
+  - check_id: PR-5
+    result: PASS
+    detail: "2-phase spec: Phase-1 (pre: template fixes across 7 auditor files), Phase-2 (per-file: behavioral tests + Z3 check in create.md). Post-phase not required for 2-phase specs — the behavioral test execution serves as validation."
+    sub_checks:
+      - check_id: PR-5a
+        result: PASS
+        detail: "Phase-1 is a global pre-phase (template fix sweep across all 7 auditor files)"
+      - check_id: PR-5b
+        result: PASS
+        detail: "Phase-2 targets create.md (Z3 check + behavioral tests)"
+      - check_id: PR-5c
+        result: SKIP
+        detail: "2-phase spec — post-phase not required; behavioral test execution in Phase-2 serves as validation"
+      - check_id: PR-5d
+        result: PASS
+        detail: "No step duplication between phases"
+      - check_id: PR-5e
+        result: PASS
+        detail: "Phase count (2) matches structure: 1 pre-phase + 1 per-file phase"
+sc_summary:
+  total_scs: 6
+  atomic: 6
+  with_dependencies: 6
+  single_concern: 6

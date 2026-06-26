@@ -1,0 +1,29 @@
+# Z3 dependency contract for issue #1442
+# Generated from structure-output.yaml dependency_contract section
+schema_version: "1.0"
+generated_at: "20260626203600"
+
+variables:
+  phase_1_done:
+    type: bool
+  phase_2_done:
+    type: bool
+  sc_3_done:
+    type: bool
+  sc_4_done:
+    type: bool
+  sc_6_done:
+    type: bool
+  all_phases_done:
+    type: bool
+
+preconditions:
+  - phase_1_done
+  - z3.Implies(phase_2_done, phase_1_done)
+  - z3.Implies(sc_6_done, z3.And(sc_3_done, sc_4_done))
+  - z3.Implies(sc_3_done, phase_1_done)
+  - z3.Implies(sc_4_done, phase_1_done)
+
+invariants:
+  - all_phases_done == z3.And(phase_1_done, phase_2_done)
+  - z3.Not(z3.And(phase_2_done, z3.Not(phase_1_done)))
