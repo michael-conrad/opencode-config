@@ -1,0 +1,69 @@
+post_sc_uplift_check:
+  spec: https://github.com/michael-conrad/.opencode/issues/1430
+  checked_at: 2026-06-25T23:50:00Z
+  scs:
+    - id: SC-1
+      declared_evidence_type: string
+      runtime_behavioral: false
+      uplift_required: false
+      action: none
+    - id: SC-2
+      declared_evidence_type: string
+      runtime_behavioral: false
+      uplift_required: false
+      action: none
+    - id: SC-3
+      declared_evidence_type: string
+      runtime_behavioral: false
+      uplift_required: false
+      action: none
+    - id: SC-4
+      declared_evidence_type: string
+      runtime_behavioral: false
+      uplift_required: false
+      action: none
+    - id: SC-5
+      declared_evidence_type: string
+      runtime_behavioral: false
+      uplift_required: false
+      action: none
+    - id: SC-6
+      declared_evidence_type: behavioral
+      runtime_behavioral: true
+      uplift_required: false
+      action: none
+    - id: SC-7
+      declared_evidence_type: behavioral
+      runtime_behavioral: true
+      uplift_required: false
+      action: none
+    - id: SC-8
+      declared_evidence_type: behavioral
+      runtime_behavioral: true
+      uplift_required: false
+      action: none
+    - id: SC-9
+      declared_evidence_type: behavioral
+      runtime_behavioral: true
+      uplift_required: false
+      action: none
+    - id: SC-10
+      declared_evidence_type: string
+      runtime_behavioral: false
+      uplift_required: false
+      action: none
+    - id: SC-11
+      declared_evidence_type: string
+      runtime_behavioral: false
+      uplift_required: false
+      action: none
+    - id: SC-12
+      declared_evidence_type: string
+      runtime_behavioral: false
+      uplift_required: false
+      action: none
+  summary:
+    total_scs: 12
+    uplifts: 0
+    downgrade_flags: 0
+    status: clean

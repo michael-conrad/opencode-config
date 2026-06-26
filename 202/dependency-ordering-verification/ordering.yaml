@@ -1,0 +1,4 @@
+variables:
+  PHASE_1_DONE: {type: bool, nullable: false}
+invariants:
+  # Single phase — no dependencies, always acyclic

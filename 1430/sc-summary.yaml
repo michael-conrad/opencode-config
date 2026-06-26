@@ -1,0 +1,84 @@
+sc_coverage:
+  total: 12
+  single_task: false
+  spec_url: https://github.com/michael-conrad/.opencode/issues/1430
+  evidence_types:
+    - behavioral
+    - string
+  phases:
+    - id: phase-1-verdict-path
+      sc_ids: [SC-6, SC-10]
+      evidence_types: [behavioral, string]
+    - id: phase-2-critical-rule
+      sc_ids: [SC-1, SC-2, SC-3, SC-11]
+      evidence_types: [string]
+    - id: phase-3-trigger-dispatch
+      sc_ids: [SC-4, SC-5]
+      evidence_types: [string]
+    - id: phase-4-behavioral-tests
+      sc_ids: [SC-7, SC-8, SC-9, SC-12]
+      evidence_types: [behavioral, string]
+  cross_cutting:
+    sc_ids: [SC-7, SC-8, SC-9]
+    verified_in_phase: phase-4-behavioral-tests
+  scs:
+    - id: SC-1
+      description: "Critical rule added to 000-critical-rules.md with three-condition model and HALT + REJECT_SPEC action"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-2-critical-rule
+    - id: SC-2
+      description: "Critical rule is Tier 2 (no CRITICAL VIOLATION header, overridable by developer authorization)"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-2-critical-rule
+    - id: SC-3
+      description: "Critical rule uses yaml+symbolic format with conditions/actions/triggers compatible with session-enforcement.ts"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-2-critical-rule
+    - id: SC-4
+      description: "Context-based trigger row added to adversarial-audit/SKILL.md trigger dispatch table"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-3-trigger-dispatch
+    - id: SC-5
+      description: "Trigger row dispatches to spec-provenance-reject sub-task with {issue_number} context"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-3-trigger-dispatch
+    - id: SC-6
+      description: "Spec-audit task writes stable verdict to .issues/{N}/spec-audit.yaml with consensus, audit_type, provenance, artifact_path, and audited_at fields"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: phase-1-verdict-path
+    - id: SC-7
+      description: "Orchestrator rejects (86's) a spec not from spec-creation pipeline on first encounter"
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      plan_phase: phase-4-behavioral-tests
+    - id: SC-8
+      description: "Orchestrator accepts a spec from spec-creation pipeline and proceeds to audit"
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      plan_phase: phase-4-behavioral-tests
+    - id: SC-9
+      description: "Cross-session bridge: pipeline-written spec from previous session accepted when .issues/{N}/spec-audit.yaml exists with provenance: spec-creation-pipeline"
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      plan_phase: phase-4-behavioral-tests
+    - id: SC-10
+      description: "No issue comments, labels, or GitHub API calls used for provenance tracking or rejection"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-1-verdict-path
+    - id: SC-11
+      description: "Per-spec dedup: provenance_checked_<issue_number>_this_session is per-spec, not per-session"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-2-critical-rule
+    - id: SC-12
+      description: "Behavioral test mandate: Before any implementation, write behavioral enforcement tests; confirm RED state"
+      evidence_type: string
+      verification_gate: pre-implementation
+      plan_phase: phase-4-behavioral-tests

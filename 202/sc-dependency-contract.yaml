@@ -1,0 +1,8 @@
+variables:
+  SC_1_DONE: {type: bool, nullable: false}
+  SC_2_DONE: {type: bool, nullable: false}
+  SC_3_DONE: {type: bool, nullable: false}
+  SC_4_DONE: {type: bool, nullable: false}
+invariants:
+  - "z3.Implies(SC_3_DONE == True, z3.And(SC_1_DONE == True, SC_2_DONE == True))"
+  - "z3.Implies(SC_4_DONE == True, z3.And(SC_1_DONE == True, SC_2_DONE == True))"

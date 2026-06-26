@@ -1,0 +1,90 @@
+spec: https://github.com/michael-conrad/.opencode/issues/1430
+verification_consistency:
+  sc_entries:
+    - id: SC-1
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: phase-2-add-rule
+      re_entry_step: null
+      phase_binding: phase-2-critical-rule
+      artifact_path: .opencode/guidelines/000-critical-rules.md
+    - id: SC-2
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: phase-2-add-rule
+      re_entry_step: null
+      phase_binding: phase-2-critical-rule
+      artifact_path: .opencode/guidelines/000-critical-rules.md
+    - id: SC-3
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: phase-2-add-rule
+      re_entry_step: null
+      phase_binding: phase-2-critical-rule
+      artifact_path: .opencode/guidelines/000-critical-rules.md
+    - id: SC-4
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: phase-3-add-row
+      re_entry_step: null
+      phase_binding: phase-3-trigger-dispatch
+      artifact_path: .opencode/skills/adversarial-audit/SKILL.md
+    - id: SC-5
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: phase-3-add-row
+      re_entry_step: null
+      phase_binding: phase-3-trigger-dispatch
+      artifact_path: .opencode/skills/adversarial-audit/SKILL.md
+    - id: SC-6
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: phase-1-modify-spec-audit
+      re_entry_step: null
+      phase_binding: phase-1-verdict-path
+      artifact_path: .opencode/skills/adversarial-audit/tasks/spec-audit.md
+    - id: SC-7
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-4-write-tests
+      re_entry_step: null
+      phase_binding: common
+      artifact_path: .opencode/tests/behaviors/
+    - id: SC-8
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-4-write-tests
+      re_entry_step: null
+      phase_binding: common
+      artifact_path: .opencode/tests/behaviors/
+    - id: SC-9
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-4-write-tests
+      re_entry_step: null
+      phase_binding: common
+      artifact_path: .opencode/tests/behaviors/
+    - id: SC-10
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: phase-1-modify-spec-audit
+      re_entry_step: null
+      phase_binding: phase-1-verdict-path
+      artifact_path: .opencode/skills/adversarial-audit/tasks/spec-audit.md
+    - id: SC-11
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: phase-2-add-rule
+      re_entry_step: null
+      phase_binding: phase-2-critical-rule
+      artifact_path: .opencode/guidelines/000-critical-rules.md
+    - id: SC-12
+      evidence_type: string
+      verification_gate: pre-implementation
+      pipeline_step_binding: phase-4-write-tests
+      re_entry_step: null
+      phase_binding: phase-4-behavioral-tests
+      artifact_path: .opencode/tests/behaviors/
+  constraints:
+    - 'for_every_sc: evidence_type_is_consistent_with_verification_gate'
+    - 'for_every_sc: pipeline_step_binding_is_valid_for_phase'
