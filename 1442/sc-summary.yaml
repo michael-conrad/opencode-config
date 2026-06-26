@@ -1,0 +1,48 @@
+sc_coverage:
+  total: 6
+  single_task: false
+  spec_url: https://github.com/michael-conrad/.opencode/issues/1442
+  evidence_types:
+    - behavioral
+    - string
+  phases:
+    - id: phase-1
+      sc_ids: [SC-1, SC-2, SC-5]
+      evidence_types: [string]
+    - id: phase-2
+      sc_ids: [SC-3, SC-4, SC-6]
+      evidence_types: [behavioral]
+  cross_cutting:
+    sc_ids: []
+    verified_in_phase: null
+  scs:
+    - id: SC-1
+      description: "All 7 auditor task files reject next_step: proceed for FAIL criteria"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-1
+    - id: SC-2
+      description: "All 7 auditor task files have all_criteria_pass: bool in per-criterion YAML template"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-1
+    - id: SC-3
+      description: "create.md step 18 Z3 check enforces clean PASS from audit-fidelity"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: phase-2
+    - id: SC-4
+      description: "create.md step 20 Z3 check enforces clean PASS from audit-concern"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: phase-2
+    - id: SC-5
+      description: "cross-validate.md per-criterion template has next_step conditional on PASS/FAIL and includes all_criteria_pass"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-1
+    - id: SC-6
+      description: "Orchestrator checks all_criteria_pass before proceeding past any audit gate"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: phase-2

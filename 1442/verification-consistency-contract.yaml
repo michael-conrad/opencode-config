@@ -1,0 +1,48 @@
+spec: https://github.com/michael-conrad/.opencode/issues/1442
+verification_consistency:
+  sc_entries:
+    - id: SC-1
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: grep-verify
+      re_entry_step: null
+      phase_binding: phase-1
+      artifact_path: .opencode/skills/adversarial-audit/tasks/
+    - id: SC-2
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: grep-verify
+      re_entry_step: null
+      phase_binding: phase-1
+      artifact_path: .opencode/skills/adversarial-audit/tasks/
+    - id: SC-3
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: behavioral-test
+      re_entry_step: null
+      phase_binding: phase-2
+      artifact_path: .opencode/skills/writing-plans/tasks/create.md
+    - id: SC-4
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: behavioral-test
+      re_entry_step: null
+      phase_binding: phase-2
+      artifact_path: .opencode/skills/writing-plans/tasks/create.md
+    - id: SC-5
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: grep-verify
+      re_entry_step: null
+      phase_binding: phase-1
+      artifact_path: .opencode/skills/adversarial-audit/tasks/cross-validate.md
+    - id: SC-6
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: behavioral-test
+      re_entry_step: null
+      phase_binding: phase-2
+      artifact_path: .opencode/skills/writing-plans/tasks/create.md
+  constraints:
+    - "for_every_sc: evidence_type_is_consistent_with_verification_gate"
+    - "for_every_sc: pipeline_step_binding_is_valid_for_phase"
