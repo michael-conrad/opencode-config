@@ -1,0 +1,70 @@
+sc_coverage:
+  total: 11
+  single_task: true
+  spec_url: https://github.com/michael-conrad/.opencode/issues/1448
+  evidence_types:
+    - behavioral
+    - string
+  phases:
+    - id: single-phase
+      sc_ids: [SC-1, SC-2, SC-3, SC-4, SC-5, SC-6, SC-7, SC-8, SC-9, SC-10, SC-11]
+      evidence_types: [behavioral, string]
+  cross_cutting:
+    sc_ids: []
+    verified_in_phase: null
+  scs:
+    - id: SC-1
+      description: pipeline-executor.md dispatch table includes step 14.5 cross-validate-gate
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase
+    - id: SC-2
+      description: pipeline-executor.md step 14.5 reads cross-validate YAML and checks overall_consensus
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase
+    - id: SC-3
+      description: pipeline-executor.md step 14.5 HALTs with blocker report on FAIL
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase
+    - id: SC-4
+      description: pipeline-executor.md step 14.5 produces YAML artifact
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase
+    - id: SC-5
+      description: pipeline-executor.md step 14.5 has checkpoint tag entry
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase
+    - id: SC-6
+      description: SKILL.md dispatch routing table includes cross-validate-gate
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase
+    - id: SC-7
+      description: SKILL.md step labels list includes cross-validate-gate
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase
+    - id: SC-8
+      description: SKILL.md pre-cleanup table includes cross-validate-gate
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase
+    - id: SC-9
+      description: Behavioral enforcement test exists and passes
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      plan_phase: single-phase
+    - id: SC-10
+      description: Behavioral test uses stderr-based assertions
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase
+    - id: SC-11
+      description: Pipeline state machine includes cross-validate-gate transition
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: single-phase

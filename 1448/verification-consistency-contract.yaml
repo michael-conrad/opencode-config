@@ -1,0 +1,83 @@
+spec: https://github.com/michael-conrad/.opencode/issues/1448
+verification_consistency:
+  sc_entries:
+    - id: SC-1
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/skills/implementation-pipeline/tasks/pipeline-executor.md
+    - id: SC-2
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/skills/implementation-pipeline/tasks/pipeline-executor.md
+    - id: SC-3
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/skills/implementation-pipeline/tasks/pipeline-executor.md
+    - id: SC-4
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/skills/implementation-pipeline/tasks/pipeline-executor.md
+    - id: SC-5
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/skills/implementation-pipeline/tasks/pipeline-executor.md
+    - id: SC-6
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/skills/implementation-pipeline/SKILL.md
+    - id: SC-7
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/skills/implementation-pipeline/SKILL.md
+    - id: SC-8
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/skills/implementation-pipeline/SKILL.md
+    - id: SC-9
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      pipeline_step_binding: green-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/tests/behaviors/cross-validate-fail-gate.sh
+    - id: SC-10
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/tests/behaviors/cross-validate-fail-gate.sh
+    - id: SC-11
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-phase
+      re_entry_step: null
+      phase_binding: single-phase
+      artifact_path: .opencode/skills/implementation-pipeline/pipeline-state-machine.yaml
+  constraints:
+    - 'for_every_sc: evidence_type_is_consistent_with_verification_gate'
+    - 'for_every_sc: pipeline_step_binding_is_valid_for_phase'
