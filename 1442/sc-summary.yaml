@@ -4,11 +4,10 @@ sc_coverage:
   spec_url: https://github.com/michael-conrad/.opencode/issues/1442
   evidence_types:
     - behavioral
-    - string
   phases:
     - id: phase-1
       sc_ids: [SC-1, SC-2, SC-5]
-      evidence_types: [string]
+      evidence_types: [behavioral]
     - id: phase-2
       sc_ids: [SC-3, SC-4, SC-6]
       evidence_types: [behavioral]
