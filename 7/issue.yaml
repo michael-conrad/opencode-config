@@ -1,0 +1,8 @@
+title: '[SPEC-FIX] Remove ''simple specs may omit'' documentation sources escape hatch
+  in verification-enforcement'
+status: open
+labels:
+- spec-fix
+body: ''
+created_at: '2026-06-29T02:33:51+00:00'
+updated_at: '2026-06-29T02:33:51+00:00'
