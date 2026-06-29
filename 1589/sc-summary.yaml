@@ -1,0 +1,36 @@
+sc_coverage:
+  total: 3
+  single_task: false
+  spec_url: https://github.com/michael-conrad/.opencode/issues/1589
+  evidence_types:
+    - behavioral
+    - string
+  phases:
+    - id: pre-response-gate-reentry
+      sc_ids: [SC-1]
+      evidence_types: [string]
+    - id: gap-fill-dispatch-next
+      sc_ids: [SC-2]
+      evidence_types: [string]
+    - id: behavioral-test
+      sc_ids: [SC-3]
+      evidence_types: [behavioral]
+  cross_cutting:
+    sc_ids: []
+    verified_in_phase: null
+  scs:
+    - id: SC-1
+      description: Pre-Response Gate procedure has re-entry condition documented
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: pre-response-gate-reentry
+    - id: SC-2
+      description: Gap-fill cascade table has dispatch_next column with explicit skill names
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: gap-fill-dispatch-next
+    - id: SC-3
+      description: Behavioral test orchestrator loads spec-creation after gap-fill cascade triggers
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      plan_phase: behavioral-test
