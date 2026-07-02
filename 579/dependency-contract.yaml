@@ -1,0 +1,51 @@
+# Z3 dependency contract for issue #579
+# Generated from structure-output.yaml dependency_contract section
+schema_version: "1.0"
+generated_at: "20260702081200"
+
+variables:
+  pre_done:
+    type: bool
+  phase_1_done:
+    type: bool
+  phase_2_done:
+    type: bool
+  phase_3_done:
+    type: bool
+  phase_4_done:
+    type: bool
+  phase_5_done:
+    type: bool
+  phase_6_done:
+    type: bool
+  phase_7_done:
+    type: bool
+  phase_8_done:
+    type: bool
+  post_done:
+    type: bool
+  sc_3_done:
+    type: bool
+  sc_6_done:
+    type: bool
+  sc_7_done:
+    type: bool
+  all_phases_done:
+    type: bool
+
+preconditions:
+  - pre_done
+  - z3.Implies(phase_3_done, phase_2_done)
+  - z3.Implies(phase_6_done, z3.And(phase_3_done, phase_4_done, phase_5_done))
+  - z3.Implies(phase_7_done, phase_6_done)
+  - z3.Implies(phase_8_done, z3.And(pre_done, phase_1_done, phase_2_done, phase_3_done, phase_4_done, phase_5_done, phase_6_done, phase_7_done))
+  - z3.Implies(post_done, phase_8_done)
+  - z3.Implies(sc_3_done, phase_2_done)
+  - z3.Implies(sc_6_done, z3.And(sc_3_done, phase_4_done, phase_5_done))
+  - z3.Implies(sc_7_done, sc_6_done)
+
+invariants:
+  - all_phases_done == z3.And(pre_done, phase_1_done, phase_2_done, phase_3_done, phase_4_done, phase_5_done, phase_6_done, phase_7_done, phase_8_done, post_done)
+  - z3.Not(z3.And(phase_3_done, z3.Not(phase_2_done)))
+  - z3.Not(z3.And(phase_6_done, z3.Not(z3.And(phase_3_done, phase_4_done, phase_5_done))))
+  - z3.Not(z3.And(phase_7_done, z3.Not(phase_6_done)))

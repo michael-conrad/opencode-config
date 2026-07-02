@@ -1,0 +1,49 @@
+domain: upstream-report-579
+types:
+  - name: phase
+objects:
+  - name: pre
+    type: phase
+  - name: phase_1
+    type: phase
+  - name: phase_2
+    type: phase
+  - name: phase_3
+    type: phase
+  - name: phase_4
+    type: phase
+  - name: phase_5
+    type: phase
+  - name: phase_6
+    type: phase
+  - name: phase_7
+    type: phase
+  - name: phase_8
+    type: phase
+  - name: post
+    type: phase
+fluents:
+  - name: done
+    params:
+      - name: p
+        type: phase
+actions:
+  - name: complete
+    params:
+      - name: p
+        type: phase
+    preconditions: []
+    effects:
+      - done(p)
+init: []
+goals:
+  - done(pre)
+  - done(phase_1)
+  - done(phase_2)
+  - done(phase_3)
+  - done(phase_4)
+  - done(phase_5)
+  - done(phase_6)
+  - done(phase_7)
+  - done(phase_8)
+  - done(post)

@@ -1,0 +1,31 @@
+status: PASS
+spec_issue_number: 579
+spec_title: "[SPEC] Upstream bug report filing — standalone skill for respectful, focused external reports"
+created_at: "2026-07-02T00:00:00Z"
+
+gaps_assessment:
+  template_discovery:
+    status: new_component
+    notes: No existing template-fetching logic in skilldeck. Must implement from scratch using github_get_file_contents.
+  content_stripping:
+    status: new_component
+    notes: No existing content-stripping or botsplaining-removal logic. Must implement new filtering rules.
+  context_classifier_gate:
+    status: new_component
+    notes: No existing "internal bug vs upstream report" classifier. correspondence skill has audience separation patterns that can be adapted.
+  upstream_repo_resolution:
+    status: depends_on_601
+    notes: "#601 (Fork Detection) is investigatory only (STATUS 0.1). Must implement fallback: accept target owner/repo as explicit parameter when fork detection unavailable."
+  claim_verification:
+    status: reusable
+    notes: verification and verification-enforcement skills exist. Reuse for reproduction claim verification.
+  local_tracking:
+    status: reusable
+    notes: issue-operations import-remote task exists. Adapt for upstream report mirroring.
+  platform_routing:
+    status: reusable
+    notes: issue-operations dispatcher handles GitHub MCP and gb CLI routing. Reuse for upstream filing.
+
+blockers: []
+scope_risks:
+  - "#601 Fork Detection not implemented — upstream repo resolution requires fallback to explicit parameter"
