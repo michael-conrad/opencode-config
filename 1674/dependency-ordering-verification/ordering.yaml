@@ -1,0 +1,17 @@
+variables:
+  PHASE1_DONE: {type: bool, nullable: false}
+  PHASE2_DONE: {type: bool, nullable: false}
+  PHASE3_DONE: {type: bool, nullable: false}
+  PHASE4_DONE: {type: bool, nullable: false}
+  PHASE5_DONE: {type: bool, nullable: false}
+  PHASE6_DONE: {type: bool, nullable: false}
+  PHASE7_DONE: {type: bool, nullable: false}
+  PHASE8_DONE: {type: bool, nullable: false}
+invariants:
+  - "z3.Implies(PHASE2_DONE == True, PHASE1_DONE == True)"
+  - "z3.Implies(PHASE3_DONE == True, PHASE2_DONE == True)"
+  - "z3.Implies(PHASE4_DONE == True, PHASE2_DONE == True)"
+  - "z3.Implies(PHASE5_DONE == True, PHASE2_DONE == True)"
+  - "z3.Implies(PHASE6_DONE == True, PHASE2_DONE == True)"
+  - "z3.Implies(PHASE7_DONE == True, PHASE2_DONE == True)"
+  - "z3.Implies(PHASE8_DONE == True, z3.And(PHASE5_DONE == True, PHASE6_DONE == True, PHASE7_DONE == True))"

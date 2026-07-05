@@ -1,0 +1,48 @@
+schema_version: "1.0"
+generated_at: "20260705155420"
+status: FAIL
+checks:
+  - check_id: PR-1
+    result: PASS
+    detail: "All 12 SCs map to exactly one RED->GREEN->COMMIT cycle. Each asserts one independently testable claim targeting one file category."
+  - check_id: PR-2
+    result: PASS
+    solve_contract_path: ".issues/1674/sc-dependency-contract.yaml"
+    prove_results:
+      - theorem: "sc_dag_is_valid"
+        result: VALID
+    detail: "SC dependency DAG is SAT. SC-1 is root dependency for SC-6/7/8/9. SC-6/7/8 are prerequisites for SC-2/3. SC-4/5 are independent. SC-10 is independent (RED before GREEN). No cycles."
+  - check_id: PR-3
+    result: FAIL
+    detail: "SC-1 has evidence type 'string + semantic' — two verification domains. Per PR-3, an SC must target exactly one verification domain. SC-1 bundles a string-content check (dispatch table text) with a semantic check (no task file contains dispatch instructions). These are distinct verification concerns and should be split into two SCs: SC-1a (string: dispatch table is the single source of truth) and SC-1b (semantic: no task file contains dispatch instructions). All other SCs (2-12) pass single-concern check."
+  - check_id: PR-4
+    result: PASS
+    solve_contract_path: ".issues/1674/dependency-ordering-verification/ordering.yaml"
+    prove_results:
+      - theorem: "phase_dag_is_acyclic"
+        result: VALID
+    detail: "Phase DAG is SAT. Phase 1 (behavioral test) -> Phase 2 (dispatch table + orchestrator) -> Phases 3-7 (parallel rule removal + cross-ref updates) -> Phase 8 (file deletion). No cycles."
+  - check_id: PR-5
+    result: PASS
+    detail: "Multi-phase spec (8 phases) has valid three-tier structure."
+    sub_checks:
+      - check_id: PR-5a
+        result: PASS
+        detail: "Phase 1 (behavioral test RED) serves as pre-phase — setup before implementation."
+      - check_id: PR-5b
+        result: PASS
+        detail: "Phases 2-7 each target a specific concern: dispatch table, rule removal (SKILL.md, reference files), cross-ref updates (skills, tests, guidelines)."
+      - check_id: PR-5c
+        result: PASS
+        detail: "Phase 8 (file deletion) serves as post-phase — cleanup after all cross-refs are resolved."
+      - check_id: PR-5d
+        result: PASS
+        detail: "Pre-phase (behavioral test) and post-phase (file deletion) steps are not duplicated in per-file phases 2-7."
+      - check_id: PR-5e
+        result: PASS
+        detail: "8 phases = 6 per-file phases (2-7) + 2 (pre + post). Count matches."
+sc_summary:
+  total_scs: 12
+  atomic: 12
+  with_dependencies: 6
+  single_concern: 11

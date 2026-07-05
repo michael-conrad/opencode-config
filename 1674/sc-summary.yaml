@@ -1,0 +1,103 @@
+sc_coverage:
+  total: 13
+  single_task: false
+  spec_url: https://github.com/michael-conrad/.opencode/issues/1674
+  evidence_types:
+    - behavioral
+    - semantic
+    - string
+    - structural
+  phases:
+    - id: Phase 1
+      sc_ids: [SC-10]
+      evidence_types: [behavioral]
+    - id: Phase 2
+      sc_ids: [SC-1a, SC-1b, SC-9, SC-11, SC-12]
+      evidence_types: [string, semantic, behavioral]
+    - id: Phase 3
+      sc_ids: [SC-4]
+      evidence_types: [string]
+    - id: Phase 4
+      sc_ids: [SC-5]
+      evidence_types: [string]
+    - id: Phase 5
+      sc_ids: [SC-6]
+      evidence_types: [string]
+    - id: Phase 6
+      sc_ids: [SC-7]
+      evidence_types: [string]
+    - id: Phase 7
+      sc_ids: [SC-8]
+      evidence_types: [string]
+    - id: Phase 8
+      sc_ids: [SC-2, SC-3]
+      evidence_types: [structural]
+  cross_cutting:
+    sc_ids: []
+    verified_in_phase: null
+  scs:
+    - id: SC-1a
+      description: "implementation-pipeline/SKILL.md Trigger Dispatch Table is the single source of truth for dispatch routing — no task file contains dispatch instructions"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 2
+    - id: SC-1b
+      description: "No task file in .opencode/skills/ contains instructions to dispatch sub-agents via task()"
+      evidence_type: semantic
+      verification_gate: pre-commit
+      plan_phase: Phase 2
+    - id: SC-2
+      description: "assemble-work.md is deleted from the filesystem"
+      evidence_type: structural
+      verification_gate: pre-commit
+      plan_phase: Phase 8
+    - id: SC-3
+      description: "pipeline-executor.md is deleted from the filesystem"
+      evidence_type: structural
+      verification_gate: pre-commit
+      plan_phase: Phase 8
+    - id: SC-4
+      description: "Sub-agents must not dispatch sub-agents rule is removed from all 41 other SKILL.md files"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 3
+    - id: SC-5
+      description: "Sub-agents must not dispatch sub-agents rule is removed from 3 reference files"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 4
+    - id: SC-6
+      description: "All cross-references to assemble-work.md and pipeline-executor.md in skills are updated or removed"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 5
+    - id: SC-7
+      description: "All cross-references to assemble-work.md and pipeline-executor.md in tests are updated or removed"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 6
+    - id: SC-8
+      description: "All cross-references to assemble-work.md and pipeline-executor.md in guidelines are updated or removed"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 7
+    - id: SC-9
+      description: "Orchestrator entry point is changed from read assemble-work.md inline to read SKILL.md dispatch table and dispatch directly"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: Phase 2
+    - id: SC-10
+      description: "Behavioral enforcement test verifies the orchestrator dispatches pipeline steps directly from the SKILL.md dispatch table without reading task files"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: Phase 1
+    - id: SC-11
+      description: "Pre-flight handoff and checkpoint/rollback logic are preserved (moved to SKILL.md or step task files)"
+      evidence_type: semantic
+      verification_gate: pre-commit
+      plan_phase: Phase 2
+    - id: SC-12
+      description: "Coercion rule (DONE_WITH_CONCERNS → FAIL) is preserved in SKILL.md"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 2

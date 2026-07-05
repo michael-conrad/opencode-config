@@ -1,0 +1,97 @@
+spec: https://github.com/michael-conrad/.opencode/issues/1674
+verification_consistency:
+  sc_entries:
+    - id: SC-1a
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 2
+      re_entry_step: null
+      phase_binding: Phase 2
+      artifact_path: .opencode/skills/implementation-pipeline/SKILL.md
+    - id: SC-1b
+      evidence_type: semantic
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 2
+      re_entry_step: null
+      phase_binding: Phase 2
+      artifact_path: .opencode/skills/implementation-pipeline/tasks/
+    - id: SC-2
+      evidence_type: structural
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 8
+      re_entry_step: null
+      phase_binding: Phase 8
+      artifact_path: .opencode/skills/implementation-pipeline/tasks/assemble-work.md
+    - id: SC-3
+      evidence_type: structural
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 8
+      re_entry_step: null
+      phase_binding: Phase 8
+      artifact_path: .opencode/skills/implementation-pipeline/tasks/pipeline-executor.md
+    - id: SC-4
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 3
+      re_entry_step: null
+      phase_binding: Phase 3
+      artifact_path: .opencode/skills/*/SKILL.md
+    - id: SC-5
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 4
+      re_entry_step: null
+      phase_binding: Phase 4
+      artifact_path: .opencode/skills/skill-creator/
+    - id: SC-6
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 5
+      re_entry_step: null
+      phase_binding: Phase 5
+      artifact_path: .opencode/skills/
+    - id: SC-7
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 6
+      re_entry_step: null
+      phase_binding: Phase 6
+      artifact_path: .opencode/tests/
+    - id: SC-8
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 7
+      re_entry_step: null
+      phase_binding: Phase 7
+      artifact_path: .opencode/guidelines/
+    - id: SC-9
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 2
+      re_entry_step: null
+      phase_binding: Phase 2
+      artifact_path: .opencode/skills/implementation-pipeline/SKILL.md
+    - id: SC-10
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 1
+      re_entry_step: null
+      phase_binding: Phase 1
+      artifact_path: .opencode/tests/behaviors/
+    - id: SC-11
+      evidence_type: semantic
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 2
+      re_entry_step: null
+      phase_binding: Phase 2
+      artifact_path: .opencode/skills/implementation-pipeline/SKILL.md
+    - id: SC-12
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: Phase 2
+      re_entry_step: null
+      phase_binding: Phase 2
+      artifact_path: .opencode/skills/implementation-pipeline/SKILL.md
+  constraints:
+    - "for_every_sc: evidence_type_is_consistent_with_verification_gate"
+    - "for_every_sc: pipeline_step_binding_is_valid_for_phase"
