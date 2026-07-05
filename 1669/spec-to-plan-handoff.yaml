@@ -1,0 +1,17 @@
+spec: https://github.com/michael-conrad/.opencode/issues/1669
+generated_at: 2026-07-05T02:30:00Z
+sc_coverage_total: 7
+decomposition_classification: single-task
+phase_count: 1
+status: complete
+artifacts:
+  - path: .issues/1669/spec.md
+    required: true
+  - path: .issues/1669/sc-summary.yaml
+    required: true
+  - path: .issues/1669/verification-consistency-contract.yaml
+    required: true
+  - path: .issues/1669/revision-re-entry-contract.yaml
+    required: true
+  - path: .issues/1669/spec-to-plan-handoff.yaml
+    required: true

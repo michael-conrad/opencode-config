@@ -1,0 +1,55 @@
+spec: https://github.com/michael-conrad/.opencode/issues/1669
+verification_consistency:
+  sc_entries:
+    - id: SC-1
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: pre-commit
+      re_entry_step: null
+      phase_binding: phase_1
+      artifact_path: .opencode/skills/adversarial-audit/SKILL.md
+    - id: SC-2
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: pre-commit
+      re_entry_step: null
+      phase_binding: phase_1
+      artifact_path: .opencode/skills/playwright-cli/SKILL.md
+    - id: SC-3
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: pre-commit
+      re_entry_step: null
+      phase_binding: phase_1
+      artifact_path: .opencode/skills/solve/SKILL.md
+    - id: SC-4
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: pre-commit
+      re_entry_step: null
+      phase_binding: phase_1
+      artifact_path: .opencode/skills/skill-creator/reference/routing-only-template.md
+    - id: SC-5
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: pre-commit
+      re_entry_step: null
+      phase_binding: phase_1
+      artifact_path: .opencode/skills/skill-creator/reference/skill-card-spec.md
+    - id: SC-6
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: pre-commit
+      re_entry_step: null
+      phase_binding: phase_1
+      artifact_path: .opencode/skills/skill-creator/scripts/validate_skill_cards.py
+    - id: SC-7
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: pre-commit
+      re_entry_step: null
+      phase_binding: phase_1
+      artifact_path: .opencode/skills/skill-creator/scripts/validate_skill_cards.py
+  constraints:
+    - 'for_every_sc: evidence_type_is_consistent_with_verification_gate'
+    - 'for_every_sc: pipeline_step_binding_is_valid_for_phase'

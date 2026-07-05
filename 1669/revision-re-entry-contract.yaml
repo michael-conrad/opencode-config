@@ -1,0 +1,22 @@
+spec: https://github.com/michael-conrad/.opencode/issues/1669
+revision_re_entry:
+  revision_scopes:
+    - scope: full
+      cascade_artifacts:
+        - plan.md
+        - sc-summary.yaml
+        - verification-consistency-contract.yaml
+      requires_re_approval: true
+      valid_re_entry_steps:
+        - step: spec_creation
+      constraints:
+        - 'on_full_revision: all_artifacts_must_be_regenerated'
+    - scope: partial
+      cascade_artifacts:
+        - plan.md
+        - sc-summary.yaml
+      requires_re_approval: false
+      valid_re_entry_steps:
+        - step: plan_creation
+      constraints:
+        - 'on_partial_revision: cascade_is_limited_to_affected_scs'
