@@ -1,0 +1,33 @@
+# Dependency Contract — Issue #162
+# Phases for the LaTeX paper on same-model adversarial auditor divergence
+
+phases:
+  - id: phase-1
+    name: "Paper Outline and Research Consolidation"
+    depends_on: []
+    description: "Finalize outline, consolidate research notes into reference cards, draft Sections 1-3"
+
+  - id: phase-2
+    name: "DiMo Reference Section"
+    depends_on: [phase-1]
+    description: "Draft Section 4 documenting DiMo architecture, roles, protocols, and results"
+
+  - id: phase-3
+    name: "Role-Differentiated Agent Chaining"
+    depends_on: [phase-2]
+    description: "Draft Section 5 formalizing sequential task dispatch and role-to-pipeline mapping"
+
+  - id: phase-4
+    name: "Empirical Evaluation"
+    depends_on: [phase-3]
+    description: "Draft Section 6 with defect injection methodology and detection rate comparison"
+
+  - id: phase-5
+    name: "Remaining Sections"
+    depends_on: [phase-4]
+    description: "Draft Sections 7-9 (Comparison, Limitations, Conclusion)"
+
+  - id: phase-6
+    name: "Peer Review Pipeline"
+    depends_on: [phase-5]
+    description: "Submit through academic peer review pipeline from #125"
