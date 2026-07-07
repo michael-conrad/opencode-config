@@ -16,3 +16,7 @@ Main is the single trunk. Dev branch has been removed.
 
 ## Trunk-Based Development
 Main is the single trunk. Dev branch has been removed.
+
+## Submodule Pointer
+
+The `.opencode` submodule is at a7f58fd2 (DiMo-aligned audit — role-differentiated task files).
