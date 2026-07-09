@@ -3,6 +3,10 @@ status: open
 labels:
 - PLAN
 - PHASE-7
-body: ''
+body: 'Create behavioral tests verifying: SC-ROUTING-1 (no procedure text after skill()),
+  SC-ROUTING-2 (dispatch table present), SC-ROUTING-3 (sub-agent dispatch via task()),
+  SC-DG-1 through SC-DG-7 (DISPATCH_GATE presence and validation).
+
+  '
 created_at: '2026-07-09T03:17:32+00:00'
-updated_at: '2026-07-09T03:17:32+00:00'
+updated_at: '2026-07-09T03:18:00+00:00'
