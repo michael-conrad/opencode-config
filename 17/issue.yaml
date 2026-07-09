@@ -3,6 +3,9 @@ status: open
 labels:
 - PLAN
 - PHASE-9
-body: ''
+body: 'Update skill-creator skill validation rules for routing-only SKILL.md with
+  DISPATCH_GATE. Update 080-code-standards.md if it references SKILL.md structure.
+
+  '
 created_at: '2026-07-09T03:17:32+00:00'
-updated_at: '2026-07-09T03:17:32+00:00'
+updated_at: '2026-07-09T03:18:00+00:00'

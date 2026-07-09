@@ -3,6 +3,10 @@ status: open
 labels:
 - PLAN
 - PHASE-8
-body: ''
+body: 'Add a pre-commit hook check that scans SKILL.md files for prohibited procedure
+  content patterns: numbered step lists, Entry/Exit Criteria sections, Procedure sections,
+  Operating Protocol sections, code blocks with bash/python/YAML.
+
+  '
 created_at: '2026-07-09T03:17:32+00:00'
-updated_at: '2026-07-09T03:17:32+00:00'
+updated_at: '2026-07-09T03:18:00+00:00'
