@@ -10,6 +10,8 @@
 
 Always use `.opencode/tools/local-issues` for issue tracking operations within `.issues/`. Do not manipulate `.issues/` files manually unless the tool cannot perform the required operation.
 
+**🚫 CRITICAL: `.issues/` is a git worktree (orphan branch worktree), NOT a regular directory.** It lives at `.git/worktrees/-issues/` and is a completely separate git repository with its own `issues-data` branch. It is gitignored in the parent repo. Agents MUST NOT read/write `.issues/` files directly through git operations — using `read()`, `write()`, `edit()`, `glob()`, or `grep()` on `.issues/` paths silently targets the wrong repository and corrupts git state. All `.issues/` operations MUST go through `.opencode/tools/local-issues` or explicit `git -C <tree>/.issues/` commands.
+
 ### Invocation
 
 ```
