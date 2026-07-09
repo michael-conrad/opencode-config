@@ -3,6 +3,11 @@ status: open
 labels:
 - PLAN
 - PHASE-2
-body: ''
+body: 'Add canonical DISPATCH_GATE subsections (Dispatch Context Contract, Sub-Agent
+  Entry Criteria, Orchestrator Entry Criteria, Forbidden in task() Prompts table,
+  Sub-Agent Task File Discovery Directive) to routing-only-template.md. Also update
+  skill-card-spec.md to document DISPATCH_GATE as a required section.
+
+  '
 created_at: '2026-07-09T03:17:32+00:00'
-updated_at: '2026-07-09T03:17:32+00:00'
+updated_at: '2026-07-09T03:18:00+00:00'
