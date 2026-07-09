@@ -3,6 +3,12 @@ status: open
 labels:
 - PLAN
 - PHASE-4
-body: ''
+body: 'For each SKILL.md with procedure content identified in Phase 3: (1) Create
+  or update the corresponding tasks/*.md file with the procedure content, (2) Remove
+  the procedure content from SKILL.md, (3) Ensure the task file has proper entry/exit
+  criteria, step definitions, and code snippets, (4) Ensure the task file has a discovery
+  directive reference in the SKILL.md dispatch table.
+
+  '
 created_at: '2026-07-09T03:17:32+00:00'
-updated_at: '2026-07-09T03:17:32+00:00'
+updated_at: '2026-07-09T03:18:00+00:00'

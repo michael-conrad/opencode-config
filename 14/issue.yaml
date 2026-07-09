@@ -3,6 +3,10 @@ status: open
 labels:
 - PLAN
 - PHASE-6
-body: ''
+body: 'Add a REQ-6 check to validate_skill_cards.py that validates complete DISPATCH_GATE
+  subsections. Must verify presence of all 7 canonical subsections, allow opt-out
+  marker for skills with no sub-agent dispatch, and not flag existing 33 working cards.
+
+  '
 created_at: '2026-07-09T03:17:32+00:00'
-updated_at: '2026-07-09T03:17:32+00:00'
+updated_at: '2026-07-09T03:18:00+00:00'
