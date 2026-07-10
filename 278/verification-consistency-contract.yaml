@@ -1,0 +1,90 @@
+spec: https://github.com/michael-conrad/opencode-config/issues/278
+verification_consistency:
+  sc_entries:
+    - id: SC-1
+      evidence_type: string
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-1-verify
+      re_entry_step: null
+      phase_binding: phase-1-skills
+      artifact_path: .issues/278/phase-1/
+    - id: SC-2
+      evidence_type: string
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-2-verify
+      re_entry_step: null
+      phase_binding: phase-2-tasks
+      artifact_path: .issues/278/phase-2/
+    - id: SC-3
+      evidence_type: string
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-3-verify
+      re_entry_step: null
+      phase_binding: phase-3-references
+      artifact_path: .issues/278/phase-3/
+    - id: SC-4
+      evidence_type: string
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-4-verify
+      re_entry_step: null
+      phase_binding: phase-4-critical-rules
+      artifact_path: .issues/278/phase-4/
+    - id: SC-5
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-5-verify
+      re_entry_step: null
+      phase_binding: phase-5-skildeck
+      artifact_path: .issues/278/phase-5/
+    - id: SC-6
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-5-verify
+      re_entry_step: null
+      phase_binding: phase-5-skildeck
+      artifact_path: .issues/278/phase-5/
+    - id: SC-7
+      evidence_type: string
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-6-verify
+      re_entry_step: null
+      phase_binding: phase-6-skill-creator
+      artifact_path: .issues/278/phase-6/
+    - id: SC-8
+      evidence_type: string
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-7-verify
+      re_entry_step: null
+      phase_binding: phase-7-test-enforcement
+      artifact_path: .issues/278/phase-7/
+    - id: SC-9
+      evidence_type: string
+      verification_gate: post-implementation
+      pipeline_step_binding: phase-8-verify
+      re_entry_step: null
+      phase_binding: phase-8-documentation
+      artifact_path: .issues/278/phase-8/
+    - id: SC-10
+      evidence_type: semantic
+      verification_gate: post-implementation
+      pipeline_step_binding: all-phases-verify
+      re_entry_step: null
+      phase_binding: cross-cutting
+      artifact_path: .issues/278/cross-cutting/
+    - id: SC-11
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      pipeline_step_binding: all-phases-verify
+      re_entry_step: null
+      phase_binding: cross-cutting
+      artifact_path: .issues/278/cross-cutting/
+    - id: SC-12
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      pipeline_step_binding: all-phases-verify
+      re_entry_step: null
+      phase_binding: cross-cutting
+      artifact_path: .issues/278/cross-cutting/
+  constraints:
+    - 'for_every_sc: evidence_type_is_consistent_with_verification_gate'
+    - 'for_every_sc: pipeline_step_binding_is_valid_for_phase'
