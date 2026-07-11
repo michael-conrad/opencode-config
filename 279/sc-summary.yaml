@@ -1,0 +1,84 @@
+sc_coverage:
+  total: 12
+  single_task: false
+  spec_url: https://github.com/michael-conrad/opencode-config/issues/279
+  evidence_types:
+    - behavioral
+    - string
+  phases:
+    - id: Phase 1
+      sc_ids: [SC-6, SC-7]
+      evidence_types: [string]
+    - id: Phase 2
+      sc_ids: [SC-4, SC-5]
+      evidence_types: [behavioral]
+    - id: Phase 3
+      sc_ids: [SC-1, SC-2, SC-3, SC-9, SC-10]
+      evidence_types: [string]
+    - id: Phase 4
+      sc_ids: [SC-8, SC-11, SC-12]
+      evidence_types: [behavioral]
+  cross_cutting:
+    sc_ids: []
+    verified_in_phase: null
+  scs:
+    - id: SC-1
+      description: "All 43 SKILL.md descriptions use the new agent-intent pattern"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 3
+    - id: SC-2
+      description: "No SKILL.md description starts with 'Use when'"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 3
+    - id: SC-3
+      description: "All descriptions include 'User phrases:' suffix"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 3
+    - id: SC-4
+      description: "validate_skill_cards.py passes on all 43 files with new pattern"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: Phase 2
+    - id: SC-5
+      description: "session-enforcement.ts accepts new description pattern without warnings"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: Phase 2
+    - id: SC-6
+      description: "init_skill.py template uses new description pattern"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 1
+    - id: SC-7
+      description: "routing-only-template.md documents new description pattern"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 1
+    - id: SC-8
+      description: "Behavioral enforcement test verifies agent dispatches skills correctly with new descriptions"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: Phase 4
+    - id: SC-9
+      description: "No description exceeds 1024 characters"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 3
+    - id: SC-10
+      description: "All descriptions include mandatory keyword"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: Phase 3
+    - id: SC-11
+      description: "No SC may be weakened, deferred, or reclassified to a lower evidence type to evade implementation"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: Phase 4
+    - id: SC-12
+      description: "Before any implementation, write behavioral enforcement tests; confirm RED state"
+      evidence_type: behavioral
+      verification_gate: pre-red
+      plan_phase: Phase 4

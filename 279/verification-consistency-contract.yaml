@@ -1,0 +1,90 @@
+spec: https://github.com/michael-conrad/opencode-config/issues/279
+verification_consistency:
+  sc_entries:
+    - id: SC-1
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 3
+      phase_binding: Phase 3
+      artifact_path: .issues/279/string/
+    - id: SC-2
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 3
+      phase_binding: Phase 3
+      artifact_path: .issues/279/string/
+    - id: SC-3
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 3
+      phase_binding: Phase 3
+      artifact_path: .issues/279/string/
+    - id: SC-4
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 2
+      phase_binding: Phase 2
+      artifact_path: .issues/279/behavioral/
+    - id: SC-5
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 2
+      phase_binding: Phase 2
+      artifact_path: .issues/279/behavioral/
+    - id: SC-6
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 1
+      phase_binding: Phase 1
+      artifact_path: .issues/279/string/
+    - id: SC-7
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 1
+      phase_binding: Phase 1
+      artifact_path: .issues/279/string/
+    - id: SC-8
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 4
+      phase_binding: Phase 4
+      artifact_path: .issues/279/behavioral/
+    - id: SC-9
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 3
+      phase_binding: Phase 3
+      artifact_path: .issues/279/string/
+    - id: SC-10
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 3
+      phase_binding: Phase 3
+      artifact_path: .issues/279/string/
+    - id: SC-11
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: Phase 4
+      phase_binding: Phase 4
+      artifact_path: .issues/279/behavioral/
+    - id: SC-12
+      evidence_type: behavioral
+      verification_gate: pre-red
+      pipeline_step_binding: red
+      re_entry_step: Phase 4
+      phase_binding: Phase 4
+      artifact_path: .issues/279/behavioral/
+  constraints:
+    - 'for_every_sc: evidence_type_is_consistent_with_verification_gate'
+    - 'for_every_sc: pipeline_step_binding_is_valid_for_phase'
