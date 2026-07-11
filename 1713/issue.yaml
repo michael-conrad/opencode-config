@@ -3,6 +3,415 @@ title: 'SPEC-FIX: implementation-pipeline Step-Level Dispatch Mandate — elimin
 status: open
 labels:
 - SPEC-FIX
-body: ''
+body: '# SPEC-FIX: implementation-pipeline Step-Level Dispatch Mandate — eliminate
+  phase-level batching modes
+
+
+  > **Root Issue:** #1713
+
+  > **Parent Spec:** None (direct fix)
+
+  > **Authorization Scope:** `for_implementation`
+
+  > **Halt At:** `verification_complete`
+
+  > **PR Strategy:** `stacked`
+
+
+  ## Problem Statement
+
+
+  The `implementation-pipeline` skill defines **phase-level dispatch modes** (`inline-dispatch`,
+  `sub-agent-with-context-dispatch`, `sub-agent-clean-room-dispatch`) with `sub-agent-with-context`
+  as the **DEFAULT** when no `Dispatch` declaration is present in a plan phase. This
+  architectural gap enabled **batching behavior** — entire phases dispatched to single
+  sub-agents with orchestrator-provided context — which caused the contamination incident
+  where orchestrator bias propagated through every downstream sub-agent.
+
+
+  ### Root Cause Analysis
+
+
+  | Component | Current Behavior | Defect |
+
+  |-----------|------------------|--------|
+
+  | `implementation-pipeline/SKILL.md` Trigger Dispatch Table (lines 72-74) | Three
+  phase-level dispatch modes; `sub-agent-with-context-dispatch` documented as valid
+  | Enables phase batching |
+
+  | `implementation-pipeline/SKILL.md` Overview (line 19) | "defaulting to `sub-agent-with-context`
+  when no Dispatch declaration is present" | **DEFAULT IS BATCHING** — the fallback
+  is the contaminated mode |
+
+  | Plan format (e.g., `.issues/1284/plan.md`) | Dispatch declared **PER STEP** inline
+  (e.g., `inline`, `sub-task`, `sub-agent`) | Skill ignores per-step declarations,
+  treats phase as unit |
+
+
+  **The architectural gap:** Plan files evolved to declare dispatch mode **per step**
+  (see `.issues/1284/plan.md` gates table: `Dispatch Type` column with values `inline`,
+  `sub-task`, `sub-agent`), but the skill still reads a single `Dispatch` field **per
+  phase** and defaults to batching.
+
+
+  ## Solution Architecture
+
+
+  ### 1. Step-Level Dispatch Mandate (New Guideline: `095-step-dispatch-mandate.md`)
+
+
+  **Core Rule:** INLINE is the **default per step**. Dispatch occurs **ONLY** when
+  a step explicitly declares `**sub-agent**` or `**clean-room**` in its dispatch cell.
+
+
+  ```
+
+  Per-Step Dispatch Resolution:
+
+  ├── Step declares **inline** (or no declaration) → Orchestrator executes inline
+
+  ├── Step declares **sub-agent** → Orchestrator dispatches step to sub-agent with
+  context
+
+  └── Step declares **clean-room** → Orchestrator dispatches step to clean-room sub-agent
+  (routing metadata only)
+
+  ```
+
+
+  **Phase-level `Dispatch` field is DEPRECATED and IGNORED.** The skill reads the
+  gate table''s `Dispatch Type` column per row.
+
+
+  ### 2. Implementation-Pipeline Skill Changes
+
+
+  | Change | Location | Description |
+
+  |--------|----------|-------------|
+
+  | Remove phase-level dispatch modes | Trigger Dispatch Table lines 72-74 | Delete
+  `inline-dispatch`, `sub-agent-with-context-dispatch`, `sub-agent-clean-room-dispatch`
+  entries |
+
+  | Add Step-Level Dispatch Mandate reference | Overview + Cross-References | Link
+  to `095-step-dispatch-mandate.md` |
+
+  | Update Orchestrator Entry logic | Invocation §Orchestrator-Level Tasks | Orchestrator
+  iterates plan gates, resolves dispatch per step |
+
+  | Add pre-dispatch gate task | New task `verify-step-dispatch-mode` | Validates
+  plan uses per-step dispatch; BLOCKS legacy phase-level `Dispatch` |
+
+
+  ### 3. New Guideline: `.opencode/guidelines/095-step-dispatch-mandate.md`
+
+
+  Documents the mandate as a standalone enforceable rule with:
+
+  - Zero-tolerance prohibition of phase-level batching
+
+  - Per-step dispatch resolution algorithm
+
+  - Evidence requirements for verification
+
+  - Behavioral test criteria
+
+
+  ### 4. Pre-Dispatch Gate Task: `verify-step-dispatch-mode`
+
+
+  Reads the plan file, validates:
+
+  - [ ] No phase-level `Dispatch` field present (or if present, treated as documentation
+  only)
+
+  - [ ] Every gate row has a `Dispatch Type` cell with valid value: `inline`, `sub-task`,
+  `sub-agent`, `clean-room`
+
+  - [ ] No `sub-agent-with-context` or `sub-agent-clean-room` as phase-level defaults
+
+  - [ ] Returns `BLOCKED` with `MISSING_STEP_DISPATCH` if validation fails
+
+
+  ## Alternatives Considered
+
+
+  | Alternative | Rejected Because |
+
+  |-------------|------------------|
+
+  | Keep phase-level dispatch, fix default to `inline` | Phase-level is wrong granularity
+  — plan gates are per-step; batching is the defect |
+
+  | Add `sub-agent-with-context` as explicit opt-in per phase | Still enables batching;
+  contamination risk remains if opted in |
+
+  | Require `Dispatch` field per phase with `inline` default | Duplicates per-step
+  data; plan format already has per-step `Dispatch Type` |
+
+  | Migration period with both modes | No — batching is a critical violation; immediate
+  elimination required |
+
+
+  ## Success Criteria
+
+
+  | ID | Criterion | Evidence Type | Verification Method |
+
+  |----|-----------|---------------|---------------------|
+
+  | SC-1 | Phase-level dispatch modes removed from `implementation-pipeline/SKILL.md`
+  | `string` | `grep -c ''sub-agent-with-context-dispatch\|sub-agent-clean-room-dispatch\|inline-dispatch''
+  .opencode/skills/implementation-pipeline/SKILL.md` → 0 |
+
+  | SC-2 | `095-step-dispatch-mandate.md` guideline created | `structural` | `ls .opencode/guidelines/095-step-dispatch-mandate.md`
+  |
+
+  | SC-3 | `implementation-pipeline/SKILL.md` references `095-step-dispatch-mandate.md`
+  | `string` | `grep -q ''095-step-dispatch-mandate'' .opencode/skills/implementation-pipeline/SKILL.md`
+  |
+
+  | SC-4 | `verify-step-dispatch-mode.md` task created | `structural` | `ls .opencode/skills/implementation-pipeline/tasks/verify-step-dispatch-mode.md`
+  |
+
+  | SC-5 | Pre-dispatch gate registered in Trigger Dispatch Table | `string` | `grep
+  -q ''verify-step-dispatch-mode'' .opencode/skills/implementation-pipeline/SKILL.md`
+  |
+
+  | SC-6 | Plan with legacy phase-level `Dispatch` → BLOCKED | `behavioral` | `opencode-cli
+  run` with legacy plan → `PRELOADED_CONTEXT_REJECTED` or `MISSING_STEP_DISPATCH`
+  |
+
+  | SC-7 | Plan with per-step dispatch → PASS | `behavioral` | `opencode-cli run`
+  with `.issues/1284/plan.md` format → pipeline executes |
+
+  | SC-8 | All existing `.issues/*/plan.md` pass validation | `behavioral` | Batch
+  validation script across all plan files |
+
+
+  ## Change Control
+
+
+  | File | Change Type | Risk |
+
+  |------|-------------|------|
+
+  | `.opencode/skills/implementation-pipeline/SKILL.md` | Modify (remove phase dispatch,
+  add mandate ref, add gate) | High — core pipeline router |
+
+  | `.opencode/guidelines/095-step-dispatch-mandate.md` | Create new | Medium — new
+  enforceable rule |
+
+  | `.opencode/skills/implementation-pipeline/tasks/verify-step-dispatch-mode.md`
+  | Create new | Medium — new validation gate |
+
+  | `.opencode/tests/behaviors/step-dispatch-mandate.sh` | Create new (behavioral
+  test) | Medium — test infrastructure |
+
+
+  ## Risk Analysis
+
+
+  | Risk | Likelihood | Impact | Mitigation |
+
+  |------|------------|--------|------------|
+
+  | Existing plans with phase-level `Dispatch` break | High | Pipeline blocks at pre-dispatch
+  | `verify-step-dispatch-mode` gives clear error; migration is mechanical (copy `Dispatch
+  Type` column to per-step) |
+
+  | Orchestrator logic regression | Medium | Silent wrong dispatch | Behavioral test
+  SC-6/SC-7; `dispatch-gate-rejection.sh` already covers sub-agent rejection |
+
+  | Sub-agent context shape mismatch | Low | Sub-agent fails cleanly | Sub-agents
+  already handle `inline`/`sub-task`/`sub-agent`/`clean-room` per gate table |
+
+  | Guideline not enforced | Low | Rule ignored | `verification-enforcement` skill
+  + behavioral test mandate |
+
+
+  ## Phases
+
+
+  ### Phase 1: Create Guideline and Task (Foundation)
+
+
+  **SC-2, SC-4, partial SC-1, partial SC-3, partial SC-5**
+
+
+  | Item | Description |
+
+  |------|-------------|
+
+  | 1.1 | Create `.opencode/guidelines/095-step-dispatch-mandate.md` with full mandate
+  text |
+
+  | 1.2 | Create `.opencode/skills/implementation-pipeline/tasks/verify-step-dispatch-mode.md`
+  |
+
+  | 1.3 | Add guideline to `implementation-pipeline/SKILL.md` Cross-References |
+
+  | 1.4 | Add `verify-step-dispatch-mode` to Trigger Dispatch Table (before `assemble-work`)
+  |
+
+
+  **RED:** `ls .opencode/guidelines/095-step-dispatch-mandate.md` → FAIL
+
+  **GREEN:** Files exist, guideline referenced, gate registered
+
+
+  ### Phase 2: Remove Phase-Level Dispatch Modes (Core Fix)
+
+
+  **SC-1, SC-3, SC-5**
+
+
+  | Item | Description |
+
+  |------|-------------|
+
+  | 2.1 | Remove lines 72-74 from Trigger Dispatch Table (`inline-dispatch`, `sub-agent-with-context-dispatch`,
+  `sub-agent-clean-room-dispatch`) |
+
+  | 2.2 | Remove "defaulting to `sub-agent-with-context`" from Overview (line 19)
+  |
+
+  | 2.3 | Update Orchestrator Entry description to iterate per-step dispatch |
+
+  | 2.4 | Add Step-Level Dispatch Mandate section to SKILL.md (after Overview) |
+
+
+  **RED:** `grep ''sub-agent-with-context'' .opencode/skills/implementation-pipeline/SKILL.md`
+  → MATCH
+
+  **GREEN:** Zero matches; mandate section present
+
+
+  ### Phase 3: Behavioral Enforcement Tests
+
+
+  **SC-6, SC-7, SC-8**
+
+
+  | Item | Description |
+
+  |------|-------------|
+
+  | 3.1 | Create `.opencode/tests/behaviors/step-dispatch-mandate-legacy-block.sh`
+  — legacy phase Dispatch → BLOCKED |
+
+  | 3.2 | Create `.opencode/tests/behaviors/step-dispatch-mandate-per-step-pass.sh`
+  — per-step dispatch → PASS |
+
+  | 3.3 | Create batch validation script for all `.issues/*/plan.md` |
+
+
+  **RED:** Test files don''t exist
+
+  **GREEN:** Tests exist, legacy plan → BLOCKED, per-step plan → PASS, all current
+  plans → PASS
+
+
+  ### Phase 4: Full Pipeline Integration Test
+
+
+  **SC-8**
+
+
+  | Item | Description |
+
+  |------|-------------|
+
+  | 4.1 | Execute full pipeline on test issue with per-step dispatch plan |
+
+  | 4.2 | Verify all gates execute with correct dispatch mode |
+
+  | 4.3 | Verify no orchestrator inline work contamination |
+
+
+  **RED:** Pipeline not tested with new dispatch model
+
+  **GREEN:** Clean pipeline execution, zero contamination
+
+
+  ## Design Decisions
+
+
+  | Decision | Rationale |
+
+  |----------|-----------|
+
+  | INLINE default per step | Safest — orchestrator does the simple work; dispatch
+  is explicit opt-in for complex steps |
+
+  | Per-step `Dispatch Type` column is authoritative | Plan format already has it
+  (`.issues/1284/plan.md`); no schema change needed |
+
+  | Phase-level `Dispatch` field deprecated, not removed | Existing plans may have
+  it as documentation; skill ignores it but doesn''t error on presence |
+
+  | `sub-task` maps to sub-agent with context | Consistent with current plan gate
+  tables (`.issues/1284/plan.md` uses `sub-task` for blind sub-agent) |
+
+  | `clean-room` as distinct from `sub-agent` | Clean-room = routing metadata only;
+  sub-agent = with context — explicit distinction prevents context leakage |
+
+  | Pre-dispatch gate runs BEFORE `assemble-work` | Catches invalid plans before any
+  branch creation or sub-agent dispatch |
+
+
+  ## Verification Gates
+
+
+  | Gate | Phase | Method |
+
+  |------|-------|--------|
+
+  | V-1 | 1 | `ls .opencode/guidelines/095-step-dispatch-mandate.md` |
+
+  | V-2 | 1 | `ls .opencode/skills/implementation-pipeline/tasks/verify-step-dispatch-mode.md`
+  |
+
+  | V-3 | 2 | `grep -c ''sub-agent-with-context-dispatch\|sub-agent-clean-room-dispatch\|inline-dispatch''
+  .opencode/skills/implementation-pipeline/SKILL.md` → 0 |
+
+  | V-4 | 2 | `grep -q ''Step-Level Dispatch Mandate'' .opencode/skills/implementation-pipeline/SKILL.md`
+  |
+
+  | V-5 | 2 | `grep -q ''095-step-dispatch-mandate'' .opencode/skills/implementation-pipeline/SKILL.md`
+  |
+
+  | V-6 | 2 | `grep -q ''verify-step-dispatch-mode'' .opencode/skills/implementation-pipeline/SKILL.md`
+  |
+
+  | V-7 | 3 | Behavioral test: legacy plan → BLOCKED |
+
+  | V-8 | 3 | Behavioral test: per-step plan → PASS |
+
+  | V-9 | 3 | Batch validation: all `.issues/*/plan.md` → PASS |
+
+  | V-10 | 4 | Full pipeline integration test |
+
+
+  ## Post-All-Phases Sweep
+
+
+  - [ ] FINISHING CHECKLIST — git status clean, lint/typecheck from scratch
+
+  - [ ] PR CREATION — via `github_create_pull_request`, extract `html_url` from response
+
+  - [ ] POST-MERGE CLEANUP — delete merged branches, close issues, sync dev
+
+
+  > **Compliance Requirement:** All steps and sub-steps in this document MUST be followed
+  in order. Failure to comply with any step — including but not limited to verification
+  gates, test phases, audit checkpoints, and review steps — will result in the feature
+  branch being rejected and discarded, requiring a full rework from scratch and loss
+  of all prior work. There is no valid reason to skip, compress, reorder, or omit
+  any step. If a step appears redundant or unnecessary, follow it anyway — the cost
+  of following an extra step is negligible compared to the cost of rework from a skipped
+  step.'
 created_at: '2026-07-11T23:08:37+00:00'
-updated_at: '2026-07-11T23:08:37+00:00'
+updated_at: '2026-07-11T23:09:16+00:00'
