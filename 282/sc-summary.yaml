@@ -1,0 +1,58 @@
+sc_coverage:
+  total: 8
+  single_task: false
+  spec_url: https://github.com/michael-conrad/opencode-config/issues/282
+  evidence_types:
+    - string
+    - behavioral
+  phases:
+    - id: phase-1
+      sc_ids: [SC-1, SC-2, SC-3, SC-5, SC-6, SC-8]
+      evidence_types: [string, behavioral]
+    - id: phase-2
+      sc_ids: [SC-4, SC-7]
+      evidence_types: [string, behavioral]
+  cross_cutting:
+    sc_ids: []
+    verified_in_phase: null
+  scs:
+    - id: SC-1
+      description: Section header renamed to ## Local Issue Folders
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-1
+    - id: SC-2
+      description: Output format changed to inline git -C commands
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-1
+    - id: SC-3
+      description: path field removed from each entry
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-1
+    - id: SC-4
+      description: Section ordering CLI Auth Status first, Local Issue Folders second, Repo Information third
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-2
+    - id: SC-5
+      description: Module docstring updated to reflect new section name
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-1
+    - id: SC-6
+      description: Missing .issues/ directories include setup comment in inline format
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_phase: phase-1
+    - id: SC-7
+      description: No SC may be weakened, deferred, or reclassified to a lower evidence type
+      evidence_type: behavioral
+      verification_gate: post-implementation
+      plan_phase: phase-2
+    - id: SC-8
+      description: Before any implementation, write tests that verify changed behavior; confirm RED state
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_phase: phase-1
