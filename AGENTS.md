@@ -13,6 +13,8 @@ Main is the single trunk. Dev branch has been removed.
 | `.opencode/AGENTS.md` | Canonical agent rules: build/lint/test commands, workflow, boundaries, pair mode, submodule discipline |
 | `.opencode/.issues/AGENTS.md` | `.issues/` workspace guide: tool, workflow, directory layout, GitHub URL convention |
 | `.issues/AGENTS.md` | Local `.issues/` workspace guide for the parent repo (mirrors `.opencode/.issues/AGENTS.md` pattern)
+| `.opencode/skills/version-manager/` | Version string discovery and semver bumping: discover, bump tasks |
+| `.opencode/skills/release-promoter/` | Git tag creation and GitHub Release promotion: tag, create-release tasks |
 
 ## Trunk-Based Development
 Main is the single trunk. Dev branch has been removed.
