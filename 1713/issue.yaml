@@ -2,6 +2,71 @@ title: Replace Research-First Mandate with Pre-Response Factual Claim Gate in 06
 status: open
 labels:
 - SPEC
-body: ''
+body: "---\nstatus: draft\ntitle: Replace Research-First Mandate with Pre-Response\
+  \ Factual Claim Gate in 065-verification-honesty.md\nlabels: [SPEC]\n---\n\n## Problem\n\
+  \nThe Research-First Mandate and Proactive Verification sections in `065-verification-honesty.md`\
+  \ are prose-heavy mandates that describe *what* to do but not *how* to do it. They\
+  \ are reactive (\"when instructed to check\") rather than proactive (\"fires on\
+  \ every response\"). They lack a binary pass/fail condition and a halt mechanism.\
+  \ The result: agents routinely make factual claims about the workspace, codebase,\
+  \ and system behavior with zero preceding tool calls — the defect that occurred\
+  \ in this session when the agent claimed `.issues/` file operation tools \"don't\
+  \ reach into the worktree\" without running `ls`, `read`, or `git worktree list`.\n\
+  \n## Scope\n\nOne file: `.opencode/guidelines/065-verification-honesty.md`\n\n##\
+  \ Success Criteria\n\n| ID | Criterion | Evidence Type | Verification Method |\n\
+  |----|-----------|---------------|---------------------|\n| SC-1 | The Research-First\
+  \ Mandate section (lines 119-137) is replaced with a numbered Pre-Response Factual\
+  \ Claim Gate procedure | `string` | grep for \"Pre-Response Factual Claim Gate\"\
+  \ in file |\n| SC-2 | The Proactive Verification section (lines 223-276) is replaced\
+  \ with a cross-reference to the new Pre-Response Factual Claim Gate | `string` |\
+  \ grep for \"Pre-Response Factual Claim Gate\" in the Proactive Verification section\
+  \ area |\n| SC-3 | The numbered procedure includes: (1) identify claims, (2) check\
+  \ if verified in current session, (3) make tool call if not, (4) correct on contradiction,\
+  \ (5) omit if unverifiable | `string` | grep for each step number in the procedure\
+  \ |\n| SC-4 | The procedure includes a HALT condition: response with factual claims\
+  \ and zero preceding tool calls is a CRITICAL VIOLATION | `string` | grep for \"\
+  HALT\" and \"CRITICAL VIOLATION\" in the procedure |\n| SC-5 | The procedure specifies\
+  \ session-scoped verification (verify once per session, not per exchange) | `string`\
+  \ | grep for \"session\" in the procedure |\n| SC-6 | The Suggest-After-Research\
+  \ Fallback, Standing Preference, FORBIDDEN/REQUIRED lists, and all sections after\
+  \ Proactive Verification are preserved unchanged | `string` | diff shows no changes\
+  \ outside the replaced sections |\n| SC-7 | The Evidence Hierarchy, Verification-Enforcement\
+  \ Boundary, and Relationship to Other Guidelines sections are preserved unchanged\
+  \ | `string` | diff shows no changes outside the replaced sections |\n\n## Implementation\n\
+  \n### Phase 1: Replace Research-First Mandate (lines 119-137)\n\nReplace the section\
+  \ starting at `## Research-First Mandate` through the end of `### The Agent MUST\
+  \ NOT` with:\n\n```markdown\n## Pre-Response Factual Claim Gate\n\nBefore producing\
+  \ ANY response that contains factual claims about the workspace,\ncodebase, configuration,\
+  \ system behavior, or any observable property of the\nworkspace, you MUST follow\
+  \ this procedure:\n\n1. **Identify each factual claim** in the response you are\
+  \ about to produce.\n   A factual claim is any assertion about what exists, how\
+  \ something works,\n   what state something is in, or what something contains.\n\
+  \n2. **For each claim, check**: Has this specific fact been verified by a tool\n\
+  \   call in the current session? If YES (verified earlier in this session),\n  \
+  \ the prior verification is sufficient — no new tool call needed. If NO,\n   make\
+  \ a tool call to verify it before producing the claim.\n\n3. **If the tool call\
+  \ contradicts the claim**: Correct the claim. Do not\n   output the unverified version.\n\
+  \n4. **If no tool can verify the claim**: Do not make the claim. Report it as\n\
+  \   unverifiable or omit it.\n\n**HALT condition:** A response with one or more\
+  \ factual claims about the\nworkspace and zero preceding tool calls in the current\
+  \ session is a\nCRITICAL VIOLATION. The agent MUST NOT produce such a response.\n\
+  \n**This is a proactive duty.** It fires on every response, not just when\n\"verify\"\
+  \ or \"check\" is explicitly stated. The agent does not wait to be\ntold to verify\
+  \ — verification is part of response generation.\n```\n\n### Phase 2: Replace Proactive\
+  \ Verification (lines 223-276)\n\nReplace the section starting at `## Proactive\
+  \ Verification` through the end of `### Relationship to Other Sections` with:\n\n\
+  ```markdown\n## Proactive Verification\n\nThe Pre-Response Factual Claim Gate (above)\
+  \ governs proactive verification\nfor conversational claims. For content generation\
+  \ (specs, plans, runbooks,\ndocs, correspondence), the `verification-enforcement`\
+  \ skill's structured\ntask-and-collect workflow takes priority — see the Verification-Enforcement\n\
+  Boundary section above.\n\nThe three duties remain:\n- **Reactive** (core rule):\
+  \ When instructed to check, verify, confirm — use tools\n- **Proactive** (this section):\
+  \ Before asserting workspace/codebase claims — use the Pre-Response Factual Claim\
+  \ Gate\n- **Metadata** (previous section): Before trusting metadata claims — verify\
+  \ against actual state\n```\n\n### Phase 3: Verify\n\n- Run `grep` for \"Pre-Response\
+  \ Factual Claim Gate\" in the file\n- Run `grep` for each step number in the procedure\n\
+  - Run `grep` for \"HALT\" and \"CRITICAL VIOLATION\" in the procedure\n- Run `grep`\
+  \ for \"session\" in the procedure\n- Run `diff` to confirm no changes outside the\
+  \ replaced sections\n"
 created_at: '2026-07-13T02:55:03+00:00'
-updated_at: '2026-07-13T02:55:03+00:00'
+updated_at: '2026-07-13T02:55:18+00:00'
