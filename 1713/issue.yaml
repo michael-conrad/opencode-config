@@ -1,5 +1,5 @@
 title: Replace Research-First Mandate with Pre-Response Factual Claim Gate in 065-verification-honesty.md
-status: open
+status: closed
 labels:
 - SPEC
 body: "---\nstatus: draft\ntitle: Replace Research-First Mandate with Pre-Response\
@@ -69,4 +69,6 @@ body: "---\nstatus: draft\ntitle: Replace Research-First Mandate with Pre-Respon
   \ for \"session\" in the procedure\n- Run `diff` to confirm no changes outside the\
   \ replaced sections\n"
 created_at: '2026-07-13T02:55:03+00:00'
-updated_at: '2026-07-13T02:55:18+00:00'
+updated_at: '2026-07-13T03:14:09+00:00'
+closed_at: '2026-07-13T03:14:09+00:00'
+close_reason: not_planned
