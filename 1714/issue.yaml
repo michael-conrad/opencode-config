@@ -1,5 +1,5 @@
 title: Apply DiMo same-model role-differentiated audit to audit skill
-status: open
+status: closed
 labels:
 - SPEC
 body: '---
@@ -131,4 +131,6 @@ body: '---
 
   '
 created_at: '2026-07-13T02:56:29+00:00'
-updated_at: '2026-07-13T02:57:03+00:00'
+updated_at: '2026-07-13T03:04:50+00:00'
+closed_at: '2026-07-13T03:04:50+00:00'
+close_reason: not_planned

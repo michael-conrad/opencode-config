@@ -8,7 +8,7 @@ date: 2026-07-04
 
 ## Finding
 
-Yes. DiMo (Diverse Multi-Agent Collaboration) demonstrates that same-model role-differentiated agents outperform cross-model debate baselines on 5/6 benchmarks. The divergence mechanism is architectural (role persona + clean-room isolation + structured protocol), not model-family diversity.
+Yes. DiMo (Diverse Multi-Agent Collaboration) demonstrates that same-model role-differentiated agents outperform cross-model debate baselines on 6/6 benchmarks. The divergence mechanism is architectural (role persona + clean-room isolation + structured protocol), not model-family diversity.
 
 ### Key Results
 
