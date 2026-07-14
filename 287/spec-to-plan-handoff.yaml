@@ -1,0 +1,17 @@
+spec: https://github.com/michael-conrad/opencode-config/issues/287
+generated_at: 2026-07-13T00:00:00Z
+sc_coverage_total: 8
+decomposition_classification: single-task
+phase_count: 1
+status: complete
+artifacts:
+  - path: .issues/287/spec.md
+    required: true
+  - path: .issues/287/sc-summary.yaml
+    required: true
+  - path: .issues/287/verification-consistency-contract.yaml
+    required: true
+  - path: .issues/287/revision-re-entry-contract.yaml
+    required: true
+  - path: .issues/287/spec-to-plan-handoff.yaml
+    required: true
