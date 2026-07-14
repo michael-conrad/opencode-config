@@ -1,0 +1,17 @@
+spec: https://github.com/michael-conrad/opencode-config/issues/291
+generated_at: 2026-07-13T00:00:00Z
+sc_coverage_total: 11
+decomposition_classification: multi-phase
+phase_count: 4
+status: complete
+artifacts:
+  - path: .issues/291/spec.md
+    required: true
+  - path: .issues/291/sc-summary.yaml
+    required: true
+  - path: .issues/291/verification-consistency-contract.yaml
+    required: true
+  - path: .issues/291/revision-re-entry-contract.yaml
+    required: true
+  - path: .issues/291/spec-to-plan-handoff.yaml
+    required: true

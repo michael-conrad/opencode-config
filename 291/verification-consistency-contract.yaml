@@ -1,0 +1,83 @@
+spec: https://github.com/michael-conrad/opencode-config/issues/291
+verification_consistency:
+  sc_entries:
+    - id: SC-1
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 1
+      artifact_path: .issues/291/string/
+    - id: SC-2
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 1
+      artifact_path: .issues/291/string/
+    - id: SC-3
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 2
+      artifact_path: .issues/291/behavioral/
+    - id: SC-4
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 2
+      artifact_path: .issues/291/behavioral/
+    - id: SC-5
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 3
+      artifact_path: .issues/291/behavioral/
+    - id: SC-6
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 3
+      artifact_path: .issues/291/string/
+    - id: SC-7
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 3
+      artifact_path: .issues/291/string/
+    - id: SC-8
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 1
+      artifact_path: .issues/291/string/
+    - id: SC-9
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 4
+      artifact_path: .issues/291/behavioral/
+    - id: SC-10
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 1
+      artifact_path: .issues/291/behavioral/
+    - id: SC-11
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: red-green
+      re_entry_step: null
+      phase_binding: Phase 4
+      artifact_path: .issues/291/behavioral/
+  constraints:
+    - 'for_every_sc: evidence_type_is_consistent_with_verification_gate'
+    - 'for_every_sc: pipeline_step_binding_is_valid_for_phase'
