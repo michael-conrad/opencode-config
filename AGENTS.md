@@ -35,4 +35,4 @@ Main is the single trunk. Dev branch has been removed.
 
 **The CLI tool handles git operations internally.** File operation tools (`read`, `write`, `edit`, `glob`, `grep`) target the parent repo — they do NOT reach into the worktree. Using them on `.issues/` paths silently operates on the wrong repository.
 
-**See `.opencode/AGENTS.md` for the canonical `.issues/` workspace guide. See `.issues/AGENTS.md` for the local `.issues/` workspace guide.**
+**Read [the canonical `.issues/` workspace guide](.opencode/AGENTS.md). Read [the local `.issues/` workspace guide](.issues/AGENTS.md).**
