@@ -44,26 +44,54 @@ verification_consistency:
       phase_binding: 1
       artifact_path: .issues/303/artifacts/sc-6-verify.log
     - id: SC-7
-      evidence_type: behavioral
+      evidence_type: string
       verification_gate: pre-commit
-      pipeline_step_binding: green
-      re_entry_step: green
-      phase_binding: 2
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
       artifact_path: .issues/303/artifacts/sc-7-verify.log
     - id: SC-8
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
+      artifact_path: .issues/303/artifacts/sc-8-verify.log
+    - id: SC-9
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
+      artifact_path: .issues/303/artifacts/sc-9-verify.log
+    - id: SC-10
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
+      artifact_path: .issues/303/artifacts/sc-10-verify.log
+    - id: SC-11
       evidence_type: behavioral
       verification_gate: pre-commit
       pipeline_step_binding: green
       re_entry_step: green
       phase_binding: 2
-      artifact_path: .issues/303/artifacts/sc-8-verify.log
-    - id: SC-9
+      artifact_path: .issues/303/artifacts/sc-11-verify.log
+    - id: SC-12
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: green
+      phase_binding: 2
+      artifact_path: .issues/303/artifacts/sc-12-verify.log
+    - id: SC-13
       evidence_type: string
       verification_gate: post-implementation
       pipeline_step_binding: audit
       re_entry_step: audit
       phase_binding: 3
-      artifact_path: .issues/303/artifacts/sc-9-verify.log
+      artifact_path: .issues/303/artifacts/sc-13-verify.log
   constraints:
     - 'for_every_sc: evidence_type_is_consistent_with_verification_gate'
     - 'for_every_sc: pipeline_step_binding_is_valid_for_phase'

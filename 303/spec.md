@@ -56,6 +56,9 @@ The decomposition-depth mandate in `decompose.md` (lines 99-125) correctly state
 - The pipeline executor checkpoints per SC, not per step
 - The TDD chaining gate BLOCKs any item covering multiple SCs
 - The sc-summary.yaml binds SCs to individual items, not phases
+- `.opencode/AGENTS.md` documents the per-SC decomposition as the standard workflow
+- `guidelines/091-incremental-build.md` clarifies "item" means "one SC per item"
+- `test-driven-development/tasks/red.md` and `tasks/green.md` reference per-SC targeting
 
 ## Non-Goals
 
@@ -77,6 +80,10 @@ The decomposition-depth mandate in `decompose.md` (lines 99-125) correctly state
 | `implementation-pipeline/tasks/pipeline-executor.md` | Add per-SC checkpoint verification: after each RED/GREEN cycle, verify the specific SC's evidence before advancing. Add SC-ID to checkpoint tag naming. |
 | `implementation-pipeline/tasks/tdd-chaining-gate.md` | Add SC-level check: verify each item covers exactly one SC. BLOCK with `MULTI_SC_ITEM` if any item covers multiple SCs. |
 | `spec-creation-validation/tasks/create.md` | Change `plan_phase` field in sc-summary.yaml to `plan_item`. Each SC gets its own item number. |
+| `.opencode/AGENTS.md` | Add a "Per-SC Decomposition" section documenting the standard: each SC maps to exactly one RED/GREEN/verify/commit cycle. Reference `091-incremental-build.md` and the research card. |
+| `guidelines/091-incremental-build.md` | Clarify that "item" in the Per-Item TDD Cycle table means "one SC per item." Add a note: "An item is a single success criterion (SC) from the spec. Each SC gets its own RED/GREEN/REFACTOR/COMMIT cycle." |
+| `test-driven-development/tasks/red.md` | Add a note in the Required RED Structure section: "The RED phase targets exactly one SC from the spec. Reference the SC-ID in the test file path or test name." |
+| `test-driven-development/tasks/green.md` | Add a note in the Exit Criteria section: "The GREEN phase implements exactly one SC. Verify the SC's evidence type before declaring PASS." |
 
 ### Out of Scope
 
@@ -123,6 +130,12 @@ The decomposition-depth mandate in `decompose.md` (lines 99-125) correctly state
 | SC-4 | `pipeline-executor.md` checkpoints per step | pipeline-executor.md checkpoints per SC with SC-ID in tag |
 | SC-5 | `tdd-chaining-gate.md` checks per-item at file level | tdd-chaining-gate.md BLOCKs on multi-SC items |
 | SC-6 | `create.md` Step 1.1 uses `plan_phase` field | sc-summary.yaml uses `plan_item` not `plan_phase` |
+| SC-7 | No documentation of per-SC standard in AGENTS.md | AGENTS.md documents per-SC decomposition as standard workflow |
+| SC-8 | `091-incremental-build.md` does not define "item" as SC | 091-incremental-build.md clarifies "item" = "one SC per item" |
+| SC-9 | RED/GREEN task files lack per-SC targeting guidance | red.md and green.md reference per-SC targeting |
+| SC-10 | Behavioral test: plan writer produces per-SC items | Behavioral test verifies per-SC item generation |
+| SC-11 | Behavioral test: TDD chaining gate BLOCKs on multi-SC items | Behavioral test verifies MULTI_SC_ITEM rejection |
+| SC-12 | Anti-lobotomization | No SC may be weakened, deferred, or reclassified |
 
 ## Feasibility Assessment
 
@@ -155,9 +168,13 @@ Tests MUST NOT be lobotomized. Removing or weakening a behavioral test assertion
 | SC-4 | `pipeline-executor.md` adds per-SC checkpoint verification: after each RED/GREEN cycle, verify the specific SC's evidence before advancing. Checkpoint tags include SC-ID. | `grep "per-SC checkpoint\|SC-ID.*checkpoint\|verify.*SC.*evidence" .opencode/skills/implementation-pipeline/tasks/pipeline-executor.md` returns ≥ 1. | If per-SC checkpoint is missing, add it. If SC-ID in checkpoint tag is missing, add it. | RED | `.issues/303/artifacts/sc-4-verify.log` | pipeline-executor.md Step 3 | 1 | pre-commit | sequential | — | — | — | 1 |
 | SC-5 | `tdd-chaining-gate.md` adds SC-level check: verify each item covers exactly one SC. BLOCK with `MULTI_SC_ITEM` if any item covers multiple SCs. | `grep "MULTI_SC_ITEM\|exactly one SC\|covers multiple SCs" .opencode/skills/implementation-pipeline/tasks/tdd-chaining-gate.md` returns ≥ 1. | If SC-level check is missing, add it. If `MULTI_SC_ITEM` is missing, add it. | RED | `.issues/303/artifacts/sc-5-verify.log` | tdd-chaining-gate.md | 1 | pre-commit | sequential | — | — | — | 1 |
 | SC-6 | `create.md` Step 1.1 changes `plan_phase` field in sc-summary.yaml to `plan_item`. Each SC gets its own item number instead of a phase group. | `grep "plan_phase" .opencode/skills/spec-creation-validation/tasks/create.md` returns no matches. `grep "plan_item" .opencode/skills/spec-creation-validation/tasks/create.md` returns ≥ 1. | If `plan_phase` remains, replace with `plan_item`. | RED | `.issues/303/artifacts/sc-6-verify.log` | create.md Step 1.1 | 1 | pre-commit | sequential | — | — | — | 1 |
-| SC-7 | Behavioral enforcement test exists that verifies the plan writer produces per-SC items. The test sends a prompt to create a plan from a spec with 3 SCs and verifies the plan has 3 items (not 1 phase). | `ls .opencode/tests-v2/behaviors/per-sc-decomposition.sh` exists. `bash .opencode/tests-v2/behaviors/per-sc-decomposition.sh` returns exit code 0. | If test does not exist, create it. If test fails, fix the implementation. | GREEN | `.issues/303/artifacts/sc-7-verify.log` | Behavioral enforcement | 2 | pre-commit | sequential | — | — | `per-sc-decomposition.sh` | 2 |
-| SC-8 | Behavioral enforcement test exists that verifies the TDD chaining gate BLOCKs on multi-SC items. The test sends a plan with a single item covering 2 SCs and verifies the gate returns `MULTI_SC_ITEM`. | `ls .opencode/tests-v2/behaviors/tdd-chaining-multi-sc-block.sh` exists. `bash .opencode/tests-v2/behaviors/tdd-chaining-multi-sc-block.sh` returns exit code 0. | If test does not exist, create it. If test fails, fix the implementation. | GREEN | `.issues/303/artifacts/sc-8-verify.log` | Behavioral enforcement | 2 | pre-commit | sequential | — | — | `tdd-chaining-multi-sc-block.sh` | 2 |
-| SC-9 | No SC may be weakened, deferred, or reclassified to a lower evidence type to evade implementation. | Audit of all SCs in this spec confirms no evidence type downgrade. | If any SC is weakened, restore to original evidence type. | audit | `.issues/303/artifacts/sc-9-verify.log` | Anti-lobotomization | 3 | post-implementation | sequential | — | — | — | 3 |
+| SC-7 | `.opencode/AGENTS.md` includes a "Per-SC Decomposition" section documenting the standard: each SC maps to exactly one RED/GREEN/verify/commit cycle. References `091-incremental-build.md` and the research card at `.issues/research-cards/per-sc-decomposition-industry-standards.md`. | `grep "Per-SC Decomposition" .opencode/AGENTS.md` returns ≥ 1. `grep "per-sc-decomposition-industry-standards" .opencode/AGENTS.md` returns ≥ 1. | If section is missing, add it. If research card reference is missing, add it. | RED | `.issues/303/artifacts/sc-7-verify.log` | AGENTS.md | 1 | pre-commit | sequential | — | — | — | 1 |
+| SC-8 | `guidelines/091-incremental-build.md` clarifies that "item" in the Per-Item TDD Cycle table means "one SC per item." A note is added: "An item is a single success criterion (SC) from the spec. Each SC gets its own RED/GREEN/REFACTOR/COMMIT cycle." | `grep "one SC per item\|single success criterion" .opencode/guidelines/091-incremental-build.md` returns ≥ 1. | If clarification is missing, add it. | RED | `.issues/303/artifacts/sc-8-verify.log` | 091-incremental-build.md | 1 | pre-commit | sequential | — | — | — | 1 |
+| SC-9 | `test-driven-development/tasks/red.md` includes a note in the Required RED Structure section: "The RED phase targets exactly one SC from the spec. Reference the SC-ID in the test file path or test name." | `grep "targets exactly one SC\|SC-ID in the test" .opencode/skills/test-driven-development/tasks/red.md` returns ≥ 1. | If per-SC targeting note is missing, add it. | RED | `.issues/303/artifacts/sc-9-verify.log` | red.md | 1 | pre-commit | sequential | — | — | — | 1 |
+| SC-10 | `test-driven-development/tasks/green.md` includes a note in the Exit Criteria section: "The GREEN phase implements exactly one SC. Verify the SC's evidence type before declaring PASS." | `grep "implements exactly one SC\|SC.*evidence type.*PASS" .opencode/skills/test-driven-development/tasks/green.md` returns ≥ 1. | If per-SC implementation note is missing, add it. | RED | `.issues/303/artifacts/sc-10-verify.log` | green.md | 1 | pre-commit | sequential | — | — | — | 1 |
+| SC-11 | Behavioral enforcement test exists that verifies the plan writer produces per-SC items. The test sends a prompt to create a plan from a spec with 3 SCs and verifies the plan has 3 items (not 1 phase). | `ls .opencode/tests-v2/behaviors/per-sc-decomposition.sh` exists. `bash .opencode/tests-v2/behaviors/per-sc-decomposition.sh` returns exit code 0. | If test does not exist, create it. If test fails, fix the implementation. | GREEN | `.issues/303/artifacts/sc-11-verify.log` | Behavioral enforcement | 2 | pre-commit | sequential | — | — | `per-sc-decomposition.sh` | 2 |
+| SC-12 | Behavioral enforcement test exists that verifies the TDD chaining gate BLOCKs on multi-SC items. The test sends a plan with a single item covering 2 SCs and verifies the gate returns `MULTI_SC_ITEM`. | `ls .opencode/tests-v2/behaviors/tdd-chaining-multi-sc-block.sh` exists. `bash .opencode/tests-v2/behaviors/tdd-chaining-multi-sc-block.sh` returns exit code 0. | If test does not exist, create it. If test fails, fix the implementation. | GREEN | `.issues/303/artifacts/sc-12-verify.log` | Behavioral enforcement | 2 | pre-commit | sequential | — | — | `tdd-chaining-multi-sc-block.sh` | 2 |
+| SC-13 | No SC may be weakened, deferred, or reclassified to a lower evidence type to evade implementation. | Audit of all SCs in this spec confirms no evidence type downgrade. | If any SC is weakened, restore to original evidence type. | audit | `.issues/303/artifacts/sc-13-verify.log` | Anti-lobotomization | 3 | post-implementation | sequential | — | — | — | 3 |
 
 ## Risk and Edge Cases
 
@@ -166,6 +183,7 @@ Tests MUST NOT be lobotomized. Removing or weakening a behavioral test assertion
 | Per-SC items produce excessive plan step count | Medium | Low — more steps but each is simpler | Split-file format already handles many items; checkpoint tags scale linearly | SC-3 |
 | Existing plans that use per-file phases break | Low | Medium — only affects plans created before this change | No existing plans are modified; only new plans use per-SC items | SC-1 |
 | Plan writer ignores SC-ID binding rule | Low | Medium — produces invalid plans | TDD chaining gate catches multi-SC items and BLOCKs | SC-5 |
+| AGENTS.md or guideline changes missed during implementation | Low | Low — documentation-only changes, no behavioral impact | All 3 doc files are in Phase 1 with string-evidence SCs | SC-7, SC-8, SC-9, SC-10 |
 
 ## Implementation Approach
 
@@ -177,7 +195,19 @@ Tests MUST NOT be lobotomized. Removing or weakening a behavioral test assertion
 
 2. In `create.md` Step 1.1, change `plan_phase` field to `plan_item` in the sc-summary.yaml template. Each SC gets an item number instead of a phase group.
 
-### Phase 2 — Plan Writer Changes
+### Phase 2 — Documentation Standards
+
+**Files:** `.opencode/AGENTS.md`, `guidelines/091-incremental-build.md`, `test-driven-development/tasks/red.md`, `test-driven-development/tasks/green.md`
+
+1. In `.opencode/AGENTS.md`, add a "Per-SC Decomposition" section documenting the standard: each SC maps to exactly one RED/GREEN/verify/commit cycle. Reference `091-incremental-build.md` and the research card at `.issues/research-cards/per-sc-decomposition-industry-standards.md`.
+
+2. In `guidelines/091-incremental-build.md`, clarify that "item" in the Per-Item TDD Cycle table means "one SC per item." Add a note: "An item is a single success criterion (SC) from the spec. Each SC gets its own RED/GREEN/REFACTOR/COMMIT cycle."
+
+3. In `test-driven-development/tasks/red.md`, add a note in the Required RED Structure section: "The RED phase targets exactly one SC from the spec. Reference the SC-ID in the test file path or test name."
+
+4. In `test-driven-development/tasks/green.md`, add a note in the Exit Criteria section: "The GREEN phase implements exactly one SC. Verify the SC's evidence type before declaring PASS."
+
+### Phase 3 — Plan Writer Changes
 
 **Files:** `writing-plans-creation/tasks/structure.md`, `writing-plans-creation/tasks/write.md`
 
@@ -185,7 +215,7 @@ Tests MUST NOT be lobotomized. Removing or weakening a behavioral test assertion
 
 2. In `write.md`, change Tier 3 from "per-item" (file level) to "per-SC" with explicit SC-ID binding. Add validation rule: each item MUST reference exactly one SC ID. Add validation rule 16: "Each item references exactly one SC-ID."
 
-### Phase 3 — Pipeline Changes
+### Phase 4 — Pipeline Changes
 
 **Files:** `implementation-pipeline/tasks/pipeline-executor.md`, `implementation-pipeline/tasks/tdd-chaining-gate.md`
 
@@ -193,7 +223,7 @@ Tests MUST NOT be lobotomized. Removing or weakening a behavioral test assertion
 
 2. In `tdd-chaining-gate.md`, add SC-level check: verify each item covers exactly one SC. BLOCK with `MULTI_SC_ITEM` if any item covers multiple SCs.
 
-### Phase 4 — Behavioral Tests
+### Phase 5 — Behavioral Tests
 
 **Files:** `.opencode/tests-v2/behaviors/per-sc-decomposition.sh`, `.opencode/tests-v2/behaviors/tdd-chaining-multi-sc-block.sh`
 

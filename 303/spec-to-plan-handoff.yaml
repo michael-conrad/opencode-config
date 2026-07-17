@@ -1,6 +1,6 @@
 spec: https://github.com/michael-conrad/opencode-config/issues/303
 generated_at: 2026-07-17T00:00:00Z
-sc_coverage_total: 9
+sc_coverage_total: 13
 decomposition_classification: multi-phase
 phase_count: 3
 status: complete
