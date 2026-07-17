@@ -1,0 +1,69 @@
+spec: https://github.com/michael-conrad/opencode-config/issues/303
+verification_consistency:
+  sc_entries:
+    - id: SC-1
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
+      artifact_path: .issues/303/artifacts/sc-1-verify.log
+    - id: SC-2
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
+      artifact_path: .issues/303/artifacts/sc-2-verify.log
+    - id: SC-3
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
+      artifact_path: .issues/303/artifacts/sc-3-verify.log
+    - id: SC-4
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
+      artifact_path: .issues/303/artifacts/sc-4-verify.log
+    - id: SC-5
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
+      artifact_path: .issues/303/artifacts/sc-5-verify.log
+    - id: SC-6
+      evidence_type: string
+      verification_gate: pre-commit
+      pipeline_step_binding: red
+      re_entry_step: red
+      phase_binding: 1
+      artifact_path: .issues/303/artifacts/sc-6-verify.log
+    - id: SC-7
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: green
+      phase_binding: 2
+      artifact_path: .issues/303/artifacts/sc-7-verify.log
+    - id: SC-8
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      pipeline_step_binding: green
+      re_entry_step: green
+      phase_binding: 2
+      artifact_path: .issues/303/artifacts/sc-8-verify.log
+    - id: SC-9
+      evidence_type: string
+      verification_gate: post-implementation
+      pipeline_step_binding: audit
+      re_entry_step: audit
+      phase_binding: 3
+      artifact_path: .issues/303/artifacts/sc-9-verify.log
+  constraints:
+    - 'for_every_sc: evidence_type_is_consistent_with_verification_gate'
+    - 'for_every_sc: pipeline_step_binding_is_valid_for_phase'

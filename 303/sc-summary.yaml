@@ -1,0 +1,66 @@
+sc_coverage:
+  total: 9
+  single_task: false
+  spec_url: https://github.com/michael-conrad/opencode-config/issues/303
+  evidence_types:
+    - behavioral
+    - string
+  phases:
+    - id: 1
+      sc_ids: [SC-1, SC-2, SC-3, SC-4, SC-5, SC-6]
+      evidence_types: [string]
+    - id: 2
+      sc_ids: [SC-7, SC-8]
+      evidence_types: [behavioral]
+    - id: 3
+      sc_ids: [SC-9]
+      evidence_types: [string]
+  cross_cutting:
+    sc_ids: []
+    verified_in_phase: null
+  scs:
+    - id: SC-1
+      description: "decompose.md Step 5 replaces three-tier per-file phase structure with per-SC item list"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_item: 1
+    - id: SC-2
+      description: "structure.md Step 5 changes from code-path-to-item to SC-to-item mapping"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_item: 2
+    - id: SC-3
+      description: "write.md Tier 3 changes from per-file items to per-SC items with SC-ID binding"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_item: 3
+    - id: SC-4
+      description: "pipeline-executor.md adds per-SC checkpoint verification with SC-ID in tags"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_item: 4
+    - id: SC-5
+      description: "tdd-chaining-gate.md adds SC-level check, BLOCKs on MULTI_SC_ITEM"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_item: 5
+    - id: SC-6
+      description: "create.md Step 1.1 changes plan_phase to plan_item in sc-summary.yaml"
+      evidence_type: string
+      verification_gate: pre-commit
+      plan_item: 6
+    - id: SC-7
+      description: "Behavioral test: plan writer produces per-SC items"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_item: 7
+    - id: SC-8
+      description: "Behavioral test: TDD chaining gate BLOCKs on multi-SC items"
+      evidence_type: behavioral
+      verification_gate: pre-commit
+      plan_item: 8
+    - id: SC-9
+      description: "No SC may be weakened, deferred, or reclassified to evade implementation"
+      evidence_type: string
+      verification_gate: post-implementation
+      plan_item: 9
