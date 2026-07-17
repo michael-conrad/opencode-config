@@ -35,4 +35,39 @@ Main is the single trunk. Dev branch has been removed.
 
 **The CLI tool handles git operations internally.** File operation tools (`read`, `write`, `edit`, `glob`, `grep`) target the parent repo — they do NOT reach into the worktree. Using them on `.issues/` paths silently operates on the wrong repository.
 
-**Read [the canonical `.issues/` workspace guide](.opencode/AGENTS.md). Read [the local `.issues/` workspace guide](.issues/AGENTS.md).**
+**Read [the canonical `.issues/` workspace guide](.opencode/AGENTS.md). Read [the local `.issues/` workspace guide](.issues/AGENTS.md).
+
+---
+
+## Test Framework Discipline — MANDATORY
+
+All test execution MUST use the canonical test framework. The following rules are non-waivable.
+
+### `timeout` Command Prohibition
+
+The `timeout` command (GNU coreutils) is FORBIDDEN in all bash scripts. The bash tool's `timeout` parameter (in milliseconds) is the ONLY permitted kill signal. GNU timeout does NOT forward SIGTERM to its child processes — orphaned opencode processes hold the `flock` lock and hang all subsequent test runs.
+
+### `with-test-home` Mandate
+
+`opencode run` MUST NOT be called directly. ALL opencode test execution MUST go through:
+```bash
+bash .opencode/tests-v2/with-test-home opencode run '<message>'
+```
+
+### Standalone Binary Setup
+
+The snap binary at `/snap/bin/opencode` hardcodes `SNAP_USER_DATA=~/snap/opencode/` and cannot be redirected. The correct pattern is:
+1. Cache the standalone binary at `.tools/opencode/opencode`
+2. Copy it into the test home at `$TEST_HOME/bin/opencode` during test setup
+3. Prepend `$TEST_HOME/bin` to PATH so the harness resolves the standalone binary
+
+### Prohibited Bypass Patterns
+
+| Pattern | Why Forbidden |
+|---------|---------------|
+| Manual test home construction (`mktemp -d`, manual `opencode.jsonc`, manual `git init`, manual `.opencode` clone) | Bypasses isolation, leaks production state |
+| Direct `opencode run` without `with-test-home` | Causes SQLite session conflicts with desktop app |
+| Standalone binary download/copy outside `with-test-home` | Creates unmanaged test environments |
+| Manual `opencode.jsonc` seeding | Bypasses `seed_model_config()` model discovery and isolation verification |
+| Manual `git init` + `.opencode` clone | Bypasses test project creation with proper isolation |
+| "This is simple/quick/small" rationalization | NOT a valid justification — framework is MANDATORY for ALL test execution |**
