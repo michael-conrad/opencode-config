@@ -54,9 +54,9 @@
 
 | Phase | Name | Concern | SCs | Depends On | Steps | Dispatch |
 |-------|------|---------|-----|------------|-------|----------|
-| 1 | SKILL.md restructure | Dispatch table + pipeline | SC-1, SC-3, SC-7, SC-8, SC-9, SC-10 | — | 1–4 | `skill({name: "spec-creation"})` |
-| 2 | Task card cleanup | Task card structure + contracts | SC-2, SC-4, SC-11–SC-21 | Phase 1 | 5–19 | `skill({name: "spec-creation"})` |
-| 3 | Critical violation + verification | Enforcement + regression | SC-5, SC-6 | Phase 2 | 20–21 | `skill({name: "spec-creation"})` |
+| 1 | SKILL.md restructure | Dispatch table + pipeline | SC-1, SC-3, SC-7, SC-8, SC-9, SC-10 | — | 1–9 | `skill({name: "spec-creation"})` |
+| 2 | Task card cleanup | Task card structure + contracts | SC-2, SC-4, SC-11–SC-21 | Phase 1 | 10–27 | `skill({name: "spec-creation"})` |
+| 3 | Critical violation + verification | Enforcement + regression | SC-5, SC-6 | Phase 2 | 28–30 | `skill({name: "spec-creation"})` |
 
 > **Compliance Requirement:** All steps and sub-steps in this document MUST be followed in order. Failure to comply with any step — including but not limited to verification gates, test phases, audit checkpoints, and review steps — will result in the feature branch being rejected and discarded, requiring a full rework from scratch and loss of all prior work. There is no valid reason to skip, compress, reorder, or omit any step. If a step appears redundant or unnecessary, follow it anyway — the cost of following an extra step is negligible compared to the cost of rework from a skipped step.
 
