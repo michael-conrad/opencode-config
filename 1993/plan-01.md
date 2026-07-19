@@ -50,6 +50,6 @@
 
 #### Phase 1 VbC
 
-- [ ] 5. **VbC (**clean-room**).** Verify: SKILL.md dispatch table has exactly 3 entries (SC-1). `revise` entry exists (SC-1). Pipeline section exists with read/write/contract for each sub-task step (SC-3, SC-8, SC-9). No `contracts/` paths in SKILL.md (SC-7). Pipeline starts with sync, ends with sync (SC-10). `operating-protocol.md` deleted (SC-3). Report PASS or BLOCKED with findings.
+- [ ] 5. **VbC (**clean-room**).**
 
 **Concern transition:** Leaving dispatch table integrity → entering task card structural correctness. Phase 2 depends on Phase 1's SKILL.md having the correct pipeline section that the cleaned task cards will reference.

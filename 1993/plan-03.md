@@ -48,6 +48,6 @@ If any changes detected, revert them with `git checkout -- <file>`.
 
 #### Phase 3 VbC
 
-- [ ] 30. **VbC (**clean-room**).** Verify: `000-critical-rules.md` contains sub-agent task() prohibition (SC-5). All 13 clean task cards have zero changes in git diff (SC-6). Report PASS or BLOCKED with findings.
+- [ ] 30. **VbC (**clean-room**).**
 
 **Concern transition:** All phases complete. Ready for post-implementation gates.

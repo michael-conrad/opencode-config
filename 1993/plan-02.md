@@ -133,6 +133,6 @@
 
 #### Phase 2 VbC
 
-- [ ] 27. **VbC (**clean-room**).** Verify: create.md has no `task(` or `skill({name:` calls (SC-15). create.md has no `{project_root}/tmp/` paths (SC-16). create.md has result contract section (SC-17). create.md has read-from-disk specification (SC-18). create.md has sequentially numbered steps (SC-19). create.md self-review reads from local file (SC-20). create.md does not reference "pre-PR gate" (SC-21). create.md does NOT create remote issue (SC-11). completion.md has no `task(` calls (SC-2). change-control.md has no `task(` calls (SC-2). analytical-artifacts.md has no orchestrator-level instructions (SC-4). create-remote-stub.md exists (SC-12). pre-spec-inspection.md exists (SC-13). revise-remote-body.md exists (SC-14). No task card under any spec-creation sub-skill contains `task(...)` (SC-2). Report PASS or BLOCKED with findings.
+- [ ] 27. **VbC (**clean-room**).**
 
 **Concern transition:** Leaving task card structural correctness → entering enforcement and regression prevention. Phase 3 depends on Phase 2's clean task cards being verified.
