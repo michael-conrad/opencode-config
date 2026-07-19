@@ -1,0 +1,15 @@
+variables:
+  SC-1_DONE: {type: bool, nullable: false}
+  SC-2_DONE: {type: bool, nullable: false}
+  SC-3_DONE: {type: bool, nullable: false}
+  SC-4_DONE: {type: bool, nullable: false}
+  SC-5_DONE: {type: bool, nullable: false}
+  SC-6_DONE: {type: bool, nullable: false}
+  SC-7_DONE: {type: bool, nullable: false}
+  SC-8_DONE: {type: bool, nullable: false}
+  SC-9_DONE: {type: bool, nullable: false}
+  SC-10_DONE: {type: bool, nullable: false}
+  SC-11_DONE: {type: bool, nullable: false}
+  SC-12_DONE: {type: bool, nullable: false}
+  SC-13_DONE: {type: bool, nullable: false}
+invariants: []

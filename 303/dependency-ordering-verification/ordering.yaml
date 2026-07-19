@@ -1,0 +1,11 @@
+variables:
+  PHASE_1_DONE: {type: bool, nullable: false}
+  PHASE_2_DONE: {type: bool, nullable: false}
+  PHASE_3_DONE: {type: bool, nullable: false}
+invariants:
+  # Phase 2 depends on Phase 1
+  - "z3.Implies(PHASE_2_DONE == True, PHASE_1_DONE == True)"
+  # Phase 3 depends on Phase 1
+  - "z3.Implies(PHASE_3_DONE == True, PHASE_1_DONE == True)"
+  # Phase 3 depends on Phase 2 (sequential ordering)
+  - "z3.Implies(PHASE_3_DONE == True, PHASE_2_DONE == True)"

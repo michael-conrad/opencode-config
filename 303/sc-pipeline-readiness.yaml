@@ -1,0 +1,41 @@
+schema_version: "1.0"
+generated_at: "20260719193559"
+status: PASS
+checks:
+  - check_id: PR-1
+    result: PASS
+    detail: "Each of the 13 SCs maps to exactly one plan_item (1-13) in sc-summary.yaml, indicating one RED→GREEN→COMMIT cycle per SC. No SC bundles multiple assertions or references multiple files/verification domains."
+  - check_id: PR-2
+    result: PASS
+    solve_contract_path: ".issues/303/sc-dependency-contract.yaml"
+    prove_results:
+      - theorem: "sc_dag_is_valid"
+        result: VALID
+  - check_id: PR-3
+    result: PASS
+    detail: "All 13 SCs target exactly one file category (SC-1..10: task file; SC-11..12: test; SC-13: guideline/skill) and one verification domain (SC-1..10: string; SC-11..12: behavioral; SC-13: string). No SC spans multiple categories or domains."
+  - check_id: PR-4
+    result: PASS
+    solve_contract_path: ".issues/303/dependency-ordering-verification/ordering.yaml"
+    prove_results:
+      - theorem: "phase_dag_is_acyclic"
+        result: VALID
+  - check_id: PR-5
+    result: PASS
+    detail: "Multi-phase spec (3 phases) follows three-tier structure: Phase 1 (SC-1..10) = global pre-phase (spec writer + doc changes); Phase 2 (SC-11..12) = per-file implementation phase (behavioral tests); Phase 3 (SC-13) = global post-phase (audit). Phase count = 1 per-file + 2 = 3. No step duplication across tiers."
+    sub_checks:
+      - check_id: PR-5a
+        result: PASS
+      - check_id: PR-5b
+        result: PASS
+      - check_id: PR-5c
+        result: PASS
+      - check_id: PR-5d
+        result: PASS
+      - check_id: PR-5e
+        result: PASS
+sc_summary:
+  total_scs: 13
+  atomic: 13
+  with_dependencies: 0
+  single_concern: 13
