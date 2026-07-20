@@ -1,5 +1,7 @@
-labels: []
-number: 289
-state: CLOSED
-title: "[SPEC] Holistic Cross-Reference Load Directive Fix \u2014 Rewrite All Guideline\
-  \ Cross-References"
+title: '[SPEC-FIX] Prefer built-ins/libraries/add-ons over bespoke code'
+status: open
+labels:
+- spec-fix
+body: ''
+created_at: '2026-07-20T17:54:13+00:00'
+updated_at: '2026-07-20T17:54:13+00:00'
