@@ -2,6 +2,88 @@ title: '[SPEC-FIX] Prefer built-ins/libraries/add-ons over bespoke code'
 status: open
 labels:
 - spec-fix
-body: ''
+body: '## Problem
+
+
+  The `.opencode/` directory contains 43+ bespoke components (tools, scripts, plugins,
+  skill scripts) — many of which duplicate functionality already available through
+  opencode built-ins (read/write/glob/grep), the editor MCP plugin, standard shell
+  commands, or the vibeguard plugin. 22 of 43 components (51%) are fully replaceable,
+  and 6 more (14%) are partially replaceable.
+
+
+  There is no standing mandate to prefer built-ins/libraries/add-ons over bespoke
+  code. Without one, new components continue to be written bespoke when existing alternatives
+  suffice, and existing bespoke components are never audited for replacement.
+
+
+  ## Scope
+
+
+  - **AGENTS.md** — Add a standing mandate section
+
+  - **guidelines/080-code-standards.md** — Add a "Prefer Built-ins" section
+
+  - **guidelines/060-tool-usage.md** — Add a "Prefer Built-ins" subsection under Tool
+  Priority Hierarchy
+
+
+  ## Success Criteria
+
+
+  | ID | Criterion | Evidence Type | Verification Method |
+
+  |----|-----------|---------------|---------------------|
+
+  | SC-1 | AGENTS.md contains a "Prefer Built-ins" section stating that all new `.opencode/`
+  components MUST prefer opencode built-ins, MCP servers, or standard libraries over
+  bespoke code | `string` | grep for "Prefer Built-ins" in AGENTS.md |
+
+  | SC-2 | 080-code-standards.md contains a "Prefer Built-ins" section with the same
+  mandate | `string` | grep for "Prefer Built-ins" in 080-code-standards.md |
+
+  | SC-3 | 060-tool-usage.md Tool Priority Hierarchy references the mandate (prefer
+  Tier 1-3 over bespoke) | `string` | grep for "bespoke" in 060-tool-usage.md |
+
+  | SC-4 | The mandate applies globally to all languages and all `.opencode/` subdirectories
+  (tools/, plugins/, scripts/, skills/*/scripts/) | `string` | grep for "all languages"
+  or "global" in the mandate text |
+
+  | SC-5 | The mandate includes a non-exhaustive list of preferred alternatives: opencode
+  built-in tools (read/write/edit/glob/grep), editor MCP plugin, vibeguard plugin,
+  standard shell commands, Python stdlib, npm packages | `string` | grep for at least
+  3 of the listed alternatives |
+
+  | SC-6 | The mandate requires a feasibility justification in any spec that proposes
+  new bespoke code — why existing alternatives are insufficient | `string` | grep
+  for "feasibility" or "justification" in the mandate text |
+
+
+  ## Affected Files
+
+
+  - `.opencode/AGENTS.md`
+
+  - `.opencode/guidelines/080-code-standards.md`
+
+  - `.opencode/guidelines/060-tool-usage.md`
+
+
+  ## Implementation Notes
+
+
+  - This is a documentation-only change — no code is modified
+
+  - The mandate is forward-looking: it governs NEW components. Existing bespoke components
+  are grandfathered but SHOULD be audited for replacement in future specs
+
+  - Place the AGENTS.md section under a new "Prefer Built-ins" heading, near the existing
+  "Build / Lint / Test Commands" section
+
+  - In 080-code-standards.md, add as a new top-level section
+
+  - In 060-tool-usage.md, add as a subsection under the Tool Priority Hierarchy
+
+  '
 created_at: '2026-07-20T17:54:13+00:00'
-updated_at: '2026-07-20T17:54:13+00:00'
+updated_at: '2026-07-20T17:54:34+00:00'
