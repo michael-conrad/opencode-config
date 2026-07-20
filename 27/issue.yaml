@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+number: 27
+state: CLOSED
+title: "[SPEC-FIX] Git hook root detection \u2014 walk-up hangs when hooks execute\
+  \ outside .opencode/"

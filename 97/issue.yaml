@@ -1,0 +1,5 @@
+labels:
+- '[SPEC-FIX]'
+number: 97
+state: CLOSED
+title: "[SPEC-FIX] Auditor verdict self-consistency \u2014 PASS must mean clean PASS"

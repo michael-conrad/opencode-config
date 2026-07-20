@@ -1,0 +1,6 @@
+labels:
+- spec
+number: 46
+state: CLOSED
+title: '[SPEC] Track and commit pending local work: .issues/ cleanup, auditor qualification
+  docs, behavioral tests'

@@ -1,0 +1,6 @@
+labels:
+- bug
+- SPEC-FIX
+number: 25
+state: CLOSED
+title: '[BUG] Agent Made Unauthorized File Edits During Discussion/Feedback Mode'

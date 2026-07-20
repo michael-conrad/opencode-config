@@ -1,0 +1,7 @@
+labels:
+- needs-approval
+- spec
+- plugin
+number: 69
+state: CLOSED
+title: '[SPEC] Plugin: Replace mode-switch reminders with authorization-gate anchors'

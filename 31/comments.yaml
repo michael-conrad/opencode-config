@@ -1,0 +1,14 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: 'Closed: misrouted. This issue targets `.opencode/plugins/session-enforcement.ts`
+    which lives in `michael-conrad/.opencode`, not `michael-conrad/opencode-config`.
+    Re-filed in the correct repo.'
+  createdAt: '2026-05-02T22:57:56Z'
+  id: IC_kwDOSOjxms8AAAABBCsXXg
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/31#issuecomment-4364900190
+  viewerDidAuthor: true

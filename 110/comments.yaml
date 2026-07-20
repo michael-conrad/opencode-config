@@ -1,0 +1,13 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Moved to `michael-conrad/.opencode#733` \u2014 the affected files live in\
+    \ the `.opencode/` submodule, which has its own repo."
+  createdAt: '2026-05-20T06:41:02Z'
+  id: IC_kwDOSOjxms8AAAABC_Gbiw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/110#issuecomment-4495350667
+  viewerDidAuthor: true

@@ -1,0 +1,7 @@
+labels:
+- spec
+- triage
+number: 95
+state: CLOSED
+title: '[SPEC] Weave behavioral test infrastructure references into verification task
+  files (#627 dark prose compliance)'

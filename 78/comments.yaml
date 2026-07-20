@@ -1,0 +1,29 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "This spec targets files in `.opencode/skills/git-workflow/tasks/cleanup/branch-cleanup.md`\
+    \ which lives in the `michael-conrad/.opencode` submodule. The actual implementation\
+    \ issue will be created there. This issue tracks the parent repo side (if any\
+    \ config changes are needed here).\n\n\U0001F916 Co-authored with AI: OpenCode\
+    \ (deepseek-v4-flash)"
+  createdAt: '2026-05-13T22:58:43Z'
+  id: IC_kwDOSOjxms8AAAABCP4DoQ
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/78#issuecomment-4445832097
+  viewerDidAuthor: true
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Migrated to [michael-conrad/.opencode#604](https://github.com/michael-conrad/.opencode/issues/604)\
+    \ \u2014 this issue only concerns files inside the `.opencode/` submodule."
+  createdAt: '2026-05-15T21:50:56Z'
+  id: IC_kwDOSOjxms8AAAABChLFPQ
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/78#issuecomment-4463969597
+  viewerDidAuthor: true

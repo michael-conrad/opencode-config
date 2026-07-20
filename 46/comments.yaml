@@ -1,0 +1,21 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "**SC Verification Evidence**\n\n| SC ID | Success Criterion | Result |\n\
+    |-------|-------------------|--------|\n| SC-1 | `.issues/` directory cleaned\
+    \ | \u2705 PASS \u2014 PR #47 merged, all stale archives removed, promoted issues\
+    \ moved |\n| SC-2 | `docs/auditor-model-qualification/` committed with gitignored\
+    \ LaTeX | \u2705 PASS \u2014 PR #47 merged with LaTeX artifacts and .gitignore\
+    \ |\n| SC-3 | `tests/behaviors/` committed and cross-referenced | \u2705 PASS\
+    \ \u2014 PR #47 merged with 5 behavioral tests |\n| SC-4 | Feature branch from\
+    \ dev, not submodule-bump-only | \u2705 PASS \u2014 PR #47 branch `chore/issue-46-track-local-work`\
+    \ |\n\n**Verdict:** PASS\n**PR Reference:** #47\n\n\U0001F916 Co-authored with\
+    \ AI: OpenCode (ollama-cloud/glm-5.1)"
+  createdAt: '2026-05-07T01:55:29Z'
+  id: IC_kwDOSOjxms8AAAABBeCKzw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/46#issuecomment-4393568975
+  viewerDidAuthor: true

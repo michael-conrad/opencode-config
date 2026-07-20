@@ -1,0 +1,52 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "## Design Question Resolution \u2014 Research Findings\n\n### Q1: New standalone\
+    \ skill vs. reuse existing?\n\n**Finding: New standalone skill.** Analysis of\
+    \ the full skill deck:\n\n| Approach | Problem |\n|---|---|\n| `verification-before-completion`\
+    \ | Halts on failure \u2014 no write access, no remediation loops. Calls adversarial\
+    \ audit internally (would create circular dependency). Adapting requires changing\
+    \ every core behavior. |\n| `finishing-a-development-branch` | Branch readiness\
+    \ (lint/test/push), not SC completeness against a spec. No write access, no loops.\
+    \ |\n| `adversarial-audit` | Adversarial by design \u2014 the opposite of what's\
+    \ needed. |\n| `divide-and-conquer` | Orchestrator \u2014 dispatches but doesn't\
+    \ check content. |\n\nNo existing skill has the **\"write-access checker with\
+    \ unlimited remediation loops\"** pattern. This is genuinely new.\n\n### Q2: Where\
+    \ does it live \u2014 `divide-and-conquer` task vs. standalone?\n\n**Finding:\
+    \ Standalone skill.** Three reasons:\n\n1. **All pipeline gate skills are standalone**:\
+    \ `verification-before-completion`, `finishing-a-development-branch`, `adversarial-audit`,\
+    \ `approval-gate`, `requesting-code-review` \u2014 all are own-directory skills,\
+    \ not sub-tasks of the orchestrator.\n\n2. **`divide-and-conquer/tasks/` serves\
+    \ a different purpose**: All 13 tasks are orchestration-flow mechanics (assess,\
+    \ decompose, dispatch, merge, context-passing). `assemble-work.md` is already\
+    \ at 3,649 words (over the 3,000 max). Adding gate logic there compounds the problem.\n\
+    \n3. **The checker has its own identity**: Unique entry/exit criteria, its own\
+    \ sub-agent dispatch with write access (unique capability), unlimited loop mechanics\
+    \ (unique pattern), and `ready_for_audit` signaling (new contract field). These\
+    \ don't fit the orchestrator-task pattern.\n\n**Suggested name**: `completeness-gate`\
+    \ \u2014 mirrors `approval-gate` convention, short enough for INDEX.md, self-documenting.\n\
+    \n### Spec updated\n\nBoth open questions resolved in the spec body.\n\n\U0001F916\
+    \ OpenCode (deepseek-v4-flash-free) \u2705 completed"
+  createdAt: '2026-05-20T14:55:15Z'
+  id: IC_kwDOSOjxms8AAAABDDL94A
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/112#issuecomment-4499635680
+  viewerDidAuthor: true
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Moved to correct repo \u2014 affected files live in `.opencode` submodule.\n\
+    \nParent spec: `michael-conrad/.opencode#735`\n\nClosing this issue in favor of\
+    \ the correct location.\n\n\U0001F916 OpenCode (deepseek-v4-flash-free) \u2705\
+    \ completed"
+  createdAt: '2026-05-20T15:03:18Z'
+  id: IC_kwDOSOjxms8AAAABDDP8nA
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/112#issuecomment-4499700892
+  viewerDidAuthor: true

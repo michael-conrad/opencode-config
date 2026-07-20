@@ -1,0 +1,14 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Closing \u2014 this should be filed against `michael-conrad/.opencode` since\
+    \ the target file `.opencode/plugins/session-enforcement.ts` lives in that repo.\
+    \ Re-filed as michael-conrad/.opencode#N (will fill number after creation)."
+  createdAt: '2026-05-07T16:52:46Z'
+  id: IC_kwDOSOjxms8AAAABBjYuTA
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/56#issuecomment-4399181388
+  viewerDidAuthor: true

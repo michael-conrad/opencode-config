@@ -1,0 +1,5 @@
+labels: []
+number: 31
+state: CLOSED
+title: "[SPEC-FIX] Sub-Agent Per-Turn Injection Gating \u2014 Add isSubAgent Guards\
+  \ to Context-Dependent Runtime Probes"

@@ -1,0 +1,7 @@
+labels:
+- needs-approval
+- spec
+number: 99
+state: CLOSED
+title: '[SPEC] Auditor Clean-Room Integrity: Prior-Result Contamination, Biased Task
+  Naming, and Test Execution Evidence'

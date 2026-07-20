@@ -1,0 +1,7 @@
+labels:
+- bug
+- resolve-models
+- adversarial-audit
+number: 83
+state: CLOSED
+title: resolve-models returns raw model strings instead of subagent_type auditor strings

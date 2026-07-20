@@ -1,0 +1,9 @@
+labels:
+- bug
+- spec
+- approved-for-pr
+- tier-2
+number: 76
+state: CLOSED
+title: "[SPEC] Cross-repo cleanup \u2014 submodule issue closure, branch cleanup,\
+  \ dev-tip verification"

@@ -1,0 +1,7 @@
+labels:
+- bug
+- tier-2
+number: 114
+state: CLOSED
+title: '[BUG] Sub-agents creating individual PRs instead of returning to orchestrator
+  when pr_strategy=stacked'

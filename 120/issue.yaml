@@ -1,0 +1,5 @@
+labels:
+- needs-approval
+number: 120
+state: CLOSED
+title: '[SPEC-FIX] local-issues autosetup for worktrees and main repo migration'

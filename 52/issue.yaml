@@ -1,0 +1,6 @@
+labels:
+- needs-approval
+- spec
+number: 52
+state: CLOSED
+title: "[SPEC] needs-approval label lifecycle \u2014 restore as default, not deprecated"

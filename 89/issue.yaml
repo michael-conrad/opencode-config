@@ -1,0 +1,5 @@
+labels:
+- spec
+number: 89
+state: CLOSED
+title: '[SPEC] Adversarial Audit: SC Test Dimension Coverage and Binary Result Enforcement'

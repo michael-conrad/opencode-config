@@ -1,0 +1,1 @@
+Closed: This issue was created on the wrong repository. The correct repo for all issues is `michael-conrad/.opencode`. The infrastructure spec for `assert_semantic` will be recreated there.

@@ -1,0 +1,5 @@
+labels:
+- dep-sync
+number: 62
+state: CLOSED
+title: "chore: update .opencode submodule \u2014 implement #86 local-first issue architecture"

@@ -1,0 +1,8 @@
+labels:
+- SPEC-FIX
+- critical
+- tier-1
+number: 57
+state: CLOSED
+title: '[SPEC-FIX] GREEN phase allows structural verification as proxy for execution-based
+  SC verification'

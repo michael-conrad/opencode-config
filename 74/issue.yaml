@@ -1,0 +1,7 @@
+labels:
+- spec
+- critical
+- tier-1
+number: 74
+state: CLOSED
+title: "[SPEC] Functional/Behavioral Test Substitution Prohibition \u2014 critical-rules-049"

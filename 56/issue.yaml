@@ -1,0 +1,6 @@
+labels:
+- '[SPEC]'
+number: 56
+state: CLOSED
+title: "[SPEC] Remove Identity Validation from session-enforcement.ts \u2014 Circular\
+  \ Self-Check with Broken Parser"

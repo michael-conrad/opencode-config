@@ -1,0 +1,13 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Closed \u2014 spec was created in the wrong repo. The correct spec is at\
+    \ https://github.com/michael-conrad/.opencode/issues/798"
+  createdAt: '2026-05-21T18:13:50Z'
+  id: IC_kwDOSOjxms8AAAABDOSvMw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/120#issuecomment-4511280947
+  viewerDidAuthor: true

@@ -1,0 +1,7 @@
+labels:
+- needs-approval
+- spec
+number: 111
+state: CLOSED
+title: "[SPEC] Cost-Frame Reformation \u2014 dark-prose-007 pattern and global injection\
+  \ into specs and plans"

@@ -1,0 +1,7 @@
+labels:
+- SPEC-FIX
+- needs-approval
+- spec
+number: 96
+state: CLOSED
+title: '[SPEC-FIX] Use opencode-cli models for behavioral testing model discovery'

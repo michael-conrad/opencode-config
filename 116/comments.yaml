@@ -1,0 +1,12 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: 'Closed: spec created in the correct repo (.opencode submodule). See https://github.com/michael-conrad/.opencode/issues/794'
+  createdAt: '2026-05-21T03:30:15Z'
+  id: IC_kwDOSOjxms8AAAABDH2U3A
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/116#issuecomment-4504523996
+  viewerDidAuthor: true

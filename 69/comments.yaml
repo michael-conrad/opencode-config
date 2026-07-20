@@ -1,0 +1,13 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Migrated to [michael-conrad/.opencode#602](https://github.com/michael-conrad/.opencode/issues/602)\
+    \ \u2014 this issue only concerns files inside the `.opencode/` submodule."
+  createdAt: '2026-05-15T21:50:55Z'
+  id: IC_kwDOSOjxms8AAAABChLEUw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/69#issuecomment-4463969363
+  viewerDidAuthor: true

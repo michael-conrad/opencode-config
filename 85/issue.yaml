@@ -1,0 +1,7 @@
+labels:
+- spec
+- writing-plans
+- plan-autonomy
+number: 85
+state: CLOSED
+title: '[SPEC] Phase-level plans with TDD as mandate (not micromanagement script)'

@@ -1,0 +1,8 @@
+labels:
+- spec
+- brainstorming
+- default-behavior
+number: 108
+state: CLOSED
+title: "[SPEC] Exploration as default floor mode \u2014 agent defaults to discuss/explore\
+  \ when intent is ambiguous"

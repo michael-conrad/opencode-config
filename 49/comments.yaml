@@ -1,0 +1,13 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Migrated to michael-conrad/.opencode#424 \u2014 target files live in the\
+    \ `.opencode` submodule repo, not the parent config repo."
+  createdAt: '2026-05-07T00:28:48Z'
+  id: IC_kwDOSOjxms8AAAABBdqavw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/49#issuecomment-4393179839
+  viewerDidAuthor: true

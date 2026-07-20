@@ -1,0 +1,1 @@
+Created in wrong repo. Correct spec is michael-conrad/.opencode#797

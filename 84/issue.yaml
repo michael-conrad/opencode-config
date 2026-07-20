@@ -1,0 +1,8 @@
+labels:
+- SPEC-FIX
+- critical
+- tier-1
+number: 84
+state: CLOSED
+title: '[SPEC-FIX] Adversarial re-verification for re-approved completed specs + no-PR
+  cleanup handler'

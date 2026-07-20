@@ -1,0 +1,13 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Wrong repo \u2014 the target files (`.opencode/skills/verification-before-completion/tasks/verify.md`,\
+    \ etc.) live in the `.opencode` submodule repo. Closing; moved to `michael-conrad/.opencode/issues/...`."
+  createdAt: '2026-05-17T14:39:27Z'
+  id: IC_kwDOSOjxms8AAAABCn5QMA
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/95#issuecomment-4471017520
+  viewerDidAuthor: true

@@ -1,0 +1,20 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "**SC Verification Evidence**\n\n| SC ID | Success Criterion | Result |\n\
+    |-------|-------------------|--------|\n| SC-1 | `AGENTS.md` is \u22645 lines\
+    \ | \u2705 PASS \u2014 `wc -l` returns 2 |\n| SC-2 | `AGENTS.md` contains zero\
+    \ behavioral rules (no \"must\"/\"never\" as agent mandates) | \u2705 PASS \u2014\
+    \ `grep -iE '\\b(must|never|MUST|NEVER)\\b'` returns no results |\n| SC-3 | No\
+    \ circular reference from submodule skilldeck to parent AGENTS.md | \u23F3 Separate\
+    \ submodule issue \u2014 out of scope for this cleanup |\n\n**Verdict:** PASS\
+    \ (SC-3 tracked as separate submodule issue)\n**PR Reference:** #88\n\n\U0001F916\
+    \ Co-authored with AI: OpenCode (ollama-cloud/glm-5.1)"
+  createdAt: '2026-05-15T13:54:28Z'
+  id: IC_kwDOSOjxms8AAAABCdtPig
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/87#issuecomment-4460334986
+  viewerDidAuthor: true

@@ -1,0 +1,40 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "## Spec Audit Results\n\n### Dual Adversarial Audit \u2014 Consensus: PASS\n\
+    \nDispatched two cross-family auditors (kimi, qwen) via `resolve-models`. Both\
+    \ returned PASS on all 7 criteria. Cross-validate confirmed no disagreements and\
+    \ no dark patterns.\n\n### Findings Addressed\n\n| Finding | Auditor | Resolution\
+    \ |\n|---|---|---|\n| `BEHAVIOR_LOCAL_MODEL` undefined when intersection empty\
+    \ | Both | Added explicit fallback `ollama/glm-5.1:cloud` to SC-2 |\n| 632 test\
+    \ file conflict with non-goals | qwen | Added SC-5 for content-verification test\
+    \ updates; non-goals updated to acknowledge |\n\n### Spec Updated\n\n- SC-2 now\
+    \ defines explicit `BEHAVIOR_LOCAL_MODEL` fallback\n- Added SC-5 for `632-resolve-models-tool-command-content.sh`\
+    \ content-verification test updates\n- Non-goals section updated to note the 632\
+    \ exception\n\n### Verdict Summary\n\n| Criterion | Result |\n|---|---|\n| Problem\
+    \ statement accurate | PASS |\n| Success criteria clear/testable | PASS |\n| Dead\
+    \ code correctly identified | PASS |\n| Consistency | PASS |\n| Single concern\
+    \ | PASS |\n| Risk coverage | PASS |\n| Non-goals bounded | PASS |\n| SC Determinism\
+    \ | PASS (all 4 SCs deterministic) |\n| **Aggregate** | **PASS \u2014 proceed**\
+    \ |\n\n\U0001F916 Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)"
+  createdAt: '2026-05-17T15:24:48Z'
+  id: IC_kwDOSOjxms8AAAABCoFEKA
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/96#issuecomment-4471211048
+  viewerDidAuthor: true
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: Refiled to `.opencode#676` (already existed, already implemented and closed).
+    Closing this duplicate in the parent repo.
+  createdAt: '2026-05-30T05:19:57Z'
+  id: IC_kwDOSOjxms8AAAABERh-Lg
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/96#issuecomment-4581785134
+  viewerDidAuthor: true

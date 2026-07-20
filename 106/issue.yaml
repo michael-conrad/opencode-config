@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+number: 106
+state: CLOSED
+title: '[SPEC-FIX] Skill card validator overhaul: metadata fields, online schema ref,
+  dark prose descriptions, semantic audit'

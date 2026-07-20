@@ -1,0 +1,7 @@
+labels:
+- needs-approval
+- spec
+number: 105
+state: CLOSED
+title: "[SPEC] Remove Pre-Response Gate carveout \u2014 agent routing-bypass rationalization\
+  \ enabled by Step 4 exception"

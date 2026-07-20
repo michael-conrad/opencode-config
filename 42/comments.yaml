@@ -1,0 +1,217 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "## Audit Amendment \u2014 Full Revision Round 2\n\nDual adversarial audit\
+    \ (structural + behavioral) found 2 HIGH regressions, 2 minor factual errors,\
+    \ and architectural issues discovered through developer review. This amendment\
+    \ supersedes the original spec approach on several points.\n\n### Regressions\
+    \ Found\n\n| # | Finding | Severity |\n|---|---------|----------|\n| 1 | `extractValue()`\
+    \ regex (`key=\\s*(\\S+)`) matches `key=value` but session-init emits `key: value`\
+    \ \u2014 repointing breaks IDENTITY_ECHO | HIGH |\n| 2 | Sub-folder repo mappings\
+    \ (`.gitmodules\u2192owner/repo`) only emitted by `session_context_identity.py`,\
+    \ not session-init \u2014 removal loses API routing gate | HIGH |\n| 3 | Change\
+    \ 6 references `<IDENTITY_SOURCE_LOCAL>` but actual code tag is `<LOCAL_MODE>`\
+    \ | MEDIUM |\n| 4 | Spec says \"cachedOutput set to empty string\" on failure;\
+    \ actually remains `null` | LOW |\n\n### Architectural Issues (Developer Review)\n\
+    \nThese go beyond the audit findings \u2014 they represent fundamental design\
+    \ problems:\n\n| # | Issue | Severity |\n|---|---------|----------|\n| 5 | `extractValue()`\
+    \ and all regex parsing of stdout is wrong architecture \u2014 session-init output\
+    \ is English text for LLMs, not a structured protocol | HIGH |\n| 6 | `<IDENTITY_ECHO>`\
+    \ parrot ritual is pointless \u2014 agent reads session-init verbatim, no need\
+    \ to echo it back | HIGH |\n| 7 | `<IDENTITY_VALIDATION_FAILURE>` gate validates\
+    \ the parrot ritual via regex \u2014 fragile layer on top of pointless layer |\
+    \ HIGH |\n| 8 | `detectAgentBinary()` duplicates opencode-cli's native AgentName/ModelId\
+    \ injection | MEDIUM |\n| 9 | XML tags throughout injection text \u2014 no XML\
+    \ parser exists, LLMs read English text | HIGH |\n| 10 | `buildMetadataBlock()`\
+    \ reads `pyproject.toml` \u2014 assumes Python parent repo | MEDIUM |\n| 11 |\
+    \ Language preference hardcoded in plugin \u2014 repo/culture-specific, should\
+    \ come from config | LOW |\n| 12 | `<SESSION_TRIGGERS>` wrapping is XML wrapping\
+    \ English text | LOW |\n| 13 | `<ISSUE_PIPELINE_TRIGGER>` hardcodes a 5-step pipeline\
+    \ that duplicates skill logic | LOW |\n| 14 | Emoji usage in injection text wastes\
+    \ tokens and adds noise | LOW |\n\n### Revised Changes\n\nThe original 7 changes\
+    \ are expanded to address all findings above.\n\n---\n\n#### Change 1: Remove\
+    \ `buildEnforcementContent()` (unchanged)\n\nRemove the entire `buildEnforcementContent()`\
+    \ function and its call. Refactor `loadSkillDescriptions()` to `validateSkillFrontmatter()`\
+    \ returning only `{ errors }`.\n\n---\n\n#### Change 2: Remove `buildTrainingStalenessBlock()`\
+    \ (unchanged)\n\nAlready covered by `065-verification-honesty.md` and `075-docs-verification.md`.\n\
+    \n---\n\n#### Change 3: Remove `buildReferencesVerificationBlock()` (unchanged)\n\
+    \nSame duplication as Change 2.\n\n---\n\n#### Change 4: Remove `buildGuidelineIndexBlock()`\
+    \ (unchanged)\n\n`INDEX.md` file kept for sub-agent routing. Only plugin injection\
+    \ removed.\n\n---\n\n#### Change 5: Remove `runSessionContextIdentity()` prose\
+    \ section (REVISED)\n\n**Original:** Remove identity script, repoint `extractValue()`\
+    \ to `cachedOutput`.\n\n**Revised:** Remove identity script and ALL parsing of\
+    \ its output. The identity script emitted data in a format that required regex\
+    \ parsing to extract values. Session-init emits English text that the agent reads\
+    \ directly \u2014 no parsing needed.\n\nRemove:\n- `runSessionContextIdentity()`\
+    \ call and `output.system.push(identityOutput)` (lines 1300-1302)\n- `cachedIdentityOutput`\
+    \ and `identityCacheTimestamp` (lines 450-506)\n- `extractValue()` function (lines\
+    \ 1031-1036) \u2014 **no longer needed**\n- All four `extractValue(cachedIdentityOutput,\
+    \ ...)` calls (lines 1365-1368)\n\n**Keep:** `detectAgentBinary()` still removed\
+    \ (see Change 8).\n\n**Add to session-init:** Sub-folder repo mappings section.\
+    \ The identity script currently emits this from `.gitmodules` scanning (lines\
+    \ 336-356). Session-init already has `get_submodule_dirs()` and `get_submodule_remotes()`\
+    \ but does not emit the mapping as output. Add a new section to session-init that\
+    \ outputs the same information in proper Markdown:\n\n```\n## Sub-folder Repo\
+    \ Mappings\n\n- Files under these paths belong to separate repos \u2014 use these\
+    \ owner/repo values for API calls targeting those paths\n- .opencode: michael-conrad/.opencode\
+    \ (github)\n```\n\nThis is dynamic data (from `.gitmodules`) and must come from\
+    \ a script, not a static file.\n\n---\n\n#### Change 6: Remove `<LOCAL_MODE>`\
+    \ blocks (REVISED)\n\n**Original:** Remove `<IDENTITY_SOURCE_LOCAL>` blocks.\n\
+    \n**Correction:** The actual code tag is `<LOCAL_MODE>` (lines 1417, 1426), not\
+    \ `<IDENTITY_SOURCE_LOCAL>`. Remove the `<LOCAL_MODE>` blocks at lines 1410-1419\
+    \ and 1420-1428. Session-init's `github.identity_source` value plus `060-tool-usage.md`\
+    \ \xA79 provide the same behavioral directives.\n\n---\n\n#### Change 7: Replace\
+    \ `<IDENTITY_ECHO>` + `<IDENTITY_VALIDATION_FAILURE>` with identity-byline (NEW\
+    \ \u2014 replaces original Change 7)\n\n**Original:** Repoint `extractValue()`\
+    \ to session-init output, keep echo ritual.\n\n**Revised:** Remove ALL of:\n-\
+    \ `buildIdentityEchoDirective()` function (lines 1061-1076)\n- `<IDENTITY_ECHO>`\
+    \ injection (lines 1382-1398)\n- `<IDENTITY_VALIDATION_FAILURE>` gate \u2014 both\
+    \ missing-values (lines 1429-1441) and mismatch (lines 1443-1475) branches\n-\
+    \ `extractValue()` function (already removed in Change 5)\n\nReplace with a simple\
+    \ identity-byline at the end of the agent's first turn. The agent reads session-init\
+    \ verbatim and already knows `github.owner`, `github.repo`, etc. Instead of a\
+    \ parrot ritual + regex validation gate, require a byline at the end of the first\
+    \ assistant message:\n\n```\n\U0001F916 <AgentName> (<ModelId>) \u2705 ready\n\
+    ```\n\nThe agent and model values come from opencode-cli natively \u2014 no `detectAgentBinary()`\
+    \ needed. The byline serves as:\n- A lightweight identity acknowledgment (the\
+    \ agent knows who it is from native injection)\n- A status indicator for the developer\n\
+    - A proxy for the old identity echo, but without the parrot ritual and without\
+    \ regex validation\n\nImplementation: Replace the identity echo/validation blocks\
+    \ with a single instruction in the first user message:\n\n```\nEnd your first\
+    \ response with an identity-byline line in this exact format:\n\U0001F916 <your\
+    \ agent name> (<your model id>) \u2705 ready\n```\n\nNo regex validation gate.\
+    \ If the agent gets it wrong, the developer notices in chat. This follows the\
+    \ principle: the injection is English text for LLMs, not a machine-readable protocol.\n\
+    \n---\n\n#### Change 8: Remove `detectAgentBinary()` (NEW)\n\n**Original (Change\
+    \ 5):** Keep `detectAgentBinary()` \u2014 \"ONLY source of actual AgentName/ModelId\
+    \ values.\"\n\n**Revised:** Remove `detectAgentBinary()` (lines 1038-1059) and\
+    \ its call (lines 1306-1311). Opencode-cli already injects `AgentName` and `ModelId`\
+    \ natively in the system prompt. The plugin re-injecting them is a duplicate.\
+    \ The identity-byline (Change 7) uses the native values.\n\n---\n\n#### Change\
+    \ 9: Remove `buildMetadataBlock()` (NEW)\n\nRemove `readProjectMetadata()`, `buildMetadataBlock()`,\
+    \ and related types (lines 576-652). This function reads `pyproject.toml` and\
+    \ `.python-version` \u2014 Python-parent-repo assumptions. The `.opencode/` plugin\
+    \ should be parent-repo-agnostic. The agent can discover project type and version\
+    \ from the filesystem if needed.\n\n---\n\n#### Change 10: Replace all XML tags\
+    \ with Markdown formatting (NEW)\n\nReplace every XML tag pair in injection text\
+    \ with Markdown equivalents. The injection is English text for LLMs \u2014 no\
+    \ XML parser exists.\n\n| XML Tag | Markdown Replacement |\n|---------|---------------------|\n\
+    | `<GIT_CONFIG_MUTATION>...</GIT_CONFIG_MUTATION>` | `---\\n**\u26A0\uFE0F Git\
+    \ Config Mutation**\\n---` |\n| `<NO_VERIFY_BLOCKED>...</NO_VERIFY_BLOCKED>` |\
+    \ `---\\n**\u26A0\uFE0F --no-verify Blocked**\\n---` |\n| `<INLINE_WORK_DETECTED>...</INLINE_WORK_DETECTED>`\
+    \ | `---\\n**\u26A0\uFE0F Inline Work Detected**\\n---` |\n| `<EVIDENCE_GATE_BLOCK>...</EVIDENCE_GATE_BLOCK>`\
+    \ | `---\\n**\u26A0\uFE0F Evidence Gate**\\n---` |\n| `<PLUGIN_DIAGNOSTICS>...</PLUGIN_DIAGNOSTICS>`\
+    \ | `---\\n**Plugin Diagnostics**\\n---` |\n| `<SESSION_TRIGGERS>...</SESSION_TRIGGERS>`\
+    \ | `---\\n**Session Triggers**\\n---` |\n| `<FRONTMATTER_VALIDATION_WARNING>...</FRONTMATTER_VALIDATION_WARNING>`\
+    \ | `---\\n**\u26A0\uFE0F Frontmatter Validation**\\n---` |\n| `<ISSUE_PIPELINE_TRIGGER>...</ISSUE_PIPELINE_TRIGGER>`\
+    \ | `---\\n**Issue Pipeline**\\n---` |\n\n---\n\n#### Change 11: Remove `<LANGUAGE_PREFERENCE>`\
+    \ block (NEW)\n\nRemove `buildLanguagePreferenceBlock()` (lines 745-756). Language\
+    \ preference is repo/culture-specific. If this project needs it, it belongs in\
+    \ a project-level instruction file (e.g., `.opencode/instructions/language.md`)\
+    \ loaded via `opencode.jsonc`, not hardcoded in the plugin.\n\n---\n\n#### Change\
+    \ 12: Move `<ISSUE_PIPELINE_TRIGGER>` to skill (NEW)\n\nRemove the bare-issue-pipeline\
+    \ directive from the plugin (lines 929-945, 1478-1491). The 5-step pipeline (audit\
+    \ \u2192 brainstorm \u2192 plan \u2192 HALT) duplicates what the `issue-review`\
+    \ and `brainstorming` skills already define. A bare `#N` reference should be handled\
+    \ by skill dispatch, not by a hardcoded imperative in the plugin.\n\nKeep the\
+    \ `BARE_ISSUE_RE` detection regex \u2014 this is useful runtime detection. But\
+    \ instead of injecting a full pipeline directive, inject a minimal marker that\
+    \ skills can reference:\n\n```\n**Bare Issue Reference**: #N \u2014 follow the\
+    \ issue-review and brainstorming skills before implementing.\n```\n\n---\n\n####\
+    \ Change 13: Remove emoji from injection text (NEW)\n\nRemove `\u26A0\uFE0F`,\
+    \ `\U0001F6AB`, `\U0001F916` and all other emoji from injection block text. Use\
+    \ plain text equivalents:\n\n- `\u26A0\uFE0F` \u2192 `WARNING:`\n- `\U0001F6AB\
+    ` \u2192 `FORBIDDEN:`\n- `\U0001F916` \u2192 (only in byline, which is the agent's\
+    \ own output, not injection)\n\n---\n\n### Revised \"What to KEEP\"\n\n1. `session-init`\
+    \ output (verbatim) \u2014 dynamic git state\n2. `<SESSION_TRIGGERS>` content\
+    \ \u2192 Markdown \u2014 per-turn git state triggers\n3. `<PLUGIN_DIAGNOSTICS>`\
+    \ \u2192 Markdown \u2014 startup diagnostics\n4. `<GIT_CONFIG_MUTATION>` \u2192\
+    \ Markdown \u2014 per-turn config change detection\n5. `<NO_VERIFY_BLOCKED>` \u2192\
+    \ Markdown \u2014 per-turn `--no-verify` detection\n6. `<INLINE_WORK_DETECTED>`\
+    \ \u2192 Markdown \u2014 per-turn orchestrator work detection\n7. `<EVIDENCE_GATE_BLOCK>`\
+    \ \u2192 Markdown \u2014 per-turn issue closure gate\n8. Protected branch edit\
+    \ guard \u2014 per-turn detection\n9. `buildWorktreeBlock()` \u2014 dynamic worktree\
+    \ state\n10. `validateSkillFrontmatter()` (renamed from `loadSkillDescriptions`)\
+    \ + `<FRONTMATTER_VALIDATION_WARNING>` \u2192 Markdown\n11. Secret redaction \u2014\
+    \ per-turn output sanitization\n12. Git hook installation (`ensureHooksInstalled`)\n\
+    13. Git config baseline capture (for mutation watchdog)\n14. `BARE_ISSUE_RE` detection\
+    \ \u2014 but minimal marker output, not full pipeline\n\n### Revised \"What is\
+    \ REMOVED\"\n\n| Change | Injection Block | Why |\n|--------|----------------|-----|\n\
+    | 1 | `buildEnforcementContent()` (skill enforcement) | Duplicates `<available_skills>`\
+    \ + guidelines |\n| 2 | `buildTrainingStalenessBlock()` | Duplicates `065-verification-honesty.md`,\
+    \ `075-docs-verification.md` |\n| 3 | `buildReferencesVerificationBlock()` | Same\
+    \ guideline duplication |\n| 4 | `buildGuidelineIndexBlock()` | `opencode.jsonc`\
+    \ instructions already load full content |\n| 5 | `runSessionContextIdentity()`\
+    \ prose + `extractValue()` | Session-init verbatim is sufficient; no parsing needed\
+    \ |\n| 6 | `<LOCAL_MODE>` blocks | Duplicates session-init + `060-tool-usage.md`\
+    \ \xA79 |\n| 7 | `<IDENTITY_ECHO>` + `<IDENTITY_VALIDATION_FAILURE>` | Parrot\
+    \ ritual + regex validation replaced by identity-byline |\n| 8 | `detectAgentBinary()`\
+    \ | Duplicates opencode-cli native AgentName/ModelId |\n| 9 | `buildMetadataBlock()`\
+    \ | Python-parent-repo assumption; not agnostic |\n| 10 | All XML tags \u2192\
+    \ Markdown | No XML parser; injection is English text |\n| 11 | `<LANGUAGE_PREFERENCE>`\
+    \ | Repo-specific; belongs in instruction file, not plugin |\n| 12 | `<ISSUE_PIPELINE_TRIGGER>`\
+    \ full pipeline | Duplicates skill dispatch logic |\n| 13 | Emoji in injection\
+    \ text | Token waste; plain text equivalents exist |\n\n### Revised Success Criteria\n\
+    \n1-6: (unchanged from original \u2014 removals verified)\n7. `validateSkillFrontmatter()`\
+    \ produces `FrontmatterError[]` output\n8. ~~`detectAgentBinary()` is kept~~ \u2192\
+    \ `detectAgentBinary()` is REMOVED \u2014 opencode-cli provides native values\n\
+    9. ~~`extractValue()` repointed~~ \u2192 `extractValue()` is REMOVED \u2014 no\
+    \ parsing of English text\n10. All runtime enforcement guards remain functional\
+    \ (with Markdown formatting instead of XML tags)\n11. `env-loader.ts` unchanged\n\
+    12. Frontmatter warning still appears via `validateSkillFrontmatter()`\n13. ~~IDENTITY_ECHO\
+    \ validates~~ \u2192 Identity-byline replaces echo ritual; no regex validation\
+    \ gate\n14. Session-init failure path: agent still sees missing values in verbatim\
+    \ text; developer notices missing byline\n15-16: Behavioral tests for skill discovery\
+    \ and verification\n17. Content verification: `session-enforcement.ts` no longer\
+    \ contains removed functions\n18. Content verification: remaining functions still\
+    \ present\n19. **NEW**: Session-init emits sub-folder repo mappings in Markdown\
+    \ format (from `.gitmodules` scanning)\n20. **NEW**: No XML tags remain in any\
+    \ injection text \u2014 all replaced with Markdown\n21. **NEW**: No `pyproject.toml`\
+    \ or `.python-version` references remain\n22. **NEW**: No emoji in injection text\
+    \ \u2014 plain text equivalents only\n23. **NEW**: No `<LANGUAGE_PREFERENCE>`\
+    \ block \u2014 moved to instruction file if needed\n24. **NEW**: Bare issue detection\
+    \ kept but minimal marker output (no full pipeline)\n\n\U0001F916 Co-authored\
+    \ with AI: OpenCode (ollama-cloud/glm-5)"
+  createdAt: '2026-05-06T02:30:29Z'
+  id: IC_kwDOSOjxms8AAAABBViR2w
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/42#issuecomment-4384657883
+  viewerDidAuthor: true
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "### Clarification on Change 11: Language Preference \u2014 PURGE, not relocate\n\
+    \nThe `<LANGUAGE_PREFERENCE>` block is **purged entirely**, not moved to an instruction\
+    \ file. It doesn't work correctly \u2014 glm-5.1 still outputs Chinese despite\
+    \ the injection. Removing it, not relocating it.\n\nChange 11 updated: Remove\
+    \ `buildLanguagePreferenceBlock()` completely. No replacement in instruction file,\
+    \ no replacement anywhere.\n\n\U0001F916 Co-authored with AI: OpenCode (ollama-cloud/glm-5)"
+  createdAt: '2026-05-06T02:31:07Z'
+  id: IC_kwDOSOjxms8AAAABBViZSQ
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/42#issuecomment-4384659785
+  viewerDidAuthor: true
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Superseded by michael-conrad/.opencode#404\n\nThis spec targets files in\
+    \ the `.opencode/` submodule (`michael-conrad/.opencode`). Filing it against `opencode-config`\
+    \ was incorrect per the repository's AGENTS.md sub-folder repo mapping rules.\n\
+    \nThe new spec includes:\n- Build mode critical mandate at the top\n- Full 13-change\
+    \ approach from dual adversarial audit + developer review\n- Correct architecture:\
+    \ verbatim injection, no regex parsing, Markdown instead of XML\n\n\U0001F916\
+    \ Co-authored with AI: OpenCode (ollama-cloud/glm-5)"
+  createdAt: '2026-05-06T02:52:13Z'
+  id: IC_kwDOSOjxms8AAAABBVmINw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/42#issuecomment-4384720951
+  viewerDidAuthor: true

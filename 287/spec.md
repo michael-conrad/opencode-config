@@ -1,7 +1,7 @@
 ---
-title: Remove outdated GitBucket API deficiency documentation
+title: "[SPEC-FIX] Missing task cards in spec-creation pipeline: research-card-consultation and interdependency-check"
 status: draft
-created: 2026-07-13
+created: 2026-07-20
 license: MIT
 provenance: AI-generated
 issue: 287
@@ -10,120 +10,80 @@ authors:
 ---
 
 **STATUS:** DRAFT
-**CREATED:** 2026-07-13
+**CREATED:** 2026-07-20
 
 > **Compliance Requirement:** All steps and sub-steps in this document MUST be followed in order. Failure to comply with any step — including but not limited to verification gates, test phases, audit checkpoints, and review steps — will result in the feature branch being rejected and discarded, requiring a full rework from scratch and loss of all prior work. There is no valid reason to skip, compress, reorder, or omit any step. If a step appears redundant or unnecessary, follow it anyway — the cost of following an extra step is negligible compared to the cost of rework from a skipped step.
 
 ## Problem
 
-The `gb` CLI tool (v0.6.1) has replaced the old Python-based `gitbucket_api.py` client. The following files document API deficiencies discovered against the raw GitBucket REST API — these are now irrelevant because `gb` handles all operations with its own auth and capability model. If `gb` isn't authorized, the agent escalates to the user — no separate deficiency doc is needed.
+The `spec-creation` pipeline (defined in `spec-creation/SKILL.md`) references two sub-tasks in its 25-step pipeline that have no corresponding task card files. When the orchestrator dispatches these steps, the sub-agent has no task file to execute — the pipeline is structurally broken at these points.
 
-## Goals
+### Missing Task 1: `research-card-consultation` (Pipeline Step 4)
 
-- Remove all obsolete files that document deficiencies of the deprecated raw-API approach
-- Remove the `tests/` directory (empty after deletions)
-- Remove the `API-DEFICIENCIES.md` row from SKILL.md Cross-References table
-- Ensure no stale references remain anywhere in the codebase
+Referenced in:
+- `spec-creation/SKILL.md` pipeline step 4: `[sub-task] research-card-consultation`
+- `spec-creation/SKILL.md` Step-by-Step Contract Table: `research-card-consultation` entry with reads/writes/result contract defined
 
-## Non-Goals
+But no task file exists at `spec-creation-validation/tasks/research-card-consultation.md` or anywhere else in the skills tree.
 
-- No changes to the `gb` CLI tool or its capability manifest
-- No changes to the SKILL.md Operating Protocol, task files, or capability table
-- No changes to any other skill or guideline outside the gitbucket-api directory
+### Missing Task 2: `interdependency-check` (Pipeline Step 20)
 
-## Constraints and Scope
+Referenced in:
+- `spec-creation/SKILL.md` pipeline step 20: `[sub-task] interdependency-check`
+- `spec-creation/SKILL.md` Step-by-Step Contract Table: `interdependency-check` entry with reads/writes/result contract defined
 
-- All changes are confined to `.opencode/skills/issue-operations/platforms/gitbucket-api/`
-- No references to `API-DEFICIENCIES` or `test_api_deficiencies` exist outside this directory (verified by grep)
-- After deletion, the `tests/` directory will be empty and MUST be removed
+But no task file exists at `spec-creation-validation/tasks/interdependency-check.md` or anywhere else in the skills tree.
 
-## Root Cause Analysis
+### Minor: Task Count Discrepancy
 
-The root cause is architectural: the old `gitbucket_api.py` Python client made direct `requests` calls to the GitBucket REST API, which had known deficiencies (PATCH 404, label ops returning empty arrays). The `gb` CLI tool replaced this client entirely, but the deficiency documentation and test files were never cleaned up. These files now constitute dead documentation that could mislead future agents into thinking the raw-API deficiencies are still relevant.
+`spec-creation/SKILL.md` sub-skills table reports `spec-creation-validation` as having `6 task files` but the directory actually contains 9 task files. This count should be updated to 9.
+
+## Root Cause
+
+When the `spec-creation` pipeline was expanded from the original sub-skill structure, the pipeline steps and contract table entries were added to `spec-creation/SKILL.md` but the corresponding task card files were never created in `spec-creation-validation/tasks/`. The SKILL.md was updated with routing metadata (pipeline steps, contract table entries) but the task cards that sub-agents execute were never written.
+
+## Affected Files
+
+| File | Issue |
+|------|-------|
+| `spec-creation-validation/tasks/research-card-consultation.md` | MISSING — does not exist |
+| `spec-creation-validation/tasks/interdependency-check.md` | MISSING — does not exist |
+| `spec-creation/SKILL.md` | Task count for spec-creation-validation says 6, should be 9 |
 
 ## Alternatives Considered & Why Discarded
 
 | Alternative | Discard Rationale |
 |-------------|-------------------|
-| Keep files as historical reference | Dead documentation misleads agents; git history preserves the original content |
-| Move files to an archive directory | Unnecessary indirection — git history is the archive |
-| Update files to reference `gb` instead | Files document raw-API deficiencies, not `gb` behavior — rewriting changes their purpose |
-
-## Safety Considerations
-
-- All files to delete are self-contained within the gitbucket-api skill directory
-- No functional impact — `gb` CLI is the sole API interface
-- Rollback: `git restore` on any deleted file
-
-## Anti-Lobotomization
-
-Tests MUST NOT be lobotomized. Removing or weakening a behavioral test assertion to work around a timeout, failure, or infrastructure issue is a CRITICAL VIOLATION. SCs must achieve 100% clean PASS. No SC may be weakened, deferred, or reclassified to a lower evidence type to evade implementation. See `080-code-standards.md` Test Integrity Mandate.
-
-## Interdependency
-
-No interdependencies with other open issues.
-
-## Evidence/Provenance
-
-| Claim | Evidence |
-|-------|----------|
-| Files exist at specified paths | `ls` confirmed all 4 files exist |
-| No references outside gitbucket-api directory | `grep` across entire repo found no references outside the skill directory |
-| `tests/` contains only the 3 files to delete | `ls` confirmed exactly 3 files in `tests/` |
-| SKILL.md has `API-DEFICIENCIES.md` row at line 249 | `read` confirmed the cross-reference row |
-
-## SC-to-Root-Cause Traceability Table
-
-| SC-ID | Root Cause Element | What It Tests |
-|-------|-------------------|---------------|
-| SC-1 | Dead deficiency doc | File deletion |
-| SC-2 | Dead test file | File deletion |
-| SC-3 | Dead test file | File deletion |
-| SC-4 | Dead test file | File deletion |
-| SC-5 | Empty directory after deletions | Directory removal |
-| SC-6 | Stale cross-reference | Row removal from SKILL.md |
-| SC-7 | Stale references anywhere | grep confirms no remaining references |
-
-## Feasibility Assessment
-
-All file paths verified as existing. All references confirmed as confined to the gitbucket-api directory. No external dependencies.
+| Remove the pipeline steps from SKILL.md | The steps serve valid purposes (research card caching, interdependency detection). Removing them loses functionality. |
+| Inline the steps in the orchestrator | Violates orchestrator context discipline — orchestrator MUST NOT perform inline work. Sub-agent dispatch is required. |
 
 ## Success Criteria
 
-| ID | Criterion | Verification Method | Remediation | Pipeline Step Binding | Artifact Path | Requirement Traceability | Phase Binding | Verification Gate | Integration Mode | Affinity Group | Re-Entry Step | Test File | Phase Mapping |
-|----|-----------|-------------------|-------------|----------------------|--------------|-------------------------|--------------|-----------------|----------------|--------------|-------------|-----------|--------------|
-| SC-1 | `API-DEFICIENCIES.md` is deleted | `ls .opencode/skills/issue-operations/platforms/gitbucket-api/API-DEFICIENCIES.md` returns non-zero exit code | Restore from git if accidentally removed | file-deletion | `.opencode/skills/issue-operations/platforms/gitbucket-api/` | Root cause: dead deficiency doc | common | pre-commit | sequential | A | null | null | phase-1 |
-| SC-2 | `test_api_deficiencies.py` is deleted | `ls .opencode/skills/issue-operations/platforms/gitbucket-api/tests/test_api_deficiencies.py` returns non-zero exit code | Restore from git if accidentally removed | file-deletion | `.opencode/skills/issue-operations/platforms/gitbucket-api/tests/` | Root cause: dead test file | common | pre-commit | sequential | A | null | null | phase-1 |
-| SC-3 | `verify_api.py` is deleted | `ls .opencode/skills/issue-operations/platforms/gitbucket-api/tests/verify_api.py` returns non-zero exit code | Restore from git if accidentally removed | file-deletion | `.opencode/skills/issue-operations/platforms/gitbucket-api/tests/` | Root cause: dead test file | common | pre-commit | sequential | A | null | null | phase-1 |
-| SC-4 | `test_pr_idempotency.py` is deleted | `ls .opencode/skills/issue-operations/platforms/gitbucket-api/tests/test_pr_idempotency.py` returns non-zero exit code | Restore from git if accidentally removed | file-deletion | `.opencode/skills/issue-operations/platforms/gitbucket-api/tests/` | Root cause: dead test file | common | pre-commit | sequential | A | null | null | phase-1 |
-| SC-5 | The `tests/` directory is removed (empty after deletions) | `ls .opencode/skills/issue-operations/platforms/gitbucket-api/tests/` returns non-zero exit code | Re-create directory if needed | directory-removal | `.opencode/skills/issue-operations/platforms/gitbucket-api/tests/` | Root cause: empty directory | common | pre-commit | sequential | A | null | null | phase-1 |
-| SC-6 | The `API-DEFICIENCIES.md` row is removed from SKILL.md Cross-References table | `grep "API-DEFICIENCIES" .opencode/skills/issue-operations/platforms/gitbucket-api/SKILL.md` returns non-zero exit code | Revert SKILL.md edit if incorrect | file-edit | `.opencode/skills/issue-operations/platforms/gitbucket-api/SKILL.md` | Root cause: stale cross-reference | common | pre-commit | sequential | A | null | null | phase-1 |
-| SC-7 | No stale references remain anywhere in the codebase | `grep -r "API-DEFICIENCIES\|test_api_deficiencies\|verify_api\.py\|test_pr_idempotency" .opencode/` returns zero matches | Investigate and remove any remaining references | verification | `.opencode/` | Root cause: stale references | common | pre-commit | sequential | A | null | null | phase-1 |
-| SC-8 | No SC may be weakened, deferred, or reclassified to a lower evidence type to evade implementation | Behavioral test verifies agent does not weaken any SC | Revert any SC weakening | behavioral-test | `.opencode/tests/behaviors/` | Anti-lobotomization | common | pre-commit | sequential | A | null | null | phase-1 |
-
-## Risk and Edge Cases
-
-| Risk | Likelihood | Impact | Mitigation |
-|------|------------|--------|------------|
-| Accidental deletion of wrong file | Low | Medium | Verify file paths before deletion; git restore as rollback |
-| Stale reference missed in grep | Low | Low | grep covers entire `.opencode/` tree |
-| SKILL.md edit introduces formatting error | Low | Low | Review diff before commit |
+| ID | Criterion | Evidence Type | Verification Method |
+|----|-----------|---------------|---------------------|
+| SC-1 | `spec-creation-validation/tasks/research-card-consultation.md` exists with Purpose, Entry Criteria, Procedure, and Result Contract sections | structural | `ls .opencode/skills/spec-creation-validation/tasks/research-card-consultation.md` |
+| SC-2 | `spec-creation-validation/tasks/interdependency-check.md` exists with Purpose, Entry Criteria, Procedure, and Result Contract sections | structural | `ls .opencode/skills/spec-creation-validation/tasks/interdependency-check.md` |
+| SC-3 | `spec-creation/SKILL.md` sub-skills table reports `spec-creation-validation` task count as 9 (not 6) | string | `grep 'spec-creation-validation' .opencode/skills/spec-creation/SKILL.md` shows `9 task files` |
+| SC-4 | Both new task files are referenced in the `spec-creation-validation/SKILL.md` Tasks list | string | `grep 'research-card-consultation' .opencode/skills/spec-creation-validation/SKILL.md` and `grep 'interdependency-check' .opencode/skills/spec-creation-validation/SKILL.md` both match |
 
 ## Implementation Approach
 
-1. Delete 4 obsolete files via `git rm`
-2. Remove empty `tests/` directory (git tracks directories implicitly via files; removing all files removes the directory)
-3. Edit SKILL.md to remove the `API-DEFICIENCIES.md` row from the Cross-References table
-4. Verify with grep that no stale references remain
+1. Create `spec-creation-validation/tasks/research-card-consultation.md` with:
+   - Purpose: Consult existing research cards for cached findings before spec creation
+   - Entry Criteria: Research cards directory exists at `.opencode/.issues/research-cards/`
+   - Procedure: glob `*.md` in research cards, grep frontmatter for matching topic, return cached findings or report no match
+   - Result Contract: `{status: DONE, finding_summary: "...", artifact_path: ".issues/{N}/artifacts/research-cards-consulted.yaml"}`
 
-After this spec is approved, invoke `writing-plans` to create `.issues/287/plan.md` before implementation begins.
+2. Create `spec-creation-validation/tasks/interdependency-check.md` with:
+   - Purpose: Check for conflicting open specs that may overlap with the current spec
+   - Entry Criteria: Spec number N is known, GitHub API access available
+   - Procedure: Query open [SPEC] issues, compare file paths and concern boundaries, classify overlap
+   - Result Contract: `{status: DONE | BLOCKED, finding_summary: "...", artifact_path: ".issues/{N}/artifacts/interdependency-check.yaml"}`
+
+3. Update `spec-creation/SKILL.md` task count from 6 to 9
+
+## Anti-Lobotomization
+
+Tests MUST NOT be lobotomized. Removing or weakening a behavioral test assertion to work around a timeout, failure, or infrastructure issue is a CRITICAL VIOLATION. SCs must achieve 100% clean PASS. No SC may be weakened, deferred, or reclassified to a lower evidence type to evade implementation. Load [Test Integrity Mandate](guidelines/080-code-standards.md).
 
 > **Compliance Requirement:** All steps and sub-steps in this document MUST be followed in order. Failure to comply with any step — including but not limited to verification gates, test phases, audit checkpoints, and review steps — will result in the feature branch being rejected and discarded, requiring a full rework from scratch and loss of all prior work. There is no valid reason to skip, compress, reorder, or omit any step. If a step appears redundant or unnecessary, follow it anyway — the cost of following an extra step is negligible compared to the cost of rework from a skipped step.
-
-## Documentation Sources
-
-| Source Category | What Was Consulted | Purpose |
-|----------------|-------------------|---------|
-| Direct source search | `ls` on file paths | Verify files exist |
-| Direct source search | `grep -r` across repo | Verify no external references |
-| Direct source search | `read` on SKILL.md | Verify cross-reference row content |

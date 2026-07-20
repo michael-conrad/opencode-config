@@ -1,0 +1,9 @@
+labels:
+- spec
+- brainstorming
+- research
+- verification
+number: 109
+state: CLOSED
+title: "[SPEC] Brainstorming skill lacks research dispatch \u2014 relies on memory\
+  \ and training data"

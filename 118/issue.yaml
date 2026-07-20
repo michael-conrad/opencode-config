@@ -1,0 +1,6 @@
+labels:
+- spec
+number: 118
+state: CLOSED
+title: '[SPEC] Replace BRE regex assertions with semantic AI inspection in behavioral
+  tests'

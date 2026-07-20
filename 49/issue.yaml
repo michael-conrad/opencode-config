@@ -1,0 +1,7 @@
+labels:
+- bug
+- SPEC-FIX
+- plugin
+number: 49
+state: CLOSED
+title: '[SPEC-FIX] Plugin export pattern: env-loader.ts fails to load'

@@ -1,0 +1,14 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Refiled to correct repo \u2014 all modified files reside under `.opencode/`\
+    \ which routes to `michael-conrad/.opencode`.\n\nSee https://github.com/michael-conrad/.opencode/issues/431\n\
+    \n\U0001F916 Co-authored with AI: OpenCode (deepseek-v4-flash)"
+  createdAt: '2026-05-07T04:56:25Z'
+  id: IC_kwDOSOjxms8AAAABBesBWQ
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/51#issuecomment-4394254681
+  viewerDidAuthor: true

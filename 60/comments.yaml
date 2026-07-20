@@ -1,0 +1,29 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: 'This issue was filed against the wrong repository. Content under `.opencode/`
+    belongs to `michael-conrad/.opencode`.
+
+
+    **Migrated to:** michael-conrad/.opencode#483'
+  createdAt: '2026-05-09T05:04:28Z'
+  id: IC_kwDOSOjxms8AAAABBvKpKw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/60#issuecomment-4411533611
+  viewerDidAuthor: true
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Wrong repo \u2014 this issue is about `.opencode/` content and should be\
+    \ filed at `michael-conrad/.opencode`."
+  createdAt: '2026-05-09T05:07:38Z'
+  id: IC_kwDOSOjxms8AAAABBvLJpQ
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/60#issuecomment-4411541925
+  viewerDidAuthor: true
