@@ -1,5 +1,7 @@
-labels: []
-number: 288
-state: CLOSED
-title: "[SPEC] Cross-Reference Load Directive Band-Aid \u2014 Mandate in default.txt\
-  \ and AGENTS.md"
+title: 'SPEC: Fix post-merge cleanup workflow — submodule-first depth-first cleanup'
+status: open
+labels:
+- SPEC
+body: ''
+created_at: '2026-07-20T15:30:58+00:00'
+updated_at: '2026-07-20T15:30:58+00:00'
