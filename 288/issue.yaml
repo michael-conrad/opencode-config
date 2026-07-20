@@ -2,6 +2,56 @@ title: 'SPEC: Fix post-merge cleanup workflow — submodule-first depth-first cl
 status: open
 labels:
 - SPEC
-body: ''
+body: "# SPEC: Fix post-merge cleanup workflow — submodule-first depth-first cleanup\n\
+  \n## Problem\n\nWhen a user says \"pr merged\", the agent dispatches `check-pr`\
+  \ (a scanning/verification workflow) instead of `cleanup` (the full post-merge cleanup\
+  \ workflow). The `check-pr` task has a simplified 4-bullet submodule cleanup in\
+  \ Phase 4 that lacks proper depth-first iteration, content verification gates, tag-if-untagged,\
+  \ and dirty pointer acknowledgment. Additionally, `cleanup.md` Step 3 routes to\
+  \ `cleanup/branch-cleanup` which does not exist as a file.\n\nThe correct post-merge\
+  \ workflow is:\n1. Submodules: check for merged PRs, clean up branches, restore\
+  \ to trunk tip\n2. Parent repo: check for merged PRs, clean up branches, restore\
+  \ to trunk tip\n3. Dirty submodule pointers left as-is (resolved on next pre-work\
+  \ cycle)\n\n## Root Cause\n\nThree defects:\n\n1. **Wrong trigger routing in `git-workflow/SKILL.md`**\
+  \ — `\"pr merged\"` maps to `check-pr` instead of `cleanup`\n2. **Wrong trigger\
+  \ routing in `git-workflow-cleanup/SKILL.md`** — `\"pr merged\"` maps to `check-pr`\
+  \ instead of `cleanup`\n3. **Missing task file** — `cleanup.md` Step 3 routes to\
+  \ `cleanup/branch-cleanup` which does not exist\n\n## Affected Files\n\n| File |\
+  \ Defect |\n|------|--------|\n| `.opencode/skills/git-workflow/SKILL.md:35` | `\"\
+  pr merged\"` maps to `check-pr` instead of `cleanup` |\n| `.opencode/skills/git-workflow-cleanup/SKILL.md:19`\
+  \ | `\"pr merged\"` maps to `check-pr` instead of `cleanup` |\n| `.opencode/skills/git-workflow-cleanup/tasks/cleanup.md:125`\
+  \ | Routes to `cleanup/branch-cleanup` which does not exist |\n| `.opencode/skills/git-workflow-cleanup/tasks/check-pr.md:109-114`\
+  \ | Phase 4 submodule cleanup is simplified — lacks depth-first iteration, content\
+  \ verification, tag-if-untagged |\n\n## Success Criteria\n\n| ID | Criterion | Evidence\
+  \ Type | Verification Method |\n|----|-----------|---------------|---------------------|\n\
+  | SC-1 | `git-workflow/SKILL.md` Trigger Dispatch Table maps `\"pr merged\"` to\
+  \ `cleanup` (not `check-pr`) | `string` | grep for `\"pr merged\"` in SKILL.md —\
+  \ must show `cleanup` in the task column |\n| SC-2 | `git-workflow-cleanup/SKILL.md`\
+  \ Trigger Dispatch Table maps `\"pr merged\"` to `cleanup` (not `check-pr`) | `string`\
+  \ | grep for `\"pr merged\"` in SKILL.md — must show `cleanup` in the task column\
+  \ |\n| SC-3 | `cleanup.md` Step 3 routes to an existing sub-task file (not `cleanup/branch-cleanup`\
+  \ which does not exist) | `string` | grep for `branch-cleanup` in cleanup.md — must\
+  \ reference an existing file or be replaced with inline steps |\n| SC-4 | `check-pr.md`\
+  \ Phase 4 submodule cleanup is removed or replaced with a cross-reference to the\
+  \ full cleanup workflow | `string` | grep for `Phase 4` in check-pr.md — must not\
+  \ contain simplified submodule cleanup bullets |\n| SC-5 | `cleanup.md` contains\
+  \ a proper depth-first cleanup procedure: submodules first, then parent, dirty pointers\
+  \ left as-is | `string` | grep for submodule iteration order in cleanup.md — must\
+  \ show submodule-first, parent-second |\n| SC-6 | All repos left at trunk tip after\
+  \ cleanup | `behavioral` | `opencode run` with \"pr merged\" prompt — verify stderr\
+  \ shows trunk-tip verification for all repos |\n\n## Implementation Plan\n\n###\
+  \ Phase 1: Fix Trigger Routing\n\n1. In `git-workflow/SKILL.md:35`, change the `\"\
+  pr merged\"` row from `check-pr` to `cleanup`\n2. In `git-workflow-cleanup/SKILL.md:19`,\
+  \ change the `\"pr merged\"` row from `check-pr` to `cleanup`\n\n### Phase 2: Fix\
+  \ Missing Sub-Task\n\n3. In `cleanup.md:125`, replace the `cleanup/branch-cleanup`\
+  \ route with inline steps that perform proper depth-first cleanup:\n   - Iterate\
+  \ submodules first: switch to trunk, sync, delete merged branches, verify at tip\n\
+  \   - Then parent repo: switch to trunk, sync, delete merged branches, verify at\
+  \ tip\n   - Leave dirty submodule pointers as-is\n\n### Phase 3: Fix check-pr.md\
+  \ Submodule Cleanup\n\n4. In `check-pr.md:109-114`, replace the simplified Phase\
+  \ 4 submodule cleanup with a cross-reference to the full cleanup workflow, or remove\
+  \ it entirely since `\"pr merged\"` now routes to `cleanup` directly.\n\n## Change\
+  \ Control\n\n| Version | Date | Author | Change |\n|---------|------|--------|--------|\n\
+  | 1.0 | 2026-07-20 | AI | Initial spec |\n"
 created_at: '2026-07-20T15:30:58+00:00'
-updated_at: '2026-07-20T15:30:58+00:00'
+updated_at: '2026-07-20T15:31:22+00:00'

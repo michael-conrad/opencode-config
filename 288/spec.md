@@ -1,39 +1,62 @@
+# SPEC: Fix post-merge cleanup workflow — submodule-first depth-first cleanup
+
 ## Problem
 
-The opencode guidelines use ~136 cross-references of the form `See \`FILENAME.md\` §SECTION` or `See \`SKILLNAME\` skill`. These are written as prose citations. The agent treats them as decorative closing sentences rather than as load directives. The agent reads the summary sentence before "see" and treats it as the complete rule, never loading the referenced content where the actual rule lives.
+When a user says "pr merged", the agent dispatches `check-pr` (a scanning/verification workflow) instead of `cleanup` (the full post-merge cleanup workflow). The `check-pr` task has a simplified 4-bullet submodule cleanup in Phase 4 that lacks proper depth-first iteration, content verification gates, tag-if-untagged, and dirty pointer acknowledgment. Additionally, `cleanup.md` Step 3 routes to `cleanup/branch-cleanup` which does not exist as a file.
 
-The guidelines are structured correctly for progressive disclosure — lightweight identifiers pointing to content that should be loaded on demand. The agent has the tools to resolve every cross-reference (`read` for guideline files, `skill()` for skills, `grep` for section lookup). The failure is that the cross-references are framed as citations, not as load directives.
+The correct post-merge workflow is:
+1. Submodules: check for merged PRs, clean up branches, restore to trunk tip
+2. Parent repo: check for merged PRs, clean up branches, restore to trunk tip
+3. Dirty submodule pointers left as-is (resolved on next pre-work cycle)
 
 ## Root Cause
 
-The word "See" is a passive verb. The agent interprets it as a citation, not an instruction. The backtick-wrapped filename is not recognized as a loadable resource. The `§` section reference is not recognized as a navigation target. The agent has no rule anywhere in the system that says cross-references are load directives.
+Three defects:
 
-## Fix
+1. **Wrong trigger routing in `git-workflow/SKILL.md`** — `"pr merged"` maps to `check-pr` instead of `cleanup`
+2. **Wrong trigger routing in `git-workflow-cleanup/SKILL.md`** — `"pr merged"` maps to `check-pr` instead of `cleanup`
+3. **Missing task file** — `cleanup.md` Step 3 routes to `cleanup/branch-cleanup` which does not exist
 
-Add a mandate to the system prompt (`default.txt`) and project instructions (`.opencode/AGENTS.md`) that explicitly states: when a guideline or skill file says "See `FILENAME.md` §SECTION" or "See `SKILLNAME` skill", this is a load directive, not a citation. The text before "see" is a summary. The complete rule lives at the referenced location. Load the referenced content before acting on the rule.
+## Affected Files
 
-Also add documentation and linting to catch and prevent citation-style cross-references in future updates.
+| File | Defect |
+|------|--------|
+| `.opencode/skills/git-workflow/SKILL.md:35` | `"pr merged"` maps to `check-pr` instead of `cleanup` |
+| `.opencode/skills/git-workflow-cleanup/SKILL.md:19` | `"pr merged"` maps to `check-pr` instead of `cleanup` |
+| `.opencode/skills/git-workflow-cleanup/tasks/cleanup.md:125` | Routes to `cleanup/branch-cleanup` which does not exist |
+| `.opencode/skills/git-workflow-cleanup/tasks/check-pr.md:109-114` | Phase 4 submodule cleanup is simplified — lacks depth-first iteration, content verification, tag-if-untagged |
 
 ## Success Criteria
 
 | ID | Criterion | Evidence Type | Verification Method |
 |----|-----------|---------------|---------------------|
-| SC-1 | `default.txt` contains a cross-reference load directive mandate in the Pre-Response Gate section | `string` | grep for load-directive language in default.txt |
-| SC-2 | `.opencode/AGENTS.md` contains the same cross-reference load directive mandate | `string` | grep for load-directive language in .opencode/AGENTS.md |
-| SC-3 | A guideline file documents the cross-reference format and its meaning as a load directive (not a citation) | `string` | grep for cross-reference format documentation in guidelines |
-| SC-4 | A linting rule detects citation-style cross-references (`See \`...\``) in guideline files and flags them as violations | `behavioral` | Run lint on a test file containing citation-style cross-references; verify it flags them |
-| SC-5 | The linting rule is integrated into the markdown lint pipeline (`.opencode/AGENTS.md` build/lint/test commands) | `string` | grep for the lint rule in AGENTS.md or lint config |
-| SC-6 | Existing citation-style cross-references in guidelines are NOT modified by this spec (band-aid only — holistic fix is separate spec) | `structural` | Verify no guideline files were modified by this change |
+| SC-1 | `git-workflow/SKILL.md` Trigger Dispatch Table maps `"pr merged"` to `cleanup` (not `check-pr`) | `string` | grep for `"pr merged"` in SKILL.md — must show `cleanup` in the task column |
+| SC-2 | `git-workflow-cleanup/SKILL.md` Trigger Dispatch Table maps `"pr merged"` to `cleanup` (not `check-pr`) | `string` | grep for `"pr merged"` in SKILL.md — must show `cleanup` in the task column |
+| SC-3 | `cleanup.md` Step 3 routes to an existing sub-task file (not `cleanup/branch-cleanup` which does not exist) | `string` | grep for `branch-cleanup` in cleanup.md — must reference an existing file or be replaced with inline steps |
+| SC-4 | `check-pr.md` Phase 4 submodule cleanup is removed or replaced with a cross-reference to the full cleanup workflow | `string` | grep for `Phase 4` in check-pr.md — must not contain simplified submodule cleanup bullets |
+| SC-5 | `cleanup.md` contains a proper depth-first cleanup procedure: submodules first, then parent, dirty pointers left as-is | `string` | grep for submodule iteration order in cleanup.md — must show submodule-first, parent-second |
+| SC-6 | All repos left at trunk tip after cleanup | `behavioral` | `opencode run` with "pr merged" prompt — verify stderr shows trunk-tip verification for all repos |
 
-## Affected Files
+## Implementation Plan
 
-- `/home/muksihs/ollama/.opencode/prompts/default.txt` — system prompt
-- `.opencode/AGENTS.md` — project instructions
-- `.opencode/guidelines/` — new or updated guideline documenting cross-reference format
-- `.opencode/AGENTS.md` — build/lint/test commands (lint rule integration)
+### Phase 1: Fix Trigger Routing
 
-## Research Card
+1. In `git-workflow/SKILL.md:35`, change the `"pr merged"` row from `check-pr` to `cleanup`
+2. In `git-workflow-cleanup/SKILL.md:19`, change the `"pr merged"` row from `check-pr` to `cleanup`
 
-`.issues/research-cards/cross-reference-lobotomization.md`
+### Phase 2: Fix Missing Sub-Task
 
-🤖 Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-pro)
+3. In `cleanup.md:125`, replace the `cleanup/branch-cleanup` route with inline steps that perform proper depth-first cleanup:
+   - Iterate submodules first: switch to trunk, sync, delete merged branches, verify at tip
+   - Then parent repo: switch to trunk, sync, delete merged branches, verify at tip
+   - Leave dirty submodule pointers as-is
+
+### Phase 3: Fix check-pr.md Submodule Cleanup
+
+4. In `check-pr.md:109-114`, replace the simplified Phase 4 submodule cleanup with a cross-reference to the full cleanup workflow, or remove it entirely since `"pr merged"` now routes to `cleanup` directly.
+
+## Change Control
+
+| Version | Date | Author | Change |
+|---------|------|--------|--------|
+| 1.0 | 2026-07-20 | AI | Initial spec |
