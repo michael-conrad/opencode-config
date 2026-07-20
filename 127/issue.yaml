@@ -1,0 +1,7 @@
+labels:
+- SPEC-FIX
+- guidelines
+number: 127
+state: CLOSED
+title: "[SPEC-FIX] Preserve existing AI co-authored bylines \u2014 prevent identity\
+  \ overwrite on edit"

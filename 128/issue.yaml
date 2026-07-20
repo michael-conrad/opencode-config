@@ -1,0 +1,7 @@
+labels:
+- SPEC-FIX
+- needs-approval
+number: 128
+state: CLOSED
+title: '[SPEC-FIX] local-issues setup: report stale worktree state for AI agent remediation,
+  not auto-repair'

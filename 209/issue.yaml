@@ -1,0 +1,6 @@
+labels:
+- '[SPEC]'
+- plan-format
+number: 209
+state: CLOSED
+title: '[SPEC] Plan file format: master ToC + per-phase sub-plans with dispatch contracts'

@@ -1,0 +1,14 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Moved to michael-conrad/.opencode#974 \u2014 this issue concerns `.opencode/tests/`\
+    \ which belongs in the `.opencode` repo per the path routing table. Closing as\
+    \ duplicate.\n\n\U0001F916 Co-authored with AI: DeepSeek V4 Flash (ollama-cloud/deepseek-v4-flash)"
+  createdAt: '2026-06-01T15:42:18Z'
+  id: IC_kwDOSOjxms8AAAABEdVY9g
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/166#issuecomment-4594161910
+  viewerDidAuthor: true

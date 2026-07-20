@@ -1,0 +1,7 @@
+labels:
+- needs-approval
+- spec
+number: 130
+state: CLOSED
+title: "[SPEC] Remove commit-per-issue enforcement from pre-push hook \u2014 defer\
+  \ to PR-time enforcement"

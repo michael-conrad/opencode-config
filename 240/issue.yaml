@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+number: 240
+state: CLOSED
+title: '[SPEC-FIX] Pipeline-readiness gate not explicitly positioned in spec-creation
+  Operating Protocol'

@@ -1,0 +1,8 @@
+number: 211
+title: '[SPEC-FIX] Auditors and plan writer must BLOCK with dispatch directive when
+  local spec file is missing'
+state: OPEN
+labels:
+- bug
+- spec
+- tier-2

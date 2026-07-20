@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+- local-issues
+number: 173
+state: CLOSED
+title: '[SPEC-FIX] local-issues tool: support .issues/ worktree setup for submodules'

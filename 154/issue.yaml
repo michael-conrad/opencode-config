@@ -1,0 +1,6 @@
+labels:
+- spec
+number: 154
+state: CLOSED
+title: '[SPEC] Split cross-validate into deterministic consensus tool + bounded semantic
+  sub-agent'

@@ -1,0 +1,7 @@
+labels:
+- needs-approval
+- spec
+number: 222
+state: CLOSED
+title: "[SPEC] Self-Detection Gate \u2014 current-violation remediation before new\
+  \ work"

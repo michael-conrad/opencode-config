@@ -1,0 +1,6 @@
+labels:
+- needs-approval
+- '[SPEC]'
+number: 158
+state: CLOSED
+title: '[SPEC] session-init: emit all repo entries including .issues worktrees'

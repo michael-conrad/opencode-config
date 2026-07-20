@@ -1,0 +1,5 @@
+labels: []
+number: 264
+state: CLOSED
+title: '[SPEC-FIX] pre-push hook silent failure on branches without numeric issue
+  segment'

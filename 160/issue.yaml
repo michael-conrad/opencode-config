@@ -1,0 +1,6 @@
+labels:
+- spec
+number: 160
+state: CLOSED
+title: "[SPEC] Fix submodule tag protocol \u2014 codify suffix convention, prevent\
+  \ ad-hoc tag names, enforce dev-tip anchor"

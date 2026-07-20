@@ -1,0 +1,6 @@
+labels:
+- spec
+- tier-3
+number: 155
+state: CLOSED
+title: '[SPEC-FIX] Remove "texted" MCP plugin from opencode.jsonc'

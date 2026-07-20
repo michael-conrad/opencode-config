@@ -1,0 +1,7 @@
+labels:
+- SPEC-FIX
+- auditor
+number: 218
+state: CLOSED
+title: '[SPEC-FIX] Fix E: Skill card semantic auditor criteria (SC-SEM-001 through
+  005)'

@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+number: 243
+state: CLOSED
+title: '[SPEC-FIX] local-issues init fails for repos on master branch with no issues-data
+  branch'

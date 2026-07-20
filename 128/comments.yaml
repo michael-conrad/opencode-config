@@ -1,0 +1,15 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Wrong repo \u2014 the `local-issues` script lives in `michael-conrad/.opencode`.\
+    \ Re-filed at https://github.com/michael-conrad/.opencode/issues/816. The parent-repo\
+    \ task file changes (pre-work.md etc.) are tracked as dependent scope under that\
+    \ issue.\n\n\U0001F916 Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)"
+  createdAt: '2026-05-22T15:02:52Z'
+  id: IC_kwDOSOjxms8AAAABDWdKvw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/128#issuecomment-4519840447
+  viewerDidAuthor: true

@@ -1,0 +1,9 @@
+labels:
+- spec
+- approved-for-pr
+- enforcement
+- test-infrastructure
+number: 305
+state: CLOSED
+title: "[SPEC] Prohibit `timeout` command usage in AGENTS.md \u2014 mandate bash tool\
+  \ timeout parameter only"

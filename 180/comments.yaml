@@ -1,0 +1,15 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "**Moved.** All affected files (`tdd/*`, `spec-creation/*`, `writing-plans/*`,\
+    \ `adversarial-audit/*`) live in `.opencode/skills/` \u2014 this issue was filed\
+    \ in the wrong repo.\n\nCorrectly filed at [michael-conrad/.opencode#1086](https://github.com/michael-conrad/.opencode/issues/1086).\n\
+    \n\U0001F916 Co-authored with AI: OpenCode (deepseek-v4-flash)"
+  createdAt: '2026-06-09T14:19:06Z'
+  id: IC_kwDOSOjxms8AAAABFczJIw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/180#issuecomment-4660709667
+  viewerDidAuthor: true

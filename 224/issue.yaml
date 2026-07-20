@@ -1,0 +1,7 @@
+labels:
+- needs-approval
+- spec
+number: 224
+state: CLOSED
+title: "[SPEC] Mandatory spec-provenance gate \u2014 specs not from spec-creation\
+  \ pipeline are 86'ed"

@@ -1,0 +1,14 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Moved to michael-conrad/.opencode#1815 \u2014 this is a `.opencode` submodule\
+    \ concern (agent behavior enforcement, `local-issues` tool, agent-facing docs).\
+    \ Closing as misrouted.\n"
+  createdAt: '2026-07-09T05:00:36Z'
+  id: IC_kwDOSOjxms8AAAABJVt6EA
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/267#issuecomment-4921719312
+  viewerDidAuthor: true

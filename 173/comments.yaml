@@ -1,0 +1,14 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Moving to correct repository \u2014 the affected files (`local-issues` tool)\
+    \ live in the `.opencode/` submodule, not this repo.\n\nRe-filed at michael-conrad/.opencode#1059.\
+    \ Closing this copy.\n\n\U0001F916 Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)"
+  createdAt: '2026-06-07T15:16:07Z'
+  id: IC_kwDOSOjxms8AAAABFL-sng
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/173#issuecomment-4643073182
+  viewerDidAuthor: true

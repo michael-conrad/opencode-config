@@ -1,0 +1,5 @@
+labels:
+- SPEC-FIX
+number: 242
+state: CLOSED
+title: '[SPEC-FIX] Add direct SC-to-plan coverage gate after plan creation'

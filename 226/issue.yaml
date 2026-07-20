@@ -1,0 +1,7 @@
+labels:
+- needs-approval
+- '[SPEC]'
+number: 226
+state: CLOSED
+title: "[SPEC] Holistic inline-execution prevention \u2014 DISPATCH_GATE blocks +\
+  \ Persona identity-anchoring for all skills"

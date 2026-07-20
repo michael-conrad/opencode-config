@@ -1,0 +1,5 @@
+labels:
+- spec
+number: 232
+state: CLOSED
+title: '[SPEC] Remove phantom Z3 check steps from writing-plans pipeline'

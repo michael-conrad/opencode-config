@@ -1,0 +1,5 @@
+number: 309
+title: "[SPEC-FIX] Test framework DB isolation \u2014 with-test-home, helpers.sh,\
+  \ and rogue scripts write to production DB"
+state: OPEN
+labels: []

@@ -1,0 +1,5 @@
+labels:
+- spec
+number: 187
+state: CLOSED
+title: '[SPEC] Add `## Local Issue Artifacts` section to session-init output'

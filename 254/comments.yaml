@@ -1,0 +1,15 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Moved to `.opencode` repo (this content belongs in the skills submodule,\
+    \ not `opencode-config`):\n\n- #254 \u2192 [#1776](https://github.com/michael-conrad/.opencode/issues/1776)\
+    \ (rebase-before-push gate)\n- #202 \u2192 [#1777](https://github.com/michael-conrad/.opencode/issues/1777)\
+    \ (micro-management prohibition)"
+  createdAt: '2026-07-07T22:18:43Z'
+  id: IC_kwDOSOjxms8AAAABJKHA-Q
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/254#issuecomment-4909547769
+  viewerDidAuthor: true

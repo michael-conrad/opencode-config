@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+- spec
+number: 163
+state: CLOSED
+title: '[SPEC-FIX] Update auditor agent card temperature values per model recommendations'

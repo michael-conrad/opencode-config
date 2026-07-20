@@ -1,0 +1,7 @@
+labels:
+- bug
+- spec
+number: 258
+state: CLOSED
+title: "[SPEC] Fix writing-plans skill contradiction \u2014 Programmatic Invocation\
+  \ vs DISPATCH_GATE"

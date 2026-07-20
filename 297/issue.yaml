@@ -1,0 +1,7 @@
+labels:
+- spec
+- cleanup
+number: 297
+state: CLOSED
+title: "[SPEC] Replace bare \xA7N Read links with descriptive link text across .opencode/\
+  \ and AGENTS.md"

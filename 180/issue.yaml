@@ -1,0 +1,6 @@
+labels:
+- spec
+number: 180
+state: CLOSED
+title: "[SPEC] TDD: RED/GREEN Sequential Pair Discipline \u2014 explicit prohibition\
+  \ against combined or parallel phases"

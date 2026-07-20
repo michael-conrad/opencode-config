@@ -1,0 +1,6 @@
+number: 207
+title: '[SPEC-FIX] Add `.opencode/` issue routing guidance to /AGENTS.md'
+state: OPEN
+labels:
+- documentation
+- spec

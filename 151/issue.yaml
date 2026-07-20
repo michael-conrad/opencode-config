@@ -1,0 +1,6 @@
+labels:
+- spec
+number: 151
+state: CLOSED
+title: '[SPEC] Promote inline issue-content-creation violation table row to deterministic
+  symbolic yaml rule'

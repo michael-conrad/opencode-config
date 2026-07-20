@@ -1,0 +1,9 @@
+labels:
+- SPEC-FIX
+- glob
+- sub-agent
+- permissions
+number: 219
+state: CLOSED
+title: '[SPEC-FIX] Deny glob tool on all sub-agent cards and replace glob references
+  in skill deck'

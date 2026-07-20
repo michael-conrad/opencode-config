@@ -1,0 +1,5 @@
+labels: []
+number: 272
+state: CLOSED
+title: "[SPEC-FIX] .issues/ worktree-only enforcement \u2014 stop tracking in parent\
+  \ repo git"

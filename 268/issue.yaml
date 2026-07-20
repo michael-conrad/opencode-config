@@ -1,0 +1,5 @@
+labels: []
+number: 268
+state: CLOSED
+title: "[SPEC-FIX] .issues/ gitignore enforcement \u2014 agents ignore .gitignore\
+  \ and corrupt git state"

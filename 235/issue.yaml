@@ -1,0 +1,8 @@
+labels:
+- spec
+- BRANCH-MANAGEMENT
+number: 235
+state: CLOSED
+title: "[SPEC] Replace mandatory three-branch model with single-path branch workflow\
+  \ \u2014 eliminate auto-created dev, unified PR path, standardized squash+commit\
+  \ messaging"

@@ -1,0 +1,6 @@
+number: 314
+title: '[SPEC] local-issues: scope repo discovery to .gitmodules instead of filesystem
+  glob'
+state: OPEN
+labels:
+- spec

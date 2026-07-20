@@ -1,0 +1,7 @@
+labels:
+- spec
+- approved-for-implementation
+number: 146
+state: CLOSED
+title: '[SPEC] Gate 4: content-based submodule-pointer-only commit blocker in pre-commit
+  hook'

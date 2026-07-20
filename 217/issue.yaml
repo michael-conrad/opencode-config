@@ -1,0 +1,7 @@
+labels:
+- SPEC-FIX
+- linter
+number: 217
+state: CLOSED
+title: "[SPEC-FIX] Fix D: Skill card linting rules \u2014 structural checks (SC-LINT-001\
+  \ through 004)"

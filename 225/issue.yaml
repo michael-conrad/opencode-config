@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+number: 225
+state: CLOSED
+title: '[SPEC-FIX] Plan-fidelity auditor hard-codes evaluation criteria instead of
+  reading from authoritative skill cards'

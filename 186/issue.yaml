@@ -1,0 +1,7 @@
+labels:
+- bug
+- needs-approval
+number: 186
+state: CLOSED
+title: '[BUG] session-init emits spurious "Could not resolve hooks dir" errors for
+  issues-data worktrees'

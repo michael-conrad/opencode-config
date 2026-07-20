@@ -1,0 +1,5 @@
+labels:
+- SPEC-FIX
+number: 230
+state: CLOSED
+title: '[SPEC-FIX] Update default model for CLI opencode test runs to ollama/qwen3.6:35b-256k'

@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+- skill-card
+number: 214
+state: CLOSED
+title: '[SPEC-FIX] Fix B: approval-gate Trigger Dispatch Table (D3)'

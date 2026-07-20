@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+- plugin
+number: 298
+state: CLOSED
+title: "[SPEC-FIX] Plugins fail in snap sandbox \u2014 bun cannot find git binary"

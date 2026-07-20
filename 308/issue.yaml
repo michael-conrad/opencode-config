@@ -1,0 +1,8 @@
+number: 308
+title: "[SPEC-FIX] Agent MUST NOT merge PRs \u2014 human-only merge enforcement gap\
+  \ in git-workflow-pr and approval-gate"
+state: OPEN
+labels:
+- SPEC-FIX
+- enforcement
+- git-workflow

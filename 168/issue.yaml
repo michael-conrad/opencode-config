@@ -1,0 +1,5 @@
+labels:
+- '[SPEC]'
+number: 168
+state: CLOSED
+title: "SPEC: .opencode/tools/plan \u2014 unified-planning PEP 723 tool"

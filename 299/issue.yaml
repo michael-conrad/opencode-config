@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+- performance
+number: 299
+state: CLOSED
+title: '[SPEC-FIX] Gate per-turn git config watchdog to first-turn-only'

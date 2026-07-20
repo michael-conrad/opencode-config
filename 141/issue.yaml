@@ -1,0 +1,7 @@
+labels:
+- SPEC-FIX
+- needs-approval
+number: 141
+state: CLOSED
+title: "[SPEC-FIX] Minimal Adversarial Auditor Dispatch \u2014 Reference-Based Context,\
+  \ SC Conflict Detection"

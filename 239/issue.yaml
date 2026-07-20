@@ -1,0 +1,6 @@
+labels:
+- needs-approval
+- spec
+number: 239
+state: CLOSED
+title: '[SPEC] Apply farmage YAML description pattern to all skill cards'

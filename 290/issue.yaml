@@ -1,0 +1,5 @@
+labels:
+- needs-approval
+number: 290
+state: CLOSED
+title: '[SPEC] Cross-Reference Load Directive Band-Aid'

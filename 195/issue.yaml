@@ -1,0 +1,6 @@
+labels:
+- spec
+- infrastructure
+number: 195
+state: CLOSED
+title: "[SPEC] Restructure .issues/{N}/ folder layout \u2014 flatten spec-artifacts/"

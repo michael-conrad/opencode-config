@@ -1,0 +1,14 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Moved to https://github.com/michael-conrad/.opencode/issues/1205 \u2014 this\
+    \ bug is in `session-init` which lives in the `.opencode` submodule repo, not\
+    \ `opencode-config`.\n\n\U0001F916 Co-authored with AI: OpenCode (deepseek-v4-flash)"
+  createdAt: '2026-06-14T17:53:56Z'
+  id: IC_kwDOSOjxms8AAAABGEtsQw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/186#issuecomment-4702563395
+  viewerDidAuthor: true

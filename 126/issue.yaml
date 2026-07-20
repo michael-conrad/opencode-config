@@ -1,0 +1,5 @@
+labels:
+- spec
+number: 126
+state: CLOSED
+title: '[SPEC] Add Ollama web-search-mcp.py as PEP 723 MCP server for agent research'

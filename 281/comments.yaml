@@ -1,0 +1,14 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "This spec was created in the wrong repo. The session-init script lives in\
+    \ the `.opencode` submodule. The correct spec is at **michael-conrad/.opencode#1862**\
+    \ \u2014 this issue should be closed as a duplicate."
+  createdAt: '2026-07-11T14:59:01Z'
+  id: IC_kwDOSOjxms8AAAABJtyxKQ
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/281#issuecomment-4946964777
+  viewerDidAuthor: true

@@ -1,0 +1,7 @@
+labels:
+- plugin
+- '[SPEC-FIX]'
+number: 210
+state: CLOSED
+title: '[SPEC-FIX] env-loader.ts: change default export to named export per plugin
+  API'

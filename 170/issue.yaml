@@ -1,0 +1,6 @@
+labels:
+- needs-approval
+- '[SPEC]'
+number: 170
+state: CLOSED
+title: '[SPEC] Re-evaluate and replace authorization scope model'

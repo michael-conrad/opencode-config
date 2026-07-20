@@ -1,0 +1,5 @@
+labels:
+- spec
+number: 183
+state: CLOSED
+title: '[SPEC] local-issues: print available repo qualifiers on repo-not-found errors'

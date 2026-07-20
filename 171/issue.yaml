@@ -1,0 +1,5 @@
+labels:
+- '[SPEC]'
+number: 171
+state: CLOSED
+title: '[SPEC] Add Agent Tools injection to default.txt'

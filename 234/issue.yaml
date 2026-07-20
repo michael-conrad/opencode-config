@@ -1,0 +1,6 @@
+number: 234
+title: "[SPEC] Workflow Philosophy Paper \u2014 LaTeX Document for Agent Tandem Model"
+state: OPEN
+labels:
+- needs-approval
+- spec

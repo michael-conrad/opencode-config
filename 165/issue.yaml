@@ -1,0 +1,7 @@
+labels:
+- SPEC-FIX
+- platform-routing
+- auditor
+number: 165
+state: CLOSED
+title: '[SPEC-FIX] Remove github MCP perms from all auditor agent cards'

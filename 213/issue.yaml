@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+- skill-card
+number: 213
+state: CLOSED
+title: '[SPEC-FIX] Fix A: playwright-cli description format (D1)'

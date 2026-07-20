@@ -1,0 +1,7 @@
+labels:
+- needs-approval
+- '[SPEC-FIX]'
+number: 295
+state: CLOSED
+title: "[SPEC-FIX] Remove old test framework (.opencode/tests/) \u2014 tests-v2 is\
+  \ now the default"

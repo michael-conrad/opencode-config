@@ -1,0 +1,5 @@
+number: 300
+title: '[SPEC] Remove all stderr/diagnostic noise from plugins and session-init'
+state: OPEN
+labels:
+- spec

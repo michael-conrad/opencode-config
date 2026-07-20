@@ -1,0 +1,7 @@
+labels:
+- SPEC-FIX
+- needs-approval
+number: 255
+state: CLOSED
+title: "[SPEC-FIX] Reorder pre-work steps \u2014 submodule sync must precede feature\
+  \ branch creation"

@@ -1,0 +1,8 @@
+labels:
+- SPEC-FIX
+- needs-approval
+number: 200
+state: CLOSED
+title: "[SPEC-FIX] Decouple state tracking from design artifacts \u2014 remove STATUS\
+  \ markers from plans, move lifecycle manifest, labels advisory only, add checklist\
+  \ generation"

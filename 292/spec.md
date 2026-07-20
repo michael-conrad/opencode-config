@@ -1,0 +1,1 @@
+Filed in wrong repo. This spec belongs in `michael-conrad/.opencode` since the test framework lives in the `.opencode/` submodule. Re-filing there.

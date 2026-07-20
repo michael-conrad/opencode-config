@@ -1,0 +1,14 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Moved to michael-conrad/.opencode#975 \u2014 this issue concerns `.opencode/agents/`\
+    \ which belongs in the `.opencode` repo per the path routing table. Closing as\
+    \ duplicate.\n\n\U0001F916 Co-authored with AI: DeepSeek V4 Flash (ollama-cloud/deepseek-v4-flash)"
+  createdAt: '2026-06-01T15:42:18Z'
+  id: IC_kwDOSOjxms8AAAABEdVZCw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/164#issuecomment-4594161931
+  viewerDidAuthor: true

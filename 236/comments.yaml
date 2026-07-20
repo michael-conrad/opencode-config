@@ -1,0 +1,15 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Closed as duplicate \u2014 this issue was filed against the wrong repo. The\
+    \ correct issues already exist at [.opencode#1563](https://github.com/michael-conrad/.opencode/issues/1563)\
+    \ (bug report) and [.opencode#1544](https://github.com/michael-conrad/.opencode/issues/1544)/[#1545](https://github.com/michael-conrad/.opencode/issues/1545)\
+    \ (BUG-FIX specs)."
+  createdAt: '2026-06-29T13:01:15Z'
+  id: IC_kwDOSOjxms8AAAABIA_ysw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/236#issuecomment-4832883379
+  viewerDidAuthor: true

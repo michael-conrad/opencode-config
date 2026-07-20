@@ -1,0 +1,5 @@
+labels:
+- spec
+number: 182
+state: CLOSED
+title: '[SPEC] Self-describing tool contract: --description flag for all .opencode/tools/'

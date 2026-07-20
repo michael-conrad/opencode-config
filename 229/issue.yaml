@@ -1,0 +1,6 @@
+labels:
+- SPEC-FIX
+- skill-fix
+number: 229
+state: CLOSED
+title: '[SPEC-FIX] Add secret/secret protection patterns to both opencode.jsonc configs'

@@ -1,0 +1,5 @@
+labels:
+- needs-approval
+number: 281
+state: CLOSED
+title: '[SPEC] session-init: CLI Auth Status Reporting (gh, gb)'

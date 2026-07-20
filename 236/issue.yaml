@@ -1,0 +1,7 @@
+labels:
+- bug
+- critical-rules
+number: 236
+state: CLOSED
+title: "Bug: critical-rules-044 symbolic condition overbroad \u2014 catches legitimate\
+  \ verification dispatches"

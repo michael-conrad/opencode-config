@@ -1,0 +1,17 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "## Implementation Complete\n\n**Submodule PR created:** michael-conrad/.opencode#1264\n\
+    \nThe fix removes the `console.error` diagnostic at line 1019 and the now-unused\
+    \ `detectionSource` variable. The sub-agent detection logic (`isSubAgent` boolean)\
+    \ is unchanged.\n\n**Parent repo pointer:** Left dirty \u2014 will resolve when\
+    \ the submodule PR merges to dev and the parent syncs on the next pre-work cycle.\n\
+    \n\U0001F916 Co-authored with AI: OpenCode (deepseek-v4-flash)"
+  createdAt: '2026-06-17T15:06:46Z'
+  id: IC_kwDOSOjxms8AAAABGgzdVA
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/201#issuecomment-4732018004
+  viewerDidAuthor: true

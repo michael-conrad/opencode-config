@@ -1,0 +1,6 @@
+labels:
+- '[SPEC]'
+- approved-for-spec
+number: 188
+state: CLOSED
+title: '[SPEC] Update viewport-editor to v0.3.2 and incorporate AGENTS.md guidance'

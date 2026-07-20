@@ -1,0 +1,5 @@
+labels:
+- SPEC-FIX
+number: 312
+state: CLOSED
+title: '[SPEC-FIX] Update viewport-editor from v0.3.4 to v0.4.2'

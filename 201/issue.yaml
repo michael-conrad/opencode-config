@@ -1,0 +1,7 @@
+labels:
+- SPEC-FIX
+- approved-for-pr
+- cleanup
+number: 201
+state: CLOSED
+title: '[SPEC-FIX] Remove unconditional per-turn diagnostic from session-enforcement.ts'

@@ -1,0 +1,7 @@
+number: 4
+title: '[SPEC-FIX] Remove duplicate top-level directories, clarify repo purpose in
+  AGENTS.md'
+state: CLOSED
+labels:
+- SPEC-FIX
+- needs-approval

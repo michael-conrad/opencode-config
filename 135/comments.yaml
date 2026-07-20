@@ -1,0 +1,13 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Created in wrong repo \u2014 the git-workflow skill files live in the `.opencode`\
+    \ submodule. Recreating in michael-conrad/.opencode."
+  createdAt: '2026-05-23T14:42:05Z'
+  id: IC_kwDOSOjxms8AAAABDcCskw
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/135#issuecomment-4525698195
+  viewerDidAuthor: true

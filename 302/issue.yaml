@@ -1,0 +1,6 @@
+labels:
+- spec
+- approved-for-pr
+number: 302
+state: CLOSED
+title: "[SPEC] env-loader.ts \u2014 remove git commands that run every bash turn"

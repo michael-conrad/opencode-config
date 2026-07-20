@@ -1,0 +1,15 @@
+- author:
+    login: michael-conrad
+  authorAssociation: OWNER
+  body: "Fix spec created for the env-loader.ts plugin export issue. Root cause: `export\
+    \ default` is not a named export \u2014 the plugin system iterates over module\
+    \ exports looking for named function exports, and `default` is a module key, not\
+    \ a named export.\n\n\U0001F916 Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)"
+  createdAt: '2026-06-24T00:43:08Z'
+  id: IC_kwDOSOjxms8AAAABHTLH6A
+  includesCreatedEdit: false
+  isMinimized: false
+  minimizedReason: ''
+  reactionGroups: []
+  url: https://github.com/michael-conrad/opencode-config/issues/210#issuecomment-4784834536
+  viewerDidAuthor: true
