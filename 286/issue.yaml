@@ -3,6 +3,83 @@ status: open
 labels:
 - SPEC-FIX
 - audit
-body: ''
+body: "## Problem\n\nThe current DiMo audit chain (Investigator → Validator → Evaluator\
+  \ → Arbiter) only checks for remediation at the very end, after the Arbiter produces\
+  \ a FAIL verdict. This means:\n\n1. If the Investigator produces defective evidence,\
+  \ the defect propagates through the Validator, Evaluator, and Arbiter before being\
+  \ caught\n2. If the Validator identifies a contradiction that requires remediation,\
+  \ the entire chain must complete before remediation happens\n3. Wasted work: the\
+  \ full 4-role chain runs to completion even when an early step produces output that\
+  \ needs remediation\n4. The current remediation model is: run full chain → Arbiter\
+  \ says FAIL → orchestrator remediates → re-audit. This is inefficient and allows\
+  \ defective intermediate artifacts to contaminate downstream roles.\n\n## Proposed\
+  \ Change\n\nAdd a remediation check after EACH step in the DiMo chain. The flow\
+  \ becomes:\n\n```\nStep 1: Investigator → writes evidence.yaml\n  → Check: Does\
+  \ evidence.yaml indicate remediation needed?\n    → YES: Remediate → RESTART full\
+  \ chain from Step 1\n    → NO:  Proceed to Step 2\n\nStep 2: Validator → reads evidence.yaml,\
+  \ writes reasoning.yaml\n  → Check: Does reasoning.yaml indicate remediation needed?\n\
+  \    → YES: Remediate → RESTART full chain from Step 1\n    → NO:  Proceed to Step\
+  \ 3\n\nStep 3: Evaluator → reads evidence.yaml + reasoning.yaml, writes verdict.yaml\n\
+  \  → Check: Does verdict.yaml indicate remediation needed?\n    → YES: Remediate\
+  \ → RESTART full chain from Step 1\n    → NO:  Proceed to Step 4\n\nStep 4: Arbiter\
+  \ → reads all artifacts, writes judgment.yaml\n  → Check: Does judgment.yaml indicate\
+  \ remediation needed?\n    → YES: Remediate → RESTART full chain from Step 1\n \
+  \   → NO:  Chain complete, proceed with PASS\n```\n\n## What Constitutes \"Remediation\
+  \ Needed\"\n\nEach role's output artifact includes a `remediation_needed` field:\n\
+  \n- **Investigator** (`evidence.yaml`): `remediation_needed: true` when the investigator\
+  \ discovers that the source material (spec, code, plan) has structural defects that\
+  \ prevent meaningful evidence collection (e.g., spec body is empty, plan references\
+  \ nonexistent files, code doesn't compile)\n- **Validator** (`reasoning.yaml`):\
+  \ `remediation_needed: true` when validation reveals that the deliverable has fundamental\
+  \ contradictions or missing data that make further audit meaningless (e.g., all\
+  \ evidence items are CONTRADICTED, spec SCs cannot be mapped to any code)\n- **Evaluator**\
+  \ (`verdict.yaml`): `remediation_needed: true` when the evaluator determines that\
+  \ the deliverable has systemic failures across multiple SCs that require remediation\
+  \ before any further audit steps (e.g., >50% of SCs FAIL, or any Tier 1 SC FAILs)\n\
+  - **Arbiter** (`judgment.yaml`): `remediation_needed: true` when the final judgment\
+  \ is FAIL (this is the existing behavior — the Arbiter already signals remediation\
+  \ via `next_step: remediate then re-audit`)\n\n## Remediation Action\n\nWhen `remediation_needed:\
+  \ true` is detected:\n\n1. The orchestrator reads the `remediation_instructions`\
+  \ field from the artifact (each role's artifact includes a `remediation_instructions`\
+  \ field describing what needs to be fixed)\n2. The orchestrator dispatches a remediation\
+  \ sub-agent to fix the deliverable\n3. After remediation completes, the orchestrator\
+  \ restarts the full DiMo chain from Step 1 (Investigator)\n4. All previous intermediate\
+  \ artifacts are discarded — the new chain starts fresh\n\n## Success Criteria\n\n\
+  | ID | Criterion | Evidence Type | Verification Method |\n|----|-----------|---------------|---------------------|\n\
+  | SC-1 | Each DiMo role's output artifact includes a `remediation_needed` boolean\
+  \ field | `string` | grep for `remediation_needed` in all 12 role task files (4\
+  \ roles x 3 audit types) |\n| SC-2 | Each DiMo role's output artifact includes a\
+  \ `remediation_instructions` string field | `string` | grep for `remediation_instructions`\
+  \ in all 12 role task files |\n| SC-3 | The orchestrator checks `remediation_needed`\
+  \ after each role completes before dispatching the next role | `behavioral` | `opencode\
+  \ run` with audit prompt -> stderr shows per-step remediation check dispatch |\n\
+  | SC-4 | When `remediation_needed: true`, the orchestrator dispatches remediation\
+  \ before restarting the chain | `behavioral` | `opencode run` with audit prompt\
+  \ where remediation is needed -> stderr shows remediation dispatch then chain restart\
+  \ |\n| SC-5 | When `remediation_needed: true`, the full DiMo chain restarts from\
+  \ Investigator (Step 1) after remediation | `behavioral` | `opencode run` with audit\
+  \ prompt where remediation is needed -> stderr shows Investigator dispatch after\
+  \ remediation |\n| SC-6 | When `remediation_needed: false` at all steps, the chain\
+  \ proceeds normally without restart | `behavioral` | `opencode run` with clean audit\
+  \ -> stderr shows normal sequential dispatch without restarts |\n| SC-7 | The SKILL.md\
+  \ Trigger Dispatch Table and DiMo Chain Invocation section are updated to document\
+  \ the per-step remediation check | `string` | grep for \"remediation check\" or\
+  \ \"per-step\" in SKILL.md |\n| SC-8 | The Mandatory Remediation Procedure section\
+  \ in SKILL.md is updated to include per-step remediation | `string` | grep for per-step\
+  \ remediation language in SKILL.md |\n\n## Affected Files\n\n- `.opencode/skills/audit/SKILL.md`\
+  \ — Update DiMo Chain Invocation, Explicit Dispatch Protocol, and Mandatory Remediation\
+  \ Procedure\n- `.opencode/skills/audit/tasks/cross-validate.md` — Add `remediation_needed`\
+  \ and `remediation_instructions` to judgment.yaml output contract\n- All 12 role\
+  \ task files (investigator, validator, evaluator for each of the 4 main audit types)\
+  \ — Add `remediation_needed` and `remediation_instructions` to output artifacts\n\
+  - `.opencode/skills/audit/tasks/completion.md` — May need updates for new flow\n\
+  \n## Risk Assessment\n\n- **Low risk**: The change is additive (adding fields to\
+  \ output artifacts) and procedural (adding checks in the orchestrator dispatch loop).\
+  \ No existing behavior is removed.\n- **Medium risk**: The chain restart logic adds\
+  \ complexity to the orchestrator's dispatch loop. Must ensure infinite loop protection\
+  \ (max N restarts per audit session).\n- **Mitigation**: Add a `restart_count` field\
+  \ to the dispatch context, with a maximum of 3 restarts per audit session. After\
+  \ 3 restarts, escalate to developer.\n\n## Dependencies\n\n- None. This is a self-contained\
+  \ change to the audit skill.\n"
 created_at: '2026-07-20T05:06:51+00:00'
-updated_at: '2026-07-20T05:06:51+00:00'
+updated_at: '2026-07-20T05:07:11+00:00'
