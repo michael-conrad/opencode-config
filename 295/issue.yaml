@@ -1,7 +1,8 @@
+title: 'SPEC-FIX: 28 task cards referenced in Trigger Dispatch Tables are missing
+  from tasks/ directories'
+status: open
 labels:
-- needs-approval
-- '[SPEC-FIX]'
-number: 295
-state: CLOSED
-title: "[SPEC-FIX] Remove old test framework (.opencode/tests/) \u2014 tests-v2 is\
-  \ now the default"
+- SPEC-FIX
+body: ''
+created_at: '2026-07-21T00:36:43+00:00'
+updated_at: '2026-07-21T00:36:43+00:00'
