@@ -3,6 +3,35 @@ title: 'SPEC-FIX: 42 orphaned task card files not referenced by any Trigger Disp
 status: open
 labels:
 - SPEC-FIX
-body: ''
+body: "---\ntitle: \"SPEC-FIX: 42 orphaned task card files not referenced by any Trigger\
+  \ Dispatch Table\"\nstatus: draft\ncreated: 2026-07-20\nlicense: MIT\nprovenance:\
+  \ AI-generated\nissue: TBD\nauthors:\n  - OpenCode (ollama-cloud/deepseek-v4-flash)\n\
+  ---\n\n**STATUS:** DRAFT\n**CREATED:** 2026-07-20\n\n> **Compliance Requirement:**\
+  \ All steps and sub-steps in this document MUST be followed in order.\n\n## Problem\n\
+  \n42 task card files exist in `tasks/` directories but are not referenced by any\
+  \ SKILL.md Trigger Dispatch Table or Invocation section. These orphaned files are\
+  \ dead code — the orchestrator never dispatches them, and no sub-agent ever reads\
+  \ them.\n\n## Affected Skills and Orphaned Files\n\n| Skill | Orphaned Files |\n\
+  |-------|---------------|\n| `implementation-pipeline` | `pipeline-executor.md`,\
+  \ `pre-flight-handoff.md`, `sc-closeout.md` |\n| `executing-plans` | `progress.md`,\
+  \ `start.md`, `step.md`, `verify.md`, `operating-protocol.md` |\n| `spec-creation-validation`\
+  \ | `create-remote-stub.md`, `holistic-self-check.md`, `pipeline-readiness-gate.md`,\
+  \ `pre-spec-inspection.md`, `revise-remote-body.md`, `risk.md`, `traceability.md`\
+  \ |\n| `spec-creation-decomposition` | `analytical-artifacts.md`, `blast-radius.md`,\
+  \ `code-path-analysis.md`, `concern-analysis.md`, `cross-cutting.md`, `decompose.md`,\
+  \ `interface-compatibility.md`, `state-analysis.md`, `testability-assessment.md`\
+  \ |\n| `spec-creation-requirements` | `requirements.md` |\n| `spec-creation-change-control`\
+  \ | `change-control.md` |\n| `writing-plans-creation` | All 16 task files |\n| `writing-plans-holistic`\
+  \ | `holistic-self-check.md` |\n\n## Root Cause\n\nTask cards were created as part\
+  \ of the skill decomposition but the SKILL.md Trigger Dispatch Table was never updated\
+  \ to reference them. The task cards exist on disk but are unreachable by the orchestrator.\n\
+  \n## Fix\n\nFor each orphaned task card, either:\n1. Add a TDT entry in the parent\
+  \ SKILL.md that references it, OR\n2. Delete the orphaned file if the task is no\
+  \ longer needed\n\n## Success Criteria\n\n| ID | Criterion | Evidence Type | Verification\
+  \ Method |\n|----|-----------|---------------|---------------------|\n| SC-1 | All\
+  \ 42 orphaned task cards are either TDT-referenced or deleted | `string` | Cross-reference\
+  \ all task files against all TDTs |\n| SC-2 | No unreferenced task card files remain\
+  \ in any `tasks/` directory | `string` | grep for all task files not in any TDT\
+  \ |\n\n---\n\n*Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)*\n"
 created_at: '2026-07-21T00:34:35+00:00'
-updated_at: '2026-07-21T00:34:35+00:00'
+updated_at: '2026-07-21T00:35:20+00:00'

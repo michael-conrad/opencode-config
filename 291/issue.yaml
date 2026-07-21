@@ -3,6 +3,36 @@ title: 'SPEC-FIX: 28 task cards referenced in Trigger Dispatch Tables are missin
 status: open
 labels:
 - SPEC-FIX
-body: ''
+body: "---\ntitle: \"SPEC-FIX: 28 task cards referenced in Trigger Dispatch Tables\
+  \ are missing from tasks/ directories\"\nstatus: draft\ncreated: 2026-07-20\nlicense:\
+  \ MIT\nprovenance: AI-generated\nissue: TBD\nauthors:\n  - OpenCode (ollama-cloud/deepseek-v4-flash)\n\
+  ---\n\n**STATUS:** DRAFT\n**CREATED:** 2026-07-20\n\n> **Compliance Requirement:**\
+  \ All steps and sub-steps in this document MUST be followed in order.\n\n## Problem\n\
+  \n28 task cards are referenced in SKILL.md Trigger Dispatch Tables but do not exist\
+  \ as `.md` files in the corresponding `tasks/` directories. When the orchestrator\
+  \ dispatches these tasks via `task()`, the sub-agent receives a reference to a non-existent\
+  \ file.\n\n## Affected Skills and Missing Task Cards\n\n| Skill | Missing Task Cards\
+  \ |\n|-------|-------------------|\n| `approval-gate-scope` | `spec-to-plan-cascade`,\
+  \ `approval-cascade`, `check-halt-boundary`, `apply-label`, `revision-revocation`,\
+  \ `bug-discovery-protocol` |\n| `brainstorming` | `top-down-analysis`, `cross-scope`\
+  \ |\n| `executing-plans` | `execute`, `tdd-cycle-enforcement` |\n| `playwright-cli`\
+  \ | `browse`, `test` |\n| `programming-principles` | `principles`, `check-limits`,\
+  \ `decompose` |\n| `skill-creator` | `init`, `package`, `fragment-management` |\n\
+  | `multimodal-dispatch` | `route` (files `dispatch.md` and `dispatch-multi.md` exist\
+  \ but no `route.md`) |\n| `using-git-worktrees` | `verify-worktree` |\n| `plan-creation-pipeline`\
+  \ | `plan-creation`, `completion` |\n| `issue-operations-core` | `push-artifacts`\
+  \ |\n| `writing-plans` | `create`, `update`, `retroactive`, `holistic-self-check`\
+  \ (no `tasks/` directory exists) |\n\n## Root Cause\n\nTrigger Dispatch Tables were\
+  \ written with task references before the corresponding task card files were created.\
+  \ The TDT defines what the orchestrator dispatches, but the task card (what the\
+  \ sub-agent reads) was never written.\n\n## Fix\n\nFor each missing task card, create\
+  \ a `.md` file in the skill's `tasks/` directory with:\n- Entry criteria\n- Inline-only\
+  \ steps (no dispatch markers)\n- Exit criteria\n\n## Success Criteria\n\n| ID |\
+  \ Criterion | Evidence Type | Verification Method |\n|----|-----------|---------------|---------------------|\n\
+  | SC-1 | All 28 missing task cards exist as `.md` files | `string` | Verify each\
+  \ file exists |\n| SC-2 | Each new task card has entry criteria, inline steps, exit\
+  \ criteria | `string` | Sample audit of 5 new task cards |\n| SC-3 | No TDT references\
+  \ a non-existent task card | `string` | Cross-reference all TDTs against filesystem\
+  \ |\n\n---\n\n*Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)*\n"
 created_at: '2026-07-21T00:34:30+00:00'
-updated_at: '2026-07-21T00:34:30+00:00'
+updated_at: '2026-07-21T00:35:20+00:00'

@@ -2,6 +2,37 @@ title: 'SPEC-FIX: 4 naming inconsistency patterns across skill deck task cards'
 status: open
 labels:
 - SPEC-FIX
-body: ''
+body: "---\ntitle: \"SPEC-FIX: 4 naming inconsistency patterns across skill deck task\
+  \ cards\"\nstatus: draft\ncreated: 2026-07-20\nlicense: MIT\nprovenance: AI-generated\n\
+  issue: TBD\nauthors:\n  - OpenCode (ollama-cloud/deepseek-v4-flash)\n---\n\n**STATUS:**\
+  \ DRAFT\n**CREATED:** 2026-07-20\n\n> **Compliance Requirement:** All steps and\
+  \ sub-steps in this document MUST be followed in order.\n\n## Problem\n\n4 naming\
+  \ inconsistency patterns exist across the skill deck, making it difficult for the\
+  \ orchestrator to resolve task card references:\n\n1. **Hyphenated vs underscored\
+  \ subdirectories** — `pre-implementation-analysis.md` (hyphenated) vs `pre_impl/`\
+  \ subdirectory (underscored) in `approval-gate-scope`\n2. **Task name vs subdirectory\
+  \ name mismatch** — `screen-issue.md` exists as top-level file but subdirectory\
+  \ is named `screen/` (not `screen-issue/`); `pre-implementation-analysis.md` exists\
+  \ but subdirectory is `pre-impl/` (not `pre-implementation-analysis/`)\n3. **TDT\
+  \ name vs actual file name mismatch** — `multimodal-dispatch` TDT references task\
+  \ `route` but actual files are `dispatch.md` and `dispatch-multi.md` — no `route.md`\
+  \ exists\n4. **writing-plans task routing split** — `writing-plans` SKILL.md TDT\
+  \ references `create`, `update`, `retroactive`, `holistic-self-check` but has no\
+  \ `tasks/` directory. Task files exist in sibling skills `writing-plans-creation/tasks/`\
+  \ and `writing-plans-holistic/tasks/`\n\n## Root Cause\n\nInconsistent naming conventions\
+  \ were applied during skill creation. Some skills use hyphenated names, others use\
+  \ underscores. Some TDT entries were written before the corresponding task files\
+  \ were created, leading to name mismatches.\n\n## Fix\n\nStandardize naming:\n1.\
+  \ Convert `pre_impl/` to `pre-impl/` (hyphenated to match the parent file)\n2. Rename\
+  \ `screen/` to `screen-issue/` to match the parent file\n3. Create `route.md` or\
+  \ update TDT to reference `dispatch.md`\n4. Either add `tasks/` directory to `writing-plans`\
+  \ or update TDT to reference sibling skill paths\n\n## Success Criteria\n\n| ID\
+  \ | Criterion | Evidence Type | Verification Method |\n|----|-----------|---------------|---------------------|\n\
+  | SC-1 | All subdirectory names match their parent task file names | `string` |\
+  \ Verify each subdirectory name matches the parent file name |\n| SC-2 | All TDT\
+  \ task names match actual file names | `string` | Cross-reference all TDT entries\
+  \ against filesystem |\n| SC-3 | `writing-plans` has a `tasks/` directory or TDT\
+  \ references sibling skills | `string` | Verify resolution of pattern 4 |\n\n---\n\
+  \n*Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)*\n"
 created_at: '2026-07-21T00:34:59+00:00'
-updated_at: '2026-07-21T00:34:59+00:00'
+updated_at: '2026-07-21T00:35:20+00:00'

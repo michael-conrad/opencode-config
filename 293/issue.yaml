@@ -3,6 +3,30 @@ title: 'SPEC-FIX: 6 skills have task directories but no Trigger Dispatch Table i
 status: open
 labels:
 - SPEC-FIX
-body: ''
+body: "---\ntitle: \"SPEC-FIX: 6 skills have task directories but no Trigger Dispatch\
+  \ Table in SKILL.md\"\nstatus: draft\ncreated: 2026-07-20\nlicense: MIT\nprovenance:\
+  \ AI-generated\nissue: TBD\nauthors:\n  - OpenCode (ollama-cloud/deepseek-v4-flash)\n\
+  ---\n\n**STATUS:** DRAFT\n**CREATED:** 2026-07-20\n\n> **Compliance Requirement:**\
+  \ All steps and sub-steps in this document MUST be followed in order.\n\n## Problem\n\
+  \n6 skills have `tasks/` directories with task card files but their SKILL.md files\
+  \ lack a Trigger Dispatch Table section. Without a TDT, the orchestrator has no\
+  \ routing information for these tasks — they are unreachable.\n\n## Affected Skills\n\
+  \n| Skill | Task Count | Notes |\n|-------|-----------|-------|\n| `spec-creation-change-control`\
+  \ | 1 | `change-control.md` |\n| `spec-creation-decomposition` | 9 | Analytical\
+  \ artifact task cards |\n| `spec-creation-requirements` | 1 | `requirements.md`\
+  \ |\n| `spec-creation-validation` | 8 | Create, holistic check, risk, etc. |\n|\
+  \ `writing-plans-creation` | 16 | Full plan creation pipeline |\n| `writing-plans-holistic`\
+  \ | 1 | `holistic-self-check.md` |\n\n## Root Cause\n\nThese skills were created\
+  \ as sub-skills (task containers) without their own TDT. The parent skills (`spec-creation`,\
+  \ `writing-plans`) reference them via Invocation sections, but the sub-skills themselves\
+  \ have no TDT for their own task cards.\n\n## Fix\n\nFor each skill, add a Trigger\
+  \ Dispatch Table to the SKILL.md that references all task card files in its `tasks/`\
+  \ directory. Each TDT entry must have:\n- User says / Context trigger\n- Task name\n\
+  - Dispatch type\n- Context passed\n\n## Success Criteria\n\n| ID | Criterion | Evidence\
+  \ Type | Verification Method |\n|----|-----------|---------------|---------------------|\n\
+  | SC-1 | All 6 skills have a TDT in their SKILL.md | `string` | Verify each SKILL.md\
+  \ has a `## Trigger Dispatch Table` section |\n| SC-2 | Each TDT references all\
+  \ task card files in the skill's `tasks/` directory | `string` | Cross-reference\
+  \ TDT entries against filesystem |\n\n---\n\n*Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)*\n"
 created_at: '2026-07-21T00:34:51+00:00'
-updated_at: '2026-07-21T00:34:51+00:00'
+updated_at: '2026-07-21T00:35:20+00:00'
