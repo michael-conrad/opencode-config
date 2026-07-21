@@ -1,6 +1,6 @@
 title: 'SPEC-FIX: 6 skills have task directories but no Trigger Dispatch Table in
   SKILL.md'
-status: open
+status: closed
 labels:
 - SPEC-FIX
 body: "---\ntitle: \"SPEC-FIX: 6 skills have task directories but no Trigger Dispatch\
@@ -29,5 +29,7 @@ body: "---\ntitle: \"SPEC-FIX: 6 skills have task directories but no Trigger Dis
   \ task card files in the skill's `tasks/` directory | `string` | Cross-reference\
   \ TDT entries against filesystem |\n\n---\n\n*Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)*\n"
 created_at: '2026-07-21T00:34:51+00:00'
-updated_at: '2026-07-21T00:36:09+00:00'
+updated_at: '2026-07-21T00:37:49+00:00'
 github_url: 'true'
+closed_at: '2026-07-21T00:37:49+00:00'
+close_reason: completed
