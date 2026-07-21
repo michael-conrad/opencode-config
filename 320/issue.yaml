@@ -1,0 +1,7 @@
+title: '[SPEC] Fix git-workflow family — remove sub-skill indirection, per-step dispatch'
+status: open
+labels:
+- spec
+body: ''
+created_at: '2026-07-21T17:33:30+00:00'
+updated_at: '2026-07-21T17:33:30+00:00'
