@@ -35,4 +35,5 @@ body: "---\ntitle: \"SPEC-FIX: 28 task cards referenced in Trigger Dispatch Tabl
   \ a non-existent task card | `string` | Cross-reference all TDTs against filesystem\
   \ |\n\n---\n\n*Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)*\n"
 created_at: '2026-07-21T00:34:30+00:00'
-updated_at: '2026-07-21T00:35:20+00:00'
+updated_at: '2026-07-21T00:36:09+00:00'
+github_url: 'true'

@@ -34,4 +34,5 @@ body: "---\ntitle: \"SPEC-FIX: 42 orphaned task card files not referenced by any
   \ in any `tasks/` directory | `string` | grep for all task files not in any TDT\
   \ |\n\n---\n\n*Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)*\n"
 created_at: '2026-07-21T00:34:35+00:00'
-updated_at: '2026-07-21T00:35:20+00:00'
+updated_at: '2026-07-21T00:36:09+00:00'
+github_url: 'true'
