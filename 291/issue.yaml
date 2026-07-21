@@ -1,6 +1,6 @@
 title: 'SPEC-FIX: 28 task cards referenced in Trigger Dispatch Tables are missing
   from tasks/ directories'
-status: open
+status: closed
 labels:
 - SPEC-FIX
 body: "---\ntitle: \"SPEC-FIX: 28 task cards referenced in Trigger Dispatch Tables\
@@ -35,5 +35,7 @@ body: "---\ntitle: \"SPEC-FIX: 28 task cards referenced in Trigger Dispatch Tabl
   \ a non-existent task card | `string` | Cross-reference all TDTs against filesystem\
   \ |\n\n---\n\n*Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)*\n"
 created_at: '2026-07-21T00:34:30+00:00'
-updated_at: '2026-07-21T00:36:09+00:00'
+updated_at: '2026-07-21T00:37:43+00:00'
 github_url: 'true'
+closed_at: '2026-07-21T00:37:43+00:00'
+close_reason: completed
