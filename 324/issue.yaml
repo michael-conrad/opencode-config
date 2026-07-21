@@ -2,6 +2,42 @@ title: '[SPEC] Fix implementation-pipeline — update TDT for per-step dispatch'
 status: open
 labels:
 - spec
-body: ''
+body: "---\ntitle: '[SPEC] Fix implementation-pipeline — update TDT for per-step dispatch'\n\
+  status: draft\ncreated: 2026-07-21\nlicense: MIT\nprovenance: AI-generated\nissue:\
+  \ 324\nauthors:\n  - OpenCode (deepseek-v4-flash)\n---\n\n> STATUS: **DRAFT**\n\
+  > CREATED: 2026-07-21\n\n> **Compliance requirement:** This is a fix spec (F-6).\
+  \ It modifies the implementation-pipeline skill card. All changes MUST conform to\
+  \ the canonical templates defined in T-1 (issue #318) and T-2 (issue #316).\n\n\
+  > **Master spec reference:** See `tmp/spec-per-step-dispatch.md` for the full interdependency\
+  \ analysis, dispatch vocabulary, and shared definitions.\n\n## Problem\n\nThe implementation-pipeline\
+  \ skill card already has a pre-flight gate (it was one of the first cards updated).\
+  \ However, its Trigger Dispatch Table still uses the old dispatch vocabulary (`sub-task`,\
+  \ `orchestrator`, `inline` without `orchestrator:` prefix) and has a global Invocation\
+  \ section with \"dispatch via task()\" language.\n\nThe TDT needs to be updated\
+  \ to use the canonical dispatch vocabulary and the enumerated workflow sections\
+  \ with per-step dispatch.\n\n## Scope\n\nThis spec covers only the implementation-pipeline\
+  \ skill card. It is the simplest fix spec — the card already has a pre-flight gate,\
+  \ so only the TDT and workflow sections need updating.\n\n**Out of scope:** Other\
+  \ skill cards (covered by F-1 through F-5, F-7). Behavioral enforcement tests (covered\
+  \ by issue #326).\n\n## Key Changes\n\n1. Remove global `## Invocation` and `##\
+  \ DISPATCH_GATE` sections\n2. Update TDT `Dispatch` column to use canonical patterns:\
+  \ `task(...)`, `orchestrator: N sequential task() calls`, `orchestrator: halt`,\
+  \ `orchestrator: inline`\n3. Add enumerated workflow sections with per-step dispatch\
+  \ for each pipeline stage\n4. Remove \"dispatch via task()\" language from Overview\
+  \ and Persona sections\n5. Preserve the existing `## Pre-Flight Gate` section (already\
+  \ present)\n\n## Affected Files\n\n| File | Change |\n|------|--------|\n| `implementation-pipeline/SKILL.md`\
+  \ | Remove Invocation/DISPATCH_GATE, update TDT, add enumerated workflows |\n\n\
+  ## Success Criteria\n\n| ID | Criterion | Evidence Type |\n|----|-----------|---------------|\n\
+  | SC-1 | `implementation-pipeline/SKILL.md` has no global Invocation or DISPATCH_GATE\
+  \ section | `string` |\n| SC-2 | TDT Dispatch column uses only canonical patterns\
+  \ | `string` |\n| SC-3 | Enumerated workflow sections exist with per-step dispatch\
+  \ for all pipeline stages | `string` |\n| SC-4 | Pre-Flight Gate section is preserved\
+  \ (already present) | `string` |\n| SC-5 | No \"dispatch via task()\" language in\
+  \ lead-in sections | `string` |\n\n## Dependencies\n\n- **BLOCKED by T-1 (issue\
+  \ #318):** Canonical skill card structure template must be defined first\n- **BLOCKED\
+  \ by T-2 (issue #316):** Canonical task card structure template must be defined\
+  \ first\n\n## Implementation Order\n\n```\nPhase 1: T-1, T-2 (templates) — prerequisite\n\
+  Phase 2: F-1 (audit) — proof of concept\nPhase 3: F-6 (this spec) — parallel with\
+  \ F-2, F-3, F-4, F-5, F-7\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:33:30+00:00'
+updated_at: '2026-07-21T17:37:16+00:00'

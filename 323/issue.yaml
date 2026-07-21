@@ -3,6 +3,58 @@ title: '[SPEC] Remove 13 sub-skill SKILL.md files from available_skills — clea
 status: open
 labels:
 - spec
-body: ''
+body: "---\ntitle: '[SPEC] Remove 13 sub-skill SKILL.md files from available_skills\
+  \ — cleanup after per-step dispatch fix'\nstatus: draft\ncreated: 2026-07-21\nlicense:\
+  \ MIT\nprovenance: AI-generated\nissue: 323\nauthors:\n  - OpenCode (deepseek-v4-flash)\n\
+  ---\n\n> STATUS: **DRAFT**\n> CREATED: 2026-07-21\n\n> **Compliance requirement:**\
+  \ This is a cleanup spec (C-1). It removes orphaned sub-skill SKILL.md files after\
+  \ the fix specs (F-2 through F-5) have updated parent TDTs to reference task files\
+  \ directly. This spec MUST NOT run until all prerequisite fix specs are complete.\n\
+  \n> **Master spec reference:** See `tmp/spec-per-step-dispatch.md` for the full\
+  \ interdependency analysis, dispatch vocabulary, and shared definitions.\n\n## Problem\n\
+  \nAfter fix specs F-2 through F-5 update parent TDTs to reference task files by\
+  \ direct path, 13 sub-skill SKILL.md files become orphaned. They are no longer referenced\
+  \ by any TDT `--task` qualifier. However, they still appear in the `<available_skills>`\
+  \ list with \"Load via skill()\" language, which misleads the orchestrator into\
+  \ thinking these are valid entry points.\n\nThese sub-skill SKILL.md files are dead\
+  \ weight. The task files under them remain — they are the useful artifacts. The\
+  \ SKILL.md files themselves provide no dispatch information (no TDT, no workflows,\
+  \ no dispatch instructions).\n\n## Scope\n\nThis spec covers the removal of 13 sub-skill\
+  \ SKILL.md files from `<available_skills>` and stripping \"Load via skill()\" language\
+  \ from their descriptions. The task files under these directories are preserved.\n\
+  \n**Out of scope:** The fix specs themselves (F-2 through F-5). Behavioral enforcement\
+  \ tests (covered by issue #326). The task files under the sub-skill directories\
+  \ (they remain in place).\n\n## Key Changes\n\n1. Remove 13 sub-skill SKILL.md files\
+  \ from the `<available_skills>` list in the system prompt\n2. Strip \"Load via skill()\"\
+  \ language from their descriptions in `<available_skills>`\n3. The task files under\
+  \ each sub-skill directory remain — they are referenced by direct path from parent\
+  \ TDTs\n\n## Affected Files\n\n| File | Change |\n|------|--------|\n| `<available_skills>`\
+  \ list (system prompt) | Remove 13 entries, strip \"Load via skill()\" from descriptions\
+  \ |\n\n### Sub-skill SKILL.md files to remove from `<available_skills>`\n\n| # |\
+  \ Sub-skill | Parent Skill | Removed By |\n|---|-----------|-------------|------------|\n\
+  | 1 | `approval-gate-scope` | approval-gate | F-2 |\n| 2 | `git-workflow-branch`\
+  \ | git-workflow | F-3 |\n| 3 | `git-workflow-commit` | git-workflow | F-3 |\n|\
+  \ 4 | `git-workflow-pr` | git-workflow | F-3 |\n| 5 | `git-workflow-cleanup` | git-workflow\
+  \ | F-3 |\n| 6 | `git-workflow-conflict` | git-workflow | F-3 |\n| 7 | `spec-creation-decomposition`\
+  \ | spec-creation | F-4 |\n| 8 | `spec-creation-requirements` | spec-creation |\
+  \ F-4 |\n| 9 | `spec-creation-validation` | spec-creation | F-4 |\n| 10 | `spec-creation-change-control`\
+  \ | spec-creation | F-4 |\n| 11 | `spec-creation-operating-protocol` | spec-creation\
+  \ | F-4 |\n| 12 | `writing-plans-creation` | writing-plans | F-5 |\n| 13 | `writing-plans-holistic`\
+  \ | writing-plans | F-5 |\n\n## Success Criteria\n\n| ID | Criterion | Evidence\
+  \ Type |\n|----|-----------|---------------|\n| SC-1 | No sub-skill SKILL.md file\
+  \ appears in `<available_skills>` with \"Load via skill()\" language | `string`\
+  \ |\n| SC-2 | All 13 sub-skill entries are removed from `<available_skills>` | `string`\
+  \ |\n| SC-3 | Parent TDTs reference task files by direct path, not through `--task`\
+  \ qualifiers to sub-skill SKILL.md files | `string` |\n| SC-4 | Task files under\
+  \ sub-skill directories remain in place and are accessible by direct path | `string`\
+  \ |\n\n## Dependencies\n\n- **BLOCKED by F-2 (issue #319):** approval-gate fix must\
+  \ update parent TDT first\n- **BLOCKED by F-3 (issue #320):** git-workflow fix must\
+  \ update parent TDT first\n- **BLOCKED by F-4 (issue #322):** spec-creation fix\
+  \ must update parent TDT first\n- **BLOCKED by F-5 (issue #321):** writing-plans\
+  \ fix must update parent TDT first\n\n## Implementation Order\n\n```\nPhase 1: T-1,\
+  \ T-2 (templates) — prerequisite\nPhase 2: F-1 (audit) — proof of concept\nPhase\
+  \ 3: F-2, F-3, F-4, F-5 (fix specs) — prerequisite\nPhase 4: C-1 (this spec) — cleanup\
+  \ after fix specs complete\nPhase 5: Behavioral enforcement tests (issue #326)\n\
+  ```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:33:30+00:00'
+updated_at: '2026-07-21T17:37:16+00:00'

@@ -3,6 +3,64 @@ title: '[SPEC] Canonical skill card structure template — pre-flight gate, enum
 status: open
 labels:
 - spec
-body: ''
+body: "---\ntitle: '[SPEC] Canonical skill card structure template — pre-flight gate,\
+  \ enumerated workflows, per-step dispatch'\nstatus: draft\ncreated: 2026-07-21\n\
+  license: MIT\nprovenance: AI-generated\nissue: 318\nauthors:\n  - OpenCode (deepseek-v4-flash)\n\
+  ---\n\n> STATUS: **DRAFT**\n> CREATED: 2026-07-21\n\n> **Compliance requirement:**\
+  \ This spec defines a template artifact (T-1). It produces no file changes — it\
+  \ is a reference document for all fix specs (F-1 through F-7). All fix specs MUST\
+  \ conform to the template defined here.\n\n> **Master spec reference:** See `tmp/spec-per-step-dispatch.md`\
+  \ for the full interdependency analysis, dispatch vocabulary, and shared definitions.\n\
+  \n## Problem\n\nEvery skill card in `.opencode/skills/` has a structural defect:\
+  \ the Trigger Dispatch Table (TDT) uses a single dispatch label per row (e.g., `sub-task`,\
+  \ `orchestrator`, `inline`), and a global \"Invocation\" section tells the orchestrator\
+  \ to \"dispatch via task()\". The orchestrator reads the global Invocation instruction,\
+  \ sees `sub-task` in the TDT, and dispatches the **entire skill card** (SKILL.md)\
+  \ to a single sub-agent.\n\nThis is a category error (critical-rules-XXX). The sub-agent\
+  \ receives routing metadata (Trigger Dispatch Table, DISPATCH_GATE protocol, Invocation\
+  \ section) that it cannot execute — it doesn't have `task()` to dispatch individual\
+  \ roles or steps.\n\n**Root cause:** The skill card does not separate orchestrator-level\
+  \ instructions from sub-agent-level instructions. The TDT tells the orchestrator\
+  \ what to do, but the dispatch labels are too coarse. A single `sub-task` label\
+  \ doesn't tell the orchestrator *which* task file to dispatch, *what context* to\
+  \ pass, or *what sequence* of dispatches to execute.\n\n## Scope\n\nThis spec defines\
+  \ the canonical skill card structure template. It applies to ALL SKILL.md files\
+  \ across ALL skills. Every SKILL.md MUST conform to this template after the fix\
+  \ specs are applied.\n\n**Out of scope:** Task file structure (covered by T-2, issue\
+  \ #316). Behavioral enforcement tests (covered by issue #326).\n\n## Key Changes\n\
+  \n1. Add `## Pre-Flight Gate` section as the first content section after frontmatter\
+  \ — verifies `task()` is available before proceeding\n2. Remove global `## Invocation`\
+  \ section (the \"dispatch via task()\" table)\n3. Remove global `## DISPATCH_GATE`\
+  \ section (the \"inline execution is FORBIDDEN\" prose)\n4. Remove any \"Orchestrator\
+  \ Entry Criteria\" block referencing a global dispatch protocol\n5. Add enumerated\
+  \ workflow sections with per-step dispatch — each step has sub-bullets for dispatch\
+  \ type, dispatch string, input, output\n6. Update TDT `Dispatch` column to use only\
+  \ valid patterns: `task(...)`, `orchestrator: N sequential task() calls`, `orchestrator:\
+  \ halt`, `orchestrator: inline`\n7. Remove \"dispatch via task()\" language from\
+  \ Overview, Persona, and Mandatory Task Discipline sections\n8. Add explicit `##\
+  \ Orchestrator Workflow` and `## Sub-Agent Workflow` section headers where the skill\
+  \ card contains instructions for both\n\n## Affected Files\n\n| File | Change |\n\
+  |------|--------|\n| All `SKILL.md` files across all skills | Add Pre-Flight Gate,\
+  \ remove Invocation/DISPATCH_GATE, add enumerated workflows, update TDT |\n\n##\
+  \ Success Criteria\n\n| ID | Criterion | Evidence Type |\n|----|-----------|---------------|\n\
+  | SC-1 | No skill card has a global `## Invocation` section with \"dispatch via\
+  \ task()\" | `string` |\n| SC-2 | No skill card has a global `## DISPATCH_GATE`\
+  \ section | `string` |\n| SC-3 | Every skill card with a TDT has a `## Pre-Flight\
+  \ Gate` section as the first content section | `string` |\n| SC-4 | Every TDT `Dispatch`\
+  \ column uses only valid patterns: `task(...)`, `orchestrator: N sequential task()\
+  \ calls`, `orchestrator: halt`, `orchestrator: inline` | `string` |\n| SC-5 | Every\
+  \ workflow section is an enumerated list with sub-bullets for dispatch type, dispatch\
+  \ string, input, output | `string` |\n| SC-6 | No skill card lead-in text contains\
+  \ \"dispatch via task()\" or \"call the skill, then dispatch via task()\" | `string`\
+  \ |\n| SC-7 | Pre-Flight Gate blocking message matches the canonical format | `string`\
+  \ |\n| SC-8 | Orchestrator that encounters BLOCKED from pre-flight gate stops all\
+  \ further investigation | `behavioral` |\n| SC-9 | Orchestrator that loads a skill\
+  \ card with per-step dispatch dispatches individual task files, not the entire SKILL.md\
+  \ | `behavioral` |\n\n## Dependencies\n\n- **None.** This template spec is independent\
+  \ of T-2 (issue #316). Both templates can be created in parallel.\n\n## Implementation\
+  \ Order\n\nThis is a template spec (T-1). It produces no file changes. It is a reference\
+  \ document consumed by all fix specs (F-1 through F-7).\n\n```\nPhase 1: Write this\
+  \ spec (T-1) — complete\nPhase 2: All fix specs reference this template when restructuring\
+  \ skill cards\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:33:30+00:00'
+updated_at: '2026-07-21T17:37:16+00:00'

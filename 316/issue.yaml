@@ -3,6 +3,59 @@ title: '[SPEC] Canonical task card structure template — dispatch contract, out
 status: open
 labels:
 - spec
-body: ''
+body: "---\ntitle: '[SPEC] Canonical task card structure template — dispatch contract,\
+  \ output contract, frugal contract'\nstatus: draft\ncreated: 2026-07-21\nlicense:\
+  \ MIT\nprovenance: AI-generated\nissue: 316\nauthors:\n  - OpenCode (deepseek-v4-flash)\n\
+  ---\n\n> STATUS: **DRAFT**\n> CREATED: 2026-07-21\n\n> **Compliance requirement:**\
+  \ This spec defines a template artifact (T-2). It produces no file changes — it\
+  \ is a reference document for all fix specs (F-1 through F-7). All fix specs MUST\
+  \ conform to the template defined here.\n\n> **Master spec reference:** See `tmp/spec-per-step-dispatch.md`\
+  \ for the full interdependency analysis, dispatch vocabulary, and shared definitions.\n\
+  \n## Problem\n\nEvery task file in `.opencode/skills/*/tasks/` lacks a standardized\
+  \ contract structure. Sub-agents dispatched to execute a task receive unstructured\
+  \ prompts with no explicit contract about:\n- What context they should receive (and\
+  \ what constitutes a missing-required-context error)\n- What they should produce\
+  \ (output format, file path, required/optional)\n- What they should return to the\
+  \ orchestrator (result contract fields)\n- Whether they should reject preloaded\
+  \ orchestrator reasoning (clean-room tasks)\n- Whether they should reject expected\
+  \ determinations (determination-producing tasks)\n\nThis leads to sub-agents accepting\
+  \ preloaded context (contaminating results), producing unstructured output (forcing\
+  \ orchestrator to re-read files), and returning verbose results (wasting orchestrator\
+  \ context).\n\n## Scope\n\nThis spec defines the canonical task card structure template.\
+  \ It applies to ALL task files across ALL skills. Every task file MUST conform to\
+  \ this template after the fix specs are applied.\n\n**Out of scope:** Skill card\
+  \ structure (covered by T-1, issue #318). Behavioral enforcement tests (covered\
+  \ by issue #326).\n\n## Key Changes\n\n1. Add `## Dispatch Contract` section to\
+  \ every task file — specifies required context fields, missing-context rejection,\
+  \ and preloaded-context rejection\n2. Add `## Output Contract` section to every\
+  \ task file — specifies output file path, format, and required/optional status\n\
+  3. Add `## Frugal Contract` section to every task file — specifies the result contract\
+  \ fields (status, finding_summary, artifact_path, blocker_reason)\n4. Add `## Clean-Room\
+  \ Validation` section (optional) — present only for tasks requiring independence\
+  \ from orchestrator bias (auditors, evaluators, verifiers)\n5. Add expected-determination\
+  \ rejection to `## Dispatch Contract` for tasks that produce a determination (PASS/FAIL\
+  \ per criterion)\n\n## Affected Files\n\n| File | Change |\n|------|--------|\n\
+  | All `tasks/*.md` files across all skills | Add Dispatch Contract, Output Contract,\
+  \ Frugal Contract sections |\n| Determination-producing task files | Add expected-determination\
+  \ rejection to Dispatch Contract |\n| Clean-room task files (auditors, evaluators,\
+  \ verifiers) | Add Clean-Room Validation section |\n\n## Success Criteria\n\n| ID\
+  \ | Criterion | Evidence Type |\n|----|-----------|---------------|\n| SC-1 | Every\
+  \ task file has a `## Dispatch Contract` section listing required context fields\
+  \ | `string` |\n| SC-2 | Every Dispatch Contract includes BLOCKED with MISSING_REQUIRED_CONTEXT\
+  \ for missing fields | `string` |\n| SC-3 | Every Dispatch Contract includes BLOCKED\
+  \ with PRELOADED_CONTEXT_REJECTED for preloaded orchestrator reasoning | `string`\
+  \ |\n| SC-4 | Every task file has a `## Output Contract` section specifying output\
+  \ file path, format, and required/optional | `string` |\n| SC-5 | Every task file\
+  \ has a `## Frugal Contract` section specifying status, finding_summary, artifact_path,\
+  \ blocker_reason | `string` |\n| SC-6 | Determination-producing task files include\
+  \ expected-determination rejection in Dispatch Contract | `string` |\n| SC-7 | Clean-room\
+  \ task files include a `## Clean-Room Validation` section | `string` |\n| SC-8 |\
+  \ Execution-only task files (create branch, commit, push, run tests) do NOT have\
+  \ Clean-Room Validation | `string` |\n\n## Dependencies\n\n- **None.** This template\
+  \ spec is independent of T-1 (issue #318). Both templates can be created in parallel.\n\
+  \n## Implementation Order\n\nThis is a template spec (T-2). It produces no file\
+  \ changes. It is a reference document consumed by all fix specs (F-1 through F-7).\n\
+  \n```\nPhase 1: Write this spec (T-2) — complete\nPhase 2: All fix specs reference\
+  \ this template when adding contract sections to task files\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:33:30+00:00'
+updated_at: '2026-07-21T17:37:16+00:00'

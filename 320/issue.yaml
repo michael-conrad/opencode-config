@@ -2,6 +2,60 @@ title: '[SPEC] Fix git-workflow family — remove sub-skill indirection, per-ste
 status: open
 labels:
 - spec
-body: ''
+body: "---\ntitle: '[SPEC] Fix git-workflow family — remove sub-skill indirection,\
+  \ per-step dispatch'\nstatus: draft\ncreated: 2026-07-21\nlicense: MIT\nprovenance:\
+  \ AI-generated\nissue: 320\nauthors:\n  - OpenCode (deepseek-v4-flash)\n---\n\n\
+  > STATUS: **DRAFT**\n> CREATED: 2026-07-21\n\n> **Compliance requirement:** This\
+  \ is a fix spec (F-3). It modifies the git-workflow family skill cards and their\
+  \ task files. All changes MUST conform to the canonical templates defined in T-1\
+  \ (issue #318) and T-2 (issue #316).\n\n> **Master spec reference:** See `tmp/spec-per-step-dispatch.md`\
+  \ for the full interdependency analysis, dispatch vocabulary, and shared definitions.\n\
+  \n## Problem\n\nThe git-workflow skill card routes 11 task references through 5\
+  \ sub-skill SKILL.md files (git-workflow-branch, git-workflow-commit, git-workflow-pr,\
+  \ git-workflow-cleanup, git-workflow-conflict). Each sub-skill is a stub with no\
+  \ dispatch information — they list task filenames with no TDT, no workflows, no\
+  \ dispatch instructions.\n\nThis sub-skill indirection is dead weight. The task\
+  \ files are referenced by path from the parent TDT and should be referenced directly.\
+  \ Additionally, all 6 skill cards have the global Invocation/DISPATCH_GATE defect.\n\
+  \n## Scope\n\nThis spec covers the git-workflow family: git-workflow, git-workflow-branch,\
+  \ git-workflow-commit, git-workflow-pr, git-workflow-cleanup, and git-workflow-conflict\
+  \ skill cards and their ~11 task files.\n\n**Out of scope:** Other skill cards (covered\
+  \ by F-1, F-2, F-4 through F-7). Behavioral enforcement tests (covered by issue\
+  \ #326). Removal of the 5 orphaned sub-skill SKILL.md files (covered by C-1, issue\
+  \ #323).\n\n## Key Changes\n\n1. Add `## Pre-Flight Gate` section to all 6 skill\
+  \ cards\n2. Remove global `## Invocation` and `## DISPATCH_GATE` sections from all\
+  \ 6 skill cards\n3. Update `git-workflow/SKILL.md` TDT to reference task files by\
+  \ direct path (e.g., `git-workflow-branch/tasks/pre-work.md`) instead of `--task`\
+  \ qualifiers\n4. Add enumerated workflow sections with per-step dispatch for each\
+  \ git-workflow workflow\n5. Add Dispatch Contract, Output Contract, and Frugal Contract\
+  \ to all ~11 task files\n6. Remove \"dispatch via task()\" language from Overview\
+  \ and Persona sections\n\n## Affected Files\n\n| File | Change |\n|------|--------|\n\
+  | `git-workflow/SKILL.md` | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE,\
+  \ update TDT to direct paths, add workflows |\n| `git-workflow-branch/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, add workflows |\n| `git-workflow-commit/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, add workflows |\n| `git-workflow-pr/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, add workflows |\n| `git-workflow-cleanup/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, add workflows |\n| `git-workflow-conflict/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, add workflows |\n| `git-workflow-branch/tasks/*.md`\
+  \ (~3 files) | Add contract sections |\n| `git-workflow-commit/tasks/*.md` (~2 files)\
+  \ | Add contract sections |\n| `git-workflow-pr/tasks/*.md` (~3 files) | Add contract\
+  \ sections |\n| `git-workflow-cleanup/tasks/*.md` (~2 files) | Add contract sections\
+  \ |\n| `git-workflow-conflict/tasks/*.md` (~1 file) | Add contract sections |\n\n\
+  ## Success Criteria\n\n| ID | Criterion | Evidence Type |\n|----|-----------|---------------|\n\
+  | SC-1 | All 6 skill cards have Pre-Flight Gate as first content section | `string`\
+  \ |\n| SC-2 | All 6 skill cards have no global Invocation or DISPATCH_GATE section\
+  \ | `string` |\n| SC-3 | `git-workflow/SKILL.md` TDT references task files by direct\
+  \ path, not `--task` qualifiers | `string` |\n| SC-4 | All 6 skill cards have enumerated\
+  \ workflow sections with per-step dispatch | `string` |\n| SC-5 | All ~11 task files\
+  \ have Dispatch Contract, Output Contract, and Frugal Contract sections | `string`\
+  \ |\n| SC-6 | No \"dispatch via task()\" language in lead-in sections | `string`\
+  \ |\n\n## Dependencies\n\n- **BLOCKED by T-1 (issue #318):** Canonical skill card\
+  \ structure template must be defined first\n- **BLOCKED by T-2 (issue #316):** Canonical\
+  \ task card structure template must be defined first\n- **Prerequisite for C-1 (issue\
+  \ #323):** Cleanup spec must wait until parent TDT references task files directly\n\
+  \n## Implementation Order\n\n```\nPhase 1: T-1, T-2 (templates) — prerequisite\n\
+  Phase 2: F-1 (audit) — proof of concept\nPhase 3: F-3 (this spec) — parallel with\
+  \ F-2, F-4, F-5, F-6, F-7\nPhase 4: C-1 (cleanup) — blocked until F-2 through F-5\
+  \ complete\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:33:30+00:00'
+updated_at: '2026-07-21T17:37:16+00:00'

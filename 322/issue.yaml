@@ -2,6 +2,60 @@ title: '[SPEC] Fix spec-creation family — remove 5 sub-skill stubs, per-step d
 status: open
 labels:
 - spec
-body: ''
+body: "---\ntitle: '[SPEC] Fix spec-creation family — remove 5 sub-skill stubs, per-step\
+  \ dispatch'\nstatus: draft\ncreated: 2026-07-21\nlicense: MIT\nprovenance: AI-generated\n\
+  issue: 322\nauthors:\n  - OpenCode (deepseek-v4-flash)\n---\n\n> STATUS: **DRAFT**\n\
+  > CREATED: 2026-07-21\n\n> **Compliance requirement:** This is a fix spec (F-4).\
+  \ It modifies the spec-creation family skill cards and their task files. All changes\
+  \ MUST conform to the canonical templates defined in T-1 (issue #318) and T-2 (issue\
+  \ #316).\n\n> **Master spec reference:** See `tmp/spec-per-step-dispatch.md` for\
+  \ the full interdependency analysis, dispatch vocabulary, and shared definitions.\n\
+  \n## Problem\n\nThe spec-creation skill card routes 3 task references through 5\
+  \ sub-skill SKILL.md files (spec-creation-decomposition, spec-creation-requirements,\
+  \ spec-creation-validation, spec-creation-change-control, spec-creation-operating-protocol).\
+  \ Each sub-skill is a stub with no dispatch information — they list task filenames\
+  \ with no TDT, no workflows, no dispatch instructions.\n\nThis sub-skill indirection\
+  \ is dead weight. The task files are referenced by path from the parent TDT and\
+  \ should be referenced directly. Additionally, all 6 skill cards have the global\
+  \ Invocation/DISPATCH_GATE defect.\n\n## Scope\n\nThis spec covers the spec-creation\
+  \ family: spec-creation and its 5 sub-skill stubs, plus their ~18 task files.\n\n\
+  **Out of scope:** Other skill cards (covered by F-1 through F-3, F-5 through F-7).\
+  \ Behavioral enforcement tests (covered by issue #326). Removal of the 5 orphaned\
+  \ sub-skill SKILL.md files (covered by C-1, issue #323).\n\n## Key Changes\n\n1.\
+  \ Add `## Pre-Flight Gate` section to all 6 skill cards\n2. Remove global `## Invocation`\
+  \ and `## DISPATCH_GATE` sections from all 6 skill cards\n3. Update `spec-creation/SKILL.md`\
+  \ TDT to reference task files by direct path instead of `--task` qualifiers\n4.\
+  \ Add enumerated workflow sections with per-step dispatch for each spec-creation\
+  \ workflow\n5. Add Dispatch Contract, Output Contract, and Frugal Contract to all\
+  \ ~18 task files\n6. Remove \"dispatch via task()\" language from Overview and Persona\
+  \ sections\n\n## Affected Files\n\n| File | Change |\n|------|--------|\n| `spec-creation/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, update TDT to direct paths,\
+  \ add workflows |\n| `spec-creation-decomposition/SKILL.md` | Add Pre-Flight Gate,\
+  \ remove Invocation/DISPATCH_GATE, add workflows |\n| `spec-creation-requirements/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, add workflows |\n| `spec-creation-validation/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, add workflows |\n| `spec-creation-change-control/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, add workflows |\n| `spec-creation-operating-protocol/SKILL.md`\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, add workflows |\n| `spec-creation/tasks/*.md`\
+  \ (~5 files) | Add contract sections |\n| `spec-creation-decomposition/tasks/*.md`\
+  \ (~4 files) | Add contract sections |\n| `spec-creation-requirements/tasks/*.md`\
+  \ (~3 files) | Add contract sections |\n| `spec-creation-validation/tasks/*.md`\
+  \ (~3 files) | Add contract sections |\n| `spec-creation-change-control/tasks/*.md`\
+  \ (~2 files) | Add contract sections |\n| `spec-creation-operating-protocol/tasks/*.md`\
+  \ (~1 file) | Add contract sections |\n\n## Success Criteria\n\n| ID | Criterion\
+  \ | Evidence Type |\n|----|-----------|---------------|\n| SC-1 | All 6 skill cards\
+  \ have Pre-Flight Gate as first content section | `string` |\n| SC-2 | All 6 skill\
+  \ cards have no global Invocation or DISPATCH_GATE section | `string` |\n| SC-3\
+  \ | `spec-creation/SKILL.md` TDT references task files by direct path, not `--task`\
+  \ qualifiers | `string` |\n| SC-4 | All 6 skill cards have enumerated workflow sections\
+  \ with per-step dispatch | `string` |\n| SC-5 | All ~18 task files have Dispatch\
+  \ Contract, Output Contract, and Frugal Contract sections | `string` |\n| SC-6 |\
+  \ No \"dispatch via task()\" language in lead-in sections | `string` |\n\n## Dependencies\n\
+  \n- **BLOCKED by T-1 (issue #318):** Canonical skill card structure template must\
+  \ be defined first\n- **BLOCKED by T-2 (issue #316):** Canonical task card structure\
+  \ template must be defined first\n- **Prerequisite for C-1 (issue #323):** Cleanup\
+  \ spec must wait until parent TDT references task files directly\n\n## Implementation\
+  \ Order\n\n```\nPhase 1: T-1, T-2 (templates) — prerequisite\nPhase 2: F-1 (audit)\
+  \ — proof of concept\nPhase 3: F-4 (this spec) — parallel with F-2, F-3, F-5, F-6,\
+  \ F-7\nPhase 4: C-1 (cleanup) — blocked until F-2 through F-5 complete\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:33:30+00:00'
+updated_at: '2026-07-21T17:37:16+00:00'

@@ -3,6 +3,70 @@ title: '[SPEC] Fix remaining ~28 standalone skill cards — per-step dispatch, p
 status: open
 labels:
 - spec
-body: ''
+body: "---\ntitle: '[SPEC] Fix remaining ~28 standalone skill cards — per-step dispatch,\
+  \ pre-flight gate'\nstatus: draft\ncreated: 2026-07-21\nlicense: MIT\nprovenance:\
+  \ AI-generated\nissue: 325\nauthors:\n  - OpenCode (deepseek-v4-flash)\n---\n\n\
+  > STATUS: **DRAFT**\n> CREATED: 2026-07-21\n\n> **Compliance requirement:** This\
+  \ is a fix spec (F-7). It modifies all remaining standalone skill cards that are\
+  \ not covered by F-1 through F-6. All changes MUST conform to the canonical templates\
+  \ defined in T-1 (issue #318) and T-2 (issue #316).\n\n> **Master spec reference:**\
+  \ See `tmp/spec-per-step-dispatch.md` for the full interdependency analysis, dispatch\
+  \ vocabulary, and shared definitions.\n\n## Problem\n\nApproximately 28 standalone\
+  \ skill cards still have the global Invocation/DISPATCH_GATE defect. These cards\
+  \ are not part of a sub-skill family — they are single SKILL.md files with their\
+  \ own TDTs. Each one needs the Pre-Flight Gate, enumerated workflows with per-step\
+  \ dispatch, and updated TDT vocabulary.\n\n## Scope\n\nThis spec covers all remaining\
+  \ standalone skill cards not covered by F-1 through F-6. These include: brainstorming,\
+  \ research, verification, verification-before-completion, verification-enforcement,\
+  \ engineering-approach, systematic-debugging, conflict-resolution, correspondence,\
+  \ completeness-gate, plan, plan-creation-pipeline, solve, pre-analysis, test-driven-development,\
+  \ changelog-generator, version-manager, release-promoter, pr-creation-workflow,\
+  \ requesting-code-review, receiving-code-review, sre-runbook, skill-creator, sync-guidelines,\
+  \ mcp-tool-usage, multimodal-dispatch, playwright-cli, using-git-worktrees, completion-core,\
+  \ issue-operations, issue-operations-core, issue-operations-comments, issue-operations-sub-issues,\
+  \ issue-operations-sync, issue-review, finishing-a-development-branch, executing-plans.\n\
+  \n**Out of scope:** Skill cards covered by F-1 through F-6. Behavioral enforcement\
+  \ tests (covered by issue #326).\n\n## Key Changes\n\n1. Add `## Pre-Flight Gate`\
+  \ section to all ~28 skill cards as the first content section\n2. Remove global\
+  \ `## Invocation` and `## DISPATCH_GATE` sections from all ~28 skill cards\n3. Update\
+  \ TDT `Dispatch` column to use canonical patterns\n4. Add enumerated workflow sections\
+  \ with per-step dispatch for each card's workflows\n5. Add Dispatch Contract, Output\
+  \ Contract, and Frugal Contract to all task files under these cards\n6. Remove \"\
+  dispatch via task()\" language from Overview and Persona sections\n\n## Affected\
+  \ Files\n\n| File | Change |\n|------|--------|\n| `brainstorming/SKILL.md` + tasks\
+  \ | Add Pre-Flight Gate, remove Invocation/DISPATCH_GATE, update TDT, add workflows,\
+  \ add contracts |\n| `research/SKILL.md` + tasks | Same |\n| `verification/SKILL.md`\
+  \ + tasks | Same |\n| `verification-before-completion/SKILL.md` + tasks | Same |\n\
+  | `verification-enforcement/SKILL.md` + tasks | Same |\n| `engineering-approach/SKILL.md`\
+  \ + tasks | Same |\n| `systematic-debugging/SKILL.md` + tasks | Same |\n| `conflict-resolution/SKILL.md`\
+  \ + tasks | Same |\n| `correspondence/SKILL.md` + tasks | Same |\n| `completeness-gate/SKILL.md`\
+  \ + tasks | Same |\n| `plan/SKILL.md` + tasks | Same |\n| `plan-creation-pipeline/SKILL.md`\
+  \ + tasks | Same |\n| `solve/SKILL.md` + tasks | Same |\n| `pre-analysis/SKILL.md`\
+  \ + tasks | Same |\n| `test-driven-development/SKILL.md` + tasks | Same |\n| `changelog-generator/SKILL.md`\
+  \ + tasks | Same |\n| `version-manager/SKILL.md` + tasks | Same |\n| `release-promoter/SKILL.md`\
+  \ + tasks | Same |\n| `pr-creation-workflow/SKILL.md` + tasks | Same |\n| `requesting-code-review/SKILL.md`\
+  \ + tasks | Same |\n| `receiving-code-review/SKILL.md` + tasks | Same |\n| `sre-runbook/SKILL.md`\
+  \ + tasks | Same |\n| `skill-creator/SKILL.md` + tasks | Same |\n| `sync-guidelines/SKILL.md`\
+  \ + tasks | Same |\n| `mcp-tool-usage/SKILL.md` + tasks | Same |\n| `multimodal-dispatch/SKILL.md`\
+  \ + tasks | Same |\n| `playwright-cli/SKILL.md` + tasks | Same |\n| `using-git-worktrees/SKILL.md`\
+  \ + tasks | Same |\n| `completion-core/SKILL.md` + tasks | Same |\n| `issue-operations/SKILL.md`\
+  \ + tasks | Same |\n| `issue-operations-core/SKILL.md` + tasks | Same |\n| `issue-operations-comments/SKILL.md`\
+  \ + tasks | Same |\n| `issue-operations-sub-issues/SKILL.md` + tasks | Same |\n\
+  | `issue-operations-sync/SKILL.md` + tasks | Same |\n| `issue-review/SKILL.md` +\
+  \ tasks | Same |\n| `finishing-a-development-branch/SKILL.md` + tasks | Same |\n\
+  | `executing-plans/SKILL.md` + tasks | Same |\n\n## Success Criteria\n\n| ID | Criterion\
+  \ | Evidence Type |\n|----|-----------|---------------|\n| SC-1 | All ~28 skill\
+  \ cards have Pre-Flight Gate as first content section | `string` |\n| SC-2 | All\
+  \ ~28 skill cards have no global Invocation or DISPATCH_GATE section | `string`\
+  \ |\n| SC-3 | All TDT Dispatch columns use only canonical patterns | `string` |\n\
+  | SC-4 | All skill cards have enumerated workflow sections with per-step dispatch\
+  \ | `string` |\n| SC-5 | All task files under these cards have Dispatch Contract,\
+  \ Output Contract, and Frugal Contract sections | `string` |\n| SC-6 | No \"dispatch\
+  \ via task()\" language in lead-in sections | `string` |\n\n## Dependencies\n\n\
+  - **BLOCKED by T-1 (issue #318):** Canonical skill card structure template must\
+  \ be defined first\n- **BLOCKED by T-2 (issue #316):** Canonical task card structure\
+  \ template must be defined first\n\n## Implementation Order\n\n```\nPhase 1: T-1,\
+  \ T-2 (templates) — prerequisite\nPhase 2: F-1 (audit) — proof of concept\nPhase\
+  \ 3: F-7 (this spec) — parallel with F-2, F-3, F-4, F-5, F-6\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:33:30+00:00'
+updated_at: '2026-07-21T17:37:16+00:00'

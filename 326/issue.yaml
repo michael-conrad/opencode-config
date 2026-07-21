@@ -3,6 +3,51 @@ title: '[SPEC] Behavioral enforcement tests for per-step dispatch — orchestrat
 status: open
 labels:
 - spec
-body: ''
+body: "---\ntitle: '[SPEC] Behavioral enforcement tests for per-step dispatch — orchestrator\
+  \ dispatches task files, not SKILL.md'\nstatus: draft\ncreated: 2026-07-21\nlicense:\
+  \ MIT\nprovenance: AI-generated\nissue: 326\nauthors:\n  - OpenCode (deepseek-v4-flash)\n\
+  ---\n\n> STATUS: **DRAFT**\n> CREATED: 2026-07-21\n\n> **Compliance requirement:**\
+  \ This spec defines behavioral enforcement tests for the per-step dispatch pattern.\
+  \ It MUST NOT be implemented until all fix specs (F-1 through F-7) are complete\
+  \ and applied.\n\n> **Master spec reference:** See `tmp/spec-per-step-dispatch.md`\
+  \ for the full interdependency analysis, dispatch vocabulary, and shared definitions.\n\
+  \n## Problem\n\nThe per-step dispatch pattern introduces two critical behavioral\
+  \ changes that must be verified through behavioral enforcement tests:\n\n1. **SC-11\
+  \ from master spec:** Orchestrator that encounters BLOCKED from pre-flight gate\
+  \ stops all further investigation\n2. **SC-12 from master spec:** Orchestrator that\
+  \ loads a skill card with per-step dispatch dispatches individual task files, not\
+  \ the entire SKILL.md\n\nContent-verification tests (grep for text patterns) can\
+  \ verify that the SKILL.md files have the correct structure, but they cannot verify\
+  \ that the orchestrator actually behaves differently. Behavioral tests are required\
+  \ to prove the agent follows the new pattern.\n\n## Scope\n\nThis spec covers the\
+  \ creation of behavioral enforcement tests in `.opencode/tests-v2/behaviors/`. It\
+  \ does NOT modify any skill cards or task files.\n\n**Out of scope:** The fix specs\
+  \ themselves (F-1 through F-7). Content-verification tests for structural SCs (those\
+  \ are covered by the fix specs).\n\n## Key Changes\n\n1. Create behavioral test\
+  \ `per-step-dispatch-preflight-block.sh` — sends a prompt that triggers a skill\
+  \ card with Pre-Flight Gate, verifies the orchestrator stops investigation when\
+  \ `task()` is unavailable\n2. Create behavioral test `per-step-dispatch-task-files.sh`\
+  \ — sends a prompt that triggers a skill card with per-step dispatch, verifies the\
+  \ orchestrator dispatches individual task files (not the entire SKILL.md)\n3. Both\
+  \ tests use `assert_semantic` for behavioral SCs and `assert_stderr_pattern_*` for\
+  \ secondary structural corroboration\n\n## Affected Files\n\n| File | Change |\n\
+  |------|--------|\n| `.opencode/tests-v2/behaviors/per-step-dispatch-preflight-block.sh`\
+  \ | New behavioral test for SC-11 |\n| `.opencode/tests-v2/behaviors/per-step-dispatch-task-files.sh`\
+  \ | New behavioral test for SC-12 |\n\n## Success Criteria\n\n| ID | Criterion |\
+  \ Evidence Type |\n|----|-----------|---------------|\n| SC-1 | `per-step-dispatch-preflight-block.sh`\
+  \ exists and runs via `bash .opencode/tests-v2/behaviors/per-step-dispatch-preflight-block.sh`\
+  \ | `behavioral` |\n| SC-2 | `per-step-dispatch-task-files.sh` exists and runs via\
+  \ `bash .opencode/tests-v2/behaviors/per-step-dispatch-task-files.sh` | `behavioral`\
+  \ |\n| SC-3 | Pre-flight block test verifies orchestrator stops investigation when\
+  \ `task()` is unavailable | `behavioral` |\n| SC-4 | Task file dispatch test verifies\
+  \ orchestrator dispatches individual task files, not entire SKILL.md | `behavioral`\
+  \ |\n| SC-5 | Both tests produce non-empty artifact directories (stdout.log, stderr.log,\
+  \ manifest.yaml) | `structural` |\n| SC-6 | Both tests use `assert_semantic` as\
+  \ primary assertion for behavioral SCs | `string` |\n\n## Dependencies\n\n- **BLOCKED\
+  \ by all fix specs (F-1 through F-7):** Behavioral tests cannot pass until all skill\
+  \ cards are updated with per-step dispatch\n\n## Implementation Order\n\n```\nPhase\
+  \ 1: T-1, T-2 (templates) — prerequisite\nPhase 2: F-1 through F-7 (all fix specs)\
+  \ — prerequisite\nPhase 3: C-1 (cleanup) — prerequisite\nPhase 4: Behavioral enforcement\
+  \ tests (this spec) — final phase\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:33:30+00:00'
+updated_at: '2026-07-21T17:37:16+00:00'
