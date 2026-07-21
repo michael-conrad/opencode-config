@@ -2,6 +2,118 @@ title: 'SPEC: vibeguard redaction plugin settings — exclude builtin patterns'
 status: open
 labels:
 - spec
-body: ''
+body: '# SPEC: vibeguard redaction plugin settings — exclude builtin patterns
+
+
+  ## Problem
+
+
+  The `opencode-vibeguard@0.1.0` plugin (configured in `.opencode/opencode.jsonc`
+  line 138) applies aggressive builtin redaction patterns that catch legitimate non-secret
+  values in project code. The builtin patterns include:
+
+
+  - `ipv4` — matches any IPv4-like pattern `(\d{1,3}\.){3}\d{1,3}`
+
+  - `uuid` — matches any UUID pattern
+
+  - `email` — matches any email-like pattern
+
+  - `mac` — matches any MAC address pattern
+
+  - `china_phone` — matches Chinese phone numbers
+
+  - `china_id` — matches Chinese ID numbers
+
+
+  These patterns fire on legitimate project values such as `127.0.0.1` (the plugin''s
+  own placeholder format), Docker IPs, example UUIDs in test data, and other non-secret
+  identifiers. The result is that the plugin redacts content that is not a secret,
+  causing workflow disruption and data corruption in projects that use these patterns
+  legitimately.
+
+
+  ## Root Cause
+
+
+  The `vibeguard.config.json` file does not exist in this project. When no config
+  file is found, the plugin defaults to `enabled: false` (no-op). However, the plugin''s
+  builtin patterns are applied by default when the config is present and `enabled:
+  true`, and the `exclude` array in the config is the mechanism to suppress false
+  positives.
+
+
+  The config file needs to be created with the builtin patterns explicitly excluded,
+  or the builtin patterns need to be disabled entirely.
+
+
+  ## Affected Files
+
+
+  | File | Role |
+
+  |------|------|
+
+  | `.opencode/opencode.jsonc` | Plugin declaration (line 138: `"opencode-vibeguard@0.1.0"`)
+  |
+
+  | `.opencode/vibeguard.config.json` | **New file** — plugin configuration (does
+  not exist yet) |
+
+
+  ## Success Criteria
+
+
+  | ID | Criterion | Evidence Type | Verification Method |
+
+  |----|-----------|---------------|---------------------|
+
+  | SC-1 | A `vibeguard.config.json` exists at `.opencode/vibeguard.config.json` with
+  `enabled: true` | `structural` | File exists check |
+
+  | SC-2 | The config disables all builtin patterns (`builtin: []`) so only explicitly
+  configured patterns are applied | `string` | `grep` for `"builtin"` in config file
+  |
+
+  | SC-3 | The config does NOT include any project-specific keyword or regex patterns
+  (those are user-responsibility) | `string` | `grep` for `"keywords"` and `"regex"`
+  in config — must be empty arrays |
+
+  | SC-4 | The config sets `debug: false` and `placeholder_prefix: "__VG_"` (defaults
+  preserved) | `string` | `grep` for `"debug"` and `"placeholder_prefix"` |
+
+  | SC-5 | The plugin continues to function for explicitly configured patterns (no
+  regression) | `behavioral` | `opencode run` with a test prompt containing a configured
+  secret pattern, verify redaction occurs |
+
+
+  ## Implementation Notes
+
+
+  - The config file should be minimal: enable the plugin, disable builtins, keep defaults.
+
+  - The `exclude` array in the config example shows how to suppress specific false
+  positives — but since we''re disabling all builtins, the exclude array is unnecessary.
+
+  - The config lookup order (from `config.js`): (1) `OPENCODE_VIBEGUARD_CONFIG` env
+  var, (2) project root `./vibeguard.config.json`, (3) `.opencode/vibeguard.config.json`,
+  (4) `~/.config/opencode/vibeguard.config.json`. We use `.opencode/vibeguard.config.json`
+  to keep it alongside the opencode config.
+
+  - No changes to `.opencode/opencode.jsonc` are needed — the plugin declaration stays
+  as-is.
+
+
+  ## Risks
+
+
+  - If the config file has syntax errors, the plugin silently becomes a no-op (`enabled:
+  false`). The config must be valid JSON.
+
+  - The `placeholder_prefix` default is `__VG_` — if a project uses `__VG_` prefixed
+  values, those will be caught by keyword patterns, not builtin patterns. The builtin
+  patterns are the source of the false positives described in this spec.
+
+  '
 created_at: '2026-07-21T05:56:02+00:00'
-updated_at: '2026-07-21T05:56:02+00:00'
+updated_at: '2026-07-21T05:56:34+00:00'
