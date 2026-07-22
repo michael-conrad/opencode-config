@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- **Specs and plans are NOT tracking documents** (#299): add sections to both AGENTS.md files stating specs and plans are not tracking documents; gut 141-planning-status-tracking.md of all status-tracking content
 - **Content gate for local issues** (#691): local `.issues/` directory platform for issue tracking when `github.platform` is `local` or unset
 - **Stacked PR organization** (#826): enforce single-branch stacked PR strategy; prohibit N-branches-for-N-issues pattern
 - **Gate 2 removal** (#808): remove pre-commit Gate 2 (question-as-authorization detection) from session-enforcement.ts

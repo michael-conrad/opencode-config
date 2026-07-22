@@ -71,3 +71,11 @@ The snap binary at `/snap/bin/opencode` hardcodes `SNAP_USER_DATA=~/snap/opencod
 | Manual `opencode.jsonc` seeding | Bypasses `seed_model_config()` model discovery and isolation verification |
 | Manual `git init` + `.opencode` clone | Bypasses test project creation with proper isolation |
 | "This is simple/quick/small" rationalization | NOT a valid justification — framework is MANDATORY for ALL test execution |**
+
+---
+
+## Specs and Plans Are NOT Tracking Documents
+
+**Specs and plans are NOT tracking documents.** A spec defines what is required — implemented or not. A plan defines how to implement it — implemented or not. Any STATUS field, completion marker, pending indicator, or progress tracker in a spec or plan is a defect.
+
+Implementation status is tracked through the pipeline state (work state files, lifecycle manifests, PR status) — never through STATUS fields in the spec or plan body.
