@@ -2,6 +2,88 @@ title: '[BUG] Cleanup task cards must detect and reject orchestrator context pol
 status: open
 labels:
 - bug
-body: ''
+body: '## Summary
+
+
+  The cleanup task cards (specifically `git-workflow-cleanup/tasks/cleanup.md`) accept
+  preloaded orchestrator context from `task()` prompts without validation. When the
+  orchestrator includes context like "2 local-only commits not on origin/main", the
+  sub-agent incorrectly preserves the feature branch instead of following the mandatory
+  trunk-tip parking procedure.
+
+
+  ## Root Cause
+
+
+  The cleanup task file has no entry criteria that validates the `task()` prompt for
+  preloaded context. Per the DISPATCH_GATE protocol, sub-agents MUST return `PRELOADED_CONTEXT_REJECTED`
+  when the prompt contains orchestrator reasoning, inline file paths, or expected
+  outcomes. The cleanup task does not enforce this.
+
+
+  ## Observed Behavior (from chat history)
+
+
+  1. User said "pr merged" — orchestrator dispatched `check-pr` from `git-workflow-cleanup`
+
+  2. `check-pr` returned BLOCKED (gh CLI not logged in)
+
+  3. User said "pr merged git workflow" — orchestrator dispatched `cleanup` with preloaded
+  context: "The parent repo has 2 local-only commits updating the .opencode submodule
+  pointer that are NOT on origin/main"
+
+  4. Sub-agent received this preloaded context and interpreted "NOT on origin/main"
+  as "branch has active work"
+
+  5. Sub-agent preserved the feature branch instead of parking on trunk tip per the
+  mandatory cleanup procedure
+
+  6. Parent repo was left on stale feature branch with dirty submodule pointer
+
+  7. User had to manually instruct `git checkout main && git pull origin main` to
+  fix
+
+
+  ## Expected Behavior
+
+
+  1. Cleanup sub-agent receives a `task()` prompt with only routing metadata (no orchestrator
+  reasoning)
+
+  2. If the prompt contains preloaded context, sub-agent returns `BLOCKED` with `reason:
+  PRELOADED_CONTEXT_REJECTED`
+
+  3. Cleanup always parks ALL repos on trunk tip at `origin/$DEFAULT_BRANCH` — no
+  carveouts for "local-only commits"
+
+
+  ## Affected Files
+
+
+  - `.opencode/skills/git-workflow-cleanup/tasks/cleanup.md` — needs entry criteria
+  rejecting preloaded context
+
+  - `.opencode/skills/git-workflow-cleanup/tasks/check-pr.md` — same issue
+
+  - Potentially all task files in `git-workflow-cleanup/` — verify each sub-task
+
+
+  ## Success Criteria
+
+
+  | ID | Criterion | Evidence Type |
+
+  |----|-----------|---------------|
+
+  | SC-1 | Cleanup sub-agent returns BLOCKED with PRELOADED_CONTEXT_REJECTED when
+  task() prompt contains orchestrator reasoning | behavioral |
+
+  | SC-2 | Cleanup always parks parent repo on trunk tip at origin/$DEFAULT_BRANCH
+  regardless of local-only commits | behavioral |
+
+  | SC-3 | All cleanup sub-tasks (verify-merge, issue-closure, branch-cleanup) have
+  entry criteria rejecting preloaded context | string |
+
+  '
 created_at: '2026-07-22T18:54:43+00:00'
-updated_at: '2026-07-22T18:54:43+00:00'
+updated_at: '2026-07-22T18:54:56+00:00'
