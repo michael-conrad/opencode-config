@@ -1,6 +1,7 @@
+title: '[BUG] Cleanup task cards must detect and reject orchestrator context pollution'
+status: open
 labels:
-- SPEC-FIX
-- plugin
-number: 298
-state: CLOSED
-title: "[SPEC-FIX] Plugins fail in snap sandbox \u2014 bun cannot find git binary"
+- bug
+body: ''
+created_at: '2026-07-22T18:54:43+00:00'
+updated_at: '2026-07-22T18:54:43+00:00'
