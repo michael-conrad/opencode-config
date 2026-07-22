@@ -1,6 +1,7 @@
-labels:
-- SPEC-FIX
-- performance
-number: 299
-state: CLOSED
-title: '[SPEC-FIX] Gate per-turn git config watchdog to first-turn-only'
+title: '[SPEC] Specs and plans are NOT tracking documents — remove STATUS tracking
+  from AGENTS.md files'
+status: open
+labels: []
+body: ''
+created_at: '2026-07-22T21:41:59+00:00'
+updated_at: '2026-07-22T21:41:59+00:00'
