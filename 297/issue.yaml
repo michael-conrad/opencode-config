@@ -1,7 +1,8 @@
+title: 'SPEC-FIX: Remediate audit findings from #2020/#2032 — task card section headers,
+  pipeline documents, missing behavioral-sc-evaluator.md'
+status: open
 labels:
-- spec
-- cleanup
-number: 297
-state: CLOSED
-title: "[SPEC] Replace bare \xA7N Read links with descriptive link text across .opencode/\
-  \ and AGENTS.md"
+- SPEC-FIX
+body: ''
+created_at: '2026-07-22T15:17:30+00:00'
+updated_at: '2026-07-22T15:17:30+00:00'
