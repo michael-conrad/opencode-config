@@ -51,7 +51,7 @@ body: '# [SPEC] Specs and plans are NOT tracking documents — remove STATUS tra
   (which must be deleted or gutted of all status-tracking content)
 
   4. Do NOT modify the AGENTS.md files directly in this spec — this spec only defines
-  the requirement.
+  the requirement. Implementation is a separate step.
 
 
   ## Success Criteria
@@ -102,4 +102,4 @@ body: '# [SPEC] Specs and plans are NOT tracking documents — remove STATUS tra
 
   '
 created_at: '2026-07-22T21:41:59+00:00'
-updated_at: '2026-07-22T21:42:34+00:00'
+updated_at: '2026-07-22T21:43:26+00:00'
