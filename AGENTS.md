@@ -64,23 +64,16 @@ The snap binary at `/snap/bin/opencode` hardcodes `SNAP_USER_DATA=~/snap/opencod
 2. Copy it into the test home at `$TEST_HOME/bin/opencode` during test setup
 3. Prepend `$TEST_HOME/bin` to PATH so the harness resolves the standalone binary
 
-### Submodule Pointer Requirement
+### Submodule Pointer Updates
 
-The test framework clones `.opencode` from the remote at the commit pinned in the parent repo's `.opencode` submodule pointer. **Uncommitted or unpushed submodule changes are invisible to the test framework.** Before running behavioral tests:
-
-1. Commit and push all `.opencode` submodule changes
-2. Update the parent repo's `.opencode` pointer: `git add .opencode`
-3. Include the pointer update in the same commit as any parent-repo changes (submodule-only pushes are blocked)
-
-### Model Selection
-
-The test framework uses `DEFAULT_TEST_MODEL` from `.opencode/tests-v2/default-model.sh`. Override for cloud models or models not in the default:
+After a `.opencode` submodule PR is merged, the parent repo's submodule pointer must be updated. Include the pointer update alongside any other parent-repo change in the same commit — submodule-only pushes are blocked by pre-push hooks.
 
 ```bash
-DEFAULT_TEST_MODEL="ollama/gpt-oss:20b-128k" bash .opencode/tests-v2/behaviors/<scenario>.sh
+git add .opencode
+# Include in a commit with other parent-repo changes
 ```
 
-The `ollama/` prefix is required — `seed_model_config()` strips it to produce the bare model name in `opencode.jsonc`. The model must be available via `ollama list` and have sufficient VRAM to load alongside existing processes. If the model is already loaded in VRAM (`ollama ps`), the test will start immediately; otherwise it will wait for model load which may timeout.
+**Do NOT fabricate parent-repo edits to bypass the submodule-only push gate.** If there are no parent-repo changes to make alongside the pointer update, the pointer update must wait until the next real change. The gate exists to prevent review overhead for pointer-only PRs — do not create useless edits to work around it.
 
 ### Prohibited Bypass Patterns
 
