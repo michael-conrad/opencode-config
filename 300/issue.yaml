@@ -1,5 +1,7 @@
-number: 300
-title: '[SPEC] Remove all stderr/diagnostic noise from plugins and session-init'
-state: OPEN
+title: '[SPEC-FIX] Remediate .opencode#2076 implementation audit FAILs'
+status: open
 labels:
-- spec
+- SPEC-FIX
+body: ''
+created_at: '2026-07-23T04:49:19+00:00'
+updated_at: '2026-07-23T04:49:19+00:00'
