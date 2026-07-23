@@ -64,6 +64,17 @@ The snap binary at `/snap/bin/opencode` hardcodes `SNAP_USER_DATA=~/snap/opencod
 2. Copy it into the test home at `$TEST_HOME/bin/opencode` during test setup
 3. Prepend `$TEST_HOME/bin` to PATH so the harness resolves the standalone binary
 
+### Submodule Pointer Updates
+
+After a `.opencode` submodule PR is merged, the parent repo's submodule pointer must be updated. Include the pointer update alongside any other parent-repo change in the same commit — submodule-only pushes are blocked by pre-push hooks.
+
+```bash
+git add .opencode
+# Include in a commit with other parent-repo changes
+```
+
+**Do NOT fabricate parent-repo edits to bypass the submodule-only push gate.** If there are no parent-repo changes to make alongside the pointer update, the pointer update must wait until the next real change. The gate exists to prevent review overhead for pointer-only PRs — do not create useless edits to work around it.
+
 ### Prohibited Bypass Patterns
 
 | Pattern | Why Forbidden |
