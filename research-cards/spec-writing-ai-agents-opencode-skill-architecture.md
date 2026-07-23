@@ -32,11 +32,15 @@ sources:
   - https://medium.com/@pbalves/part-1-opencode-ai-agent-skills-a-conceptual-deep-dive-f16a515d73e2
   - https://relearn.ing/projects/opencode-skills/
   - https://ai.sulat.com/writing-opencode-agent-skills-a-practical-guide-with-examples-870ff24eec66
+  - https://github.com/anomalyco/opencode/blob/dev/packages/opencode/src/tool/skill.ts
+  - https://github.com/anomalyco/opencode/blob/dev/packages/core/src/skill.ts
+  - https://github.com/anomalyco/opencode/blob/dev/packages/opencode/src/tool/task.ts
+  - https://deepwiki.com/vbgate/learn-opencode/6.4-tasktool-and-agent-orchestration
 ---
 
 ## Summary
 
-Three independent research threads converge on a single conclusion: (1) the current spec-creation skill is over-fragmented into sub-skills that don't exist as a first-class opencode concept, (2) the spec format it produces should follow BDD/RFC 2119 patterns for dual-audience readability, and (3) the `description` field is a semantic router — the agent evaluates its OWN intent against the description, not the user's literal utterance. The opencode skill system has exactly one abstraction — the SKILL.md with YAML frontmatter — and "sub-skills" are not a supported construct.
+Four independent research threads converge on a single conclusion: (1) the current spec-creation skill is over-fragmented into sub-skills that don't exist as a first-class opencode concept, (2) the spec format it produces should follow BDD/RFC 2119 patterns for dual-audience readability, (3) the `description` field is a semantic router — the agent evaluates its OWN intent against the description, not the user's literal utterance, and (4) `skill()` auto-loads SKILL.md into the calling agent's context while `task()` does NOT auto-load task card files — the subagent must read them via file tools. The opencode skill system has exactly one abstraction — the SKILL.md with YAML frontmatter — and "sub-skills" are not a supported construct.
 
 ---
 
@@ -322,18 +326,149 @@ The description must be self-contained — it's the ONLY thing the agent sees be
 | Don't include meta-instructions about loading | The agent decides when to load — don't tell it to | No "Load via skill() when..." — this is noise in the semantic vector |
 | One clear intent per description | Multiple intents dilute the semantic signal | One skill = one core intent |
 
-### Finding 16: The `skill()` Tool Is Orchestrator-Only — Sub-Agents Cannot Call It
+### Finding 16: `task()` Parameters — No Skill/Task Card Concept
 
-**Source:** [OpenCode Docs — Agent Skills](https://opencode.ai/docs/skills/), [OpenCode Docs — Agents](https://opencode.ai/docs/agents/)
+**Source:** [opencode source — task.ts](https://github.com/anomalyco/opencode/blob/dev/packages/opencode/src/tool/task.ts)
 
-The `skill()` tool is available ONLY to the orchestrator (primary agent). Sub-agents dispatched via `task()` do NOT have access to the `skill()` tool. This means:
+The `task()` tool accepts exactly these parameters:
 
-- A sub-agent cannot load a skill
-- A sub-agent cannot call `skill({name: "..."})`
-- A sub-agent cannot read a SKILL.md file
-- A sub-agent can only read task cards (`tasks/<name>.md`) via file read tools
+| Parameter | Required | Type | Description |
+|-----------|----------|------|-------------|
+| `description` | Yes | string | Short 3-5 word task description, used as child session title |
+| `prompt` | Yes | string | Complete task description — the ONLY context the subagent receives |
+| `subagent_type` | Yes | string | Name of the subagent to invoke (must be mode: "subagent" or mode: "all") |
+| `task_id` | No | string | Resume an existing child session (continues with previous messages and tool outputs) |
+| `command` | No | string | The command that triggered this task (for debugging) |
+| `background` | No | boolean | Run asynchronously (requires `OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true`) |
 
-**This is why dispatching a skill card to a sub-agent is a category error (critical-rules-XXX).** The sub-agent receives SKILL.md content containing `task()` calls and `skill()` references it cannot execute.
+**Critical observation:** There is NO `skill`, `skill_name`, `task_card`, or `task_file` parameter. The `task()` tool has zero awareness of skills or task cards. It creates a child session and passes only the `prompt` string as context. The subagent must discover and load the task card file entirely through its own tools.
+
+### Finding 17: The Invocation Section Must Specify the Full Dispatch Contract
+
+**Source:** Survey of 43 SKILL.md files in the codebase
+
+The Invocation section in a SKILL.md serves as the **dispatch contract** — it tells the orchestrator exactly what to pass to `task()`. Currently, the codebase has 6 distinct patterns, with the most complete being:
+
+```
+task(..., prompt: "execute <task> from <skill>. Read `<skill>/tasks/<task>.md` first")
+```
+
+But this is incomplete. The Invocation section should specify:
+
+1. **The base prompt** (canonical dispatch string) — what the orchestrator puts in the `prompt` parameter
+2. **The subagent_type** — which agent type to use (general, explore, etc.)
+3. **Context parameters to include** — what additional data the subagent needs (issue_number, worktree.path, etc.)
+4. **Context parameters to exclude** — what must NOT be passed (orchestrator reasoning, cached results, etc.)
+5. **Expected result contract** — what the subagent returns (status, finding_summary, artifact_path, blocker_reason)
+
+Currently, items 3-5 are scattered across the Sub-Agent Routing section, the DISPATCH_GATE section, and the task card's Result Contract. There is no single place where the orchestrator can see the complete dispatch contract for a given task.
+
+### Finding 18: The Base Prompt Must Use Natural Language, Not Coded Dispatch Strings
+
+Because `task()` does NOT auto-load task cards, the base prompt MUST tell the subagent which file to read. The survey found that only 6 out of 28 skills with Invocation sections include this directive. The remaining 22 skills force the subagent to search for the correct task file — wasting context and introducing routing ambiguity.
+
+The old pattern used coded dispatch strings like `"execute create from spec-creation"` — this is cargo-culted from the sub-skill dispatcher pattern and reads like a command to run code. The subagent is not running code; it is reading instructions. Natural language is clearer.
+
+The correct format is:
+
+```
+"Read `spec-creation/tasks/create.md` and follow its instructions. Issue: {issue_number}."
+```
+
+This tells the subagent:
+1. **Which file to read** — the task card path
+2. **What to do** — follow the instructions in that file
+3. **What context to use** — inline parameters like issue number
+
+This is NOT preloading — it is routing metadata. The subagent still reads the file independently and discovers the procedure. Without it, the subagent has no way to know which task card to execute.
+
+### Finding 19: Workflows with Sub-Bullet Dispatch Contracts
+
+The Dispatch Contract table and Workflows section should be merged. Each workflow is a numbered list of steps. Each step has sub-bullets for the dispatch parameters (Prompt, Context, Returns). This keeps the dispatch contract colocated with the sequencing step — no cross-referencing, no separate table to maintain.
+
+```markdown
+## Workflows
+
+### Create a spec
+When the agent needs to produce a specification document from a problem statement or requirements discussion.
+
+1. **Inspect codebase** — search for affected files and existing patterns
+   - Prompt: `"Read \`spec-creation/tasks/inspect.md\` and follow its instructions. Issue: {issue_number}."`
+   - Context: `{issue_number, project_root}`
+   - Returns: `{status, finding_summary, artifact_path, blocker_reason}`
+
+2. **Decompose problem** — extract requirements, decompose into SCs
+   - Prompt: `"Read \`spec-creation/tasks/decompose.md\` and follow its instructions. Issue: {issue_number}. Findings: {inspect_artifact_path}."`
+   - Context: `{issue_number, project_root, inspect_artifact_path}`
+   - Returns: `{status, finding_summary, artifact_path, blocker_reason, sc_table}`
+```
+
+Each step is a clean-room `task()` dispatch. The orchestrator waits for each result contract before dispatching the next step. If any step returns BLOCKED, the workflow halts and reports the blocker.
+
+The sub-bullets (Prompt, Context, Returns) are the dispatch contract for that step. The numbered step is the sequencing logic. Everything the orchestrator needs is in one place per workflow. Task cards that appear in multiple workflows get their own sub-bullets each time, which is correct because the context passed may differ per workflow.
+
+### Finding 20: Only Specify `subagent_type` When It Deviates from Default
+
+The `task()` tool requires `subagent_type`. The default subagent is `general`. The Dispatch Contract table SHOULD only specify `subagent_type` when a task uses a non-default agent (e.g., `explore` for read-only research). Omitting the column when all tasks use the default keeps the table lean. If a single task needs a different agent, annotate that row individually.
+
+**Source:** [opencode source — skill.ts (tool)](https://github.com/anomalyco/opencode/blob/dev/packages/opencode/src/tool/skill.ts), [opencode source — core/skill.ts](https://github.com/anomalyco/opencode/blob/dev/packages/core/src/skill.ts), [opencode source — task.ts](https://github.com/anomalyco/opencode/blob/dev/packages/opencode/src/tool/task.ts)
+
+Analysis of the actual source code reveals a critical asymmetry between the two tools:
+
+#### `skill({name: "..."})` — Auto-Loads SKILL.md into Current Context
+
+The skill tool (skill.ts:42-68):
+1. Calls `skill.require(params.name)` which reads the SKILL.md file from disk
+2. Returns the content as XML-wrapped output: `<skill_content name="..."># Skill: ...\n\n{content}\n\n<skill_files>...</skill_files></skill_content>`
+3. This output is injected into the **current agent's conversation context** as a tool result
+
+The core skill service (core/skill.ts:62-100):
+1. Reads SKILL.md files from disk via glob
+2. Parses YAML frontmatter
+3. Returns `{ name, description, location, content }` where `content` is the markdown body after frontmatter
+
+**Key finding:** `skill()` loads the SKILL.md file content and injects it into the calling agent's context automatically. The orchestrator does NOT need to read the file separately.
+
+#### `task(..., prompt: "...")` — Creates Child Session, Does NOT Load Task Card
+
+The task tool (task.ts:150-360):
+1. Creates a child session with fresh context (task.ts:230-240)
+2. The prompt is passed as the ONLY context message (task.ts:260-270)
+3. The subagent receives NO automatic file loading — it must use its own tools (read, grep, etc.) to load files
+4. Hardcoded restrictions: `todowrite: deny`, `todoread: deny`, `task: deny` (prevents infinite recursion)
+
+**Key finding:** `task()` does NOT automatically load task card files. The subagent must read `tasks/<name>.md` using file read tools. The prompt must tell the subagent which file to read.
+
+#### The Complete Pipeline
+
+```
+orchestrator context:
+  skill({name: "spec-creation"})
+    → SKILL.md auto-loaded into orchestrator context
+    → orchestrator reads Trigger Dispatch Table + Invocation
+    → sees: task(..., prompt: "execute create from spec-creation. Read `spec-creation/tasks/create.md` first")
+
+subagent context (fresh, empty):
+  task(..., prompt: "execute create from spec-creation. Read `spec-creation/tasks/create.md` first")
+    → child session created with prompt as only context
+    → subagent reads spec-creation/tasks/create.md via file read tool
+    → task card content enters subagent context
+    → subagent executes procedure steps
+    → returns result contract
+```
+
+#### Why the Discovery Directive Is Required
+
+Because `task()` does NOT auto-load the task card, the prompt MUST include a discovery directive telling the subagent which file to read. Without it, the subagent has no way to know which task card to execute. The directive is NOT preloading — it's routing metadata (which file to load), not execution context (what the file contains).
+
+#### Why Dispatching SKILL.md to a Sub-Agent Is a Category Error
+
+The `skill()` tool is available ONLY to the orchestrator (primary agent). Sub-agents dispatched via `task()` do NOT have access to the `skill()` tool. If the orchestrator dispatches SKILL.md content to a sub-agent via `task()`, the sub-agent receives:
+- `task()` calls it cannot execute (sub-agents have `task: deny`)
+- `skill()` calls it cannot execute (sub-agents don't have the skill tool)
+- Orchestrator-level routing instructions it cannot act on
+
+This is the critical-rules-XXX violation: the sub-agent receives instructions designed for the orchestrator.
 
 ### Finding 17: The `description` Field Must Describe Agent Intent, Not User Utterance
 
