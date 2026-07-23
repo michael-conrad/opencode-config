@@ -1,52 +1,43 @@
-## Problem
+# [SPEC] Specs and plans are NOT tracking documents — remove STATUS tracking from AGENTS.md files
 
-The per-turn git config mutation watchdog in `session-enforcement.ts` (lines 973–1005) runs `git config --local --list`, `git rev-parse --git-dir`, and `git remote -v` on **every single interactive message turn**. This is 3–4 `git` subprocess invocations per turn, for the entire session lifetime.
+STATUS: draft
 
-The watchdog sits **outside** the `if (shouldInjectFirstTurn)` guard (line 888), so it fires unconditionally on every `messages.transform` invocation.
+---
 
-## Root Cause
+## Intent
 
-The watchdog block at line 973 is positioned after the `if (shouldInjectFirstTurn)` block closes at line 934. It was intended to detect config mutations the agent makes during the session, but the implementation runs git commands every turn instead of only on the first turn.
+Clarify in both `/AGENTS.md` and `.opencode/AGENTS.md` that specs and plans are specification documents, not tracking documents. They define what is required — implemented or not. Any recommendation to track implementation status (completed, pending, in progress, STATUS markers) in specs or plans is wrong and must be removed.
 
-## Fix
+## Problem Statement
 
-Gate the entire watchdog block behind `isFirstTurn`:
+The current AGENTS.md files and the `.opencode/guidelines/141-planning-status-tracking.md` guideline treat specs and plans as progress-tracking artifacts. They recommend STATUS fields (`STATUS: in progress — Auth, Step 1`), visual status markers (`☐`/`↻`/`☑`/`☒`), and label state transitions that track implementation progress within the spec itself.
 
-```typescript
-// --- Per-turn: Git config mutation watchdog ---
-// Gated to first-turn-only: baseline captured at startup, comparison runs once.
-if (isFirstTurn && gitConfigBaseline) {
-  // ... existing watchdog code ...
-}
-```
+This is a category error. A spec specifies what is required. A plan specifies how to implement it. Neither is a burndown chart or a project tracker. Tracking implementation status in the spec conflates specification with progress reporting — it makes the spec a moving target that changes meaning as work progresses, rather than a fixed contract of what must be delivered.
 
-This means:
-- The git config baseline is still captured at plugin startup (line 753) — unchanged
-- The watchdog comparison runs **once** on the first turn — not every turn
-- Subsequent turns skip all git commands entirely
+## Approach
+
+1. Add a section to both `/AGENTS.md` and `.opencode/AGENTS.md` stating clearly that specs and plans are NOT tracking documents
+2. The section must state: specs define what is required (implemented or not); plans define how to implement it (implemented or not). Any STATUS field, completion marker, pending indicator, or progress tracker in a spec or plan is a defect.
+3. Cross-reference the removal of `.opencode/guidelines/141-planning-status-tracking.md` (which must be deleted or gutted of all status-tracking content)
+4. Do NOT modify the AGENTS.md files directly in this spec — this spec only defines the requirement. Implementation is a separate step.
 
 ## Success Criteria
 
 | ID | Criterion | Evidence Type | Verification Method |
 |----|-----------|---------------|---------------------|
-| SC-1 | `git config --local --list` is called 0 times on the 2nd+ message turn | `behavioral` | `opencode run` → stderr assertion: no `git config` execSync on subsequent turns |
-| SC-2 | `git rev-parse --git-dir` is called 0 times on the 2nd+ message turn | `behavioral` | `opencode run` → stderr assertion |
-| SC-3 | `git remote -v` is called 0 times on the 2nd+ message turn | `behavioral` | `opencode run` → stderr assertion |
-| SC-4 | Git config baseline is still captured at plugin startup (first turn unaffected) | `string` | grep for `captureGitConfigBaseline` call at line 753 |
-| SC-5 | Watchdog still fires on first turn if config was mutated between startup and first message | `behavioral` | `opencode run` → stderr assertion: watchdog block present on first turn |
+| SC-1 | `/AGENTS.md` contains a section stating specs and plans are NOT tracking documents | `string` | `grep -c "NOT tracking" /AGENTS.md` must output `1` |
+| SC-2 | `.opencode/AGENTS.md` contains a section stating specs and plans are NOT tracking documents | `string` | `grep -c "NOT tracking" .opencode/AGENTS.md` must output `1` |
+| SC-3 | `.opencode/guidelines/141-planning-status-tracking.md` is either deleted or has all status-tracking content (STATUS fields, status markers, label state transitions) removed | `string` | `grep -c "STATUS" .opencode/guidelines/141-planning-status-tracking.md` must output `0` (or file does not exist) |
+| SC-4 | The section in both AGENTS.md files explicitly states that STATUS fields, completion markers, pending indicators, and progress trackers in specs/plans are defects | `string` | `grep -c "defect" /AGENTS.md` must output `1` AND `grep -c "defect" .opencode/AGENTS.md` must output `1` |
 
-## Affected File
+## Affected Files
 
-`.opencode/plugins/session-enforcement.ts` — lines 973–1005
+- `/AGENTS.md` — root repo AGENTS.md
+- `.opencode/AGENTS.md` — submodule AGENTS.md
+- `.opencode/guidelines/141-planning-status-tracking.md` — must be deleted or gutted of status-tracking content
 
-## Change Control
+## Out of Scope
 
-- **Author**: AI agent
-- **Date**: 2026-07-16
-- **Type**: SPEC-FIX (performance regression — unnecessary per-turn git subprocess calls)
-
----
-
-🤖 Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)
-
-**Closed — wrong repo. Moved to michael-conrad/.opencode.**
+- Changes to skill task files that reference STATUS tracking (those are separate specs)
+- Changes to the `writing-plans` or `spec-creation` skills
+- Implementation of the AGENTS.md changes — this spec only defines the requirement
