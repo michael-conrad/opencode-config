@@ -13,6 +13,9 @@ Main is the single trunk. Dev branch has been removed.
 | `.opencode/AGENTS.md` | Canonical agent rules: build/lint/test commands, workflow, boundaries, pair mode, submodule discipline |
 | `.opencode/.issues/AGENTS.md` | `.issues/` workspace guide: tool, workflow, directory layout, GitHub URL convention |
 | `.issues/AGENTS.md` | Local `.issues/` workspace guide for the parent repo (mirrors `.opencode/.issues/AGENTS.md` pattern)
+| `.opencode/reference/skill-card-description-standards.md` | Description field as semantic router, persona framing, skill()/task() pipeline, Workflows section format |
+| `.opencode/reference/task-card-structure-standards.md` | Canonical task card structure, result contract format, task card vs SKILL.md division |
+| `.opencode/reference/skill-card-schema.md` | SKILL.md frontmatter binary constraints (name, description, license) |
 | `.opencode/skills/version-manager/` | Version string discovery and semver bumping: discover, bump tasks |
 | `.opencode/skills/release-promoter/` | Git tag creation and GitHub Release promotion: tag, create-release tasks |
 
