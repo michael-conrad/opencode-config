@@ -1,6 +1,5 @@
+# Python
 .ruff_cache/
-.worktrees/
-tmp/
 __pycache__/
 *.pyc
 *.pyo
@@ -8,17 +7,20 @@ __pycache__/
 *.egg-info/
 dist/
 build/
-.idea/
-.DS_Store
-Thumbs.db
 .coverage
 htmlcov/
+.venv/
+venv/
+.mypy_cache/
 
 # LaTeX build artifacts
 *.aux
 *.log
 *.out
 *.synctex.gz
+
+# Node.js
+node_modules/
 
 # Project-local isolated tool installations
 .tools/
@@ -38,3 +40,27 @@ htmlcov/
 
 # Local issue tracking (workspace metadata)
 .issues/
+
+# Environment variables (secrets)
+.env
+.env.*
+
+# Editor and IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Merge conflict backups
+*.orig
+
+# Worktrees
+.worktrees/
+
+# Temporary files
+tmp/
