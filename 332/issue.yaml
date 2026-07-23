@@ -3,6 +3,127 @@ title: '[SPEC] Update AGENTS.md files to cross-reference new .opencode/reference
 status: open
 labels:
 - '[SPEC],needs-approval'
-body: ''
+body: '## Objective
+
+
+  Update opencode-config/AGENTS.md and opencode-config/.opencode/AGENTS.md to cross-reference
+  the new skill card description standards and task card structure standards being
+  created in .opencode/reference/ (per spec .opencode#2076). This ensures the agent
+  working from the opencode-config parent repo can discover and use the new documentation.
+
+
+  ## Background
+
+
+  The .opencode/ submodule is receiving new reference documents:
+
+  - reference/skill-card-description-standards.md — covers the description field as
+  a semantic router, progressive disclosure architecture, agent-intent matching
+
+  - reference/task-card-structure-standards.md — covers canonical task card structure,
+  result contract format, what task cards MUST NOT contain
+
+
+  These documents live in the .opencode/ submodule. When the agent works from the
+  opencode-config parent repo, it reads:
+
+  - opencode-config/AGENTS.md (the parent repo''s agent instructions)
+
+  - opencode-config/.opencode/AGENTS.md (the submodule''s agent instructions)
+
+
+  Neither file currently references the new reference documents. The agent cannot
+  discover them.
+
+
+  ## Not Included
+
+
+  - Creating the reference documents themselves (covered by .opencode#2076)
+
+  - Rewriting existing skill descriptions (covered by .opencode#2076 audit)
+
+  - Replacing the spec-creation skill (covered by .opencode#2077)
+
+
+  ## Success Criteria
+
+
+  | ID | Criterion | Evidence Type | Verification Method |
+
+  |----|-----------|---------------|---------------------|
+
+  | SC-1 | opencode-config/AGENTS.md contains a cross-reference to .opencode/reference/skill-card-description-standards.md
+  | string | grep for "skill-card-description-standards" in opencode-config/AGENTS.md
+  |
+
+  | SC-2 | opencode-config/AGENTS.md contains a cross-reference to .opencode/reference/task-card-structure-standards.md
+  | string | grep for "task-card-structure-standards" in opencode-config/AGENTS.md
+  |
+
+  | SC-3 | opencode-config/.opencode/AGENTS.md contains a cross-reference to reference/skill-card-description-standards.md
+  | string | grep for "skill-card-description-standards" in opencode-config/.opencode/AGENTS.md
+  |
+
+  | SC-4 | opencode-config/.opencode/AGENTS.md contains a cross-reference to reference/task-card-structure-standards.md
+  | string | grep for "task-card-structure-standards" in opencode-config/.opencode/AGENTS.md
+  |
+
+
+  ## Requirements
+
+
+  ### REQ-1: Parent Repo AGENTS.md
+
+  opencode-config/AGENTS.md SHALL be updated to include cross-references to:
+
+  - .opencode/reference/skill-card-description-standards.md
+
+  - .opencode/reference/task-card-structure-standards.md
+
+
+  ### REQ-2: Submodule AGENTS.md
+
+  opencode-config/.opencode/AGENTS.md SHALL be updated to include cross-references
+  to:
+
+  - reference/skill-card-description-standards.md
+
+  - reference/task-card-structure-standards.md
+
+
+  ## Phases
+
+
+  ### Phase 1: Update opencode-config/AGENTS.md
+
+  Add cross-references to both new reference documents.
+
+
+  ### Phase 2: Update opencode-config/.opencode/AGENTS.md
+
+  Add cross-references to both new reference documents.
+
+
+  ## Dependencies
+
+
+  - Spec .opencode#2076 — the reference documents must exist before the cross-references
+  are added
+
+
+  ## Traceability
+
+
+  | Requirement | SCs | Phase |
+
+  |-------------|-----|-------|
+
+  | REQ-1 | SC-1, SC-2 | Phase 1 |
+
+  | REQ-2 | SC-3, SC-4 | Phase 2 |
+
+
+  '
 created_at: '2026-07-23T03:02:04+00:00'
-updated_at: '2026-07-23T03:02:04+00:00'
+updated_at: '2026-07-23T03:02:16+00:00'
