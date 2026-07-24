@@ -1,8 +1,4 @@
----
 number: 162
 title: "[SPEC] LaTeX Paper: Same-Model Adversarial Auditor Divergence via Role-Differentiated Agent Chains"
 state: OPEN
-labels:
-  - name: needs-approval
-    color: ededed
----
+labels: '[{"name": "needs-approval", "color": "ededed", "description": ""}]'

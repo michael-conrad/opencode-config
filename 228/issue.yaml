@@ -1,0 +1,4 @@
+number: 228
+title: "[SPEC] Add lessons-learned tracking system to AGENTS.md and .issues/"
+state: OPEN
+labels: '[{"name": "SPEC-FIX", "color": "ededed", "description": ""}, {"name": "spec", "color": "ededed", "description": ""}]'

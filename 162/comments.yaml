@@ -1,0 +1,17 @@
+--- michael-conrad @ 2026-07-05T03:09:50Z ---
+Local spec folder set up at `.issues/162/`:
+
+| Path | Content |
+|------|---------|
+| `spec.md` | Spec body (mirrors GitHub issue) |
+| `cards.md` | Card catalogue with decision log and status tracking |
+| `plan.md` | Implementation plan with 6 phases |
+| `dependency-contract.yaml` | Phase dependency ordering |
+| `research/dimo-reference.md` | DiMo paper reference card |
+| `research/current-system-analysis.md` | Current adversarial-audit system analysis |
+| `.issues/research-cards/dimo-same-model-auditor-divergence.md` | Research card (confidence: 0.9) |
+
+Cross-reference to implementation spec: `.opencode#1672` (https://github.com/michael-conrad/.opencode/issues/1672)
+
+🤖 Co-authored with AI: OpenCode (ollama-cloud/deepseek-v4-flash)
+
