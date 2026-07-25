@@ -1,0 +1,42 @@
+sc_count: 10
+scs:
+  - id: "SC-1"
+    description: "Lines 9-10 (intro cross-references) are removed"
+    evidence_type: "string"
+    plan_item: 1
+  - id: "SC-2"
+    description: "All stubs referencing preloaded guidelines are removed"
+    evidence_type: "string"
+    plan_item: 2
+  - id: "SC-3"
+    description: "All rules referencing skills/ paths are removed"
+    evidence_type: "string"
+    plan_item: 3
+  - id: "SC-4"
+    description: "All dark prose framing is removed"
+    evidence_type: "string"
+    plan_item: 4
+  - id: "SC-5"
+    description: "All Why This Matters tables are removed"
+    evidence_type: "string"
+    plan_item: 5
+  - id: "SC-6"
+    description: "Redundant FORBIDDEN/REQUIRED subsections removed; count ≤10"
+    evidence_type: "string"
+    plan_item: 6
+  - id: "SC-7"
+    description: "Tier classification table is preserved"
+    evidence_type: "string"
+    plan_item: 7
+  - id: "SC-8"
+    description: "Interaction rule table is preserved"
+    evidence_type: "string"
+    plan_item: 8
+  - id: "SC-9"
+    description: "Channel-routing table is preserved"
+    evidence_type: "string"
+    plan_item: 9
+  - id: "SC-10"
+    description: "File is 200-300 lines and 15-20KB"
+    evidence_type: "structural"
+    plan_item: 10
