@@ -1,0 +1,62 @@
+sc_count: 15
+scs:
+  - id: "SC-1"
+    description: "spec-draft label exists on all platforms"
+    evidence_type: "structural"
+    plan_item: 1
+  - id: "SC-2"
+    description: "spec-needs-research label exists on all platforms"
+    evidence_type: "structural"
+    plan_item: 2
+  - id: "SC-3"
+    description: "spec-under-review label exists on all platforms"
+    evidence_type: "structural"
+    plan_item: 3
+  - id: "SC-4"
+    description: "spec-passed-review label exists on all platforms"
+    evidence_type: "structural"
+    plan_item: 4
+  - id: "SC-5"
+    description: "spec-cleared label exists on all platforms"
+    evidence_type: "structural"
+    plan_item: 5
+  - id: "SC-6"
+    description: "spec-draft applied after spec creation"
+    evidence_type: "behavioral"
+    plan_item: 6
+  - id: "SC-7"
+    description: "spec-needs-research applied on triage research need"
+    evidence_type: "behavioral"
+    plan_item: 7
+  - id: "SC-8"
+    description: "spec-under-review applied on audit start"
+    evidence_type: "behavioral"
+    plan_item: 8
+  - id: "SC-9"
+    description: "spec-passed-review applied on audit PASS"
+    evidence_type: "behavioral"
+    plan_item: 9
+  - id: "SC-10"
+    description: "spec-cleared applied at plan creation time"
+    evidence_type: "behavioral"
+    plan_item: 10
+  - id: "SC-11"
+    description: "Labels reset on spec revision"
+    evidence_type: "behavioral"
+    plan_item: 11
+  - id: "SC-12"
+    description: "Labels documented in platform SKILL.md files"
+    evidence_type: "string"
+    plan_item: 12
+  - id: "SC-13"
+    description: "No collision with approved-for-* labels"
+    evidence_type: "structural"
+    plan_item: 13
+  - id: "SC-14"
+    description: "No body status fields used"
+    evidence_type: "structural"
+    plan_item: 14
+  - id: "SC-15"
+    description: "Terminal states handled by existing mechanisms"
+    evidence_type: "structural"
+    plan_item: 15
