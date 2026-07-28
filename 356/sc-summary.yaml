@@ -1,0 +1,26 @@
+sc_count: 6
+scs:
+  - id: "SC-1"
+    description: "vibeguard.config.json has patterns.builtin set to an empty array []"
+    evidence_type: "string"
+    plan_item: 1
+  - id: "SC-2"
+    description: "vibeguard.config.json has no patterns.keywords key"
+    evidence_type: "string"
+    plan_item: 2
+  - id: "SC-3"
+    description: "vibeguard.config.json contains a regex pattern for private key blocks"
+    evidence_type: "string"
+    plan_item: 3
+  - id: "SC-4"
+    description: "vibeguard.config.json contains a regex pattern for password/passwd/pwd assignments"
+    evidence_type: "string"
+    plan_item: 4
+  - id: "SC-5"
+    description: "vibeguard.config.json contains a regex pattern for secret/API key assignments"
+    evidence_type: "string"
+    plan_item: 5
+  - id: "SC-6"
+    description: "vibeguard.config.json is valid JSON and the vibeguard plugin loads it without error"
+    evidence_type: "behavioral"
+    plan_item: 6

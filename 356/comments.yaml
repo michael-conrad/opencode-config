@@ -1,0 +1,5 @@
+comments:
+- type: internal
+  body: Moved to .opencode submodule issue tracker — this config file belongs in the
+    submodule since the plugin is declared in .opencode/opencode.jsonc
+  timestamp: '2026-07-28T19:18:58+00:00'
