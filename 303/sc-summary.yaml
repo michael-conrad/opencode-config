@@ -1,86 +1,34 @@
-sc_coverage:
-  total: 13
-  single_task: false
-  spec_url: https://github.com/michael-conrad/opencode-config/issues/303
-  evidence_types:
-    - behavioral
-    - string
-  phases:
-    - id: 1
-      sc_ids: [SC-1, SC-2, SC-3, SC-4, SC-5, SC-6, SC-7, SC-8, SC-9, SC-10]
-      evidence_types: [string]
-    - id: 2
-      sc_ids: [SC-11, SC-12]
-      evidence_types: [behavioral]
-    - id: 3
-      sc_ids: [SC-13]
-      evidence_types: [string]
-  cross_cutting:
-    sc_ids: []
-    verified_in_phase: null
-  scs:
-    - id: SC-1
-      description: "decompose.md Step 5 replaces three-tier per-file phase structure with per-SC item list"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 1
-    - id: SC-2
-      description: "structure.md Step 5 changes from code-path-to-item to SC-to-item mapping"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 2
-    - id: SC-3
-      description: "write.md Tier 3 changes from per-file items to per-SC items with SC-ID binding"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 3
-    - id: SC-4
-      description: "pipeline-executor.md adds per-SC checkpoint verification with SC-ID in tags"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 4
-    - id: SC-5
-      description: "tdd-chaining-gate.md adds SC-level check, BLOCKs on MULTI_SC_ITEM"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 5
-    - id: SC-6
-      description: "create.md Step 1.1 changes plan_phase to plan_item in sc-summary.yaml"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 6
-    - id: SC-7
-      description: "AGENTS.md documents per-SC decomposition as standard workflow"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 7
-    - id: SC-8
-      description: "091-incremental-build.md clarifies item = one SC per item"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 8
-    - id: SC-9
-      description: "red.md includes per-SC targeting note in Required RED Structure"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 9
-    - id: SC-10
-      description: "green.md includes per-SC implementation note in Exit Criteria"
-      evidence_type: string
-      verification_gate: pre-commit
-      plan_item: 10
-    - id: SC-11
-      description: "Behavioral test: plan writer produces per-SC items"
-      evidence_type: behavioral
-      verification_gate: pre-commit
-      plan_item: 11
-    - id: SC-12
-      description: "Behavioral test: TDD chaining gate BLOCKs on multi-SC items"
-      evidence_type: behavioral
-      verification_gate: pre-commit
-      plan_item: 12
-    - id: SC-13
-      description: "No SC may be weakened, deferred, or reclassified to evade implementation"
-      evidence_type: string
-      verification_gate: post-implementation
-      plan_item: 13
+sc_count: 8
+scs:
+  - id: "SC-1"
+    description: "Root AGENTS.md corrected/forbidden table distinguishes filesystem ops (permitted) from parent-repo git ops (forbidden)"
+    evidence_type: "string"
+    plan_item: 1
+  - id: "SC-2"
+    description: "Root AGENTS.md removes 'silently operates on wrong repo' prose"
+    evidence_type: "string"
+    plan_item: 2
+  - id: "SC-3"
+    description: ".opencode/AGENTS.md corrected/forbidden table distinguishes filesystem ops (permitted) from parent-repo git ops (forbidden)"
+    evidence_type: "string"
+    plan_item: 3
+  - id: "SC-4"
+    description: ".opencode/AGENTS.md removes 'silently targets wrong repo' prose"
+    evidence_type: "string"
+    plan_item: 4
+  - id: "SC-5"
+    description: ".opencode/AGENTS.md adds primacy statement and three-system model"
+    evidence_type: "string"
+    plan_item: 5
+  - id: "SC-6"
+    description: ".issues/AGENTS.md (root worktree) line 13 clarifies 'MUST NOT read/write through parent repo git operations'"
+    evidence_type: "string"
+    plan_item: 6
+  - id: "SC-7"
+    description: ".opencode/.issues/AGENTS.md verified consistent with root worktree AGENTS.md"
+    evidence_type: "string"
+    plan_item: 7
+  - id: "SC-8"
+    description: "All four files pass markdown lint without new errors"
+    evidence_type: "string"
+    plan_item: 8
