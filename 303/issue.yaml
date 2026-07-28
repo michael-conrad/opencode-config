@@ -1,0 +1,8 @@
+title: '[SPEC] Fix .issues/ worktree vs remote API confusion in AGENTS.md files'
+status: open
+labels:
+- needs-approval
+- SPEC
+body: ''
+created_at: '2026-07-28T14:45:57+00:00'
+updated_at: '2026-07-28T14:45:57+00:00'
