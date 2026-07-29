@@ -75,6 +75,18 @@ git add .opencode
 
 **Do NOT fabricate parent-repo edits to bypass the submodule-only push gate.** If there are no parent-repo changes to make alongside the pointer update, the pointer update must wait until the next real change. The gate exists to prevent review overhead for pointer-only PRs — do not create useless edits to work around it.
 
+### Testing Lessons Learned — Failure Patterns
+
+**Stale lock files:** `tmp/.behavior-run.lock` persists after killed test runs. Always run `rm -f tmp/.behavior-run.lock` before re-running. See `.opencode/tests-v2/AGENTS.md §10.1`.
+
+**Bash tool timeout:** Default 120s kills 35B model inference mid-run. Behavioral tests require >=600s timeout. See `.opencode/tests-v2/AGENTS.md §10.2`.
+
+**Missing session.yaml export:** `__export_sqlite_to_yaml()` now searches stderr for `TEST_HOME=<path>` as fallback when stdout is empty (timeout case). See `.opencode/tests-v2/AGENTS.md §10.3`.
+
+**Fabricated model excuses — CRITICAL VIOLATION:** Agents MUST NOT claim model unavailability without tool-call evidence. The model (qwen3.6:35b-256k) is verified to work. Any claim otherwise is a fabrication. See `.opencode/tests-v2/AGENTS.md §10.4`.
+
+**Post-timeout recovery:** SQLite DB in the test home survives bash tool kills. Export manually via the procedure in `.opencode/tests-v2/AGENTS.md §10.5`.
+
 ### Prohibited Bypass Patterns
 
 | Pattern | Why Forbidden |
