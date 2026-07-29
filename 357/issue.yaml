@@ -1,0 +1,9 @@
+title: '[SPEC-FIX] session-init output fixes: reorder session-started first, add stale
+  training data warning, remove git branch'
+status: open
+labels:
+- needs-approval
+- SPEC-FIX
+body: ''
+created_at: '2026-07-29T12:14:10+00:00'
+updated_at: '2026-07-29T12:14:10+00:00'
