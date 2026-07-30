@@ -1,5 +1,7 @@
-labels: []
-number: 304
-state: CLOSED
-title: "[SPEC] Test isolation mandates \u2014 snap run ban, no bash timeout, USER\
-  \ env, isolation verification"
+title: '[SPEC] Merge upstream research methodology into existing research skill'
+status: open
+labels:
+- needs-approval
+body: ''
+created_at: '2026-07-30T05:19:02+00:00'
+updated_at: '2026-07-30T05:19:02+00:00'
