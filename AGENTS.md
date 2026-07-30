@@ -87,6 +87,8 @@ git add .opencode
 
 **Post-timeout recovery:** SQLite DB in the test home survives bash tool kills. Export manually via the procedure in `.opencode/tests-v2/AGENTS.md §10.5`.
 
+**Submodule-only push bypass — CRITICAL VIOLATION:** Using `--no-verify` to bypass the pre-push hook on a submodule-only push is never correct. The hook exists because submodule-only PRs create review overhead with zero functional change. If the submodule PR is already merged, the work is done — no pointer-only PR is needed. The pointer updates naturally alongside the next real parent-repo change. A blocked push means the hook is working correctly — investigate why, don't bypass it. See `.opencode/AGENTS.md §Submodule Pointer Updates`.
+
 ### Prohibited Bypass Patterns
 
 | Pattern | Why Forbidden |
