@@ -18,6 +18,7 @@ Main is the single trunk. Dev branch has been removed.
 | `.opencode/reference/skill-card-schema.md` | SKILL.md frontmatter binary constraints (name, description, license) |
 | `.opencode/skills/version-manager/` | Version string discovery and semver bumping: discover, bump tasks |
 | `.opencode/skills/release-promoter/` | Git tag creation and GitHub Release promotion: tag, create-release tasks |
+| `.opencode/.issues/2229/` | Skill deck completeness validation — missing SKILL.md or task cards trigger investigation + fatal HALT |
 
 ## Trunk-Based Development
 Main is the single trunk. Dev branch has been removed.
