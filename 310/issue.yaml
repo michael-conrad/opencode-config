@@ -1,5 +1,8 @@
-number: 310
-title: '[SPEC] Upgrade viewport-editor from v0.3.4 to v0.4.0'
-state: OPEN
+title: '[SPEC] Root-repo-only tooling in multi-module checkouts'
+status: open
 labels:
-- spec
+- needs-approval
+- SPEC
+body: ''
+created_at: '2026-08-24T17:08:11+00:00'
+updated_at: '2026-08-24T17:08:11+00:00'
