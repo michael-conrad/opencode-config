@@ -1,5 +1,8 @@
-number: 309
-title: "[SPEC-FIX] Test framework DB isolation \u2014 with-test-home, helpers.sh,\
-  \ and rogue scripts write to production DB"
-state: OPEN
-labels: []
+title: '[SPEC] Root-repo-only tooling in multi-module checkouts'
+status: open
+labels:
+- needs-approval
+- SPEC
+body: ''
+created_at: '2026-08-24T17:08:01+00:00'
+updated_at: '2026-08-24T17:08:01+00:00'
