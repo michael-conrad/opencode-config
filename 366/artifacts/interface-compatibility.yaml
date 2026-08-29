@@ -1,0 +1,10 @@
+issue_number: 366
+interfaces:
+  - name: ".opencode submodule pointer"
+    classification: modified
+    backward_compatible: true
+    description: "Pointer advances forward from aa2426f3 to descendant babf358e — no interface contract change"
+  - name: "AGENTS.md model reference string"
+    classification: modified
+    backward_compatible: true
+    description: "String literal change in documentation — no programmatic interface"
