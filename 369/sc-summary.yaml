@@ -1,0 +1,18 @@
+sc_count: 4
+scs:
+  - id: SC-1
+    description: SKILL.md dispatch prompt for cleanup workflow uses pr_merged_event: true instead of concat() with pre-resolved pr_merge_status/branch_name
+    evidence_type: structural
+    plan_item: 1
+  - id: SC-2
+    description: Orchestrator does NOT run any git/gh tool calls inline before dispatching cleanup sub-agent on "pr merged" trigger
+    evidence_type: behavioral
+    plan_item: 3
+  - id: SC-3
+    description: Cleanup sub-agent's result contract reports submodules before parent repo
+    evidence_type: structural
+    plan_item: 2
+  - id: SC-4
+    description: cleanup.md Step 0 has explicit guard note about orchestrator not pre-investigating
+    evidence_type: string
+    plan_item: 1
