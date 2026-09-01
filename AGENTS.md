@@ -83,7 +83,7 @@ git add .opencode
 
 **Missing session.yaml export:** `__export_sqlite_to_yaml()` now searches stderr for `TEST_HOME=<path>` as fallback when stdout is empty (timeout case). See `.opencode/tests-v2/AGENTS.md §10.3`.
 
-**Fabricated model excuses — CRITICAL VIOLATION:** Agents MUST NOT claim model unavailability without tool-call evidence. The model (qwen3.8:27b-256k) is verified to work. Any claim otherwise is a fabrication. See `.opencode/tests-v2/AGENTS.md §10.4`.
+**Fabricated model excuses — CRITICAL VIOLATION:** Agents MUST NOT claim model unavailability without tool-call evidence. The model (qwen3.8:27b-256k-gguf4) is verified to work. Any claim otherwise is a fabrication. See `.opencode/tests-v2/AGENTS.md §10.4`.
 
 **Post-timeout recovery:** SQLite DB in the test home survives bash tool kills. Export manually via the procedure in `.opencode/tests-v2/AGENTS.md §10.5`.
 
