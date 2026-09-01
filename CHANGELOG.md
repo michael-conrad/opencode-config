@@ -30,6 +30,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Default Test Model Update** (#2425): bump parent root AGENTS.md default test model reference to `ollama/qwen3.8:27b-256k-gguf4` and update `.opencode` submodule pointer to the merged submodule PR
 - **Gitignore Enhancement** (#336): comprehensive `.gitignore` for mixed Python/LaTeX/Node.js project with standard ignores
 - **Specs-Not-Tracking-Docs** (#329): update AGENTS.md and submodule pointer — specs and plans are NOT tracking documents
 - **Read-Link Cross-Reference** (#294): replace `See` with `Read [Text](path)` cross-reference pattern in AGENTS.md
