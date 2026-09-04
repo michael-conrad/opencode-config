@@ -1,6 +1,0 @@
-issue_number: 366
-concerns:
-  - name: "Submodule pointer hygiene"
-    items: [1]
-    phases: [1]
-    description: "No cross-cutting concerns — this is a two-file change with no shared behavior"

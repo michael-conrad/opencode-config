@@ -1,7 +1,0 @@
-issue_number: 366
-phases:
-  - phase: 1
-    code_paths_touched:
-      - ".opencode"  # gitlink/submodule pointer
-      - "AGENTS.md:86"  # doc reference
-    description: "Two file changes, no code-level dependencies between them"
