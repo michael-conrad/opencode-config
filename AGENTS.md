@@ -32,13 +32,13 @@ First invocation auto-initializes `.issues/` — creates the orphan branch, work
 # #47 [open]
 
 # Read an issue
-.opencode/tools/local-issues read --number 46
+.opencode/tools/local-issues read --number opencode-config#46
 
 # Create a new issue (auto-numbered)
-.opencode/tools/local-issues create --title "My spec" --labels SPEC
+.opencode/tools/local-issues create --number opencode-config#47 --title "My spec" --labels SPEC  # reserve 47 from .issues/.counter first
 
 # Create with explicit number
-.opencode/tools/local-issues create --number 99 --title "Bug fix" --labels BUG
+.opencode/tools/local-issues create --number opencode-config#99 --title "Bug fix" --labels BUG
 
 # Search issues
 .opencode/tools/local-issues search --query "fastmcp"
@@ -74,9 +74,9 @@ All git operations (commit, push) are handled automatically by the tool after mu
 | Action | Command | Auto-commit? | Auto-push? |
 |--------|---------|-------------|-------------|
 | List issues | `local-issues list` | N/A (read-only) | N/A |
-| Read issue | `local-issues read --number N` | N/A (read-only) | N/A |
+| Read issue | `local-issues read --number <repo>#N` | N/A (read-only) | N/A |
 | Search | `local-issues search --query "..."` | N/A (read-only) | N/A |
-| Create issue | `local-issues create --title "..."` | ✅ Yes | ✅ Yes |
+| Create issue | `local-issues create --number <repo>#N --title "..."` | ✅ Yes | ✅ Yes |
 | Update issue | `local-issues update --number N ...` | ✅ Yes | ✅ Yes |
 | Add comment | `local-issues comment --number N --body "..."` | ✅ Yes | ✅ Yes |
 | Close issue | `local-issues close --number N --reason completed` | ✅ Yes | ✅ Yes |
