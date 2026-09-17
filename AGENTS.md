@@ -85,6 +85,8 @@ git add .opencode
 
 **Fabricated model excuses — CRITICAL VIOLATION:** Agents MUST NOT claim model unavailability without tool-call evidence. The model (qwen3.8:27b-256k-gguf4) is verified to work. Any claim otherwise is a fabrication. See `.opencode/tests-v2/AGENTS.md §10.4`.
 
+**No hardware/model-unavailability excuse without deliberation evidence — CRITICAL VIOLATION:** Agents MUST NOT claim model/hardware unavailability (or any equivalent resource excuse — "unobtainable on this hardware", "hardware limit") without FIRST reviewing the actual session evidence (actions + thinking/reasoning parts) of the failed run and tracing the true reasoning-failure scenario (what the run agent was thinking when it stalled, skipped a step, or derailed). Sub-agent summaries are not evidence — the reviewing agent must personally inspect the exported session evidence, and any unavailability claim must cite the specific reasoning evidence reviewed and the traced failure scenario. Absent that evidence, the claim is a fabricated excuse. See `.opencode/tests-v2/AGENTS.md §18` (R-19).
+
 **Post-timeout recovery:** SQLite DB in the test home survives bash tool kills. Export manually via the procedure in `.opencode/tests-v2/AGENTS.md §10.5`.
 
 **Excessive run time is a defect signal — not a model-speed problem:** Excessive behavioral-test run times (repeated timeouts, monitor aborts, large single-turn reasoning blocks, budget exhaustion) usually indicate bad instructions, a skill-deck defect, or another problem. Agents MUST examine the cause and fold in a fix (an SC revision or additional spec, stacked into the feature branch) rather than re-running or blaming the model. Read `.opencode/tests-v2/AGENTS.md §17` for the full R-18 cause-analysis procedure.
