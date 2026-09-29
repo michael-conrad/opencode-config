@@ -25,6 +25,10 @@ This is the same scoping-defect family fixed on the deck side by michael-conrad/
 
 **Evidence:** `grep -n "All test execution" AGENTS.md` — line present, no scope qualifier (verified).
 
+## Approach Chosen
+
+Insert a repo-scope qualifier into root `AGENTS.md` § Test Framework Discipline that (a) distinguishes `.opencode`-targeted (submodule) work from root-repo (non-submodule) work, (b) states the canonical `.opencode` framework applies to `.opencode`-targeted work only, and (c) names `tests/behaviors/*.sh` as the root-repo test instrument with a SHALL NOT prohibition on touching the `.opencode` submodule or its test framework. The change is a text-only edit to one section of one file.
+
 ## Root Cause / Motivation
 
 **Root cause:** The parent-repo `AGENTS.md` § Test Framework Discipline was written as a universal mandate ("All test execution MUST use the canonical test framework") describing `.opencode`-repo tooling (`.opencode/tests-v2/with-test-home`, `opencode run`) without scoping applicability to the repo where that framework lives. The deck-side counterpart (`.opencode/AGENTS.md`) was fixed via the same defect family by michael-conrad/.opencode#2469; the root-side surface was left unscoped.
@@ -47,10 +51,12 @@ Original bug report intent (issue #372): fix the parent-repo root `AGENTS.md` §
 
 | # | Requirement | Rationale (traceability) |
 |---|-------------|--------------------------|
-| R-1 | Root `AGENTS.md` § Test Framework Discipline gains an explicit repo-scope qualifier distinguishing `.opencode`-targeted (submodule) work from root-repo (non-submodule) work | Problem Statement; Decision 1 |
-| R-2 | The qualifier states the canonical `.opencode` framework (`with-test-home`, `opencode run`, `tests-v2`) applies to `.opencode`-targeted work only | Problem Statement failure mode 2; Decision 1 |
-| R-3 | The qualifier states root-repo work uses the in-repo test instrument `tests/behaviors/*.sh` and MUST NOT touch the `.opencode` submodule or its test framework | Problem Statement failure mode 1; Decision 2 |
-| R-4 | The change modifies only root `AGENTS.md`; no `.opencode/` file is modified | Out-of-scope guard; Impact |
+| R-1 | Root `AGENTS.md` § Test Framework Discipline SHALL contain an explicit repo-scope qualifier distinguishing `.opencode`-targeted (submodule) work from root-repo (non-submodule) work | Problem Statement; Decision 1 |
+| R-2 | The qualifier SHALL state that the canonical `.opencode` framework (`with-test-home`, `opencode run`, `tests-v2`) applies to `.opencode`-targeted work only | Problem Statement failure mode 2; Decision 1 |
+| R-3 | The qualifier SHALL state that root-repo work uses the in-repo test instrument `tests/behaviors/*.sh` and root-repo work SHALL NOT touch the `.opencode` submodule or its test framework | Problem Statement failure mode 1; Decision 2 |
+| R-4 | The change SHALL modify only root `AGENTS.md`; no `.opencode/` file shall be modified | Out-of-scope guard; Impact |
+
+**RFC 2119 keyword convention:** SHALL = mandatory; SHALL NOT = absolute prohibition; MAY = optional. Keywords are uppercase in Requirements and Success Criteria.
 
 ## Alternatives Considered
 
@@ -70,16 +76,18 @@ Original bug report intent (issue #372): fix the parent-repo root `AGENTS.md` §
 
 | # | Success Criterion | Evidence Type | Evidence Source | Documentation Sources | Cost Frame |
 |---|-------------------|---------------|-----------------|-----------------------|------------|
-| SC-1 | Root `AGENTS.md` § Test Framework Discipline contains a repo-scope qualifier that (a) distinguishes `.opencode`-targeted (submodule) work from root-repo work, (b) states the canonical framework applies to `.opencode`-targeted work only, and (c) names `tests/behaviors/*.sh` as the root-repo test instrument and states root-repo work MUST NOT touch the `.opencode` submodule or its test framework | structural | `read` of `AGENTS.md` § Test Framework Discipline at commit: qualifying text present, containing the three specified elements (a), (b), (c) | `.issues/372/spec.md` (this spec); root `AGENTS.md` § Test Framework Discipline | O(1) — single file read on the changed section |
-| SC-2 | The change commit modified only root `AGENTS.md` and no file under `.opencode/` | structural | `git diff --stat <base>..HEAD` at commit: exactly one changed path, `AGENTS.md` (root) | `.issues/372/spec.md`; `git diff` output | O(Δ) — proportional to commit diff size |
+| SC-1 | Root `AGENTS.md` § Test Framework Discipline contains a repo-scope qualifier distinguishing `.opencode`-targeted (submodule) work from root-repo (non-submodule) work | string | `read` of `AGENTS.md` § Test Framework Discipline at commit: the qualifying scoped text is present in the section (content-presence check against spec wording) | `.issues/372/spec.md` (this spec); root `AGENTS.md` § Test Framework Discipline | Action cost: one targeted text edit and one `read` of the section. Skipping cost: the qualifier is absent and an agent performing root-repo work is directed to a framework that does not exist in its context, producing fabricated excuses or `.opencode` submodule forays. Consequence: unscoped mandate persists, reproducing the defect family fixed by michael-conrad/.opencode#2469. |
+| SC-2 | The qualifier states that the canonical `.opencode` framework (`with-test-home`, `opencode run`, `tests-v2`) applies to `.opencode`-targeted work only | string | `read` of `AGENTS.md` § Test Framework Discipline at commit: the framework-applicability statement is present in the section (content-presence check against R-2 wording) | `.issues/372/spec.md`; root `AGENTS.md` § Test Framework Discipline | Action cost: one text edit adding the applicability statement and one `read` to verify presence. Skipping cost: the mandate remains universal and root-repo agents foray into the `.opencode` submodule to satisfy the letter of the rule. Consequence: contamination of unrelated submodule state per Problem Statement failure mode 2. |
+| SC-3 | The qualifier names `tests/behaviors/*.sh` as the root-repo test instrument and states that root-repo work SHALL NOT touch the `.opencode` submodule or its test framework | string | `read` of `AGENTS.md` § Test Framework Discipline at commit: the instrument name `tests/behaviors/*.sh` and the submodule-prohibition statement are present in the section (content-presence check against R-3 wording) | `.issues/372/spec.md`; root `AGENTS.md` § Test Framework Discipline | Action cost: one text edit adding the instrument name and prohibition and one `read` to verify presence. Skipping cost: root-repo behavior remains unspecified, so agents run tests without any defined instrument and reach into `.opencode/tests-v2` for unrelated work. Consequence: fabricated-availability excuses and submodule contamination per Problem Statement failure mode 1. |
+| SC-4 | The change commit modified only root `AGENTS.md` and no file under `.opencode/` | structural | `git diff --stat <base>..HEAD` at commit (file-existence-level check): exactly one changed path, `AGENTS.md` (root); zero paths under `.opencode/` | `.issues/372/spec.md`; `git diff` output | Action cost: one scoped commit and one `git diff --stat` run. Skipping cost: scope containment of R-4 is unverified and the edit could silently reach into `.opencode/`. Consequence: unauthorized deck-repo mutation — the exact contamination this fix is written to prevent. |
 
-**SC decomposition notes (validation iteration 1 remediation):** former SC-2 (framework-applies-only-to-`.opencode` ceremony) folded into SC-1 element (b) — it is entailed by SC-1 and is not independently testable. Former SC-3 (compound, non-deterministic "strongest available in-repo test instrument") decomposed into SC-1 elements (a)-(c) with the instrument now deterministically defined (`tests/behaviors/*.sh`) per Decision 2. Former SC-4 (disjunctive "no other sections of AGENTS.md or any `.opencode/` file") split into SC-2's single verifiable diff criterion.
+**SC decomposition notes (validation iteration 2 remediation):** former compound SC-1 (elements a/b/c in one row) decomposed into atomic SC-1 (element a — qualifier-present-with-target-distinction), SC-2 (element b — framework-applicability statement), and SC-3 (element c — instrument naming plus submodule prohibition). Evidence types re-declared: SC-1/SC-2/SC-3 are content-presence checks verified by reading file text — declared **string** (not structural); SC-4 is a file-existence-level diff check and remains **structural**.
 
 ## Items
 
 | Item | Related SC(s) |
 |------|---------------|
-| ITEM-1: Edit root `AGENTS.md` § Test Framework Discipline to insert the repo-scope qualifier text per R-1/R-2/R-3 | SC-1, SC-2 |
+| ITEM-1: Edit root `AGENTS.md` § Test Framework Discipline to insert the repo-scope qualifier text per R-1/R-2/R-3 | SC-1, SC-2, SC-3, SC-4 |
 
 ## Dependencies
 
@@ -91,10 +99,10 @@ Original bug report intent (issue #372): fix the parent-repo root `AGENTS.md` §
 
 | Requirement | SC | Item | Verification |
 |-------------|----|------|--------------|
-| R-1 | SC-1 (a) | ITEM-1 | `read` of AGENTS.md section |
-| R-2 | SC-1 (b) | ITEM-1 | `read` of AGENTS.md section |
-| R-3 | SC-1 (c) | ITEM-1 | `read` of AGENTS.md section |
-| R-4 | SC-2 | ITEM-1 | `git diff --stat` |
+| R-1 | SC-1 | ITEM-1 | `read` of AGENTS.md section (string) |
+| R-2 | SC-2 | ITEM-1 | `read` of AGENTS.md section (string) |
+| R-3 | SC-3 | ITEM-1 | `read` of AGENTS.md section (string) |
+| R-4 | SC-4 | ITEM-1 | `git diff --stat` (structural) |
 
 ## Documentation Sources
 
@@ -106,13 +114,26 @@ Original bug report intent (issue #372): fix the parent-repo root `AGENTS.md` §
 
 ## Enforcement Gate
 
-Behavioral agent-facing text change: verify no skill-enforcement regression by running `bash .opencode/tests-v2/test-enforcement.sh` BEFORE and AFTER the AGENTS.md edit, confirming the enforcement suite is unaffected by the text-only change (the test framework itself is out of scope; the run is regression evidence, not a framework change). The behavioral variant does not apply — this is a text-scoping fix, not a new rule requiring behavioral RED/GREEN; SC-1/SC-2 use structural evidence because the change is static agent-facing text with no runtime semantics.
+ALL of the following MUST hold or the SC set is FAIL — no partial PASS, no advisory:
+
+1. SC-1 MUST be verified by string evidence: `read` of `AGENTS.md` § Test Framework Discipline shows the repo-scope qualifier distinguishing `.opencode`-targeted work from root-repo work.
+2. SC-2 MUST be verified by string evidence: the applicability statement — canonical `.opencode` framework applies to `.opencode`-targeted work only — is present in the section.
+3. SC-3 MUST be verified by string evidence: `tests/behaviors/*.sh` is named as the root-repo test instrument and the SHALL NOT submodule-prohibition statement is present.
+4. SC-4 MUST be verified by structural evidence: `git diff --stat <base>..HEAD` shows exactly one changed path, root `AGENTS.md`, and no `.opencode/` path.
+
+Behavioral agent-facing text change: verify no skill-enforcement regression by running `bash .opencode/tests-v2/test-enforcement.sh` BEFORE and AFTER the AGENTS.md edit, confirming the enforcement suite is unaffected by the text-only change. If the enforcement suite regresses, the SC set is FAIL regardless of string/structural evidence. The behavioral variant does not apply — this is a text-scoping fix, not a new rule requiring behavioral RED/GREEN.
 
 ## Cost Frame
 
-- **Complexity:** O(1) text edit in one file section (agent-facing markdown only).
-- **Resource cost in verification decisions:** Not a factor (cost-blind verification mandate — `080-code-standards.md`); the enforcement-suite regression run above is justified by scope containment, not cost.
-- **Blast radius:** One file section; no runtime code; no submodule changes.
+| SC | Action cost | Skipping cost | Consequence |
+|----|-------------|---------------|-------------|
+| SC-1 | One targeted text edit plus one `read` to verify qualifier presence | Scope-distinction text omitted; agent verification skipped | Root-repo agents run tests without a defined instrument, reproducing fabricated-availability excuses |
+| SC-2 | One text edit plus one `read` to verify applicability statement | Applicability statement omitted | Universal mandate persists; agents foray into `.opencode` for unrelated root work |
+| SC-3 | One text edit plus one `read` to verify instrument name and prohibition | Instrument and prohibition omitted | No defined root-repo test instrument; uncontrolled submodule touching |
+| SC-4 | One scoped commit plus one `git diff --stat` | Diff check skipped | Scope containment unverified; unauthorized `.opencode/` changes pass silently |
+| Enforcement Gate regression run | Two `test-enforcement.sh` runs (before/after) | Regression run skipped | Skill-enforcement regression ships undetected in the text-only change |
+
+Resource cost in verification decisions is not a factor (cost-blind verification mandate — `080-code-standards.md`).
 
 ## Edge Cases
 
@@ -120,7 +141,7 @@ Behavioral agent-facing text change: verify no skill-enforcement regression by r
 |---|------|----------|
 | 1 | An agent makes a change to both root files and `.opencode` in one task | The qualifier applies per work target: `.opencode`-targeted portions follow the canonical framework; root-repo portions follow `tests/behaviors/*.sh`; the existing submodule-discipline rules (pointer sync) still govern the submodule portion |
 | 2 | Submodule pointer is dirty while making a root-repo edit | Pointer sync rules in § Test Framework Discipline / § Submodule Pointer Updates are unchanged by this fix — the qualifier does not weaken pointer discipline |
-| 3 | Agent runs tests for root-repo changes and finds no script match in `tests/behaviors/` | The invariant is the sub-touch prohibition: the agent verifies with direct commands and MUST NOT reach into `.opencode/tests-v2` — the qualifier states the prohibition explicitly |
+| 3 | Agent runs tests for root-repo changes and finds no script match in `tests/behaviors/` | The invariant is the sub-touch prohibition: the agent verifies with direct commands and SHALL NOT reach into `.opencode/tests-v2` — the qualifier states the prohibition explicitly |
 
 ## Impact
 
@@ -134,5 +155,6 @@ Behavioral agent-facing text change: verify no skill-enforcement regression by r
 |------|--------|--------|---------------|
 | 2026-09-28 | Initial spec body composed during retroactive import revision | Pipeline-initiated continuation under approved-for-pr (#372): retroactively imported spec body contained zero success criteria; SCs derived from bug statement to unblock plan creation | Developer authorization label `approved-for-pr` (pipeline-initiated, non-substantive revision exemption, approval-gate-008 exception class) |
 | 2026-09-28 | Validation-iteration-1 revision: added required template sections (Root Cause/Motivation, User Intent/Original Prompt, Key Design Decisions, Requirements, Alternatives Considered, Not Included, Items, Dependencies, Traceability, Documentation Sources, Enforcement Gate, Cost Frame, Edge Cases); added Documentation Sources and Cost Frame columns to SC table; folded former SC-2 into SC-1; decomposed former SC-3 into atomic SC-1 elements with deterministic in-repo test instrument (`tests/behaviors/*.sh`); split former SC-4 into single verifiable SC-2 | Structural validation FAIL findings (iteration 1) listed in revision_reason: missing template sections; SC table missing Documentation Sources column and per-SC cost frames; SC-3 compound/non-deterministic; SC-4 disjunctive; SC-2 ceremony entailed by SC-1 | `approved-for-pr` (#372) — pipeline-initiated validation gate, automatic revise→validate loop |
+| 2026-09-28 | Validation-iteration-2 revision: decomposed compound SC-1 into atomic SC-1/SC-2/SC-3 (elements a/b/c each a verifiable criterion); rewrote R-1/R-2 in RFC 2119 SHALL form and R-3 as SHALL (+SHALL NOT prohibition); added preamble field `Approach Chosen` (completing the 6-field preamble: Problem Statement, Approach Chosen, Root Cause/Motivation, User Intent/Original Prompt, Key Design Decisions, Requirements); rewrote Cost Frame entries in dark-prose-007 format per SC (action cost + skipping cost + consequence) replacing O-notation entries; re-declared evidence types — SC-1/SC-2/SC-3 content-presence checks from structural to string, SC-4 restated as file-existence-level structural diff check; rewrote Enforcement Gate in canonical all-or-nothing statement format (ALL MUST hold or FAIL); added RFC 2119 keyword convention note; R-4 SHALL form | Validation FAIL findings (iteration 2) listed in revision_reason: compound SC-1; Requirements not in RFC 2119 form; missing `Approach Chosen` preamble field; Cost Frame in O-notation not dark-prose-007 format; evidence type mis-declaration (content-presence declared structural); Enforcement Gate not in all-or-nothing format | `approved-for-pr` (#372) — pipeline-initiated validation gate, automatic revise→validate loop |
 
 🤖 Co-authored with AI: OpenCode (ollama-cloud/glm-5.3-flash)
