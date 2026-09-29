@@ -44,7 +44,7 @@ Main is the single trunk. Dev branch has been removed.
 
 ## Test Framework Discipline — MANDATORY
 
-All test execution MUST use the canonical test framework. The following rules are non-waivable.
+All test execution MUST use the canonical test framework. **Repo-scope qualifier:** the canonical `.opencode` test framework (`.opencode/tests-v2/with-test-home`, `opencode run`) applies to `.opencode`-targeted (submodule) work only. Root-repo (non-submodule) work uses the in-repo test instrument `tests/behaviors/*.sh`, and root-repo work SHALL NOT touch the `.opencode` submodule or its test framework. The following rules are non-waivable.
 
 ### `timeout` Command Prohibition
 
