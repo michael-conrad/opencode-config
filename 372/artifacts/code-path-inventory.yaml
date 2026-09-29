@@ -1,0 +1,19 @@
+# Code Path Inventory — opencode-config #372
+
+code_paths:
+  - sc: SC-1
+    paths:
+      - "AGENTS.md § Test Framework Discipline — text read/presence check; no runtime code path"
+  - sc: SC-2
+    paths:
+      - "AGENTS.md § Test Framework Discipline — text read/presence check"
+  - sc: SC-3
+    paths:
+      - "AGENTS.md § Test Framework Discipline — text read/presence check; references tests/behaviors/*.sh"
+  - sc: SC-4
+    paths:
+      - "AGENTS.md § Test Framework Discipline — text read/presence check"
+  - sc: SC-5
+    paths:
+      - "git diff --stat <base>..HEAD — repo-scope containment check; no code execution path"
+inventory_note: "Text-only agent-facing change; no runtime code paths exist. All paths are documentation/verification surfaces."

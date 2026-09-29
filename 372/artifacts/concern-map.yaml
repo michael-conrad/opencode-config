@@ -1,0 +1,19 @@
+# Concern Map — opencode-config #372
+
+concern_groups:
+  - name: text-scoping
+    concerns:
+      - "SC-1: repo-scope qualifier distinguishing .opencode-targeted vs root-repo work (ITEM-1)"
+      - "SC-2: framework-applicability statement (ITEM-2)"
+      - "SC-3: instrument naming tests/behaviors/*.sh (ITEM-3)"
+      - "SC-4: SHALL NOT submodule-prohibition statement (ITEM-4)"
+  - name: scope-containment
+    concerns:
+      - "SC-5: diff-scope verification — only AGENTS.md changed, zero .opencode/ paths (ITEM-5)"
+phase_boundaries:
+  - phase: text-edits
+    covers: SC-1, SC-2, SC-3, SC-4
+    boundary: all four qualifier statements present in AGENTS.md § Test Framework Discipline
+  - phase: verification
+    covers: SC-5
+    boundary: git diff --stat containment demonstrated

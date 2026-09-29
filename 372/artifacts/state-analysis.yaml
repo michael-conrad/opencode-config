@@ -1,0 +1,12 @@
+# State Analysis — opencode-config #372
+
+state_transitions:
+  - sc: SC-1..SC-4
+    from: "AGENTS.md § Test Framework Discipline lacks repo-scope qualifier (universal mandate state)"
+    to: "Section contains scoped qualifier (4 statements present)"
+    mutations: "File text edit per ITEM-1..4, each committed"
+  - sc: SC-5
+    from: "Commit scope unverified (edits possibly staged/incomplete)"
+    to: "git diff --stat proves containment: 1 changed path (AGENTS.md), 0 .opencode/ paths"
+    mutations: "No file mutation — verification-only transition"
+persisted_state: "Git commit history; .issues/372/ spec/artifacts. No runtime or database state involved."

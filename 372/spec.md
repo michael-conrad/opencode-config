@@ -78,16 +78,70 @@ Original bug report intent (issue #372): fix the parent-repo root `AGENTS.md` §
 |---|-------------------|---------------|-----------------|-----------------------|------------|
 | SC-1 | Root `AGENTS.md` § Test Framework Discipline contains a repo-scope qualifier distinguishing `.opencode`-targeted (submodule) work from root-repo (non-submodule) work | string | `read` of `AGENTS.md` § Test Framework Discipline at commit: the qualifying scoped text is present in the section (content-presence check against spec wording) | `.issues/372/spec.md` (this spec); root `AGENTS.md` § Test Framework Discipline | Action cost: one targeted text edit and one `read` of the section. Skipping cost: the qualifier is absent and an agent performing root-repo work is directed to a framework that does not exist in its context, producing fabricated excuses or `.opencode` submodule forays. Consequence: unscoped mandate persists, reproducing the defect family fixed by michael-conrad/.opencode#2469. |
 | SC-2 | The qualifier states that the canonical `.opencode` framework (`with-test-home`, `opencode run`, `tests-v2`) applies to `.opencode`-targeted work only | string | `read` of `AGENTS.md` § Test Framework Discipline at commit: the framework-applicability statement is present in the section (content-presence check against R-2 wording) | `.issues/372/spec.md`; root `AGENTS.md` § Test Framework Discipline | Action cost: one text edit adding the applicability statement and one `read` to verify presence. Skipping cost: the mandate remains universal and root-repo agents foray into the `.opencode` submodule to satisfy the letter of the rule. Consequence: contamination of unrelated submodule state per Problem Statement failure mode 2. |
-| SC-3 | The qualifier names `tests/behaviors/*.sh` as the root-repo test instrument and states that root-repo work SHALL NOT touch the `.opencode` submodule or its test framework | string | `read` of `AGENTS.md` § Test Framework Discipline at commit: the instrument name `tests/behaviors/*.sh` and the submodule-prohibition statement are present in the section (content-presence check against R-3 wording) | `.issues/372/spec.md`; root `AGENTS.md` § Test Framework Discipline | Action cost: one text edit adding the instrument name and prohibition and one `read` to verify presence. Skipping cost: root-repo behavior remains unspecified, so agents run tests without any defined instrument and reach into `.opencode/tests-v2` for unrelated work. Consequence: fabricated-availability excuses and submodule contamination per Problem Statement failure mode 1. |
-| SC-4 | The change commit modified only root `AGENTS.md` and no file under `.opencode/` | structural | `git diff --stat <base>..HEAD` at commit (file-existence-level check): exactly one changed path, `AGENTS.md` (root); zero paths under `.opencode/` | `.issues/372/spec.md`; `git diff` output | Action cost: one scoped commit and one `git diff --stat` run. Skipping cost: scope containment of R-4 is unverified and the edit could silently reach into `.opencode/`. Consequence: unauthorized deck-repo mutation — the exact contamination this fix is written to prevent. |
+| SC-3 | The qualifier names `tests/behaviors/*.sh` as the root-repo test instrument | string | `read` of `AGENTS.md` § Test Framework Discipline at commit: the instrument name `tests/behaviors/*.sh` is present in the section (content-presence check against R-3 wording) | `.issues/372/spec.md`; root `AGENTS.md` § Test Framework Discipline | Action cost: one text edit adding the instrument name and one `read` to verify presence. Skipping cost: root-repo behavior remains unspecified, so agents run tests without any defined instrument. Consequence: fabricated-availability excuses per Problem Statement failure mode 1. |
+| SC-4 | The qualifier states that root-repo work SHALL NOT touch the `.opencode` submodule or its test framework | string | `read` of `AGENTS.md` § Test Framework Discipline at commit: the submodule-prohibition statement is present in the section (content-presence check against R-3 wording) | `.issues/372/spec.md`; root `AGENTS.md` § Test Framework Discipline | Action cost: one text edit adding the prohibition and one `read` to verify presence. Skipping cost: agents reach into `.opencode/tests-v2` for unrelated root-repo work. Consequence: submodule contamination per Problem Statement failure mode 1. |
+| SC-5 | The change commit modified only root `AGENTS.md` and no file under `.opencode/` | structural | `git diff --stat <base>..HEAD` at commit (file-existence-level check): exactly one changed path, `AGENTS.md` (root); zero paths under `.opencode/` | `.issues/372/spec.md`; `git diff` output | Action cost: one scoped commit and one `git diff --stat` run. Skipping cost: scope containment of R-4 is unverified and the edit could silently reach into `.opencode/`. Consequence: unauthorized deck-repo mutation — the exact contamination this fix is written to prevent. |
 
-**SC decomposition notes (validation iteration 2 remediation):** former compound SC-1 (elements a/b/c in one row) decomposed into atomic SC-1 (element a — qualifier-present-with-target-distinction), SC-2 (element b — framework-applicability statement), and SC-3 (element c — instrument naming plus submodule prohibition). Evidence types re-declared: SC-1/SC-2/SC-3 are content-presence checks verified by reading file text — declared **string** (not structural); SC-4 is a file-existence-level diff check and remains **structural**.
+**SC decomposition notes (validation iteration 3 remediation):** former compound SC-3 (instrument naming AND submodule prohibition joined in one row) split into atomic SC-3 (instrument naming — `tests/behaviors/*.sh` named as root-repo test instrument) and SC-4 (submodule prohibition — SHALL NOT touch `.opencode` submodule or its test framework); the existing diff-scope SC renumbered SC-4 → SC-5. Iteration 2 remediation remains in force: former compound SC-1 (elements a/b/c in one row) decomposed into atomic SC-1 (element a — qualifier-present-with-target-distinction) and SC-2 (element b — framework-applicability statement). Evidence types: SC-1/SC-2/SC-3/SC-4 are content-presence checks verified by reading file text — declared **string** (not structural); SC-5 is a file-existence-level diff check and remains **structural**.
 
 ## Items
 
-| Item | Related SC(s) |
-|------|---------------|
-| ITEM-1: Edit root `AGENTS.md` § Test Framework Discipline to insert the repo-scope qualifier text per R-1/R-2/R-3 | SC-1, SC-2, SC-3, SC-4 |
+> Per spec-structure-standards §3: each SC maps to exactly one item; no item covers multiple SCs. Per §5: each item carries the RED/GREEN/verify/commit format.
+
+### ITEM-1: Insert repo-scope qualifier distinguishing work targets into root `AGENTS.md` § Test Framework Discipline
+
+Related SC: SC-1
+
+| Phase | Detail |
+|-------|--------|
+| RED | `read` of `AGENTS.md` § Test Framework Discipline: assert the repo-scope qualifier distinguishing `.opencode`-targeted (submodule) work from root-repo (non-submodule) work is absent — assertion FAILS the presence check (change not yet made), establishing RED |
+| GREEN | Edit root `AGENTS.md` § Test Framework Discipline to insert the repo-scope qualifier text per R-1; re-run `read` presence check — assertion passes, establishing GREEN |
+| Verify | SC-1 string-evidence check: `read` of the section confirms the qualifier distinguishing `.opencode`-targeted work from root-repo work is present |
+| Commit | Commit the qualifier text edit scoped to root `AGENTS.md` |
+
+### ITEM-2: Insert framework-applicability statement into root `AGENTS.md` § Test Framework Discipline
+
+Related SC: SC-2
+
+| Phase | Detail |
+|-------|--------|
+| RED | `read` of `AGENTS.md` § Test Framework Discipline: assert the statement "canonical `.opencode` framework applies to `.opencode`-targeted work only" is absent — assertion FAILS the presence check (change not yet made), establishing RED |
+| GREEN | Edit root `AGENTS.md` § Test Framework Discipline to add the framework-applicability statement per R-2; re-run `read` presence check — assertion passes, establishing GREEN |
+| Verify | SC-2 string-evidence check: `read` of the section confirms the framework-applicability statement is present |
+| Commit | Commit the applicability statement edit scoped to root `AGENTS.md` |
+
+### ITEM-3: Name `tests/behaviors/*.sh` as the root-repo test instrument in root `AGENTS.md` § Test Framework Discipline
+
+Related SC: SC-3
+
+| Phase | Detail |
+|-------|--------|
+| RED | `read` of `AGENTS.md` § Test Framework Discipline: assert the instrument name `tests/behaviors/*.sh` is absent from the section — assertion FAILS the presence check (change not yet made), establishing RED |
+| GREEN | Edit root `AGENTS.md` § Test Framework Discipline to name the in-repo test instrument per R-3; re-run `read` presence check — assertion passes, establishing GREEN |
+| Verify | SC-3 string-evidence check: `read` of the section confirms `tests/behaviors/*.sh` is named as the root-repo test instrument |
+| Commit | Commit the instrument-naming edit scoped to root `AGENTS.md` |
+
+### ITEM-4: Insert SHALL NOT submodule-prohibition statement into root `AGENTS.md` § Test Framework Discipline
+
+Related SC: SC-4
+
+| Phase | Detail |
+|-------|--------|
+| RED | `read` of `AGENTS.md` § Test Framework Discipline: assert the SHALL NOT submodule-prohibition statement is absent — assertion FAILS the presence check (change not yet made), establishing RED |
+| GREEN | Edit root `AGENTS.md` § Test Framework Discipline to add the prohibition per R-3; re-run `read` presence check — assertion passes, establishing GREEN |
+| Verify | SC-4 string-evidence check: `read` of the section confirms the submodule-prohibition statement is present |
+| Commit | Commit the prohibition edit scoped to root `AGENTS.md` |
+
+### ITEM-5: Verify commit scope containment (diff check)
+
+Related SC: SC-5
+
+| Phase | Detail |
+|-------|--------|
+| RED | Run `git diff --stat <base>..HEAD`: assert changes exist only in root `AGENTS.md` and zero paths under `.opencode/`; with commits from ITEM-1..4 unverified, the containment assertion is not yet demonstrated — establishing RED |
+| GREEN | Ensure all edits are committed scoped to root `AGENTS.md` only; re-run `git diff --stat <base>..HEAD` — containment assertion passes, establishing GREEN |
+| Verify | SC-5 structural-evidence check: `git diff --stat <base>..HEAD` shows exactly one changed path, root `AGENTS.md`, and zero `.opencode/` paths |
+| Commit | No additional commit required (verification item); the diff check validates the single-file scope of R-4 |
 
 ## Dependencies
 
@@ -100,9 +154,10 @@ Original bug report intent (issue #372): fix the parent-repo root `AGENTS.md` §
 | Requirement | SC | Item | Verification |
 |-------------|----|------|--------------|
 | R-1 | SC-1 | ITEM-1 | `read` of AGENTS.md section (string) |
-| R-2 | SC-2 | ITEM-1 | `read` of AGENTS.md section (string) |
-| R-3 | SC-3 | ITEM-1 | `read` of AGENTS.md section (string) |
-| R-4 | SC-4 | ITEM-1 | `git diff --stat` (structural) |
+| R-2 | SC-2 | ITEM-2 | `read` of AGENTS.md section (string) |
+| R-3 | SC-3 | ITEM-3 | `read` of AGENTS.md section (string — instrument naming) |
+| R-3 | SC-4 | ITEM-4 | `read` of AGENTS.md section (string — submodule prohibition) |
+| R-4 | SC-5 | ITEM-5 | `git diff --stat` (structural) |
 
 ## Documentation Sources
 
@@ -118,8 +173,9 @@ ALL of the following MUST hold or the SC set is FAIL — no partial PASS, no adv
 
 1. SC-1 MUST be verified by string evidence: `read` of `AGENTS.md` § Test Framework Discipline shows the repo-scope qualifier distinguishing `.opencode`-targeted work from root-repo work.
 2. SC-2 MUST be verified by string evidence: the applicability statement — canonical `.opencode` framework applies to `.opencode`-targeted work only — is present in the section.
-3. SC-3 MUST be verified by string evidence: `tests/behaviors/*.sh` is named as the root-repo test instrument and the SHALL NOT submodule-prohibition statement is present.
-4. SC-4 MUST be verified by structural evidence: `git diff --stat <base>..HEAD` shows exactly one changed path, root `AGENTS.md`, and no `.opencode/` path.
+3. SC-3 MUST be verified by string evidence: `tests/behaviors/*.sh` is named as the root-repo test instrument.
+4. SC-4 MUST be verified by string evidence: the SHALL NOT submodule-prohibition statement is present in the section.
+5. SC-5 MUST be verified by structural evidence: `git diff --stat <base>..HEAD` shows exactly one changed path, root `AGENTS.md`, and no `.opencode/` path.
 
 Behavioral agent-facing text change: verify no skill-enforcement regression by running `bash .opencode/tests-v2/test-enforcement.sh` BEFORE and AFTER the AGENTS.md edit, confirming the enforcement suite is unaffected by the text-only change. If the enforcement suite regresses, the SC set is FAIL regardless of string/structural evidence. The behavioral variant does not apply — this is a text-scoping fix, not a new rule requiring behavioral RED/GREEN.
 
@@ -129,8 +185,9 @@ Behavioral agent-facing text change: verify no skill-enforcement regression by r
 |----|-------------|---------------|-------------|
 | SC-1 | One targeted text edit plus one `read` to verify qualifier presence | Scope-distinction text omitted; agent verification skipped | Root-repo agents run tests without a defined instrument, reproducing fabricated-availability excuses |
 | SC-2 | One text edit plus one `read` to verify applicability statement | Applicability statement omitted | Universal mandate persists; agents foray into `.opencode` for unrelated root work |
-| SC-3 | One text edit plus one `read` to verify instrument name and prohibition | Instrument and prohibition omitted | No defined root-repo test instrument; uncontrolled submodule touching |
-| SC-4 | One scoped commit plus one `git diff --stat` | Diff check skipped | Scope containment unverified; unauthorized `.opencode/` changes pass silently |
+| SC-3 | One text edit plus one `read` to verify instrument name | Instrument name omitted | No defined root-repo test instrument |
+| SC-4 | One text edit plus one `read` to verify prohibition | Prohibition omitted | Uncontrolled submodule touching |
+| SC-5 | One scoped commit plus one `git diff --stat` | Diff check skipped | Scope containment unverified; unauthorized `.opencode/` changes pass silently |
 | Enforcement Gate regression run | Two `test-enforcement.sh` runs (before/after) | Regression run skipped | Skill-enforcement regression ships undetected in the text-only change |
 
 Resource cost in verification decisions is not a factor (cost-blind verification mandate — `080-code-standards.md`).
@@ -156,5 +213,6 @@ Resource cost in verification decisions is not a factor (cost-blind verification
 | 2026-09-28 | Initial spec body composed during retroactive import revision | Pipeline-initiated continuation under approved-for-pr (#372): retroactively imported spec body contained zero success criteria; SCs derived from bug statement to unblock plan creation | Developer authorization label `approved-for-pr` (pipeline-initiated, non-substantive revision exemption, approval-gate-008 exception class) |
 | 2026-09-28 | Validation-iteration-1 revision: added required template sections (Root Cause/Motivation, User Intent/Original Prompt, Key Design Decisions, Requirements, Alternatives Considered, Not Included, Items, Dependencies, Traceability, Documentation Sources, Enforcement Gate, Cost Frame, Edge Cases); added Documentation Sources and Cost Frame columns to SC table; folded former SC-2 into SC-1; decomposed former SC-3 into atomic SC-1 elements with deterministic in-repo test instrument (`tests/behaviors/*.sh`); split former SC-4 into single verifiable SC-2 | Structural validation FAIL findings (iteration 1) listed in revision_reason: missing template sections; SC table missing Documentation Sources column and per-SC cost frames; SC-3 compound/non-deterministic; SC-4 disjunctive; SC-2 ceremony entailed by SC-1 | `approved-for-pr` (#372) — pipeline-initiated validation gate, automatic revise→validate loop |
 | 2026-09-28 | Validation-iteration-2 revision: decomposed compound SC-1 into atomic SC-1/SC-2/SC-3 (elements a/b/c each a verifiable criterion); rewrote R-1/R-2 in RFC 2119 SHALL form and R-3 as SHALL (+SHALL NOT prohibition); added preamble field `Approach Chosen` (completing the 6-field preamble: Problem Statement, Approach Chosen, Root Cause/Motivation, User Intent/Original Prompt, Key Design Decisions, Requirements); rewrote Cost Frame entries in dark-prose-007 format per SC (action cost + skipping cost + consequence) replacing O-notation entries; re-declared evidence types — SC-1/SC-2/SC-3 content-presence checks from structural to string, SC-4 restated as file-existence-level structural diff check; rewrote Enforcement Gate in canonical all-or-nothing statement format (ALL MUST hold or FAIL); added RFC 2119 keyword convention note; R-4 SHALL form | Validation FAIL findings (iteration 2) listed in revision_reason: compound SC-1; Requirements not in RFC 2119 form; missing `Approach Chosen` preamble field; Cost Frame in O-notation not dark-prose-007 format; evidence type mis-declaration (content-presence declared structural); Enforcement Gate not in all-or-nothing format | `approved-for-pr` (#372) — pipeline-initiated validation gate, automatic revise→validate loop |
+| 2026-09-28 | Validation-iteration-3 revision: split compound SC-3 (instrument naming AND submodule prohibition) into atomic SC-3 (instrument naming — `tests/behaviors/*.sh` named as root-repo test instrument) and SC-4 (submodule prohibition — SHALL NOT touch `.opencode` submodule or its test framework); renumbered existing diff-scope SC-4 → SC-5 (updating SC table, SC decomposition notes, Items, Traceability, Enforcement Gate, Cost Frame); decomposed ITEM-1 into per-SC items ITEM-1..ITEM-5, one item per SC with the required RED/GREEN/verify/commit format per spec-structure-standards §3 and §5 | Validation FAIL findings (iteration 3) listed in revision_reason: items_sc_mapping — spec-structure-standards §3 requires each SC to map to exactly one item, no item may cover multiple SCs; compound_sc_detection + decomposition_atomicity — SC-3 joined two independently verifiable claims with 'and' | `approved-for-pr` (#372) — pipeline-initiated validation gate, automatic revise→validate loop |
 
 🤖 Co-authored with AI: OpenCode (ollama-cloud/glm-5.3-flash)

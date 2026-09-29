@@ -1,0 +1,13 @@
+# Analysis Summary — opencode-config #372
+
+spec_path: .issues/372/spec.md
+sc_count: 5
+artifact_status:
+  blast-radius.yaml: backfilled
+  concern-map.yaml: backfilled
+  code-path-inventory.yaml: backfilled
+  cross-cutting-matrix.yaml: backfilled
+  interface-compatibility.yaml: backfilled
+  state-analysis.yaml: backfilled
+  testability-assessment.yaml: backfilled
+scope_summary: "Text-only insertion of a repo-scope qualifier into root AGENTS.md § Test Framework Discipline: distinguish .opencode-targeted (submodule) work from root-repo work, state the canonical .opencode framework applies to .opencode-targeted work only, name tests/behaviors/*.sh as the root-repo instrument, and prohibit root-repo work from touching the .opencode submodule. Verification is content-presence (string, SC-1..4) plus a single-file diff containment check (structural, SC-5)."

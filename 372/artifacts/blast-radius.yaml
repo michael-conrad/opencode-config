@@ -1,0 +1,15 @@
+# Blast Radius — opencode-config #372
+
+affected_files:
+  - path: AGENTS.md
+    section: "Test Framework Discipline"
+    change_type: modification
+    role: target — repo-scope qualifier inserted into existing section
+verified:
+  - path: AGENTS.md
+    exists: true
+    evidence: "ls AGENTS.md returned AGENTS.md in project root"
+unaffected_surfaces:
+  - ".opencode/** — R-4 out-of-scope guard: no submodule file modified (SC-5)"
+  - "tests/behaviors/*.sh — named as instrument only, not modified"
+blast_radius_summary: "Agent-facing text-only edit to one section of one root file; no runtime code, no test framework changes, no submodule changes."

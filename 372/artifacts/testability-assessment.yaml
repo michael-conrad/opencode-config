@@ -1,0 +1,19 @@
+# Testability Assessment — opencode-config #372
+
+assessments:
+  - sc: SC-1
+    evidence_type: string
+    method: "read of AGENTS.md § Test Framework Discipline — qualifier-presence content check"
+  - sc: SC-2
+    evidence_type: string
+    method: "read of section — framework-applicability statement presence check"
+  - sc: SC-3
+    evidence_type: string
+    method: "read of section — instrument name tests/behaviors/*.sh presence check"
+  - sc: SC-4
+    evidence_type: string
+    method: "read of section — SHALL NOT submodule-prohibition presence check"
+  - sc: SC-5
+    evidence_type: structural
+    method: "git diff --stat <base>..HEAD — exactly one changed path AGENTS.md, zero .opencode/ paths"
+behavioral_note: "Spec Enforcement Gate additionally requires test-enforcement.sh regression run before/after the edit; this is a gate condition, not an SC evidence type."

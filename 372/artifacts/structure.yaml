@@ -1,0 +1,52 @@
+# Structure — opencode-config #372
+issue: 372
+phases:
+  - id: phase-1
+    title: "Insert repo-scope qualifier statements into AGENTS.md § Test Framework Discipline"
+    concern: "Agent-facing text edit — single-section qualifier content (SC-1..SC-4)"
+    depends_on: []
+    items:
+      - item: ITEM-1
+        sc: SC-1
+        steps: [red, green, verify, commit]
+        dispatch: "task(..., prompt: \"execute red task from test-driven-development\") / green / verify per SC-1; commit-inline by orchestrator"
+      - item: ITEM-2
+        sc: SC-2
+        steps: [red, green, verify, commit]
+        dispatch: "task(..., prompt: \"execute red task from test-driven-development\") / green / verify per SC-2; commit-inline by orchestrator"
+      - item: ITEM-3
+        sc: SC-3
+        steps: [red, green, verify, commit]
+        dispatch: "task(..., prompt: \"execute red task from test-driven-development\") / green / verify per SC-3; commit-inline by orchestrator"
+      - item: ITEM-4
+        sc: SC-4
+        steps: [red, green, verify, commit]
+        dispatch: "task(..., prompt: \"execute red task from test-driven-development\") / green / verify per SC-4; commit-inline by orchestrator"
+    notes: "SC-1..SC-4 are same-file (AGENTS.md § Test Framework Discipline) content-presence edits; ordered insertion within one phase to avoid conflicting sequential edits of one section."
+  - id: phase-2
+    title: "Verify commit scope containment"
+    concern: "Structural diff verification (SC-5)"
+    depends_on: [phase-1]
+    items:
+      - item: ITEM-5
+        sc: SC-5
+        steps: [red, green, verify]
+        dispatch: "verification-only item — git diff --stat containment check; no commit required"
+dependency_dag:
+  edges:
+    - from: phase-1
+      to: phase-2
+      reason: "SC-5 diff containment requires ITEM-1..ITEM-4 commits to exist in phase-1 output"
+skill_task_selection:
+  - phase: phase-1
+    items: ITEM-1..ITEM-4
+    red: {skill: test-driven-development, task: red}
+    green: {skill: test-driven-development, task: green}
+    verify: {skill: verification-before-completion, task: verify}
+    commit: {skill: orchestrator, task: commit-inline}
+  - phase: phase-2
+    items: ITEM-5
+    verify: {skill: verification-before-completion, task: verify}
+verification_checks:
+  triplet_colocation: "PASS — every SC's RED/GREEN/COMMIT steps are in one phase (SC-1..SC-4 in phase-1; SC-5 verify-only in phase-2)"
+  cross_phase_dependency: "PASS — no phase-X RED depends on output from a later phase Y>X; phase-2 consumes phase-1 output (earlier phase)"

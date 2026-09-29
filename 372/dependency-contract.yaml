@@ -1,0 +1,46 @@
+# Dependency Contract — opencode-config #372
+# Z3 schema for tools/solve; interface data preserved below.
+schema_version: "1.0"
+generated_at: "20260928215300"
+contract_id: dc-372-agents-md-scope-qualifier
+
+variables:
+  pre_done:
+    type: bool
+  phase_1_done:
+    type: bool
+  phase_2_done:
+    type: bool
+  all_phases_done:
+    type: bool
+
+preconditions:
+  - pre_done
+  - z3.Implies(phase_2_done, phase_1_done)
+  - z3.Implies(all_phases_done, z3.And(pre_done, phase_1_done, phase_2_done))
+
+invariants:
+  - all_phases_done == z3.And(pre_done, phase_1_done, phase_2_done)
+  - z3.Not(z3.And(phase_2_done, z3.Not(phase_1_done)))
+
+# Interface compatibility (extracted from artifacts/interface-compatibility.yaml):
+#   interface_changes:
+#     - surface: "AGENTS.md § Test Framework Discipline (agent-facing instructions)"
+#       before: "Universal mandate: 'All test execution MUST use the canonical test framework' — no scope qualifier"
+#       after: "Scoped mandate: .opencode framework applies to .opencode-targeted work only; root-repo work uses tests/behaviors/*.sh and SHALL NOT touch .opencode submodule"
+#       breaking: false
+#   dependency_contract:
+#     contract_id: dc-372-agents-md-scope-qualifier
+#     dependency entries:
+#       - source: phase-1 output (committed AGENTS.md qualifier, SC-1..SC-4)
+#         target: phase-2 ITEM-5 (SC-5 git diff --stat containment check)
+#         type: artifact schema
+#         constraint: SC-5 verification requires phase-1 commits to exist
+#       - source: AGENTS.md § Test Framework Discipline (root)
+#         target: phase-1 items ITEM-1..ITEM-4
+#         type: artifact schema
+#         constraint: implied coupling — all edits target the same section; sequential within phase-1
+#       - source: tests/behaviors/*.sh
+#         target: root-repo test instrument reference in qualifier text
+#         type: artifact schema
+#         constraint: implied coupling — named only, not modified

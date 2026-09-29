@@ -1,0 +1,24 @@
+# Interface Compatibility — opencode-config #372
+
+interface_changes:
+  - surface: "AGENTS.md § Test Framework Discipline (agent-facing instructions)"
+    before: "Universal mandate: 'All test execution MUST use the canonical test framework' — no scope qualifier"
+    after: "Scoped mandate: .opencode framework applies to .opencode-targeted work only; root-repo work uses tests/behaviors/*.sh and SHALL NOT touch .opencode submodule"
+    breaking: false
+    rationale: "Narrowing of an agent-direction mandate; no API, schema, or tooling interface changes"
+dependency_contract:
+  contract_id: dc-372-agents-md-scope-qualifier
+  consumers:
+    - source: ".opencode/skills/git-workflow-branch and plan-creation pipeline (writing-plans Entry Criteria / research.md step 9)"
+      target: ".issues/372/dependency-contract.yaml extracted from this section"
+      constraint: "SC-set-derived dependency data — real artifact paths .issues/372/artifacts/*.yaml; real SC evidence types (SC-1..SC-4 string, SC-5 structural)"
+  provisions:
+    - source: "AGENTS.md § Test Framework Discipline (root)"
+      target: "agent routing decisions at session start"
+      type_constraint: "prose instruction; no typed interface — compatibility is behavioral-text only"
+    - source: ".opencode/AGENTS.md § Test Framework Discipline (deck side)"
+      target: "root AGENTS.md qualifier"
+      constraint: "no coupling — deck-side fix already merged via michael-conrad/.opencode#2469 (informational dependency only)"
+    - source: "tests/behaviors/*.sh"
+      target: "root-repo test instrument reference in qualifier text"
+      type_constraint: "existing in-repo scripts (verified present: cost-blind-verification.sh, no-inline-fallback-universal.sh, no-tool-recipe-dispatch.sh, orchestrator-inline-work-poisoned.sh, progressive-iterative-gates.sh); named only, not modified"

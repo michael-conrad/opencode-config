@@ -1,0 +1,19 @@
+# Solve Output — opencode-config #372
+solve_status: SAT
+plan_status: SOLVED_SATISFICING
+checks:
+  model:
+    query: all_phases_done
+    result: SAT
+    assignment: {pre_done: true, phase_1_done: true, phase_2_done: true, all_phases_done: true}
+    exit_code: 0
+  check:
+    contract_state_vs: artifacts/state-analysis.yaml
+    result: "SAT (+ postconditions + invariants)"
+    exit_code: 0
+  plan:
+    engine: tamer
+    result: SOLVED_SATISFICING
+    plan_length: 2
+    actions: [execute_phase_1, execute_phase_2]
+    output_artifact: .issues/372/artifacts/plan-output.yaml

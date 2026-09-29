@@ -1,0 +1,12 @@
+# Cross-Cutting Matrix — opencode-config #372
+
+cross_cutting:
+  - sc: SC-1..SC-4
+    spans: [text-scoping, agent-instruction-honesty]
+    detail: "Single-section text edits span the scoping concern only; all four qualifier statements co-locate in one section so the concern is shared but changes are independent per SC."
+    risk: low — text-only, no interaction between statements
+  - sc: SC-5
+    spans: [scope-containment, submodule-discipline]
+    detail: "Diff check cross-cuts with existing submodule-discipline rules; qualifier must not weaken pointer-sync rules (spec Edge Case 2)."
+    risk: low
+no_risky_crossings: "No SC spans multiple modules or runtime surfaces; single-file text edit keeps every crossing trivial."

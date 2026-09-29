@@ -14,7 +14,7 @@ In scope: add a repo-scope qualifier to root `AGENTS.md` § Test Framework Disci
 
 ## Approach
 
-Revise root `AGENTS.md` § Test Framework Discipline to insert an explicit repo-scope qualifier distinguishing work targets and naming the deterministic root-repo test instrument (`tests/behaviors/*.sh`). Success verified via string evidence (SC-1 qualifier-with-target-distinction, SC-2 framework-applicability statement, SC-3 instrument naming + submodule prohibition — each by `read` of the section) and structural evidence (SC-4: `git diff --stat` shows only root `AGENTS.md` modified, zero `.opencode/` paths). Enforcement Gate is all-or-nothing: all four SCs MUST hold or the SC set is FAIL, with a before/after `bash .opencode/tests-v2/test-enforcement.sh` regression run confirming the enforcement suite is unaffected by the text-only change.
+Revise root `AGENTS.md` § Test Framework Discipline to insert an explicit repo-scope qualifier distinguishing work targets and naming the deterministic root-repo test instrument (`tests/behaviors/*.sh`). Success verified via string evidence (SC-1 qualifier-with-target-distinction, SC-2 framework-applicability statement, SC-3 instrument naming, SC-4 submodule prohibition — each by `read` of the section) and structural evidence (SC-5: `git diff --stat` shows only root `AGENTS.md` modified, zero `.opencode/` paths). Implementation is decomposed into per-SC items ITEM-1..ITEM-5, each with a RED/GREEN/verify/commit cycle. Enforcement Gate is all-or-nothing: all five SCs MUST hold or the SC set is FAIL, with a before/after `bash .opencode/tests-v2/test-enforcement.sh` regression run confirming the enforcement suite is unaffected by the text-only change.
 
 ## Impact
 
