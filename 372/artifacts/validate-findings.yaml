@@ -1,0 +1,54 @@
+# Validation Findings — opencode-config #372
+validated_at: "20260929000000"
+plan: .issues/372/plan.md
+plan_schema_version: 1
+overall_status: PASS
+
+category_1_structural:
+  status: PASS
+  checks:
+    phase_table_required_columns: PASS  # Phase, Name, Concern, SCs, Depends On, Step Range, Dispatch all present
+    phase_procedure_numbered_steps: PASS  # Phase 1 steps 5-22, Phase 2 steps 23-27 + post-implementation 28-31, all checkbox-numbered
+    exit_criteria_sc_mapping: PASS  # C1 (SC-1..4), C2 (SC-5), C3-C5 plan-level gates cover all SCs
+
+category_2_skill_task_validity:
+  status: PASS
+  checks:
+    red_green_dispatch_strings: PASS  # "execute red/green task from test-driven-development" matches reference card
+    verify_pre_pr_gate_strings: PASS  # "execute verify task from verification-before-completion" matches
+    commit_inline_direct: PASS  # orchestrator-direct commits, matches reference card definition
+    audit_string: PASS  # verification-audit DiMo string matches (validator, evaluator, arbiter sequence in prompt)
+    structural_checks_string: PASS  # "execute checklist task from finishing-a-development-branch" matches
+    regression_check_string: PASS  # "execute phase-4 task from test-driven-development" matches
+    review_prep_create_pr_strings: PASS  # git-workflow-pr review-prep + create strings match
+    exec_summary_string: PASS  # "execute completion task from completion-core" matches
+
+category_3_sc_coverage:
+  status: PASS
+  checks:
+    sc_coverage: PASS  # SC-1..SC-4 in Phase 1 exit/entry; SC-5 in Phase 2 exit/entry
+    triplet_split: PASS  # ITEM-1..4: RED(5/9/13/17) GREEN(6/10/14/18) COMMIT(8/12/16/20) all in Phase 1; ITEM-5: RED(23) GREEN(24) VERIFY(25) all in Phase 2
+    item_commit_semantics: PASS  # ITEM-5 is a spec-declared verification item with no commit step — no commit step required for triplet integrity
+
+category_4_concern_separation:
+  status: PASS
+  checks:
+    one_concern_per_phase: PASS  # Phase 1 = text-scoping (concern-map); Phase 2 = scope-containment
+    no_concern_overlap: PASS  # phase boundaries match concern-map.yaml phase_boundaries exactly
+
+category_5_dag:
+  status: PASS
+  checks:
+    no_cycles: PASS  # pre_done -> phase_1_done -> phase_2_done -> all_phases_done; invariants imply phase_2_done => phase_1_done
+    all_reachable: PASS  # start node pre_done, both phases reachable
+    no_orphans: PASS  # every phase variable has incoming/outgoing edges
+
+category_6_holistic:
+  status: PASS
+  checks:
+    no_placeholders: PASS  # zero TBD/TODO markers in plan body
+    checkbox_format: PASS  # all steps 1-31 use "- [ ] N." format
+    dispatch_mode_consistency: PASS  # direct steps are only reference-card-designated orchestrator-direct actions (commit-inline, diff checks, regression runs); all red/green/verify/audit/pre-pr-gate/regression-check/review-prep/create-pr/exec-summary steps are task-card dispatches
+
+findings: []
+blockers: []

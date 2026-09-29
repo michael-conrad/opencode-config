@@ -35,8 +35,8 @@ Text-only edit to one section of one file (root `AGENTS.md`). No runtime code. P
 
 ## Dispatch
 
-- Phase 1: direct (pre-implementation 1-4, commit-inline steps) + task-card (red/green/verify task steps 5-24)
-- Phase 2: direct (verification steps) + task-card (verify sub-agent step)
+- Phase 1: direct (pre-implementation 1-4, commit-inline steps 8/12/16/20, post-regression runs 21-22) + task-card (red/green/verify steps 5-19, 25)
+- Phase 2: direct (diff containment steps 23-24) + task-card (verify/checklist steps 25-27) followed by post-implementation task-card steps 28-31
 
 ## Blast Radius
 
@@ -256,3 +256,10 @@ Phase 1 produced the qualifier text and one-file-scope commits; Phase 2 consumes
 ### Concern transition
 
 Phase 2 completes verification; post-implementation steps 28-31 (audit, pre-PR gate, PR creation, executive summary) close out the plan.
+
+## lifecycle_events
+
+- timestamp: 2026-09-28
+  event: plan_created
+  plan_path: .issues/372/plan.md
+  phase_count: 2
