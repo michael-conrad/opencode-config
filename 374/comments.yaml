@@ -26,3 +26,13 @@ comments:
     \ `docs/unix-philosophy-skilldeck/**`, `CHANGELOG.md` vs trunk → empty.\n\n5.\
     \ **PR**: feature branch → PR → human merge."
   timestamp: '2026-10-05T04:59:16+00:00'
+- type: internal
+  body: 'PR opened: https://github.com/michael-conrad/opencode-config/pull/375 (commit
+    ecfc2190, branch feature/374-parent-doc-realign).
+
+
+    Verify verdict: PASS on all SC-1..SC-7 (single fresh-context reviewer; evidence
+    in PR description). Mechanism decision for SC-5: instrument retired (scripts mandated
+    retired deck concepts); AGENTS.md repo-scope qualifier aligned. Plan: see prior
+    internal comment.'
+  timestamp: '2026-10-05T05:01:20+00:00'
