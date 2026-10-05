@@ -1,1 +1,28 @@
-comments: []
+comments:
+- type: internal
+  body: "## Plan\n\nItem-per-SC, dependency-ordered. Mechanism decision for SC-5:\
+    \ **retire** the parent test instrument — the 5 `tests/behaviors/*.sh` scripts\
+    \ mandate retired deck concepts (Tier 1 mandate, DISPATCH_GATE, 000-critical-rules.md,\
+    \ spec #106/#386); repairing them would require inventing new mandates, which\
+    \ is out of scope per Non-Goals. AGENTS.md's instrument row is aligned to the\
+    \ retirement.\n\n1. **AGENTS.md doc realignment (SC-1, SC-2, SC-3, SC-4)**\n \
+    \  - RED: extracted `.opencode/...` refs + retired-term grep fail (dead reference\
+    \ rows, \"pair mode\", \"tasks\" claims, wrong canonical-guide link, \"blocked\
+    \ by pre-push hooks\").\n   - GREEN: rewrite Reference Files table (floor.md/routing.md/pointer\
+    \ stub, `.opencode/.issues/AGENTS.md` canonical guide, SKILL.md-only card rows),\
+    \ fix the `.issues/` guide links, rewrite Submodule Pointer Updates + submodule-only-bypass\
+    \ sections as policy (no mechanical-gate claims, no dead § cross-refs), update\
+    \ the repo-scope qualifier to stop naming `tests/behaviors/*.sh`.\n   - Verify:\
+    \ scripted path-existence check → 0 broken; grep retired terms/gate claims → 0\
+    \ hits; hook inventory cross-check vs `.opencode/hooks/`.\n\n2. **Retire broken\
+    \ test instrument (SC-5)**\n   - RED: all 5 scripts fail at source time (`tests/behaviors/helpers.sh`\
+    \ untracked).\n   - GREEN: `git rm tests/behaviors/*.sh`; no instrument named\
+    \ in AGENTS.md that doesn't exist.\n   - Verify: no scripts remain under `tests/behaviors/`\
+    \ → source-time failure count = 0.\n\n3. **Pointer advance in the same commit\
+    \ (SC-6)**\n   - GREEN: advance `.opencode` gitlink 41e3a7be → trunk tip 8e1861ad\
+    \ (re-resolve at commit time), staged in the same commit as items 1–2.\n   - Verify:\
+    \ commit inspection — one commit, no pointer-only commit.\n\n4. **Historical records\
+    \ untouched (SC-7)**\n   - Verify: diff of `docs/auditor-model-qualification/**`,\
+    \ `docs/unix-philosophy-skilldeck/**`, `CHANGELOG.md` vs trunk → empty.\n\n5.\
+    \ **PR**: feature branch → PR → human merge."
+  timestamp: '2026-10-05T04:59:16+00:00'
