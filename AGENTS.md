@@ -1,6 +1,6 @@
 # AGENTS.md — opencode-config Repository
 
-This repository holds the agent configuration submodule. All agent rules, guidelines, and skills are in the submodule — not here.
+This repository holds the agent configuration submodule. All agent rules and skills are in the submodule — not here.
 
 ## Trunk-Based Development
 
@@ -10,14 +10,13 @@ Main is the single trunk. Dev branch has been removed.
 
 | File | Purpose |
 |------|---------|
-| `.opencode/AGENTS.md` | Canonical agent rules: build/lint/test commands, workflow, boundaries, pair mode, submodule discipline |
+| `.opencode/AGENTS.md` | Pointer stub — platform auto-loads it; carries no rules, points to floor.md and routing.md |
+| `.opencode/floor.md` | Agent instruction charter: identity, environment, authorization vocabulary, pipeline, safety |
+| `.opencode/routing.md` | Routing index: intent-to-card dispatch; load only what matches |
 | `.opencode/.issues/AGENTS.md` | `.issues/` workspace guide: tool, workflow, directory layout, GitHub URL convention |
 | `.issues/AGENTS.md` | Local `.issues/` workspace guide for the parent repo (mirrors `.opencode/.issues/AGENTS.md` pattern)
-| `.opencode/reference/skill-card-description-standards.md` | Description field as semantic router, persona framing, skill()/task() pipeline, Workflows section format |
-| `.opencode/reference/task-card-structure-standards.md` | Canonical task card structure, result contract format, task card vs SKILL.md division |
-| `.opencode/reference/skill-card-schema.md` | SKILL.md frontmatter binary constraints (name, description, license) |
-| `.opencode/skills/version-manager/` | Version string discovery and semver bumping: discover, bump tasks |
-| `.opencode/skills/release-promoter/` | Git tag creation and GitHub Release promotion: tag, create-release tasks |
+| `.opencode/skills/version-manager/` | Version string discovery and semver bumping (SKILL.md card) |
+| `.opencode/skills/release-promoter/` | Git tag creation and GitHub Release promotion (SKILL.md card) |
 
 ## Trunk-Based Development
 Main is the single trunk. Dev branch has been removed.
@@ -38,13 +37,13 @@ Main is the single trunk. Dev branch has been removed.
 
 **The CLI tool handles git operations internally.** File operation tools (`read`, `write`, `edit`, `glob`, `grep`) target the parent repo — they do NOT reach into the worktree. Using them on `.issues/` paths silently operates on the wrong repository.
 
-**Read [the canonical `.issues/` workspace guide](.opencode/AGENTS.md). Read [the local `.issues/` workspace guide](.issues/AGENTS.md).
+**Read [the canonical `.issues/` workspace guide](.opencode/.issues/AGENTS.md). Read [the local `.issues/` workspace guide](.issues/AGENTS.md).
 
 ---
 
 ## Test Framework Discipline — MANDATORY
 
-All test execution MUST use the canonical test framework. **Repo-scope qualifier:** the canonical `.opencode` test framework (`.opencode/tests-v2/with-test-home`, `opencode run`) applies to `.opencode`-targeted (submodule) work only. Root-repo (non-submodule) work uses the in-repo test instrument `tests/behaviors/*.sh`, and root-repo work SHALL NOT touch the `.opencode` submodule or its test framework. The following rules are non-waivable.
+All test execution MUST use the canonical test framework. **Repo-scope qualifier:** the canonical `.opencode` test framework (`.opencode/tests-v2/with-test-home`, `opencode run`) applies to `.opencode`-targeted (submodule) work only. Root-repo (non-submodule) work has no behavioral test instrument — verification is structural (grep, path-existence, `bash -n`, diff checks). Root-repo work SHALL NOT touch the `.opencode` submodule or its test framework. The following rules are non-waivable.
 
 ### `timeout` Command Prohibition
 
@@ -66,14 +65,14 @@ The snap binary at `/snap/bin/opencode` hardcodes `SNAP_USER_DATA=~/snap/opencod
 
 ### Submodule Pointer Updates
 
-After a `.opencode` submodule PR is merged, the parent repo's submodule pointer must be updated. Include the pointer update alongside any other parent-repo change in the same commit — submodule-only pushes are blocked by pre-push hooks.
+After a `.opencode` submodule PR is merged, the parent repo's submodule pointer must be updated. Include the pointer update alongside any other parent-repo change in the same commit — never as a pointer-only commit. This is policy, not a mechanical gate: no hook enforces it.
 
 ```bash
 git add .opencode
 # Include in a commit with other parent-repo changes
 ```
 
-**Do NOT fabricate parent-repo edits to bypass the submodule-only push gate.** If there are no parent-repo changes to make alongside the pointer update, the pointer update must wait until the next real change. The gate exists to prevent review overhead for pointer-only PRs — do not create useless edits to work around it.
+**Do NOT fabricate parent-repo edits to force a pointer update through.** If there are no parent-repo changes to make alongside the pointer update, the pointer update must wait until the next real change. The policy exists because pointer-only PRs create review overhead with zero functional change — do not create useless edits to work around it.
 
 ### Testing Lessons Learned — Failure Patterns
 
@@ -91,7 +90,7 @@ git add .opencode
 
 **Excessive run time is a defect signal — not a model-speed problem:** Excessive behavioral-test run times (repeated timeouts, monitor aborts, large single-turn reasoning blocks, budget exhaustion) usually indicate bad instructions, a skill-deck defect, or another problem. Agents MUST examine the cause and fold in a fix (an SC revision or additional spec, stacked into the feature branch) rather than re-running or blaming the model. Read `.opencode/tests-v2/AGENTS.md §17` for the full R-18 cause-analysis procedure.
 
-**Submodule-only push bypass — CRITICAL VIOLATION:** Using `--no-verify` to bypass the pre-push hook on a submodule-only push is never correct. The hook exists because submodule-only PRs create review overhead with zero functional change. If the submodule PR is already merged, the work is done — no pointer-only PR is needed. The pointer updates naturally alongside the next real parent-repo change. A blocked push means the hook is working correctly — investigate why, don't bypass it. See `.opencode/AGENTS.md §Submodule Pointer Updates`.
+**Pointer-only PRs — never correct:** Creating a parent-repo PR whose only change is the submodule pointer is never acceptable. Pointer-only PRs create review overhead with zero functional change. If the submodule PR is already merged, the work is done — no pointer-only PR is needed. The pointer updates naturally alongside the next real parent-repo change.
 
 ### Prohibited Bypass Patterns
 
