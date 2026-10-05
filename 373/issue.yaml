@@ -3,6 +3,165 @@ status: open
 labels:
 - needs-approval
 - SPEC
-body: ''
+body: '# [SPEC] Fix parent-repo defects exposed by the .opencode deck rewrite
+
+
+  **Repo**: michael-conrad/opencode-config (parent) · **Origin**: `.opencode#2490`
+  deck rip-and-replace (stages 1–3 via .opencode#2492, stage 4 via .opencode#2493)
+  moved or retired deck content that parent-repo agent-facing documentation still
+  references, and left the parent repo''s test instrument broken. Inventory below
+  was measured during the stage-4 post-merge sweep.
+
+
+  ## Problem Statement
+
+
+  The parent repo''s agent-facing documentation describes the submodule''s pre-rewrite
+  deck: dead file links, stale architecture descriptions, a claimed mechanical enforcement
+  gate that no longer exists, and a test instrument whose shared helper has been untracked
+  since April 2026 (every script fails at source time). The submodule pointer is also
+  two merges behind, staged-but-uncommitted in the parent worktree.
+
+
+  Measured defect inventory (each observed, not hypothetical):
+
+
+  1. **Dead reference rows** — `AGENTS.md` Reference Files table links `.opencode/reference/skill-card-description-standards.md`,
+  `.opencode/reference/task-card-structure-standards.md`, `.opencode/reference/skill-card-schema.md`;
+  all three moved to `.opencode/attic/reference/` in stage 4d (attic deletion is stage
+  5, not yet executed).
+
+  2. **Stale architecture description** — `AGENTS.md` describes `.opencode/AGENTS.md`
+  as "Canonical agent rules: build/lint/test commands, workflow, boundaries, pair
+  mode, submodule discipline". The file is now a pointer stub; the charter is `.opencode/floor.md`,
+  routing is `.opencode/routing.md`; "pair mode" does not exist in the new deck; "guidelines"
+  as a concept is retired.
+
+  3. **Stale card-structure claims** — `AGENTS.md` rows for `.opencode/skills/version-manager/`
+  and `.opencode/skills/release-promoter/` describe "tasks" ("discover, bump tasks";
+  "tag, create-release tasks"); the rewritten cards are SKILL.md-only with no `tasks/`
+  subdirectories.
+
+  4. **Wrong canonical-guide link** — `AGENTS.md` links "[the canonical `.issues/`
+  workspace guide](.opencode/AGENTS.md)"; the pointer stub no longer carries that
+  guide. The canonical submodule guide is `.opencode/.issues/AGENTS.md` (exists and
+  is current).
+
+  5. **Stale enforcement-gate claims** — `AGENTS.md` "Submodule Pointer Updates" and
+  "Submodule-only push bypass — CRITICAL VIOLATION" sections state "submodule-only
+  pushes are blocked by pre-push hooks". False since stage 4b: the surviving pre-push
+  hook checks trunk refs only; the submodule-pointer gate was retired with the old
+  hook set. The no-pointer-only-PR policy itself remains valid policy; the mechanical-gate
+  claim and the "blocked push means the hook is working correctly" guidance are stale.
+  The section''s cross-reference "`.opencode/AGENTS.md §Submodule Pointer Updates`"
+  points at a section that no longer exists (the content now lives in the parent AGENTS.md
+  itself).
+
+  6. **Broken test instrument** — `tests/behaviors/*.sh` (5 scripts: cost-blind-verification,
+  no-inline-fallback-universal, no-tool-recipe-dispatch, orchestrator-inline-work-poisoned,
+  progressive-iterative-gates) are named by `AGENTS.md` as the root-repo test instrument,
+  but all source `tests/behaviors/helpers.sh`, which is **untracked at HEAD** (deleted
+  in dd8a73a1, 2026-04-29, which removed duplicate top-level directories but left
+  the scripts). Every script fails at source time. The deleted helper was v1-era regardless
+  (`opencode-cli`, v1 `tests/with-test-home` path, the prohibited `timeout` command,
+  hardcoded stale model), so restoring it verbatim is not an option. One script frames
+  its mandate in retired vocabulary ("Tier 1 mandate").
+
+  7. **Submodule pointer behind** — parent worktree holds `.opencode` at `41e3a7be`;
+  the submodule trunk is at `8e1861ad` (two merges: .opencode#2492, .opencode#2493).
+  Per the submodule discipline the pointer update rides with real parent-repo changes
+  in the same commit — never pointer-only.
+
+
+  ## Success Criteria
+
+
+  All criteria are structural (fact-decidable) except where noted. Evidence types
+  follow the change''s nature: path existence, string presence/absence, commit shape.
+
+
+  | SC | Requirement | Verification instrument |
+
+  |----|-------------|------------------------|
+
+  | SC-1 | Every `.opencode/...` path referenced from parent agent-facing docs (`AGENTS.md`,
+  `README.md`, `.issues/AGENTS.md`) resolves to an existing tracked path in the submodule
+  worktree | Scripted extraction of `.opencode/...` references from those files +
+  path-existence check; 0 broken |
+
+  | SC-2 | `AGENTS.md` describes the submodule instruction architecture as it is:
+  `.opencode/AGENTS.md` as pointer stub, `.opencode/floor.md` as charter, `.opencode/routing.md`
+  as routing index; no retired-concept terms ("pair mode", "guidelines") in agent-rule
+  descriptions | grep of `AGENTS.md` for retired terms → 0 hits; rows for floor.md/routing.md
+  present; both target files exist |
+
+  | SC-3 | Skill-card reference rows match actual card structure: for each `.opencode/skills/<name>/`
+  referenced, the referenced structure exists (no `tasks/` claims against SKILL.md-only
+  cards) | For each referenced card dir: check the described artifact exists |
+
+  | SC-4 | Hook-enforcement prose matches the surviving hook inventory: exactly one
+  hook mechanism (pre-commit + pre-push trunk check); no claim of a submodule-only-push
+  mechanical gate; the no-pointer-only-PR rule stated as policy with its review-overhead
+  rationale | grep `AGENTS.md` for "blocked by pre-push hooks" / gate-enforcement
+  claims → 0 hits; policy statement present; hook inventory cross-check against `.opencode/hooks/`
+  |
+
+  | SC-5 | The parent repo''s agent-facing docs name a test instrument that exists
+  and runs: no script under `tests/behaviors/` fails at source time; scripts contain
+  no prohibited `timeout` command, no v1 `opencode-cli` references, no retired-vocabulary
+  mandate framing | Per script: helper-source resolution + `bash -n`; grep checks.
+  If the instrument is retained (plan decision), one script additionally runs end-to-end
+  green through the mandated harness entry point (behavioral evidence, bash-tool timeout
+  ≥600s) |
+
+  | SC-6 | The submodule pointer advances to the .opencode trunk tip in the same commit
+  as the parent content fixes — single commit, never pointer-only | Commit inspection:
+  the commit touching `AGENTS.md` also advances the `.opencode` gitlink; no pointer-only
+  commit on the branch |
+
+  | SC-7 | Historical records remain byte-identical: `docs/auditor-model-qualification/**`,
+  `docs/unix-philosophy-skilldeck/**`, `CHANGELOG.md` | Diff against trunk at implementation
+  time → empty |
+
+
+  ## Approach
+
+
+  1. Rewrite `AGENTS.md` Reference Files table and prose against the current submodule
+  layout (floor.md/routing.md charter, pointer stub, card structure, hook inventory).
+  The no-pointer-only-PR rule stays, stated as policy.
+
+  2. Repair or retire the parent test instrument (plan decides mechanism): rewire
+  the 5 scripts to the mandated harness entry point with a present helpers layer and
+  current vocabulary, or retire the scripts and align the `AGENTS.md` instrument row.
+  Either path satisfies SC-5.
+
+  3. Land the submodule pointer advance (`41e3a7be → 8e1861ad` at spec-write time;
+  re-resolve at implementation) in the same commit (SC-6).
+
+  4. Parent-repo work flows through the parent trunk: feature branch → PR → human
+  merge, per trunk protection.
+
+
+  ## Non-Goals
+
+
+  - No `.opencode` submodule content changes — this spec is parent-repo scope; the
+  pointer advance is bookkeeping, not submodule change.
+
+  - Pre-existing cosmetic defects not exposed by the rewrite stay out (duplicated
+  "Trunk-Based Development" section, unclosed bold markers in `AGENTS.md`).
+
+  - Historical point-in-time records are not "fixed" — the qualification reports and
+  the skilldeck paper describe the deck as it was when written; rewriting them would
+  falsify the record (SC-7 guards this).
+
+  - No new agent rules are added to the parent repo; it stays documentation-of-record
+  pointing into the submodule.
+
+
+  🤖 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)
+
+  '
 created_at: '2026-10-05T04:55:59+00:00'
-updated_at: '2026-10-05T04:55:59+00:00'
+updated_at: '2026-10-05T04:56:16+00:00'
