@@ -2,5 +2,6 @@ labels:
 - bug
 - '[SPEC-FIX]'
 number: 231
-state: CLOSED
 title: '[SPEC-FIX] Clean-room plan generator overwrites plan being audited'
+github_url: https://github.com/michael-conrad/opencode-config/issues/231
+status: closed

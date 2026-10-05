@@ -2,5 +2,6 @@ labels:
 - '[SPEC]'
 - writing-plans
 number: 237
-state: CLOSED
 title: '[SPEC] Plan writer injects step status instruction block'
+github_url: https://github.com/michael-conrad/opencode-config/issues/237
+status: closed

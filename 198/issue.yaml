@@ -2,6 +2,7 @@ labels:
 - needs-approval
 - '[SPEC-FIX]'
 number: 198
-state: CLOSED
 title: '[SPEC-FIX] spec-creation/write: post-SC uplift check after initial creation
   with remediation and recheck'
+github_url: https://github.com/michael-conrad/opencode-config/issues/198
+status: closed

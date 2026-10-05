@@ -2,6 +2,7 @@ labels:
 - bug
 - spec
 number: 258
-state: CLOSED
-title: "[SPEC] Fix writing-plans skill contradiction \u2014 Programmatic Invocation\
-  \ vs DISPATCH_GATE"
+title: '[SPEC] Fix writing-plans skill contradiction — Programmatic Invocation vs
+  DISPATCH_GATE'
+github_url: https://github.com/michael-conrad/opencode-config/issues/258
+status: closed

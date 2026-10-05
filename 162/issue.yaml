@@ -1,4 +1,6 @@
 number: 162
-title: "[SPEC] LaTeX Paper: Same-Model Adversarial Auditor Divergence via Role-Differentiated Agent Chains"
-state: OPEN
+title: '[SPEC] LaTeX Paper: Same-Model Adversarial Auditor Divergence via Role-Differentiated
+  Agent Chains'
 labels: '[{"name": "needs-approval", "color": "ededed", "description": ""}]'
+github_url: https://github.com/michael-conrad/opencode-config/issues/162
+status: open

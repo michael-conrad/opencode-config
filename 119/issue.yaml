@@ -1,5 +1,6 @@
 labels:
 - spec
 number: 119
-state: CLOSED
 title: '[SPEC] tmp/ Cleanup in PR Merge Workflow and Age-Based Sweep'
+github_url: https://github.com/michael-conrad/opencode-config/issues/119
+status: closed

@@ -1,6 +1,7 @@
 labels:
 - SPEC-FIX
 number: 42
-state: CLOSED
 title: '[SPEC-FIX] Remove duplicate plugin injections that opencode-cli already provides
   natively'
+github_url: https://github.com/michael-conrad/opencode-config/issues/42
+status: closed

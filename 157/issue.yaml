@@ -1,6 +1,7 @@
 number: 157
-title: "[SPEC] Behavioral Testing of LLM Agents: Artifact-Only Generator Paradigm\
-  \ and Clean-Room Semantic Inspection \u2014 LaTeX Paper"
-state: OPEN
+title: '[SPEC] Behavioral Testing of LLM Agents: Artifact-Only Generator Paradigm
+  and Clean-Room Semantic Inspection — LaTeX Paper'
 labels:
 - needs-approval
+github_url: https://github.com/michael-conrad/opencode-config/issues/157
+status: open

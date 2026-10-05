@@ -2,6 +2,7 @@ labels:
 - bug
 - needs-approval
 number: 186
-state: CLOSED
 title: '[BUG] session-init emits spurious "Could not resolve hooks dir" errors for
   issues-data worktrees'
+github_url: https://github.com/michael-conrad/opencode-config/issues/186
+status: closed

@@ -1,6 +1,7 @@
 number: 82
-title: "[RESEARCH] Dark Pattern Worm/Virus Propagation \u2014 Containing RPC-Dispatched\
-  \ Sub-Agents via Pattern-Infused Orchestration"
-state: OPEN
+title: '[RESEARCH] Dark Pattern Worm/Virus Propagation — Containing RPC-Dispatched
+  Sub-Agents via Pattern-Infused Orchestration'
 labels:
 - needs-approval
+github_url: https://github.com/michael-conrad/opencode-config/issues/82
+status: open

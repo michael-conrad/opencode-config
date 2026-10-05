@@ -1,5 +1,5 @@
 title: '[SPEC-FIX] Document submodule-only push bypass as CRITICAL VIOLATION in AGENTS.md'
-status: open
+status: closed
 labels:
 - needs-approval
 - spec-draft
@@ -19,3 +19,5 @@ body: "\n# Write sc-summary.yaml via git directly since local-issues doesn't sup
   \    plan_item: 5\nEOF\necho \"sc-summary.yaml written\"\n"
 created_at: '2026-07-30T02:41:10+00:00'
 updated_at: '2026-07-30T02:41:59+00:00'
+number: 360
+github_url: https://github.com/michael-conrad/opencode-config/issues/360

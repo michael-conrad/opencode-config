@@ -2,5 +2,6 @@ labels:
 - needs-approval
 - spec
 number: 52
-state: CLOSED
-title: "[SPEC] needs-approval label lifecycle \u2014 restore as default, not deprecated"
+title: '[SPEC] needs-approval label lifecycle — restore as default, not deprecated'
+github_url: https://github.com/michael-conrad/opencode-config/issues/52
+status: closed

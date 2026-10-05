@@ -1,5 +1,6 @@
 labels:
 - '[SPEC]'
 number: 171
-state: CLOSED
 title: '[SPEC] Add Agent Tools injection to default.txt'
+github_url: https://github.com/michael-conrad/opencode-config/issues/171
+status: closed

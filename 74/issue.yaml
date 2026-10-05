@@ -3,5 +3,6 @@ labels:
 - critical
 - tier-1
 number: 74
-state: CLOSED
-title: "[SPEC] Functional/Behavioral Test Substitution Prohibition \u2014 critical-rules-049"
+title: '[SPEC] Functional/Behavioral Test Substitution Prohibition — critical-rules-049'
+github_url: https://github.com/michael-conrad/opencode-config/issues/74
+status: closed

@@ -1,5 +1,6 @@
 labels:
 - '[SPEC-FIX]'
 number: 97
-state: CLOSED
-title: "[SPEC-FIX] Auditor verdict self-consistency \u2014 PASS must mean clean PASS"
+title: '[SPEC-FIX] Auditor verdict self-consistency — PASS must mean clean PASS'
+github_url: https://github.com/michael-conrad/opencode-config/issues/97
+status: closed

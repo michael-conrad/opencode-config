@@ -3,6 +3,7 @@ labels:
 - brainstorming
 - default-behavior
 number: 108
-state: CLOSED
-title: "[SPEC] Exploration as default floor mode \u2014 agent defaults to discuss/explore\
-  \ when intent is ambiguous"
+title: '[SPEC] Exploration as default floor mode — agent defaults to discuss/explore
+  when intent is ambiguous'
+github_url: https://github.com/michael-conrad/opencode-config/issues/108
+status: closed

@@ -1,6 +1,7 @@
 labels:
 - spec
 number: 151
-state: CLOSED
 title: '[SPEC] Promote inline issue-content-creation violation table row to deterministic
   symbolic yaml rule'
+github_url: https://github.com/michael-conrad/opencode-config/issues/151
+status: closed

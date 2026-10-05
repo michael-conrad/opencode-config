@@ -1,6 +1,7 @@
 labels:
 - spec
 number: 313
-state: CLOSED
-title: "[SPEC] writing-plans holistic remediation \u2014 9 defect categories matching\
-  \ #1993 pattern"
+title: '[SPEC] writing-plans holistic remediation — 9 defect categories matching #1993
+  pattern'
+github_url: https://github.com/michael-conrad/opencode-config/issues/313
+status: closed

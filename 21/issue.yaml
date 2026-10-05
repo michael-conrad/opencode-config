@@ -1,6 +1,6 @@
 labels:
 - needs-approval
 number: 21
-state: CLOSED
-title: "[SPEC] Fork Detection \u2014 Resolve Parent Repo for Submodule/Forked Repo\
-  \ Identity"
+title: '[SPEC] Fork Detection — Resolve Parent Repo for Submodule/Forked Repo Identity'
+github_url: https://github.com/michael-conrad/opencode-config/issues/21
+status: closed

@@ -2,6 +2,7 @@ labels:
 - bug
 - critical-rules
 number: 236
-state: CLOSED
-title: "Bug: critical-rules-044 symbolic condition overbroad \u2014 catches legitimate\
-  \ verification dispatches"
+title: 'Bug: critical-rules-044 symbolic condition overbroad — catches legitimate
+  verification dispatches'
+github_url: https://github.com/michael-conrad/opencode-config/issues/236
+status: closed

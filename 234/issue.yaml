@@ -1,6 +1,7 @@
 number: 234
-title: "[SPEC] Workflow Philosophy Paper \u2014 LaTeX Document for Agent Tandem Model"
-state: OPEN
+title: '[SPEC] Workflow Philosophy Paper — LaTeX Document for Agent Tandem Model'
 labels:
 - needs-approval
 - spec
+github_url: https://github.com/michael-conrad/opencode-config/issues/234
+status: open

@@ -2,6 +2,7 @@ labels:
 - needs-approval
 - spec
 number: 111
-state: CLOSED
-title: "[SPEC] Cost-Frame Reformation \u2014 dark-prose-007 pattern and global injection\
-  \ into specs and plans"
+title: '[SPEC] Cost-Frame Reformation — dark-prose-007 pattern and global injection
+  into specs and plans'
+github_url: https://github.com/michael-conrad/opencode-config/issues/111
+status: closed

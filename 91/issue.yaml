@@ -1,6 +1,7 @@
 labels:
 - spec
 number: 91
-state: CLOSED
 title: '[SPEC] adversarial-audit-022 + dark pattern prose for complete correct workflow
   execution'
+github_url: https://github.com/michael-conrad/opencode-config/issues/91
+status: closed

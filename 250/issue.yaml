@@ -2,6 +2,7 @@ labels:
 - needs-approval
 - '[SPEC]'
 number: 250
-state: CLOSED
 title: '[SPEC] Remove all dev branch auto-creation and references for trunk-based
   development'
+github_url: https://github.com/michael-conrad/opencode-config/issues/250
+status: closed

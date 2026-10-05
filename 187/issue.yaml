@@ -1,5 +1,6 @@
 labels:
 - spec
 number: 187
-state: CLOSED
 title: '[SPEC] Add `## Local Issue Artifacts` section to session-init output'
+github_url: https://github.com/michael-conrad/opencode-config/issues/187
+status: closed

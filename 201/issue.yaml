@@ -3,5 +3,6 @@ labels:
 - approved-for-pr
 - cleanup
 number: 201
-state: CLOSED
 title: '[SPEC-FIX] Remove unconditional per-turn diagnostic from session-enforcement.ts'
+github_url: https://github.com/michael-conrad/opencode-config/issues/201
+status: closed

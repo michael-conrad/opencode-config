@@ -1,6 +1,7 @@
 labels:
 - spec
 number: 92
-state: CLOSED
-title: "[SPEC] Confirmshaming weave \u2014 routing layer dark pattern prose for intrinsic\
-  \ completion motivation"
+title: '[SPEC] Confirmshaming weave — routing layer dark pattern prose for intrinsic
+  completion motivation'
+github_url: https://github.com/michael-conrad/opencode-config/issues/92
+status: closed

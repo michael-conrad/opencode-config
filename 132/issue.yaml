@@ -2,5 +2,6 @@ labels:
 - needs-approval
 - '[SPEC]'
 number: 132
-state: CLOSED
 title: '[SPEC] Runtime-Behavioral Evidence Classification Gate'
+github_url: https://github.com/michael-conrad/opencode-config/issues/132
+status: closed

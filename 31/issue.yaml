@@ -1,5 +1,6 @@
 labels: []
 number: 31
-state: CLOSED
-title: "[SPEC-FIX] Sub-Agent Per-Turn Injection Gating \u2014 Add isSubAgent Guards\
-  \ to Context-Dependent Runtime Probes"
+title: '[SPEC-FIX] Sub-Agent Per-Turn Injection Gating — Add isSubAgent Guards to
+  Context-Dependent Runtime Probes'
+github_url: https://github.com/michael-conrad/opencode-config/issues/31
+status: closed

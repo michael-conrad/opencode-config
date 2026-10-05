@@ -1,5 +1,6 @@
 labels:
 - spec
 number: 124
-state: CLOSED
 title: '[SPEC] Phase 3: Per-Skill/Task Bright-Line Re-Anchors'
+github_url: https://github.com/michael-conrad/opencode-config/issues/124
+status: closed

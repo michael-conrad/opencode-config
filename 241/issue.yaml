@@ -2,6 +2,7 @@ labels:
 - SPEC-FIX
 - needs-approval
 number: 241
-state: CLOSED
 title: '[SPEC-FIX] Document BEHAVIOR_SUBMODULE_COMMIT precondition in behavioral test
   harness'
+github_url: https://github.com/michael-conrad/opencode-config/issues/241
+status: closed

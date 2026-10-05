@@ -1,4 +1,5 @@
 labels: []
 number: 164
-state: CLOSED
 title: '[SPEC] Auditor Agent Card Documentation and Parameter Optimization'
+github_url: https://github.com/michael-conrad/opencode-config/issues/164
+status: closed

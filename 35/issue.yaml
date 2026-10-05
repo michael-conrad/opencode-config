@@ -1,5 +1,6 @@
 labels: []
 number: 35
-state: CLOSED
-title: "[SPEC-FIX] Frontmatter validation warnings ignored by agent \u2014 promote\
-  \ to fatal halt"
+title: '[SPEC-FIX] Frontmatter validation warnings ignored by agent — promote to fatal
+  halt'
+github_url: https://github.com/michael-conrad/opencode-config/issues/35
+status: closed

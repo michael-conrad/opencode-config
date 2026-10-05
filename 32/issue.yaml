@@ -1,5 +1,6 @@
 number: 32
 title: '[SPEC] Protanomaly-Friendly Gnome Terminal Color Scheme Script'
-state: OPEN
 labels:
 - needs-approval
+github_url: https://github.com/michael-conrad/opencode-config/issues/32
+status: open

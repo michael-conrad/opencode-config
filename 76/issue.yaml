@@ -4,6 +4,7 @@ labels:
 - approved-for-pr
 - tier-2
 number: 76
-state: CLOSED
-title: "[SPEC] Cross-repo cleanup \u2014 submodule issue closure, branch cleanup,\
-  \ dev-tip verification"
+title: '[SPEC] Cross-repo cleanup — submodule issue closure, branch cleanup, dev-tip
+  verification'
+github_url: https://github.com/michael-conrad/opencode-config/issues/76
+status: closed

@@ -1,5 +1,6 @@
 labels:
 - spec
 number: 122
-state: CLOSED
-title: "[SPEC] Phase 2: Bright-Line Audit \u2014 Rewrite All Guidelines"
+title: '[SPEC] Phase 2: Bright-Line Audit — Rewrite All Guidelines'
+github_url: https://github.com/michael-conrad/opencode-config/issues/122
+status: closed

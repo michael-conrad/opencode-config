@@ -1,5 +1,6 @@
 labels: []
 number: 273
-state: CLOSED
-title: "[SPEC-FIX] .issues/ worktree-only enforcement \u2014 stop tracking in parent\
-  \ repo git"
+title: '[SPEC-FIX] .issues/ worktree-only enforcement — stop tracking in parent repo
+  git'
+github_url: https://github.com/michael-conrad/opencode-config/issues/273
+status: closed

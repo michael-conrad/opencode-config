@@ -1,6 +1,7 @@
 labels:
 - SPEC-FIX
 number: 243
-state: CLOSED
 title: '[SPEC-FIX] local-issues init fails for repos on master branch with no issues-data
   branch'
+github_url: https://github.com/michael-conrad/opencode-config/issues/243
+status: closed

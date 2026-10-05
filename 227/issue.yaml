@@ -2,5 +2,6 @@ labels:
 - bug
 - SPEC-FIX
 number: 227
-state: CLOSED
 title: '[SPEC-FIX] local-issues tool prints wrong spec_path in list/search commands'
+github_url: https://github.com/michael-conrad/opencode-config/issues/227
+status: closed

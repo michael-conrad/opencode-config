@@ -2,5 +2,6 @@ labels:
 - spec
 - spec-structure
 number: 110
-state: CLOSED
 title: '[SPEC] Intent and Executive Summary Preamble for Specs'
+github_url: https://github.com/michael-conrad/opencode-config/issues/110
+status: closed

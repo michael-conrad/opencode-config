@@ -4,6 +4,7 @@ labels:
 - research
 - verification
 number: 109
-state: CLOSED
-title: "[SPEC] Brainstorming skill lacks research dispatch \u2014 relies on memory\
-  \ and training data"
+title: '[SPEC] Brainstorming skill lacks research dispatch — relies on memory and
+  training data'
+github_url: https://github.com/michael-conrad/opencode-config/issues/109
+status: closed

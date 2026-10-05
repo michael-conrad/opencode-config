@@ -1,6 +1,7 @@
 labels:
 - SPEC-FIX
 number: 106
-state: CLOSED
 title: '[SPEC-FIX] Skill card validator overhaul: metadata fields, online schema ref,
   dark prose descriptions, semantic audit'
+github_url: https://github.com/michael-conrad/opencode-config/issues/106
+status: closed

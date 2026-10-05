@@ -3,5 +3,6 @@ labels:
 - platform-routing
 - auditor
 number: 165
-state: CLOSED
 title: '[SPEC-FIX] Remove github MCP perms from all auditor agent cards'
+github_url: https://github.com/michael-conrad/opencode-config/issues/165
+status: closed

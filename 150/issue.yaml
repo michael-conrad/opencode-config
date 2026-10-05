@@ -2,6 +2,7 @@ labels:
 - SPEC-FIX
 - spec
 number: 150
-state: CLOSED
-title: "[SPEC-FIX] .issues/ issues-data remote push \u2014 setup verification + pipeline\
-  \ integration"
+title: '[SPEC-FIX] .issues/ issues-data remote push — setup verification + pipeline
+  integration'
+github_url: https://github.com/michael-conrad/opencode-config/issues/150
+status: closed

@@ -2,5 +2,6 @@ labels:
 - '[SPEC]'
 - approved-for-pr
 number: 23
-state: CLOSED
-title: "[SPEC] Paper edits \u2014 Unix Philosophy Skill Deck Architecture analysis"
+title: '[SPEC] Paper edits — Unix Philosophy Skill Deck Architecture analysis'
+github_url: https://github.com/michael-conrad/opencode-config/issues/23
+status: closed

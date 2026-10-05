@@ -1,5 +1,6 @@
 labels:
 - spec
 number: 232
-state: CLOSED
 title: '[SPEC] Remove phantom Z3 check steps from writing-plans pipeline'
+github_url: https://github.com/michael-conrad/opencode-config/issues/232
+status: closed

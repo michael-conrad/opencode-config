@@ -2,5 +2,6 @@ labels:
 - spec
 - revert
 number: 93
-state: CLOSED
 title: '[SPEC] Revert SSE timeout auto-retry plugin (PR .opencode#611, #612)'
+github_url: https://github.com/michael-conrad/opencode-config/issues/93
+status: closed

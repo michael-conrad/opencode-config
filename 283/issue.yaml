@@ -1,8 +1,9 @@
 number: 283
 title: '[SPEC] Audit and Remediation: Split Overloaded Skill Cards (issue-operations,
   approval-gate, git-workflow, writing-plans, spec-creation)'
-state: OPEN
 labels:
 - spec
 - audit
 - skill-refactor
+github_url: https://github.com/michael-conrad/opencode-config/issues/283
+status: closed

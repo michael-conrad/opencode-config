@@ -1,6 +1,6 @@
 title: '[SPEC] Remove 13 sub-skill SKILL.md files from available_skills — cleanup
   after per-step dispatch fix'
-status: open
+status: closed
 labels:
 - spec
 body: "---\ntitle: '[SPEC] Remove 13 sub-skill SKILL.md files from available_skills\
@@ -58,3 +58,5 @@ body: "---\ntitle: '[SPEC] Remove 13 sub-skill SKILL.md files from available_ski
   ```\n"
 created_at: '2026-07-21T17:33:30+00:00'
 updated_at: '2026-07-21T17:37:16+00:00'
+number: 323
+github_url: https://github.com/michael-conrad/opencode-config/issues/323

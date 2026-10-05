@@ -1,5 +1,6 @@
 labels: []
 number: 33
-state: CLOSED
 title: '[SPEC-FIX] engineering-approach and guideline-auditor: Remediate broken task
   structures and stray tasks/SKILL.md files'
+github_url: https://github.com/michael-conrad/opencode-config/issues/33
+status: closed

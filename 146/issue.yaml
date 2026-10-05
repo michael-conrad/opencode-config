@@ -2,6 +2,7 @@ labels:
 - spec
 - approved-for-implementation
 number: 146
-state: CLOSED
 title: '[SPEC] Gate 4: content-based submodule-pointer-only commit blocker in pre-commit
   hook'
+github_url: https://github.com/michael-conrad/opencode-config/issues/146
+status: closed

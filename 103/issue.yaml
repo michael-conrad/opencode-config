@@ -1,5 +1,6 @@
 labels:
 - spec
 number: 103
-state: CLOSED
 title: '[SPEC] Skill cards must specify correct invocation for PEP 723 scripts'
+github_url: https://github.com/michael-conrad/opencode-config/issues/103
+status: closed

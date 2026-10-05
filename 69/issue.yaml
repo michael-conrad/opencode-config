@@ -3,5 +3,6 @@ labels:
 - spec
 - plugin
 number: 69
-state: CLOSED
 title: '[SPEC] Plugin: Replace mode-switch reminders with authorization-gate anchors'
+github_url: https://github.com/michael-conrad/opencode-config/issues/69
+status: closed

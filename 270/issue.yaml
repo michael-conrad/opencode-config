@@ -1,5 +1,6 @@
 labels: []
 number: 270
-state: CLOSED
-title: "[SPEC-FIX] .issues/ gitignore enforcement \u2014 agents ignore .gitignore\
-  \ and corrupt git state"
+title: '[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt
+  git state'
+github_url: https://github.com/michael-conrad/opencode-config/issues/270
+status: closed

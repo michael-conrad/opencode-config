@@ -1,5 +1,6 @@
 labels: []
 number: 190
-state: CLOSED
-title: "[SPEC-FIX] Remove slug padding from .issues/ directory naming \u2014 /{issue-N}/\
-  \ not /{issue-N}-slug/"
+title: '[SPEC-FIX] Remove slug padding from .issues/ directory naming — /{issue-N}/
+  not /{issue-N}-slug/'
+github_url: https://github.com/michael-conrad/opencode-config/issues/190
+status: closed

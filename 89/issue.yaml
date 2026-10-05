@@ -1,5 +1,6 @@
 labels:
 - spec
 number: 89
-state: CLOSED
 title: '[SPEC] Adversarial Audit: SC Test Dimension Coverage and Binary Result Enforcement'
+github_url: https://github.com/michael-conrad/opencode-config/issues/89
+status: closed

@@ -1,6 +1,7 @@
 number: 38
 title: '[RESEARCH] Read-Only Orchestrator Paradigm: Structural Isolation of AI Agent
   Execution from File Modification'
-state: OPEN
 labels:
 - needs-approval
+github_url: https://github.com/michael-conrad/opencode-config/issues/38
+status: open

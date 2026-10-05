@@ -2,6 +2,6 @@ labels:
 - needs-approval
 - spec
 number: 222
-state: CLOSED
-title: "[SPEC] Self-Detection Gate \u2014 current-violation remediation before new\
-  \ work"
+title: '[SPEC] Self-Detection Gate — current-violation remediation before new work'
+github_url: https://github.com/michael-conrad/opencode-config/issues/222
+status: closed

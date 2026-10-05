@@ -1,5 +1,6 @@
 labels:
 - spec
 number: 117
-state: CLOSED
 title: '[SPEC] Adversarial Auditor Artifact Pre-Check and Clean FAIL on Missing Artifacts'
+github_url: https://github.com/michael-conrad/opencode-config/issues/117
+status: closed

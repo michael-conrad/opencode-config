@@ -1,6 +1,7 @@
 labels:
 - SPEC-FIX
 number: 221
-state: CLOSED
 title: '[SPEC-FIX] Add one-step-at-a-time protocol admonishment to all output plan
   files'
+github_url: https://github.com/michael-conrad/opencode-config/issues/221
+status: closed

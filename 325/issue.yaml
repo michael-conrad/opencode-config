@@ -1,6 +1,6 @@
 title: '[SPEC] Fix remaining ~28 standalone skill cards — per-step dispatch, pre-flight
   gate'
-status: open
+status: closed
 labels:
 - spec
 body: "---\ntitle: '[SPEC] Fix remaining ~28 standalone skill cards — per-step dispatch,\
@@ -70,3 +70,5 @@ body: "---\ntitle: '[SPEC] Fix remaining ~28 standalone skill cards — per-step
   \ 3: F-7 (this spec) — parallel with F-2, F-3, F-4, F-5, F-6\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
 updated_at: '2026-07-21T17:37:16+00:00'
+number: 325
+github_url: https://github.com/michael-conrad/opencode-config/issues/325

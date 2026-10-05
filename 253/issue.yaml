@@ -1,5 +1,6 @@
 labels: []
 number: 253
-state: CLOSED
-title: "[SPEC] DiMo-Aligned Adversarial Audit \u2014 Replace Cross-Model Auditor Dispatch\
-  \ with Role-Differentiated Agent Chaining"
+title: '[SPEC] DiMo-Aligned Adversarial Audit — Replace Cross-Model Auditor Dispatch
+  with Role-Differentiated Agent Chaining'
+github_url: https://github.com/michael-conrad/opencode-config/issues/253
+status: closed

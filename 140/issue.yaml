@@ -1,5 +1,6 @@
 labels:
 - '[SPEC-FIX]'
 number: 140
-state: CLOSED
 title: '[SPEC-FIX] Change default BEHAVIOR_MODEL from glm-5.1:cloud to deepseek-v4-flash:cloud'
+github_url: https://github.com/michael-conrad/opencode-config/issues/140
+status: closed

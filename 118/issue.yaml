@@ -1,6 +1,7 @@
 labels:
 - spec
 number: 118
-state: CLOSED
 title: '[SPEC] Replace BRE regex assertions with semantic AI inspection in behavioral
   tests'
+github_url: https://github.com/michael-conrad/opencode-config/issues/118
+status: closed

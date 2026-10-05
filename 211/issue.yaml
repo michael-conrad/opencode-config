@@ -1,8 +1,9 @@
 number: 211
 title: '[SPEC-FIX] Auditors and plan writer must BLOCK with dispatch directive when
   local spec file is missing'
-state: OPEN
 labels:
 - bug
 - spec
 - tier-2
+github_url: https://github.com/michael-conrad/opencode-config/issues/211
+status: closed

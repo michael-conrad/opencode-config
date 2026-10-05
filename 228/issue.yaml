@@ -1,4 +1,6 @@
 number: 228
-title: "[SPEC] Add lessons-learned tracking system to AGENTS.md and .issues/"
-state: OPEN
-labels: '[{"name": "SPEC-FIX", "color": "ededed", "description": ""}, {"name": "spec", "color": "ededed", "description": ""}]'
+title: '[SPEC] Add lessons-learned tracking system to AGENTS.md and .issues/'
+labels: '[{"name": "SPEC-FIX", "color": "ededed", "description": ""}, {"name": "spec",
+  "color": "ededed", "description": ""}]'
+github_url: https://github.com/michael-conrad/opencode-config/issues/228
+status: open

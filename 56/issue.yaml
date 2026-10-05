@@ -1,6 +1,7 @@
 labels:
 - '[SPEC]'
 number: 56
-state: CLOSED
-title: "[SPEC] Remove Identity Validation from session-enforcement.ts \u2014 Circular\
-  \ Self-Check with Broken Parser"
+title: '[SPEC] Remove Identity Validation from session-enforcement.ts — Circular Self-Check
+  with Broken Parser'
+github_url: https://github.com/michael-conrad/opencode-config/issues/56
+status: closed

@@ -1,5 +1,6 @@
 labels:
 - needs-approval
 number: 176
-state: CLOSED
-title: "[SPEC] AGENTS.md \u2014 Add Reference Files table"
+title: '[SPEC] AGENTS.md — Add Reference Files table'
+github_url: https://github.com/michael-conrad/opencode-config/issues/176
+status: closed

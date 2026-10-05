@@ -1,6 +1,7 @@
 labels:
 - SPEC-FIX
 number: 192
-state: CLOSED
 title: '[SPEC-FIX] Remove "authoritative spec lives in the issues-data branch" from
   issue body template'
+github_url: https://github.com/michael-conrad/opencode-config/issues/192
+status: closed

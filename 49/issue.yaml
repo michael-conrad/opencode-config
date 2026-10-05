@@ -3,5 +3,6 @@ labels:
 - SPEC-FIX
 - plugin
 number: 49
-state: CLOSED
 title: '[SPEC-FIX] Plugin export pattern: env-loader.ts fails to load'
+github_url: https://github.com/michael-conrad/opencode-config/issues/49
+status: closed

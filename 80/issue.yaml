@@ -1,6 +1,7 @@
 number: 80
-title: "[RESEARCH] Weaponizing Dark Patterns in Skill Deck Design \u2014 Exploiting\
-  \ LLM Susceptibility to Get Instructions Followed"
-state: OPEN
+title: '[RESEARCH] Weaponizing Dark Patterns in Skill Deck Design — Exploiting LLM
+  Susceptibility to Get Instructions Followed'
 labels:
 - needs-approval
+github_url: https://github.com/michael-conrad/opencode-config/issues/80
+status: open

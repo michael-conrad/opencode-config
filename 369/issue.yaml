@@ -5,7 +5,7 @@ labels:
 - needs-approval
 - spec-draft
 phase: null
-status: open
+status: closed
 body: '> **Full spec and artifacts: [`opencode-config/.issues/369/`](https://github.com/michael-conrad/opencode-config/tree/issues-data/.issues/369/)**
   — this issue is a condensed exec summary; the authoritative spec lives in the `issues-data`
   branch.
@@ -356,3 +356,4 @@ body: '> **Full spec and artifacts: [`opencode-config/.issues/369/`](https://git
 
   '
 updated_at: '2026-08-30T18:07:58+00:00'
+github_url: https://github.com/michael-conrad/opencode-config/issues/369

@@ -2,6 +2,7 @@ labels:
 - needs-approval
 - '[SPEC-FIX]'
 number: 203
-state: CLOSED
 title: '[SPEC-FIX] Fix Persona identity framing, add unified checklists, add solve/plan
   tool steps to spec-creation and writing-plans skill cards'
+github_url: https://github.com/michael-conrad/opencode-config/issues/203
+status: closed

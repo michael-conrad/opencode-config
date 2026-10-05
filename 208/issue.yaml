@@ -1,6 +1,7 @@
 labels:
 - spec
 number: 208
-state: CLOSED
-title: "[SPEC] Adversarial audit pre-flight validation gate \u2014 BLOCKED with remediation\
-  \ on missing inputs"
+title: '[SPEC] Adversarial audit pre-flight validation gate — BLOCKED with remediation
+  on missing inputs'
+github_url: https://github.com/michael-conrad/opencode-config/issues/208
+status: closed

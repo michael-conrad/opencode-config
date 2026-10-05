@@ -1,6 +1,7 @@
 labels:
 - spec
 number: 139
-state: CLOSED
-title: "[SPEC] Systematic Embedding \u2014 Backfill All AI-Agent-Facing Output Touchpoints\
-  \ with Dark Prose and Distribution-Shifting Patterns"
+title: '[SPEC] Systematic Embedding — Backfill All AI-Agent-Facing Output Touchpoints
+  with Dark Prose and Distribution-Shifting Patterns'
+github_url: https://github.com/michael-conrad/opencode-config/issues/139
+status: closed

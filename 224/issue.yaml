@@ -2,6 +2,7 @@ labels:
 - needs-approval
 - spec
 number: 224
-state: CLOSED
-title: "[SPEC] Mandatory spec-provenance gate \u2014 specs not from spec-creation\
-  \ pipeline are 86'ed"
+title: '[SPEC] Mandatory spec-provenance gate — specs not from spec-creation pipeline
+  are 86''ed'
+github_url: https://github.com/michael-conrad/opencode-config/issues/224
+status: closed

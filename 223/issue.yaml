@@ -2,6 +2,7 @@ labels:
 - needs-approval
 - spec
 number: 223
-state: CLOSED
-title: "[SPEC] Mandatory spec-audit on first encounter \u2014 specs not from spec-creation\
-  \ pipeline are 86'ed"
+title: '[SPEC] Mandatory spec-audit on first encounter — specs not from spec-creation
+  pipeline are 86''ed'
+github_url: https://github.com/michael-conrad/opencode-config/issues/223
+status: closed

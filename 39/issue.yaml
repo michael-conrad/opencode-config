@@ -1,5 +1,6 @@
 labels: []
 number: 39
-state: CLOSED
 title: '[SPEC] Phase-Checkpoint Git Tags for Multi-Phase Plan Rollback Anchors (parent
   repo)'
+github_url: https://github.com/michael-conrad/opencode-config/issues/39
+status: closed

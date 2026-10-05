@@ -1,5 +1,6 @@
 labels:
 - SPEC-FIX
 number: 166
-state: CLOSED
 title: '[SPEC-FIX] Mandatory pre-flight: use behavior_run before custom test env construction'
+github_url: https://github.com/michael-conrad/opencode-config/issues/166
+status: closed

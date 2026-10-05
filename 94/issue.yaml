@@ -2,5 +2,6 @@ labels:
 - needs-approval
 - spec
 number: 94
-state: CLOSED
 title: '[SPEC] SC Enforcement Gate for Spec Writer, Plan Writer, and Auditors'
+github_url: https://github.com/michael-conrad/opencode-config/issues/94
+status: closed

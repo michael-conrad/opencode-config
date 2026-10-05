@@ -1,6 +1,6 @@
 title: '[SPEC] Canonical task card structure template — dispatch contract, output
   contract, frugal contract'
-status: open
+status: closed
 labels:
 - spec
 body: "---\ntitle: '[SPEC] Canonical task card structure template — dispatch contract,\
@@ -59,3 +59,5 @@ body: "---\ntitle: '[SPEC] Canonical task card structure template — dispatch c
   \ this template when adding contract sections to task files\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
 updated_at: '2026-07-21T17:37:16+00:00'
+number: 316
+github_url: https://github.com/michael-conrad/opencode-config/issues/316

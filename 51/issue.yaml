@@ -1,6 +1,7 @@
 labels:
 - spec
 number: 51
-state: CLOSED
 title: '[SPEC] Purge branch status trigger noise (protected_branch_with_changes, on_main_branch,
   stale_submodule) and resulting dead code'
+github_url: https://github.com/michael-conrad/opencode-config/issues/51
+status: closed

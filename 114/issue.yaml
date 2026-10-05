@@ -2,6 +2,7 @@ labels:
 - bug
 - tier-2
 number: 114
-state: CLOSED
 title: '[BUG] Sub-agents creating individual PRs instead of returning to orchestrator
   when pr_strategy=stacked'
+github_url: https://github.com/michael-conrad/opencode-config/issues/114
+status: closed

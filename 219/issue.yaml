@@ -4,6 +4,7 @@ labels:
 - sub-agent
 - permissions
 number: 219
-state: CLOSED
 title: '[SPEC-FIX] Deny glob tool on all sub-agent cards and replace glob references
   in skill deck'
+github_url: https://github.com/michael-conrad/opencode-config/issues/219
+status: closed

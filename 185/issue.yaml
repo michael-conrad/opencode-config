@@ -1,5 +1,6 @@
 labels:
 - spec
 number: 185
-state: CLOSED
 title: '[SPEC] Replace .issues/ worktree and wiki submodule with sibling peer repos'
+github_url: https://github.com/michael-conrad/opencode-config/issues/185
+status: closed

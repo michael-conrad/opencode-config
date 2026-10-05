@@ -1,6 +1,7 @@
 labels:
 - needs-approval
 number: 40
-state: CLOSED
-title: "[SPEC] Capability-Aware Auditor Selection &amp; Dispatch \u2014 Thinking Levels\
-  \ and Multimodal Awareness"
+title: '[SPEC] Capability-Aware Auditor Selection &amp; Dispatch — Thinking Levels
+  and Multimodal Awareness'
+github_url: https://github.com/michael-conrad/opencode-config/issues/40
+status: closed

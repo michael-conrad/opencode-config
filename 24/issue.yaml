@@ -1,6 +1,7 @@
 number: 24
-title: "[SPEC] Paper Artifact Maintenance Mandate \u2014 Sync Implementation Progress\
-  \ with Paper"
-state: OPEN
+title: '[SPEC] Paper Artifact Maintenance Mandate — Sync Implementation Progress with
+  Paper'
 labels:
 - needs-approval
+github_url: https://github.com/michael-conrad/opencode-config/issues/24
+status: open

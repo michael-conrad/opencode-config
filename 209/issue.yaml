@@ -2,5 +2,6 @@ labels:
 - '[SPEC]'
 - plan-format
 number: 209
-state: CLOSED
 title: '[SPEC] Plan file format: master ToC + per-phase sub-plans with dispatch contracts'
+github_url: https://github.com/michael-conrad/opencode-config/issues/209
+status: closed

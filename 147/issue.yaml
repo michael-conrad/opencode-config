@@ -2,6 +2,7 @@ labels:
 - SPEC-FIX
 - needs-approval
 number: 147
-state: CLOSED
-title: "[SPEC-FIX] Cross-Validate Output-Integrity Gate \u2014 Zero-Tolerance Verdict\
-  \ Agreement, No Fail Reclassification"
+title: '[SPEC-FIX] Cross-Validate Output-Integrity Gate — Zero-Tolerance Verdict Agreement,
+  No Fail Reclassification'
+github_url: https://github.com/michael-conrad/opencode-config/issues/147
+status: closed

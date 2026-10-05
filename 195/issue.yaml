@@ -2,5 +2,6 @@ labels:
 - spec
 - infrastructure
 number: 195
-state: CLOSED
-title: "[SPEC] Restructure .issues/{N}/ folder layout \u2014 flatten spec-artifacts/"
+title: '[SPEC] Restructure .issues/{N}/ folder layout — flatten spec-artifacts/'
+github_url: https://github.com/michael-conrad/opencode-config/issues/195
+status: closed

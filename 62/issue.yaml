@@ -1,5 +1,6 @@
 labels:
 - dep-sync
 number: 62
-state: CLOSED
-title: "chore: update .opencode submodule \u2014 implement #86 local-first issue architecture"
+title: 'chore: update .opencode submodule — implement #86 local-first issue architecture'
+github_url: https://github.com/michael-conrad/opencode-config/issues/62
+status: closed

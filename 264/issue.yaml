@@ -1,5 +1,6 @@
 labels: []
 number: 264
-state: CLOSED
 title: '[SPEC-FIX] pre-push hook silent failure on branches without numeric issue
   segment'
+github_url: https://github.com/michael-conrad/opencode-config/issues/264
+status: closed

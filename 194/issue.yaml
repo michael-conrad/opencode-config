@@ -2,6 +2,7 @@ labels:
 - needs-approval
 - '[SPEC-FIX]'
 number: 194
-state: CLOSED
-title: "[SPEC-FIX] Single source of truth for implementation pipeline checklist \u2014\
-  \ remove embedded duplicate from writing-plans"
+title: '[SPEC-FIX] Single source of truth for implementation pipeline checklist —
+  remove embedded duplicate from writing-plans'
+github_url: https://github.com/michael-conrad/opencode-config/issues/194
+status: closed

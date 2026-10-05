@@ -1,6 +1,6 @@
 labels:
 - '[SPEC]'
 number: 37
-state: CLOSED
-title: "[SPEC] Shell Composition for Agent Orchestration \u2014 Unix Pipeline Model\
-  \ Investigation"
+title: '[SPEC] Shell Composition for Agent Orchestration — Unix Pipeline Model Investigation'
+github_url: https://github.com/michael-conrad/opencode-config/issues/37
+status: closed

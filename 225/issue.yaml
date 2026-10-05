@@ -1,6 +1,7 @@
 labels:
 - SPEC-FIX
 number: 225
-state: CLOSED
 title: '[SPEC-FIX] Plan-fidelity auditor hard-codes evaluation criteria instead of
   reading from authoritative skill cards'
+github_url: https://github.com/michael-conrad/opencode-config/issues/225
+status: closed

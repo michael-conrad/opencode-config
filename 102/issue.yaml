@@ -1,5 +1,6 @@
 labels:
 - SPEC-FIX
 number: 102
-state: CLOSED
-title: "[SPEC-FIX] Bash guard for PEP 723 scripts \u2014 mandate + remediation"
+title: '[SPEC-FIX] Bash guard for PEP 723 scripts — mandate + remediation'
+github_url: https://github.com/michael-conrad/opencode-config/issues/102
+status: closed

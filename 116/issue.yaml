@@ -2,6 +2,7 @@ labels:
 - needs-approval
 - spec
 number: 116
-state: CLOSED
 title: '[SPEC] Redesign divide-and-conquer skill: single-branch pipeline with orchestrator-as-router
   architecture'
+github_url: https://github.com/michael-conrad/opencode-config/issues/116
+status: closed

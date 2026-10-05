@@ -4,6 +4,7 @@ labels:
 - architecture
 - audit-infrastructure
 number: 60
-state: CLOSED
 title: '[SPEC] Consolidate All Auditor Skills into adversarial-audit with Unified
   Architecture'
+github_url: https://github.com/michael-conrad/opencode-config/issues/60
+status: closed
