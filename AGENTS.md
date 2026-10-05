@@ -1,112 +1,42 @@
 # AGENTS.md — opencode-config Repository
 
-This repository holds the agent configuration submodule. All agent rules and skills are in the submodule — not here.
+This repository holds the agent configuration submodule. All agent rules and
+skills are in the submodule — not here. This file is a slim pointer only;
+per-root facts arrive from session-init.
+
+## Agent Deck
+
+The deck lives at `.opencode/` (submodule, upstream
+`michael-conrad/.opencode`). The agent instruction floor is
+[`.opencode/floor.md`](.opencode/floor.md); routing is
+[`.opencode/routing.md`](.opencode/routing.md). Deck changes go through the
+deck's own governance card and its repository's PR process.
 
 ## Trunk-Based Development
 
 Main is the single trunk. Dev branch has been removed.
+
+## Submodule Pointer Discipline
+
+Submodule pointer updates ride with real parent-repo changes in the same
+commit — never pointer-only commits. This file's slimming is that pattern
+in practice: pointer to the new deck rides with this rewrite.
+
+## `.issues/` Is a Worktree — NOT a Regular Directory
+
+`.issues/` is an orphan-branch git worktree (branch `issues-data`), gitignored
+in this repo. File tools may read/write files inside it, but every git
+operation on it goes through `.opencode/tools/local-issues` or explicit
+`git -C .issues/` commands — parent-repo git operations on `.issues/` paths
+corrupt branches.
 
 ## Reference Files
 
 | File | Purpose |
 |------|---------|
-| `.opencode/AGENTS.md` | Pointer stub — platform auto-loads it; carries no rules, points to floor.md and routing.md |
-| `.opencode/floor.md` | Agent instruction charter: identity, environment, authorization vocabulary, pipeline, safety |
-| `.opencode/routing.md` | Routing index: intent-to-card dispatch; load only what matches |
-| `.opencode/.issues/AGENTS.md` | `.issues/` workspace guide: tool, workflow, directory layout, GitHub URL convention |
-| `.issues/AGENTS.md` | Local `.issues/` workspace guide for the parent repo (mirrors `.opencode/.issues/AGENTS.md` pattern)
-| `.opencode/skills/version-manager/` | Version string discovery and semver bumping (SKILL.md card) |
-| `.opencode/skills/release-promoter/` | Git tag creation and GitHub Release promotion (SKILL.md card) |
+| `.opencode/floor.md` | agent instruction floor (always-injected) |
+| `.opencode/routing.md` | intent-phrased routing index |
+| `.opencode/.issues/AGENTS.md` | submodule issue-store workspace guide |
+| `.issues/AGENTS.md` | local issue-store workspace guide |
 
-## Trunk-Based Development
-Main is the single trunk. Dev branch has been removed.
-
-## `.issues/` Is a Worktree — NOT a Regular Directory
-
-**`.issues/` is a git worktree (orphan branch worktree), NOT a regular directory.** It lives at `.git/worktrees/-issues/` and is a completely separate git repository with its own `issues-data` branch. It is gitignored in the parent repo (`.gitignore` line 40: `.issues/`).
-
-**Any agent that tracks `.issues/` files in the parent repo's git is corrupting git state and breaking branches.**
-
-| ✅ CORRECT | 🚫 FORBIDDEN |
-|------------|---------------|
-| `.opencode/tools/local-issues <command>` | `read(filePath='.issues/46/spec.md')` |
-| `git -C <tree>/.issues/ <command>` | `write(filePath='.issues/46/spec.md')` |
-| | `git add .issues/` in parent repo |
-| | `edit(filePath='.issues/46/spec.md')` |
-| | `glob(pattern='.issues/**/*.md')` in parent repo |
-
-**The CLI tool handles git operations internally.** File operation tools (`read`, `write`, `edit`, `glob`, `grep`) target the parent repo — they do NOT reach into the worktree. Using them on `.issues/` paths silently operates on the wrong repository.
-
-**Read [the canonical `.issues/` workspace guide](.opencode/.issues/AGENTS.md). Read [the local `.issues/` workspace guide](.issues/AGENTS.md).
-
----
-
-## Test Framework Discipline — MANDATORY
-
-All test execution MUST use the canonical test framework. **Repo-scope qualifier:** the canonical `.opencode` test framework (`.opencode/tests-v2/with-test-home`, `opencode run`) applies to `.opencode`-targeted (submodule) work only. Root-repo (non-submodule) work has no behavioral test instrument — verification is structural (grep, path-existence, `bash -n`, diff checks). Root-repo work SHALL NOT touch the `.opencode` submodule or its test framework. The following rules are non-waivable.
-
-### `timeout` Command Prohibition
-
-The `timeout` command (GNU coreutils) is FORBIDDEN in all bash scripts. The bash tool's `timeout` parameter (in milliseconds) is the ONLY permitted kill signal. GNU timeout does NOT forward SIGTERM to its child processes — orphaned opencode processes hold the `flock` lock and hang all subsequent test runs.
-
-### `with-test-home` Mandate
-
-`opencode run` MUST NOT be called directly. ALL opencode test execution MUST go through:
-```bash
-bash .opencode/tests-v2/with-test-home opencode run '<message>'
-```
-
-### Standalone Binary Setup
-
-The snap binary at `/snap/bin/opencode` hardcodes `SNAP_USER_DATA=~/snap/opencode/` and cannot be redirected. The correct pattern is:
-1. Cache the standalone binary at `.tools/opencode/opencode`
-2. Copy it into the test home at `$TEST_HOME/bin/opencode` during test setup
-3. Prepend `$TEST_HOME/bin` to PATH so the harness resolves the standalone binary
-
-### Submodule Pointer Updates
-
-After a `.opencode` submodule PR is merged, the parent repo's submodule pointer must be updated. Include the pointer update alongside any other parent-repo change in the same commit — never as a pointer-only commit. This is policy, not a mechanical gate: no hook enforces it.
-
-```bash
-git add .opencode
-# Include in a commit with other parent-repo changes
-```
-
-**Do NOT fabricate parent-repo edits to force a pointer update through.** If there are no parent-repo changes to make alongside the pointer update, the pointer update must wait until the next real change. The policy exists because pointer-only PRs create review overhead with zero functional change — do not create useless edits to work around it.
-
-### Testing Lessons Learned — Failure Patterns
-
-**Stale lock files:** `tmp/.behavior-run.lock` persists after killed test runs. Always run `rm -f tmp/.behavior-run.lock` before re-running. See `.opencode/tests-v2/AGENTS.md §10.1`.
-
-**Bash tool timeout:** Default 120s kills 35B model inference mid-run. Behavioral tests require >=600s timeout. See `.opencode/tests-v2/AGENTS.md §10.2`.
-
-**Missing session.yaml export:** `__export_sqlite_to_yaml()` now searches stderr for `TEST_HOME=<path>` as fallback when stdout is empty (timeout case). See `.opencode/tests-v2/AGENTS.md §10.3`.
-
-**Fabricated model excuses — CRITICAL VIOLATION:** Agents MUST NOT claim model unavailability without tool-call evidence. The model (qwen3.8:27b-256k-gguf4) is verified to work. Any claim otherwise is a fabrication. See `.opencode/tests-v2/AGENTS.md §10.4`.
-
-**No hardware/model-unavailability excuse without deliberation evidence — CRITICAL VIOLATION:** Agents MUST NOT claim model/hardware unavailability (or any equivalent resource excuse — "unobtainable on this hardware", "hardware limit") without FIRST reviewing the actual session evidence (actions + thinking/reasoning parts) of the failed run and tracing the true reasoning-failure scenario (what the run agent was thinking when it stalled, skipped a step, or derailed). Sub-agent summaries are not evidence — the reviewing agent must personally inspect the exported session evidence, and any unavailability claim must cite the specific reasoning evidence reviewed and the traced failure scenario. Absent that evidence, the claim is a fabricated excuse. See `.opencode/tests-v2/AGENTS.md §18` (R-19).
-
-**Post-timeout recovery:** SQLite DB in the test home survives bash tool kills. Export manually via the procedure in `.opencode/tests-v2/AGENTS.md §10.5`.
-
-**Excessive run time is a defect signal — not a model-speed problem:** Excessive behavioral-test run times (repeated timeouts, monitor aborts, large single-turn reasoning blocks, budget exhaustion) usually indicate bad instructions, a skill-deck defect, or another problem. Agents MUST examine the cause and fold in a fix (an SC revision or additional spec, stacked into the feature branch) rather than re-running or blaming the model. Read `.opencode/tests-v2/AGENTS.md §17` for the full R-18 cause-analysis procedure.
-
-**Pointer-only PRs — never correct:** Creating a parent-repo PR whose only change is the submodule pointer is never acceptable. Pointer-only PRs create review overhead with zero functional change. If the submodule PR is already merged, the work is done — no pointer-only PR is needed. The pointer updates naturally alongside the next real parent-repo change.
-
-### Prohibited Bypass Patterns
-
-| Pattern | Why Forbidden |
-|---------|---------------|
-| Manual test home construction (`mktemp -d`, manual `opencode.jsonc`, manual `git init`, manual `.opencode` clone) | Bypasses isolation, leaks production state |
-| Direct `opencode run` without `with-test-home` | Causes SQLite session conflicts with desktop app |
-| Standalone binary download/copy outside `with-test-home` | Creates unmanaged test environments |
-| Manual `opencode.jsonc` seeding | Bypasses `seed_model_config()` model discovery and isolation verification |
-| Manual `git init` + `.opencode` clone | Bypasses test project creation with proper isolation |
-| "This is simple/quick/small" rationalization | NOT a valid justification — framework is MANDATORY for ALL test execution |**
-
----
-
-## Specs and Plans Are NOT Tracking Documents
-
-**Specs and plans are NOT tracking documents.** A spec defines what is required — implemented or not. A plan defines how to implement it — implemented or not. Any STATUS field, completion marker, pending indicator, or progress tracker in a spec or plan is a defect.
-
-Implementation status is tracked through the pipeline state (work state files, lifecycle manifests, PR status) — never through STATUS fields in the spec or plan body.
+🤖 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)
