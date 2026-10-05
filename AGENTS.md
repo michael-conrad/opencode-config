@@ -1,146 +1,25 @@
-# AGENTS.md — .issues/ Workspace Guide
+# AGENTS.md — .issues/ Workspace Guide (opencode-config store)
 
 ## Identity
 
-`.issues/` is a standalone git repository with an `issues-data` orphan branch, stored as a git worktree of the parent repo at `.git/worktrees/-issues/`. It uses the same remote as the parent repo (determined at runtime via `git -C .issues remote -v`), on the `issues-data` branch.
-
-**This is NOT a submodule.** It is an orphan branch worktree. Do not add it as a submodule or `.gitmodules` entry.
+`.issues/` is the parent repo's issue store: a standalone git repository on the `issues-data` orphan branch, stored as a git worktree at `.git/worktrees/-issues/`. It uses the same remote as the parent repo. **This is NOT a submodule** and not part of the parent repo's tracked tree.
 
 ## Tool
 
-Always use `.opencode/tools/local-issues` for issue tracking operations within `.issues/`. Do not manipulate `.issues/` files manually unless the tool cannot perform the required operation.
+Always use `.opencode/tools/local-issues` for issue-tracking operations in this store, with qualified names: `opencode-config#N`.
 
-**🚫 CRITICAL: `.issues/` is a git worktree (orphan branch worktree), NOT a regular directory.** It lives at `.git/worktrees/-issues/` and is a completely separate git repository with its own `issues-data` branch. It is gitignored in the parent repo. Agents MUST NOT read/write `.issues/` files directly through git operations — using `read()`, `write()`, `edit()`, `glob()`, or `grep()` on `.issues/` paths silently targets the wrong repository and corrupts git state. All `.issues/` operations MUST go through `.opencode/tools/local-issues` or explicit `git -C <tree>/.issues/` commands.
+## Doctrine — single source
 
-### Invocation
+All issue-store doctrine is defined once in the canonical guide:
+[`.opencode/.issues/AGENTS.md`](../../.opencode/.issues/AGENTS.md) — remote-first issue-number reservation (MANDATORY when a remote tracker exists; every issue type), local-counter fallback (remoteless stores only), mirror precedence (the local `{N}/` folder holds the full spec and all artifacts; the remote body is a detailed exec summary — clear intent on the why and on the final what), the remote-body URL convention, directory layout, the hygiene mandate, and the exclusions boundary.
 
-```
-.opencode/tools/local-issues <command> [flags]
-```
+This guide deliberately carries no doctrine copy. It was a full mirror, drifted from the canonical guide (it still taught counter-first reservation after the canonical guide mandated remote-first), and was collapsed to a pointer on 2026-10-05.
 
-First invocation auto-initializes `.issues/` — creates the orphan branch, worktree, and initial commit. No separate setup step needed.
-
-### Usage Examples
+## Session start
 
 ```
-# List all issues
-.opencode/tools/local-issues list
-
-# Sample output:
-# #1 [open]
-# #46 [open]
-# #47 [open]
-
-# Read an issue
-.opencode/tools/local-issues read --number opencode-config#46
-
-# Create a new issue (auto-numbered)
-.opencode/tools/local-issues create --number opencode-config#47 --title "My spec" --labels SPEC  # reserve 47 from .issues/.counter first
-
-# Create with explicit number
-.opencode/tools/local-issues create --number opencode-config#99 --title "Bug fix" --labels BUG
-
-# Search issues
-.opencode/tools/local-issues search --query "fastmcp"
-
-# Link sub-issues to a parent
-.opencode/tools/local-issues link --number 46 --sub 47 48 --type sub-issue
-
-# Add a comment
-.opencode/tools/local-issues comment --number 46 --type internal --body "Investigation complete"
-
-# Close an issue
-.opencode/tools/local-issues close --number 99 --reason completed
-
-# Update an issue body from file
-.opencode/tools/local-issues update --number 46 --body-file ./tmp/spec-v2.md
-
-# Check promotion readiness
-.opencode/tools/local-issues promote --number 46
+.opencode/tools/local-issues init     # bootstrap + pull
+.opencode/tools/local-issues sync     # commit + pull-rebase + push
 ```
 
-### Standards
-
-- All spec files use `.md` extension with optional YAML frontmatter
-- All metadata files use `.yaml` extension
-- Comments are stored as YAML with `type: internal|stakeholder` field
-- Sub-issues use the `link` command for parent-child relationships
-- GitHub/GitBucket sync uses `--github` / `--remote-url` flags on `update` and `comment`
-
-## Workflow
-
-All git operations (commit, push) are handled automatically by the tool after mutation commands. You do NOT need to run `git -C .issues` commands manually.
-
-| Action | Command | Auto-commit? | Auto-push? |
-|--------|---------|-------------|-------------|
-| List issues | `local-issues list` | N/A (read-only) | N/A |
-| Read issue | `local-issues read --number <repo>#N` | N/A (read-only) | N/A |
-| Search | `local-issues search --query "..."` | N/A (read-only) | N/A |
-| Create issue | `local-issues create --number <repo>#N --title "..."` | ✅ Yes | ✅ Yes |
-| Update issue | `local-issues update --number N ...` | ✅ Yes | ✅ Yes |
-| Add comment | `local-issues comment --number N --body "..."` | ✅ Yes | ✅ Yes |
-| Close issue | `local-issues close --number N --reason completed` | ✅ Yes | ✅ Yes |
-| Link sub-issues | `local-issues link --number N --sub M --type sub-issue` | ✅ Yes | ✅ Yes |
-| Renumber | `local-issues renumber --from N --to M` | ✅ Yes | ✅ Yes |
-
-### Pull at session start
-
-```
-.opencode/tools/local-issues list
-```
-
-The `list` command auto-initializes the `.issues/` worktree if missing. However, it does not pull remote changes. To sync before starting work:
-
-```
-git -C .issues pull --rebase origin issues-data
-```
-
-This is the ONLY manual `git -C .issues` command needed.
-
-## Directory Layout
-
-> **See `.opencode/.issues/AGENTS.md` for the canonical directory layout.**
-
-```
-.issues/
-  {issue_number}/
-    spec.md                    — The spec (authoritative, may mirror remote or be sole copy)
-    plan.md                    — Implementation plan (RED/GREEN items, dependency graph)
-    cards.md                   — Card catalogue with status and decision log
-    dependency-contract.yaml   — Dependency contracts and phase ordering
-    research/                  — Investigation findings, capability probes, evidence notes
-    designs/                   — UI wireframes, architecture diagrams, design artifacts
-    audit/                     — Adversarial audit verdicts, cross-validate consensus
-  AGENTS.md                    — This file
-  open/                        — Symlinks or references to open issues
-  closed/                      — Archived issues
-  lessons-learned/             — Per-session correction catalog for clean-room review (see `lessons-learned/README.md`)
-```
-
-### Example: Spec-Artifact Placement
-
-| Artifact | Path |
-|----------|------|
-| Card catalogue with all card findings | `.issues/46/cards.md` |
-| Implementation plan with RED/GREEN items | `.issues/46/plan.md` |
-| Dependency contract for state machine | `.issues/46/dependency-contract.yaml` |
-| FastMCP capability probe results | `.issues/46/research/fastmcp-capabilities.md` |
-| In-memory client migration design | `.issues/46/designs/in-memory-fixture.md` |
-| Adversarial audit consensus verdict | `.issues/46/audit/consensus.yaml` |
-
-## Authorization
-
-Reading and writing `.issues/` is **authorization-free** — it is workspace-local metadata, not implementation code. All spec/plan/card operations within `.issues/` may proceed without `"approved"` or `"go"`.
-
-Creating `feature/*` or `spec/*` branches for code changes still requires `for_implementation` or above scope.
-
-## Relationship to Remote Issue Tracker
-
-- `.issues/{N}/spec.md` IS the spec — it may mirror a remote issue (GitHub/GitBucket) or be the sole authoritative copy. The remote is secondary.
-- `.issues/{N}/plan.md` is the local implementation plan (not mirrored to remote)
-- `.issues/{N}/cards.md` is the card catalogue with status tracking
-- Files in `.issues/` take precedence over remote issue bodies when both exist. The `.issues/` workspace is the source of truth for implementation planning.
-
-## Issues Path Prefix
-
-The local issues path prefix (e.g., `.issues/` or `.opencode/.issues/`) is **not hardcoded**. It comes from the repo entry's `issues:` field in the session-init `## Repo Information` table. The submodule folder name is not known until checkout, so the prefix must never be hardcoded. When constructing issue body blockquotes, use `{issues_prefix}` resolved from the repo entry whose `path` matches the issue's repository.
+Details, workflow tables, and the lessons-learned registry: canonical guide, as above.
