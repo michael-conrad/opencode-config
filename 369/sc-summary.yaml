@@ -1,7 +1,7 @@
 sc_count: 4
 scs:
   - id: SC-1
-    description: SKILL.md dispatch prompt for cleanup workflow uses pr_merged_event: true instead of concat() with pre-resolved pr_merge_status/branch_name
+    description: 'SKILL.md dispatch prompt for cleanup workflow uses pr_merged_event: true instead of concat() with pre-resolved pr_merge_status/branch_name'
     evidence_type: structural
     plan_item: 1
   - id: SC-2
