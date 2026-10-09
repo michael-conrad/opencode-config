@@ -4,7 +4,7 @@ schema_version: "1.0"
 mappings:
   - phase: 1
     name: Template fix sweep — all 7 auditor task files
-    concern: Fix per-criterion YAML templates to reject `next_step: proceed` for FAIL criteria
+    concern: 'Fix per-criterion YAML templates to reject `next_step: proceed` for FAIL criteria'
     skill: skill-creator
     task: validate
     reason: Template-only changes across 7 auditor task files — same pattern applied to each
@@ -35,4 +35,4 @@ mappings:
     sc_coverage:
       - SC-3: create.md step 18 enforces all_criteria_pass
       - SC-4: create.md step 20 enforces all_criteria_pass
-      - SC-6: orchestrator halts on all_criteria_pass: false
+      - SC-6: 'orchestrator halts on all_criteria_pass: false'

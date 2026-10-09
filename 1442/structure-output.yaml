@@ -53,7 +53,7 @@ phase_structure:
           sc: SC-2
           evidence_type: string
           red: grep shows no `all_criteria_pass` in any of 7 files
-          green: All 7 files have `all_criteria_pass: bool` in per-criterion template
+          green: 'All 7 files have `all_criteria_pass: bool` in per-criterion template'
           verify: grep 'all_criteria_pass' on all 7 files returns 7 matches
         - id: TDD-5
           sc: SC-5
@@ -83,19 +83,19 @@ phase_structure:
             sc: SC-3
             evidence_type: behavioral
             red: Behavioral test sends prompt with audit returning FAIL — orchestrator proceeds past gate
-            green: Behavioral test sends prompt with audit returning FAIL — orchestrator halts with `all_criteria_pass: false`
-            verify: assert_stderr_pattern_present 'all_criteria_pass: false' + halt signal
+            green: 'Behavioral test sends prompt with audit returning FAIL — orchestrator halts with `all_criteria_pass: false`'
+            verify: 'assert_stderr_pattern_present ''all_criteria_pass: false'' + halt signal'
           - id: TDD-4
             sc: SC-4
             evidence_type: behavioral
             red: Behavioral test sends prompt with concern-separation FAIL — orchestrator proceeds
             green: Behavioral test sends prompt with concern-separation FAIL — orchestrator halts
-            verify: assert_stderr_pattern_present 'all_criteria_pass: false' + halt signal
+            verify: 'assert_stderr_pattern_present ''all_criteria_pass: false'' + halt signal'
           - id: TDD-6
             sc: SC-6
             evidence_type: behavioral
             red: Behavioral test with mixed audit results — orchestrator proceeds
-            green: Behavioral test with mixed audit results — orchestrator halts on `all_criteria_pass: false`
+            green: 'Behavioral test with mixed audit results — orchestrator halts on `all_criteria_pass: false`'
             verify: assert_stderr_pattern_present 'all_criteria_pass.*false' + halt signal
 
     global_post_phase:
