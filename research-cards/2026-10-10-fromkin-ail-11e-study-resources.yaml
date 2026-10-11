@@ -1,0 +1,140 @@
+# Research card: study resources for Fromkin/Rodman/Hyams, "An Introduction to Language" 11e
+# (YAML)
+question: >
+  Study-resource options (vocabulary, student helps, MOOCs) for "An Introduction to
+  Language" 11e (Fromkin/Rodman/Hyams) — the developer's copy (ISBN 9781337559577,
+  paperback with MLA 9th Edition Updates, 2021 reprint of ©2019) ships with no
+  electronic resources.
+date: 2026-10-10
+confidence: high on official surfaces and Anki/MOOC/open-textbook items (fetched live,
+  many via real-browser playwright session); Quizlet + Chegg/Course Hero prices remain
+  unverified — Cloudflare-class blocks defeat both text fetchers and a real browser.
+
+isbn_confirmed:
+  - "9781337559577": 11e paperback w/ MLA9E updates (developer-confirmed; checksum-valid; the prompt's 9781337559521 is invalid)
+  - "9781337559614": MindTap instant access, 6 months, $63.00
+  - "9798214644103": newer MindTap SKU, $63.00, listed "Available April 1, 2027"
+  - "9780357698129": 11e eTextbook ($61.99 until Apr 9 2027 / $84.99 until Oct 6 2027)
+  - "9781133310686": 10e paperback ©2014 (companion site still populated — see official_free)
+  - note: no 12th edition exists (multiple negative primary checks); a unireadinglist.com
+    "(12th ed., 2024)" claim is unverified and contradicted — treat as false.
+    Australian adaptation is a separate line (10th AU ed, 9780170450065, Cengage AU 2021).
+
+official_paid:  # cengage.com product pages fetched 2026-10-10
+  MindTap_11e: {isbn: "9781337559614", price: "$63.00 / 6 months", contains:
+    "per-chapter Getting Started activities, flashcards of important terms, competency
+    quizzes, Explore the Web, full eBook with notes", caveat:
+    "instructor-course-oriented ('make sure your instructor has assigned this platform');
+    no branded self-study MindTap", url: "https://www.cengage.com/c/an-introduction-to-language-11e-fromkin/9781337559614/?filterBy=Student", confidence: high}
+  Cengage_Unlimited: {price: "$169.99/4mo, $244.99/12mo", contains:
+    "MindTap + full eBook library + up to 4 hard-copy rentals (pay S&H)", url:
+    "https://www.cengage.com/unlimited/", confidence: high}
+  eTextbook: {isbn: "9780357698129", price: "$61.99-$84.99", confidence: high}
+  print_new: {isbn: "9781337559577", price: "$232.95", bundle_print_mindtap:
+    {isbn: "9781337759021", price: "$273.95"}, confidence: high}
+
+official_free:
+  companion_site_10e:
+    verified_by: "real-browser playwright session 2026-10-10 (frameset rendered)"
+    entry: "https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M20b&product_isbn_issn=9781133310686&flag=student"
+    contains: "per-chapter Flashcards, Glossary, Web Links; all 10e chapters listed"
+    deep_links:
+      flashcards: "https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M41&product_isbn_issn=1133310680&chapter_number=1&resource_id=6&altname=Glos"
+      glossary: "https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M35&product_isbn_issn=1133310680&chapter_number=1&resource_id=10&altname=Glo"
+      web_links: "https://www.cengage.com/cgi-wadsworth/course_products_wp.pl?fid=M42&product_isbn_issn=1133310680&chapter_number=1&altname=Web+Links"
+    note: "flashcard UI verified live (flip/next controls render); change chapter_number=1..N;
+      content keyed to 10e — near-identical book to 11e"
+    confidence: high
+  companion_site_11e: {state: "empty shell — flashcards/glossary endpoints return zero
+    terms; Cengage moved 11e study tools into paid MindTap only", confidence: high}
+  official_audio_phonetics: {state: "none found on any public official surface", confidence: medium-high}
+  official_study_guide_11e: {state: "none exists (Cengage catalog + Open Library negative)", confidence: medium-high}
+
+anki_verified:  # ankiweb.net deck pages fetched via real browser 2026-10-10
+  - {name: "Linguistics Flashcards", notes: 147, url: "https://ankiweb.net/shared/info/860623452",
+     scope: "UW LING 400 — semantics/morphology terms (entailment, suppletion, hyponym)", updated: "2020-03-18"}
+  - {name: "International Phonetic Alphabet (IPA) Vowels + Consonants", notes: 44,
+     url: "https://ankiweb.net/shared/info/1945279301", scope: "IPA symbols w/ English example words", updated: "2015-02-05"}
+  - {name: "Linguistics I: Phonetics", notes: 34, url: "https://ankiweb.net/shared/info/2060855563",
+     scope: "articulators, place/manner of articulation", updated: "2025-09-11"}
+  - {name: "Linguistics I: Phonology", notes: 29, url: "https://ankiweb.net/shared/info/1870717541",
+     scope: "complementary distribution, sonority sequencing", updated: "2025-09-29"}
+  - {name: "English Linguistics", notes: 178, images: 46, url: "https://ankiweb.net/shared/info/228061357",
+     scope: "allomorphs, morphemes, core intro terms", updated: "2023-12-09"}
+  - {name: "Linguistics (ENGA34)", notes: 162, url: "https://ankiweb.net/shared/info/738077320",
+     scope: "implicature, stems, agent — broad intro coverage", updated: "2026-01-09"}
+  - {name: "English Linguistics: Introduction Rostock", notes: 134, images: 49,
+     url: "https://ankiweb.net/shared/info/1882154284", scope: "phonetics/phonology/morphology exam-prep style", updated: "2026-01-28"}
+  - {name: "Syntax in Linguistics", notes: 16, url: "https://ankiweb.net/shared/info/3828632470",
+     scope: "basic syntax terms (Language Files-sourced)"}
+
+moocs_verified:  # course pages fetched 2026-10-10
+  - {name: "Miracles of Human Language", provider: "Coursera / Leiden Univ.",
+     url: "https://www.coursera.org/learn/human-language", cost: "free to audit; certificate paid",
+     covers: "nature of language, phonetics/phonology, morphology+syntax, semantics+pragmatics,
+     brain/language, sociolinguistics+change, animal comm, sign language; 227k enrolled, 4.7★",
+     confidence: high}
+  - {name: "The Bilingual Brain", provider: "Coursera / Univ. of Houston",
+     url: "https://www.coursera.org/learn/bilingual", cost: "audit free / cert paid",
+     covers: "acquisition, critical periods, L2, brain", confidence: high}
+  - {name: "Intro to Comparative Indo-European Linguistics", provider: "Coursera / Leiden",
+     url: "https://www.coursera.org/learn/comparative-indo-european-linguistics",
+     cost: "audit free / cert paid", covers: "historical/comparative chapter (sound laws, reconstruction)", confidence: high}
+  - {name: "MIT OCW 24.900 Introduction to Linguistics, Spring 2022", url:
+     "https://ocw.mit.edu/courses/24-900-introduction-to-linguistics-spring-2022/",
+     cost: free, contains: "lecture videos, notes, problem sets; best structural companion", confidence: high}
+  - {name: "Crash Course Linguistics", url: "https://thecrashcourse.com/topic/linguistics/",
+     cost: free, contains: "16 episodes mapping ~1:1 to Fromkin chapters (morphology, syntax,
+     semantics, pragmatics, sociolinguistics, phonetics x2, phonology, psycholinguistics,
+     acquisition, historical, world languages, computational, writing systems)", confidence: high}
+  - {name: "An Introduction to Chinese Sign Language and Linguistics", provider: "FutureLearn / SISU",
+     url: "https://www.futurelearn.com/courses/an-introduction-to-chinese-sign-language-and-linguistics",
+     cost: "free limited window; $79 upgrade", covers: "sign language chapter", confidence: high}
+  - {name: "An Introduction to Sociolinguistics (York)", provider: "FutureLearn",
+     state: "confirmed live via platform search; exact slug unresolved — reach via
+     https://www.futurelearn.com/search?q=sociolinguistics", confidence: medium}
+
+open_textbooks:
+  - {name: "Essentials of Linguistics, 2nd ed. (Anderson et al., 2022)", url:
+     "https://ecampusontario.pressbooks.pub/essentialsoflinguistics2/", license: "CC BY-NC-SA 4.0",
+     contains: "free full substitute: phonetics, phonology, morphology, syntax, semantics,
+     pragmatics, sociolinguistics, acquisition, SLA + Check Yourself questions w/ answer keys
+     and practice sets; some chapters marked 'in progress'", confidence: high}
+  - {name: "Speech and Language Processing 3rd ed. draft (Jurafsky & Martin)", url:
+     "https://web.stanford.edu/~jurafsky/slp3/", contains: "free PDF, computational linguistics
+     chapter + rigorous phonetics supplement (Aug 2026 release)", confidence: high}
+
+podcasts:
+  - {name: "Lingthusiasm", url: "https://www.lingthusiasm.com", cost: free,
+     scope: "browse-by-topic index; verified live via Apple Podcasts (120 eps thru Sep 2026)"}
+  - {name: "Lexicon Valley (McWhorter) / History of English Podcast", state: "live per Apple Podcasts; historical/sociolinguistics flavor"}
+
+third_party_paid:
+  Study.com: {price: "$59.99/mo Premium (verified on plans page)", note:
+    "no Fromkin-keyed course; concept-level lessons only", url: "https://study.com/academy/plans.html", confidence: high}
+  Course_Hero: {state: "Cloudflare-blocked; prices unverified; has textbook solutions tiers", confidence: medium}
+  Chegg: {state: "blocked; Q&A/tutor operations wound down — Q&A access ended 2026-03-18
+    (verified from official expert.chegg.com announcement)", confidence: medium}
+  Cram.com: {state: "retiring 2026-11-09 — do not adopt", confidence: high}
+
+gray_area:
+  - "Instructor test banks / answer keys circulate informally (Reddit sellers, archive.org
+     scan keyed to isbn_9781285079783) — instructor-licensed materials; student-facing
+     distribution generally unauthorized. Legitimate path: instructor login via Cengage."
+  - "archive.org hosts full 11e scans (e.g. introductiontola0000from_b4i4) — unauthorized."
+  - No piracy links recorded by policy.
+
+unverified_gaps:
+  - Quizlet: blocked for automation even in a real browser (Cloudflare denial on /search);
+    set URLs/counts unknown. User route: in-site search for "An Introduction to Language
+    11th", "Fromkin chapter N". Indirect evidence (2019 archive) the linguistics topic
+    holds ~1.5M sets.
+  - Coursera certificate prices not displayed on fetched pages.
+  - MindTap internal contents (exact activities, any phonetics audio) — login-gated.
+  - edX has no intro-linguistics course (only NLP/formal-logic adjacent); Open Yale has
+    no linguistics course; Saylor/Khan/CMU-OLI absence not conclusively proven.
+
+artifacts: "/tmp/opencode — study_resource_verification.json, followup_verification.json,
+  cengage_frames.json, screenshots (*.png)"
+sub_agents: "3 research dispatches (publisher resources; third-party aids; MOOC/open) +
+  playwright verification passes"
