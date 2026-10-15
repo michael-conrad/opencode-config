@@ -16,9 +16,10 @@ isbn_confirmed:
   - "9798214644103": newer MindTap SKU, $63.00, listed "Available April 1, 2027"
   - "9780357698129": 11e eTextbook ($61.99 until Apr 9 2027 / $84.99 until Oct 6 2027)
   - "9781133310686": 10e paperback ©2014 (companion site still populated — see official_free)
-  - note: no 12th edition exists (multiple negative primary checks); a unireadinglist.com
-    "(12th ed., 2024)" claim is unverified and contradicted — treat as false.
-    Australian adaptation is a separate line (10th AU ed, 9780170450065, Cengage AU 2021).
+  - note: >-
+      no 12th edition exists (multiple negative primary checks); a unireadinglist.com
+      "(12th ed., 2024)" claim is unverified and contradicted — treat as false.
+      Australian adaptation is a separate line (10th AU ed, 9780170450065, Cengage AU 2021).
 
 official_paid:  # cengage.com product pages fetched 2026-10-10
   MindTap_11e: {isbn: "9781337559614", price: "$63.00 / 6 months", contains:
@@ -125,7 +126,8 @@ gray_area:
   - No piracy links recorded by policy.
 
 unverified_gaps:
-  - Quizlet: blocked for automation even in a real browser (Cloudflare denial on /search);
+  - >-
+    Quizlet: blocked for automation even in a real browser (Cloudflare denial on /search);
     set URLs/counts unknown. User route: in-site search for "An Introduction to Language
     11th", "Fromkin chapter N". Indirect evidence (2019 archive) the linguistics topic
     holds ~1.5M sets.
