@@ -8,8 +8,7 @@ per-root facts arrive from session-init.
 
 The deck lives at `.opencode/` (submodule, upstream
 `michael-conrad/.opencode`). The agent instruction floor is
-[`.opencode/floor.md`](.opencode/floor.md); routing is
-[`.opencode/routing.md`](.opencode/routing.md). Deck changes go through the
+[`.opencode/floor.md`](.opencode/floor.md). Deck changes go through the
 deck's own governance card and its repository's PR process.
 
 ## Trunk-Based Development
@@ -35,7 +34,6 @@ corrupt branches.
 | File | Purpose |
 |------|---------|
 | `.opencode/floor.md` | agent instruction floor (always-injected) |
-| `.opencode/routing.md` | intent-phrased routing index |
 | `.opencode/.issues/AGENTS.md` | submodule issue-store workspace guide |
 | `.issues/AGENTS.md` | local issue-store workspace guide |
 
