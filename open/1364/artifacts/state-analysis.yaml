@@ -1,0 +1,26 @@
+artifact_name: state-analysis
+generated_at: 2026-08-24
+source: "Spec #1364 (for_pr scope model bypasses plan execution)"
+content:
+  description: "State transitions required by each SC"
+  transitions:
+    - entity: "approval-gate/SKILL.md — for_pr scope table row"
+      sc: SC-3
+      before: "Columns: Scope | HALT After | Gap-Fill | PR Strategy. for_pr row: gap-fill = 'auto-create spec+plan+auto-approve+auto-PR'"
+      after: "Columns: Scope | HALT After | Pre-Flight | Pipeline | PR Strategy. for_pr row: pre-flight = 'auto-create spec+plan+auto-approve', pipeline = 'execute plan via executing-plans', PR strategy = 'stacked', 'auto-PR' removed"
+    - entity: "approval-gate/SKILL.md — routing section"
+      sc: SC-4
+      before: "No explicit rule for for_pr with existing plan; agent interprets remaining action as auto-PR and skips to git operations"
+      after: "Routing rule present: for_pr with existing plan MUST call executing-plans; direct PR creation without plan execution is a critical violation"
+    - entity: "executing-plans/SKILL.md"
+      sc: SC-5
+      before: "Thin routing layer — 'route to implementation-pipeline with full context' without reading the plan"
+      after: "Mandatory plan-reading step: read plan file, dispatch each phase through implementation-pipeline in sequence"
+    - entity: "agent routing behavior for for_pr (behavioral state)"
+      sc: SC-1
+      before: "Agent jumps directly to git operations (commit dirty submodule, push, create PR) — plan phases/SCs never executed"
+      after: "Agent dispatches executing-plans and reads the plan before any PR action — stderr shows executing-plans dispatch"
+    - entity: "agent routing behavior for for_pr (missing plan)"
+      sc: SC-2
+      before: "Agent treats gap-fill 'auto-create spec+plan' and PR creation as a single action, skipping plan execution"
+      after: "Agent auto-creates plan then dispatches executing-plans to execute it — stderr shows plan creation followed by executing-plans dispatch"

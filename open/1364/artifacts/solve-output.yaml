@@ -1,0 +1,15 @@
+solve_status: SAT
+plan_status: SOLVED_SATISFICING
+checks:
+  model_sat: SAT
+  check_sat: SAT
+  check_postconditions_invariants: SAT
+planner_result:
+  engine: tamer
+  status: SOLVED_SATISFICING
+  plan_length: 3
+  plan:
+    - execute_phase_1()
+    - execute_phase_2()
+    - execute_phase_3()
+timestamp: 2026-08-24T09:25:00Z

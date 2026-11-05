@@ -1,0 +1,27 @@
+artifact_name: testability-assessment
+generated_at: 2026-08-24
+source: "Spec #1364 (for_pr scope model bypasses plan execution)"
+content:
+  description: "Evidence type and verification method assignment for each SC"
+  assignments:
+    - sc_id: SC-1
+      criterion: "for_pr scope with existing plan routes through executing-plans, not direct PR creation"
+      evidence_type: behavioral
+      verification_method: "opencode-cli run with for_pr authorization on a spec+plan → stderr shows executing-plans dispatch; assert NO direct git commit / github_create_pull_request in stderr"
+    - sc_id: SC-2
+      criterion: "for_pr scope without existing plan auto-creates plan then executes it"
+      evidence_type: behavioral
+      verification_method: "opencode-cli run with for_pr authorization on a spec without plan → stderr shows plan creation followed by executing-plans dispatch"
+    - sc_id: SC-3
+      criterion: "Authorization Scope Model table updated with Pre-Flight + Pipeline columns"
+      evidence_type: string
+      verification_method: "grep for Pre-Flight and Pipeline column headers in approval-gate/SKILL.md"
+    - sc_id: SC-4
+      criterion: "approval-gate skill has routing rule for for_pr with existing plan"
+      evidence_type: string
+      verification_method: "grep for routing rule text in approval-gate/SKILL.md"
+    - sc_id: SC-5
+      criterion: "executing-plans skill has plan-reading mandate step"
+      evidence_type: string
+      verification_method: "grep for plan-reading step in executing-plans/SKILL.md"
+  note: "SC-3, SC-4, SC-5 are declared as `string` evidence in the spec and verified via grep. SC-1 and SC-2 are `behavioral` and require opencode-cli run with stderr assertion. The behavioral SCs (SC-1, SC-2) have a hard prerequisite: the executing-plans skill must exist in the deck and dispatch observably in stderr; if the skill is missing, the behavioral test cannot pass (FAIL is the only valid outcome)."

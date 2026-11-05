@@ -1,0 +1,33 @@
+artifact_name: code-path-inventory
+generated_at: 2026-08-24
+source: "Spec #1364 (for_pr scope model bypasses plan execution)"
+content:
+  description: "Code paths implied by each SC"
+  code_paths:
+    - sc_id: SC-1
+      path: "approval-gate skill dispatch path (for_pr with existing plan)"
+      description: "When for_pr authorized and spec+plan exist, routing MUST invoke executing-plans, NOT jump to git commit/push/github_create_pull_request. Verified behaviorally via stderr showing executing-plans dispatch."
+      files:
+        - ".opencode/skills/approval-gate/SKILL.md"
+        - ".opencode/skills/approval-gate/tasks/route.md"
+    - sc_id: SC-2
+      path: "approval-gate skill dispatch path (for_pr without plan)"
+      description: "When for_pr authorized and plan missing, agent auto-creates plan then dispatches executing-plans to execute it"
+      files:
+        - ".opencode/skills/approval-gate/SKILL.md"
+        - ".opencode/skills/approval-gate/tasks/route.md"
+    - sc_id: SC-3
+      path: "approval-gate Authorization Scope Model table"
+      description: "Table gains Pre-Flight + Pipeline columns; `for_pr` row updated; 'auto-PR' removed as gap-fill action"
+      files:
+        - ".opencode/skills/approval-gate/SKILL.md"
+    - sc_id: SC-4
+      path: "approval-gate routing rule text"
+      description: "Mandatory plan-execution routing rule added: for_pr with existing plan MUST call executing-plans; direct PR creation is critical violation"
+      files:
+        - ".opencode/skills/approval-gate/SKILL.md"
+    - sc_id: SC-5
+      path: "executing-plans plan-reading step"
+      description: "Mandatory step added: read plan file, dispatch each phase through implementation-pipeline in sequence"
+      files:
+        - ".opencode/skills/executing-plans/SKILL.md"

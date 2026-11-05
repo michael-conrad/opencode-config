@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 michael-conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated fixture for .opencode#2707 SC-6
+#
+issue_number: 9051
+title: '[BUG] README.md links to docs/architecture.md which does not exist'
+state: open
+labels:
+- bug
+created_at: '2026-11-02T00:00:00Z'
+updated_at: '2026-11-02T00:00:00Z'

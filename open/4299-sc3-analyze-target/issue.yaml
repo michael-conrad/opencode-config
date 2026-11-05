@@ -1,0 +1,10 @@
+issue_number: 4299
+title: '[SPEC] Fixture: analyze-step R-13 gate target for 2450 SC-3'
+state: open
+labels:
+- spec
+- spec-draft
+created_at: '2026-09-17T00:00:00Z'
+updated_at: '2026-09-17T00:00:00Z'
+owner: michael-conrad
+repo: .opencode

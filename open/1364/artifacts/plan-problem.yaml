@@ -1,0 +1,36 @@
+domain: issue-1364-for-pr-routing
+types:
+  - name: phase
+objects:
+  - name: phase_1
+    type: phase
+  - name: phase_2
+    type: phase
+  - name: phase_3
+    type: phase
+fluents:
+  - name: completed
+    params:
+      - name: p
+        type: phase
+actions:
+  - name: execute_phase_1
+    preconditions: []
+    effects:
+      - completed(phase_1)
+  - name: execute_phase_2
+    preconditions:
+      - completed(phase_1)
+    effects:
+      - completed(phase_2)
+  - name: execute_phase_3
+    preconditions:
+      - completed(phase_1)
+      - completed(phase_2)
+    effects:
+      - completed(phase_3)
+init: []
+goals:
+  - completed(phase_1)
+  - completed(phase_2)
+  - completed(phase_3)

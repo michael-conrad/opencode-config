@@ -1,0 +1,4 @@
+title: "[SPEC] git-workflow-pr: replace no-op comment 'trigger mergeability' with local merge-base check"
+labels: ["spec", "approved-for-for_pr"]
+number: 2267
+status: open

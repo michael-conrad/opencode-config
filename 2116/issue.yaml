@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2026 michael-conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated
+#
+issue_number: 2116
+title: '[SPEC] Email confirmation on registration'
+state: open
+labels:
+- spec
+created_at: '2026-08-19T00:00:00Z'
+updated_at: '2026-08-19T00:00:00Z'
+owner: michael-conrad
+repo: .opencode

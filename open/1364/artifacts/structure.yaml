@@ -1,0 +1,99 @@
+spec_path: .opencode/.issues/1364/spec.md
+issue_number: 1364
+phases:
+  - id: 1
+    name: Create executing-plans skill with plan-reading mandate
+    scs:
+      - SC-5
+    items:
+      - item: 1
+        sc: SC-5
+        description: >-
+          Create .opencode/skills/executing-plans/ (SKILL.md + task cards) and add the
+          mandatory plan-reading step: read the plan file and dispatch each phase through
+          implementation-pipeline in sequence. String SC verified via grep for the
+          plan-reading step in executing-plans/SKILL.md.
+    skill: test-driven-development
+    task: red/green
+    dispatch: sub-agent
+    triplet_integrity: PASS
+    cross_phase_deps: NONE
+    note: >-
+      executing-plans/ does not currently exist in the skill deck (verified by
+      ls .opencode/skills/executing-plans/ -> no such directory). This is the
+      foundational prerequisite: both behavioral SCs (SC-1, SC-2) dispatch
+      executing-plans and cannot pass without it.
+
+  - id: 2
+    name: Update approval-gate authorization scope model and routing rule
+    scs:
+      - SC-3
+      - SC-4
+    items:
+      - item: 2
+        sc: SC-3
+        description: >-
+          Update the Authorization Scope Model for_pr row to use Pre-Flight + Pipeline
+          columns, remove the 'auto-PR' gap-fill action. String SC verified via grep for
+          Pre-Flight and Pipeline column headers in approval-gate/SKILL.md.
+      - item: 3
+        sc: SC-4
+        description: >-
+          Add the mandatory routing rule: for_pr with existing plan MUST dispatch
+          executing-plans; direct PR creation without plan execution is a critical
+          violation. String SC verified via grep for the routing rule text in
+          approval-gate/SKILL.md.
+    skill: test-driven-development
+    task: red/green
+    dispatch: sub-agent
+    triplet_integrity: PASS
+    cross_phase_deps: NONE
+    depends_on:
+      - phase: 1
+        reason: >-
+          The routing rule (SC-4) dispatches executing-plans; the skill must exist
+          before the routing rule referencing it is coherent. The table (SC-3) is
+          colocated in approval-gate/SKILL.md with SC-4 and shipped in the same phase.
+
+  - id: 3
+    name: Behavioral enforcement of for_pr routing
+    scs:
+      - SC-1
+      - SC-2
+    items:
+      - item: 4
+        sc: SC-1
+        description: >-
+          Behavioral test: for_pr scope with existing plan routes through executing-plans,
+          not direct PR creation. opencode-cli run -> stderr shows executing-plans dispatch;
+          assert NO direct git commit / github_create_pull_request in stderr.
+      - item: 5
+        sc: SC-2
+        description: >-
+          Behavioral test: for_pr scope without existing plan auto-creates plan then
+          executes it. opencode-cli run -> stderr shows plan creation followed by
+          executing-plans dispatch.
+    skill: test-driven-development
+    task: red/green
+    dispatch: sub-agent
+    triplet_integrity: PASS
+    cross_phase_deps: NONE
+    depends_on:
+      - phase: 1
+        reason: Behavioral tests dispatch executing-plans; the skill must exist (SC-5) before the tests can observe the dispatch in stderr.
+      - phase: 2
+        reason: Behavioral tests verify the routing behavior enabled by the routing rule (SC-4); the rule must be present before the behavior is observable.
+
+dependency_dag:
+  edges:
+    - from: 1
+      to: 2
+    - from: 1
+      to: 3
+    - from: 2
+      to: 3
+  description: >-
+    Phase 1 (create executing-plans + SC-5) is the foundation. Phase 2 (approval-gate
+    table + routing rule, SC-3/SC-4) depends on Phase 1. Phase 3 (behavioral tests,
+    SC-1/SC-2) depends on both Phase 1 (skill must exist) and Phase 2 (routing rule
+    must be present).

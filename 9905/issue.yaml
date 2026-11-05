@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 michael-conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated (fixture for .opencode#2665 SC-5)
+title: 'Change-driven PDF rebuild'
+status: open
+labels: []
+body: 'src/rebuild.py currently hardcodes a rebuild trigger. Make the PDF rebuild change-driven so a rebuild happens when the source PDF changes. The work for this issue is implemented on branch feature/9905-pdf-rebuild and is complete — the branch is the deliverable.'
+created_at: '2026-10-27T00:00:00Z'
+updated_at: '2026-10-27T00:00:00Z'

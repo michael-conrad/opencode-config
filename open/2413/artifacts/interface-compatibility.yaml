@@ -1,0 +1,17 @@
+# Interface compatibility for issue 2413
+# RED STATE: no dependency_contract section — research step 9 must auto-backfill
+
+interfaces:
+  - interface: "interface-compatibility.yaml artifact schema (spec-creation pipeline output)"
+    kind: modified
+    compatibility: backward_compatible
+    phases: [1]
+    detail: "A new dependency_contract section is added to the artifact. Existing keys (interfaces, removed_interfaces, breaking_changes) unchanged."
+  - interface: "research.md step 9 dependency_contract extraction"
+    kind: modified
+    compatibility: backward_compatible
+    phases: [2]
+    detail: "Step 9 either validates the existing dependency_contract section or auto-backfills it."
+
+removed_interfaces: []
+breaking_changes: []

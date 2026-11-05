@@ -1,0 +1,91 @@
+artifact_name: validate-findings
+issue: 1364
+generated_at: 2026-08-24
+source: "Plan validation for #1364 (for_pr scope routes through executing-plans)"
+solve_status: SAT
+overall_status: PASS
+
+categories:
+  category_1_structural_validation:
+    status: PASS
+    checks:
+      - id: S1
+        check: "plan.md has a phase table with all required columns (Phase | Skill | Task | Target | SCs | Depends On)"
+        result: PASS
+        detail: "Phase table present at plan.md lines 27-31 with all six columns."
+      - id: S2
+        check: "Each phase has a procedure section with numbered steps"
+        result: PASS
+        detail: "Phase 1 (3 steps), Phase 2 (4 steps), Phase 3 (4 steps) all have numbered procedure steps."
+      - id: S3
+        check: "Exit criteria section exists with SC-to-phase mapping"
+        result: PASS
+        detail: "Exit Criteria C1-C5 map SC-5 (P1), SC-3/SC-4 (P2), SC-1/SC-2 (P3) to phases."
+
+  category_2_skill_task_validity:
+    status: PASS
+    checks:
+      - id: ST1
+        check: "Every skill+task reference matches a valid entry in implementation-workflow.md reference card"
+        result: PASS
+        detail: "All phases reference skill `test-driven-development` task `red`, which is a valid entry in the reference card's RED-GREEN Daisy-Chain. No invalid references found."
+
+  category_3_sc_coverage:
+    status: PASS
+    checks:
+      - id: C3A
+        check: "Every SC from the spec appears in at least one phase's exit criteria"
+        result: PASS
+        detail: "SC-1, SC-2, SC-3, SC-4, SC-5 all covered: SC-5 (P1), SC-3+SC-4 (P2), SC-1+SC-2 (P3)."
+      - id: C3B
+        check: "No SC has RED/GREEN/COMMIT steps split across phases (triplet split detection)"
+        result: PASS
+        detail: "SC-5 RED/GREEN/verify/commit all in Phase 1 Item 1; SC-3 (Item 2) and SC-4 (Item 3) both in Phase 2; SC-1 (Item 4) and SC-2 (Item 5) both in Phase 3. No SC splits across phases."
+
+  category_4_concern_separation:
+    status: PASS
+    checks:
+      - id: CS1
+        check: "Each phase addresses exactly one concern from the concern-map artifact"
+        result: PASS
+        detail: "Phase 1 (SC-5) addresses C2; Phase 2 (SC-3, SC-4) addresses C1; Phase 3 (SC-1, SC-2) addresses C3. Concern-map.yaml groups SC-3+SC-4 together as a single concern C1 ('approval-gate scope model and routing rule update'), so Phase 2 addresses exactly one concern."
+      - id: CS2
+        check: "No two phases address the same concern"
+        result: PASS
+        detail: "C1 only in Phase 2, C2 only in Phase 1, C3 only in Phase 3. No concern spans multiple phases."
+
+  category_5_dag_validation:
+    status: PASS
+    checks:
+      - id: D1
+        check: "Dependency contract DAG has no cycles"
+        result: PASS
+        detail: "Edges: phase_1->phase_2, phase_1->phase_3, phase_2->phase_3. Acyclic."
+      - id: D2
+        check: "All phases reachable from the start node"
+        result: PASS
+        detail: "phase_1 is the start; phase_2 and phase_3 both reachable via edges."
+      - id: D3
+        check: "No orphan phases (no incoming or outgoing edges)"
+        result: PASS
+        detail: "phase_1 has outgoing edges (is start), phase_3 has incoming edges (is end). No orphans."
+
+  category_6_holistic_quality:
+    status: PASS
+    checks:
+      - id: H1
+        check: "No TBD/TODO placeholders in the plan body"
+        result: PASS
+        detail: "No TBD/TODO placeholder tokens found."
+      - id: H2
+        check: "All steps use checkbox format"
+        result: PASS
+        detail: "Exit criteria C1-C5 use checkbox format. Procedure steps use numbered lists (standard plan format), not placeholders."
+      - id: H3
+        check: "Dispatch mode consistency (inline phases have no dispatched steps, clean-room phases have no inline steps)"
+        result: PASS
+        detail: "All phases use the standard RED->GREEN->verify->commit daisy-chain (clean-room dispatched steps per test-driven-development), with commit-inline as the orchestrator step per reference card. Coherence gate / baseline / VbC explicitly marked (clean-room). No inline/dispatched mixing conflict."
+
+findings: []
+
+recommendation: "All 6 validation categories pass. No findings. The prior run's Category 4 FAIL was a misreading of the concern-map: concern C1 in concern-map.yaml groups SC-3+SC-4 together as a single concern, so Phase 2 addressing both is exactly-one-concern-per-phase, not a violation. Plan is valid and ready to proceed."

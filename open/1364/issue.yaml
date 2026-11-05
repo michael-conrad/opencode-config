@@ -1,0 +1,13 @@
+# SPDX-FileCopyrightText: 2026 michael-conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated
+#
+issue_number: 1364
+title: '[SPEC] for_pr scope routes through executing-plans instead of skipping to PR'
+state: open
+labels:
+- spec
+- approved-for-for_pr
+- spec-cleared
+created_at: '2026-08-24T00:00:00Z'
+updated_at: '2026-08-24T00:00:00Z'

@@ -1,0 +1,9 @@
+# SPDX-FileCopyrightText: 2026 michael-conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated (fixture for .opencode#2712 SC-1/SC-5)
+title: 'Fixture stub issue establishing store numbering floor'
+status: open
+labels: []
+body: 'Stub record seeded so the remoteless test store next-free number is 7001. Not a real ticket; do not act on it.'
+created_at: '2026-11-05T00:00:00Z'
+updated_at: '2026-11-05T00:00:00Z'

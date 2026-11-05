@@ -1,0 +1,25 @@
+artifact_name: blast-radius
+generated_at: 2026-08-24
+source: "Spec #1364 (for_pr scope model bypasses plan execution)"
+content:
+  description: "All files affected by the for_pr gap-fill routing fix"
+  affected_files:
+    - path: ".opencode/skills/approval-gate/SKILL.md"
+      change: "Update Authorization Scope Model table — add Pre-Flight + Pipeline columns to `for_pr` row, remove 'auto-PR' gap-fill action; add routing rule that for_pr with existing plan MUST route through executing-plans"
+      exists: true
+    - path: ".opencode/skills/approval-gate/SKILL.md"
+      change: "Add mandatory plan-execution routing rule (SC-4): for_pr with existing plan calls executing-plans, direct PR creation without plan execution is a critical violation"
+      exists: true
+    - path: ".opencode/skills/executing-plans/SKILL.md"
+      change: "Add mandatory plan-reading step — read the plan file and dispatch each phase through the implementation pipeline in sequence (SC-5). NOTE: skill directory not currently present in deck; may need creation per spec or exists in referenced docs"
+      exists: false
+    - path: ".opencode/tests-v2/behaviors/"
+      change: "Add behavioral test(s) — SC-1 and SC-2 verify for_pr scope dispatches executing-plans (not direct PR), SC-3/4/5 are string greps"
+      exists: true
+  related_skills_referencing_executing_plans:
+    - path: ".opencode/skills/plan/SKILL.md"
+      change: "References executing-plans skill for executing approved plans step by step (unchanged by this spec)"
+    - path: ".opencode/prompts/default.txt"
+      change: "References executing-plans skill for implementation handoff (unchanged by this spec)"
+    - path: ".opencode/skills/verification-before-completion/tasks/collect.md"
+      change: "References executing-plans → verification-before-completion chain (unchanged)"

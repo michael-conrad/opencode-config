@@ -1,0 +1,26 @@
+# SPDX-FileCopyrightText: 2026 michael-conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated
+#
+sc_count: 5
+scs:
+  - id: SC-1
+    description: "for_pr scope with existing plan routes through executing-plans, not direct PR creation"
+    evidence_type: behavioral
+    plan_item: 4
+  - id: SC-2
+    description: "for_pr scope without existing plan auto-creates plan then executes it via executing-plans"
+    evidence_type: behavioral
+    plan_item: 5
+  - id: SC-3
+    description: "Authorization Scope Model table updated with Pre-Flight + Pipeline columns; 'auto-PR' gap-fill action removed"
+    evidence_type: string
+    plan_item: 2
+  - id: SC-4
+    description: "approval-gate skill has mandatory routing rule: for_pr with existing plan MUST call executing-plans"
+    evidence_type: string
+    plan_item: 3
+  - id: SC-5
+    description: "executing-plans skill has plan-reading mandate step: read plan file, dispatch each phase through implementation-pipeline in sequence"
+    evidence_type: string
+    plan_item: 1

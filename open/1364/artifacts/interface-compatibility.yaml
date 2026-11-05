@@ -1,0 +1,42 @@
+artifact_name: interface-compatibility
+generated_at: 2026-08-24
+source: "Spec #1364 (for_pr scope model bypasses plan execution)"
+content:
+  description: "Interface boundaries and dependency contracts between affected modules"
+  interface_boundaries:
+    - boundary: "approval-gate skill → executing-plans skill"
+      status: "NEW ROUTING DEPENDENCY"
+      description: "Under for_pr scope with existing plan, approval-gate routing MUST dispatch executing-plans. This introduces a routing dependency from approval-gate to executing-plans that must be contractually satisfied for the behavioral SCs (SC-1, SC-2) to pass."
+      preconditions:
+        - "executing-plans skill must exist in the skill deck (.opencode/skills/executing-plans/) with a plan-reading step"
+    - boundary: "approval-gate Authorization Scope Model table"
+      status: "CHANGED"
+      description: "The `for_pr` row schema changes from (HALT After, Gap-Fill, PR Strategy) to (HALT After, Pre-Flight, Pipeline, PR Strategy). SC-3 verifies the new column headers via grep."
+      sc: SC-3
+    - boundary: "approval-gate routing rule"
+      status: "ADDED"
+      description: "New routing rule text mandates executing-plans dispatch for for_pr with existing plan. SC-4 verifies via grep for the routing rule text."
+      sc: SC-4
+    - boundary: "executing-plans plan-reading mandate"
+      status: "ADDED"
+      description: "New mandatory step: read plan file, dispatch each phase through implementation-pipeline. SC-5 verifies via grep for the plan-reading step."
+      sc: SC-5
+  dependency_contract:
+    description: "Concrete dependency data derived from spec #1364 affected files and success criteria — real sources, real targets, real type constraints"
+    entries:
+      - source: "approval-gate/SKILL.md (routing rule, SC-4)"
+        target: "executing-plans skill dispatch"
+        type: "routing dispatch"
+        constraint: "when authorization_scope == 'for_pr' AND plan exists, agent MUST dispatch executing-plans; direct PR creation is a critical violation"
+      - source: "approval-gate/SKILL.md (Authorization Scope Model, SC-3)"
+        target: "approval-gate/SKILL.md scope table"
+        type: "table schema"
+        constraint: "for_pr row must contain Pre-Flight and Pipeline columns; 'auto-PR' gap-fill action removed; PR is output of plan execution, not standalone gap-fill"
+      - source: "executing-plans/SKILL.md (plan-reading mandate, SC-5)"
+        target: "implementation-pipeline dispatch"
+        type: "dispatch"
+        constraint: "executing-plans MUST read the plan file and dispatch each phase through implementation-pipeline in sequence"
+      - source: "behavioral test (SC-1, SC-2)"
+        target: "opencode-cli run stderr"
+        type: "observable assertion"
+        constraint: "stderr shows executing-plans dispatch for both existing-plan and missing-plan for_pr scenarios; no direct git commit / github_create_pull_request in stderr"

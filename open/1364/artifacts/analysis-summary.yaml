@@ -1,0 +1,32 @@
+artifact_name: analysis-summary
+generated_at: 2026-08-24
+source: "Spec #1364 (for_pr scope model bypasses plan execution)"
+content:
+  spec_path: ".opencode/.issues/1364/spec.md"
+  sc_count: 5
+  artifact_status:
+    blast-radius: backfilled
+    concern-map: backfilled
+    code-path-inventory: backfilled
+    cross-cutting-matrix: backfilled
+    interface-compatibility: backfilled
+    state-analysis: backfilled
+    testability-assessment: backfilled
+  scope_summary: |
+    Spec #1364 fixes the for_pr authorization scope model where a user authorizing
+    'for_pr' caused the agent to skip plan execution entirely and jump directly to
+    PR creation (git commit/push/create PR). The fix: (1) change the Authorization
+    Scope Model for_pr row to use Pre-Flight + Pipeline columns and remove 'auto-PR'
+    as a gap-fill action, (2) add a mandatory routing rule in approval-gate that for_pr
+    with existing plan routes through executing-plans, and (3) add a plan-reading
+    mandate to the executing-plans skill. 5 SCs: SC-1/SC-2 are behavioral (for_pr
+    routes through executing-plans with/without existing plan), SC-3/SC-4/SC-5 are
+    string (grep for table columns, routing rule, plan-reading step).
+  dependencies_noted: |
+    - executing-plans skill directory (skills/executing-plans/) is NOT currently present
+      in the skill deck. SC-1, SC-2, SC-5 depend on it. SC-1/SC-2 behavioral tests
+      cannot pass without it.
+    - The scope model table referenced in the spec (Gap-Fill / Pre-Flight columns) is
+      described in the spec's Problem section; the actual approval-gate/SKILL.md table
+      currently has columns (Scope | HALT After | PR Strategy) without a gap-fill column.
+      The spec describes the target state; plan must reconcile against actual file state.

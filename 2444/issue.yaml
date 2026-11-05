@@ -1,0 +1,10 @@
+issue_number: 2444
+title: '[SPEC] Fixture: log-rotation policy for the report generator service'
+state: open
+labels:
+- spec
+- spec-draft
+created_at: '2026-09-13T00:00:00Z'
+updated_at: '2026-09-13T00:00:00Z'
+owner: michael-conrad
+repo: .opencode

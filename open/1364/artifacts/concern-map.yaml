@@ -1,0 +1,30 @@
+artifact_name: concern-map
+generated_at: 2026-08-24
+source: "Spec #1364 (for_pr scope model bypasses plan execution)"
+content:
+  description: "Concern decomposition of the 5 SCs, mapped to phases"
+  concerns:
+    - id: C1
+      name: "approval-gate scope model and routing rule update"
+      description: "Change `for_pr` row to use Pre-Flight + Pipeline columns (remove 'auto-PR' gap-fill action) and mandate that for_pr with existing plan routes through executing-plans, not direct PR creation"
+      scs:
+        - SC-3
+        - SC-4
+      phase_boundary: "Documentation/string change to approval-gate/SKILL.md"
+    - id: C2
+      name: "executing-plans plan-reading mandate"
+      description: "Add mandatory step to read the plan file and dispatch each phase through the implementation pipeline"
+      scs:
+        - SC-5
+      phase_boundary: "Documentation/string change to executing-plans/SKILL.md"
+    - id: C3
+      name: "Behavioral enforcement of routing"
+      description: "Verify for_pr scope routes through executing-plans when plan exists, and auto-creates plan then executes when none exists"
+      scs:
+        - SC-1
+        - SC-2
+      phase_boundary: "Behavioral tests via opencode-cli run"
+  scs_per_concern:
+    C1: [SC-3, SC-4]
+    C2: [SC-5]
+    C3: [SC-1, SC-2]

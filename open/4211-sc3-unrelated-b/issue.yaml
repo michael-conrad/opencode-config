@@ -1,0 +1,3 @@
+# Deliberate schema-violation fixture for 2450 SC-3: a YAML list, not a mapping.
+- unrelated
+- entries

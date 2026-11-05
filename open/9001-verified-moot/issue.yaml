@@ -1,0 +1,4 @@
+number: 9001
+title: '[BUG] session-init emits spurious hooks-dir errors for worktrees'
+status: open
+labels: '[{"name": "bug", "color": "d73a4a", "description": "Something isn''t working"}]'

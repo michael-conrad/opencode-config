@@ -1,0 +1,11 @@
+# SPDX-FileCopyrightText: 2026 michael-conrad
+# SPDX-License-Identifier: MIT
+# Provenance: AI-generated fixture for .opencode#2707 SC-7
+#
+issue_number: 9052
+title: '[BUG] README.md carries two independent documentation defects'
+state: open
+labels:
+- bug
+created_at: '2026-11-02T00:00:00Z'
+updated_at: '2026-11-02T00:00:00Z'

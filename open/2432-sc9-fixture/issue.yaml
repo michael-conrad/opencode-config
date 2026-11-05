@@ -1,0 +1,65 @@
+title: '[SPEC] md tool: --json output flag for the read action'
+status: open
+labels:
+- approved-for-pr
+- spec-cleared
+body: '> **Fixture spec (fictional, self-contained):** this issue is a test fixture
+  for behavioral scenario `2432-sc9-artifact-generation-validate-yaml-gate`. The spec
+  below describes a hypothetical not-yet-implemented feature and is consistent with
+  the fixture tree''s effective-commit code state.
+
+  >
+
+  > **The spec to analyze is at `.issues/2432/spec.md`** (injected flat path in the
+  test repo).
+
+
+  ## Problem
+
+
+  The `.opencode/tools/md` dispatcher''s `read` action emits human-readable text only.
+  Programmatic consumers must parse prose-formatted output to extract headers or section
+  bodies — brittle and error-prone. A machine-parseable output mode does not exist.
+
+
+  ## Scope
+
+
+  - **Affected file (only):** `.opencode/tools/md` — single-file Python markdown dispatcher
+  (actions: read, write, add, delete, new); all parsing and help text live in this
+  one file.
+
+  - **Call sites:** invoked directly as a CLI (`./.opencode/tools/md read <file.md>
+  [--section <header>]`); no library consumers, no wrapping tools.
+
+  - **Unaffected:** all other actions and all other tools.
+
+
+  ## Approach
+
+
+  Add a `--json` flag to the `read` action: with the flag, output serializes to a
+  JSON document (headers array, section body string field, JSON error object on unknown
+  header); without it, the existing human-readable output is preserved byte-for-byte.
+  Three per-SC TDD items: JSON headers output (SC-01), default-output regression guard
+  (SC-02), section-body output and error object (SC-03).
+
+
+  ## Impact
+
+
+  - **Risk: low** — single file, one action, additive flag; default output frozen
+  byte-for-byte removes regression risk for existing consumers.
+
+
+  **Out of scope:** `--json` on other actions; default-output changes; new files or
+  modules.
+
+
+  ---
+
+  🤖 Co-authored with AI: OpenCode (huggingface/zai-org/GLM-5.3-Flash)
+
+  '
+created_at: '2026-09-03T03:55:47+00:00'
+updated_at: '2026-09-17T15:38:38+00:00'

@@ -1,0 +1,26 @@
+artifact_name: cross-cutting-matrix
+generated_at: 2026-08-24
+source: "Spec #1364 (for_pr scope model bypasses plan execution)"
+content:
+  description: "Cross-cutting concerns spanning multiple SCs and the two routed behaviors"
+  cross_cutting_concerns:
+    - concern: "Plan existence determines routing path"
+      scs:
+        - SC-1
+        - SC-2
+      description: "The routing decision (execute existing plan vs auto-create then execute) is the same concern exercised under two plan-existence preconditions. SC-1 and SC-2 share the executing-plans dispatch target and differ only in whether plan creation precedes it."
+      shared_files:
+        - ".opencode/skills/approval-gate/SKILL.md"
+        - ".opencode/skills/approval-gate/tasks/route.md"
+    - concern: "Documentation changes cluster in approval-gate/SKILL.md"
+      scs:
+        - SC-3
+        - SC-4
+      description: "Both the scope model table (SC-3) and the routing rule (SC-4) are string-verified changes to the same SKILL.md file. Co-located edits risk overlapping text regions — apply sequentially with distinct anchors."
+      shared_files:
+        - ".opencode/skills/approval-gate/SKILL.md"
+    - concern: "Behavioral verification depends on executing-plans dispatch observable in stderr"
+      scs:
+        - SC-1
+        - SC-2
+      description: "Both behavioral SCs assert stderr shows executing-plans dispatch. If the executing-plans skill is missing from the deck, the test cannot pass — a prerequisite dependency for both SC-1 and SC-2."

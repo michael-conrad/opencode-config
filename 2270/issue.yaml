@@ -1,0 +1,9 @@
+issue_number: 2270
+title: '[SPEC] Add a --validate-only flag to the opencode run command'
+state: open
+labels:
+- spec
+created_at: '2026-08-10T00:00:00Z'
+updated_at: '2026-08-10T00:00:00Z'
+owner: michael-conrad
+repo: .opencode
