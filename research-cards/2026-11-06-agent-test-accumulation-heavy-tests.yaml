@@ -203,7 +203,7 @@ sources_pass2:
     url: https://codex.danielvaughan.com/2026/06/23/rethinking-agent-generated-tests-observational-feedback-codex-cli-scaffold-testing-strategy/
     title: "Rethinking Agent-Generated Tests (Codex CLI practice guide)"
     published: 2026-06-23
-    verifying_quote: "The print-to-assertion ratio of 4.8:1 reveals something fundamental about how LLMs use tests" — prescribes "Do NOT write new test files to observe intermediate values" in AGENTS.md
+    verifying_quote: "The print-to-assertion ratio of 4.8:1 reveals something fundamental about how LLMs use tests — prescribes: Do NOT write new test files to observe intermediate values (in AGENTS.md)"
     confidence: medium
 
 # ---- Findings (merged) ----
