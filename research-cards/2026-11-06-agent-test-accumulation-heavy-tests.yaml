@@ -1,0 +1,251 @@
+# (YAML)
+research_question: "Best practices for agent-managed test units: (a) test accumulation across implementation sessions, (b) heavy tests written solely to validate one PR/issue ticket that then run on every deploy build, (c) tier taxonomy + operational budgets to anchor SC-test classification (ephemeral / PR-only / smoke / regression), (d) the run-the-real-code verification anchor, (e) light-default + heavy-on-demand policy."
+created: 2026-11-06
+last_updated: 2026-11-06
+confidence: 0.9
+status: active
+tags:
+  - test-tiers
+  - ci-cost
+  - agent-test-hygiene
+  - validation-regression-split
+  - run-real-code
+  - card-ready
+dispatches:
+  - "pass 1 (2 agents): test-tiering/toolchain + AI-agent test hygiene"
+  - "pass 2 (4 agents): taxonomy vocabulary + run-real-code + agent run-verify vendors + real-world smoke conventions/lexicon"
+spot_verified_in_session:
+  - https://arxiv.org/abs/2602.07900
+  - https://arxiv.org/abs/2607.12068
+
+# ---- Sources (pass 1) ----
+# See git history of this card for pass-1 source block (pytest, Gradle, Maven,
+# Go/Rust/Jest/Vitest, GitHub Actions, CircleCI, Google 2015/2020, SWE-book ch11,
+# Microsoft playbook, Anthropic Claude Code best-practices + docs + claude.dev,
+# OpenAI Codex bp, arXiv 2602.07900/2607.12068, Fowler harness/sensors, practitioner
+# posts). All pass-1 quotes carried forward unchanged.
+
+sources_pass2:
+  - id: vocke-pyramid
+    url: https://martinfowler.com/articles/practical-test-pyramid.html
+    title: "The Practical Test Pyramid (Ham Vocke, Thoughtworks)"
+    published: 2018-02-26
+    verifying_quote: "Mike Cohn's original test pyramid consists of three layers... (bottom to top) 1. Unit Tests 2. Service Tests 3. User Interface Tests; Write tests with different granularity; The more high-level you get the fewer tests you should have ... reduce the number of end-to-end tests to a bare minimum"
+    confidence: high
+  - id: fowler-subcut
+    url: https://martinfowler.com/bliki/SubcutaneousTest.html
+    title: "Subcutaneous Test (Fowler)"
+    published: 2011-02-14
+    verifying_quote: "a test that operates just under the UI of an application ... when you want to test end-to-end behavior, but it's difficult to test through the UI itself"
+    confidence: high
+  - id: fowler-tags
+    url: https://martinfowler.com/tags/test%20categories.html
+    title: "Fowler bliki test-categories index (IntegrationTest, ContractTest, ComponentTest, UnitTest, StoryTest)"
+    verifying_quote: "Integration tests determine if independently developed units of software work correctly when they are connected to each other... many people assume integration tests are necessarily broad in scope, while they can be more effectively done with a narrower scope"
+    confidence: high  # note: verified 404 for SmokeTest bliki — none exists
+  - id: swe-book-ch11
+    url: https://abseil.io/resources/swe-book/html/ch11.html
+    title: "SWE at Google ch.11"
+    verifying_quote: "small tests run in a single process, medium tests run on a single machine, and large tests run wherever they want; around 80% of our tests being narrow-scoped unit tests... 15% medium-scoped integration tests... 5% end-to-end tests; Teams at Google will frequently isolate their large tests... running them only during the build and release process so as not to impact developer workflow"
+    confidence: high
+  - id: swe-book-ch13
+    url: https://abseil.io/resources/swe-book/html/ch13.html
+    title: "SWE at Google ch.13 Test Doubles"
+    verifying_quote: "our first choice for tests is to use the real implementations of the system under test's dependencies ... Tests have higher fidelity when they execute code as it will be executed in production ... [mocking overuse] required constant effort to maintain while rarely finding bugs ... interaction testing ... can't tell you that the system under test is working properly; it can only validate that certain functions are called as expected"
+    confidence: high
+  - id: swe-book-ch14
+    url: https://abseil.io/resources/swe-book/html/ch14.html
+    title: "SWE at Google ch.14 Larger Testing"
+    verifying_quote: "Our large tests have a default timeout of 15 minutes or 1 hour; probers are 'smoke tests' of the production system; If the SUT starts successfully, the test passes"
+    confidence: high
+  - id: fowler-mocks
+    url: https://martinfowler.com/articles/mocksArentStubs.html
+    title: "Mocks Aren't Stubs (Fowler)"
+    published: 2007-01-02
+    verifying_quote: "Mockist tests are thus more coupled to the implementation ... unit tests that run green but mask inherent errors ... The classical TDD style is to use real objects if possible and a double if it's awkward to use the real thing."
+    confidence: high
+  - id: shore-twm
+    url: https://www.jamesshore.com/v2/projects/nullables/testing-without-mocks
+    title: "Testing Without Mocks: A Pattern Language (James Shore)"
+    published: 2023-02-16
+    verifying_quote: "use state-based tests instead of interaction-based tests ... use the code under test's real dependencies ... Test your external communication for real. For file system code, read and write real files. For databases, access a real database ... Write one or two end-to-end tests that make sure your code starts up and runs a common workflow"
+    confidence: high  # CORRECTION: this is Shore's work, NOT Jason Gorman's (pass-1 hint was wrong; codemanship CDX checked)
+  - id: spotify-honeycomb
+    url: https://labs.spotify.com/2018/01/11/testing-of-microservices/  # via Wayback 20181213035138
+    title: "Testing of Microservices (Spotify Labs)"
+    published: 2018-01-11
+    verifying_quote: "A more fitting way of structuring our tests for Microservices would be the Testing Honeycomb ... We spin up a database, populate it, start the service, and query the actual API in the tests"
+    confidence: high
+  - id: fowler-pipeline
+    url: https://martinfowler.com/bliki/DeploymentPipeline.html
+    title: "Deployment Pipeline (Fowler)"
+    published: 2013-05-30
+    verifying_quote: "Each stage provides increasing confidence, usually at the cost of extra time. Early stages can find most problems yielding faster feedback."
+    confidence: high
+  - id: pytest-markers
+    url: https://docs.pytest.org/en/stable/example/markers.html
+    title: "pytest — custom markers registry"
+    verifying_quote: "It is recommended to explicitly register markers ... Typos in function markers are treated as an error if you use the strict_markers configuration option."
+    confidence: high
+  - id: anthropic-harness
+    url: https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+    title: "Effective harnesses for long-running agents (Anthropic Engineering)"
+    published: 2025-11-26
+    verifying_quote: "Claude tended to make code changes, and even do testing with unit tests or curl commands against a development server, but would fail to recognize that the feature didn't work end-to-end ... Providing Claude with these kinds of testing tools dramatically improved performance, as the agent was able to identify and fix bugs that weren't obvious from the code alone"
+    confidence: high
+  - id: anthropic-tamper
+    url: https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents  # same post
+    title: "(same post) — test-edit governance precedent"
+    verifying_quote: "We prompt coding agents to edit this file only by changing the status of a passes field, and we use strongly-worded instructions like 'It is unacceptable to remove or edit tests because this could lead to missing or buggy functionality.'"
+    confidence: high
+  - id: codex-prompting
+    url: https://developers.openai.com/codex/prompting.md
+    title: "Prompting (OpenAI Codex docs)"
+    verifying_quote: "Codex should re-run the repro steps after the fix; After the fix, run lint + the smallest relevant test suite. Report the commands and results; Ask Codex to run the dev server (if allowed)"
+    confidence: high
+  - id: cc-workflows
+    url: https://code.claude.com/docs/en/common-workflows
+    title: "Common workflows (Claude Code docs)"
+    verifying_quote: "Tell Claude the command to reproduce the issue ... run the new tests and fix any failures"
+    confidence: high
+  - id: cc-hooks
+    url: https://code.claude.com/docs/en/hooks
+    title: "Hooks reference (Claude Code docs)"
+    verifying_quote: "Hooks are user-defined shell commands ... that execute automatically at specific points in Claude Code's lifecycle"
+    confidence: high
+  - id: aider-lint-test
+    url: https://aider.chat/docs/usage/lint-test.html
+    title: "Linting and testing (Aider docs)"
+    verifying_quote: "/run ... share error messages or to show aider the code's output before asking for changes ... recompile each file which was modified ... or rebuild the entire project"
+    confidence: high
+  - id: boeckeler-harness
+    url: https://martinfowler.com/articles/harness-engineering.html
+    title: "Harness engineering for coding agent users (Böckeler)"
+    published: 2026-04-02
+    verifying_quote: "What is reasonably fast and should be run even before integration, or even before a commit is even created? (e.g. linters, fast test suites ...) / What is more expensive and should therefore only be run post-integration in the pipeline? (e.g. mutation testing ...)"
+    confidence: high
+  - id: rust-ignore
+    url: https://doc.rust-lang.org/book/ch11-02-running-tests.html
+    title: "Rust Book — #[ignore]"
+    verifying_quote: "Sometimes a few specific tests can be very time-consuming to execute, so you might want to exclude them during most runs of cargo test ... #[ignore] fn expensive_test() ... you can run cargo test -- --ignored"
+    confidence: high
+  - id: pandas-markers
+    url: https://pandas.pydata.org/pandas-docs/stable/development/contributing_codebase.html
+    title: "pandas contributing guide (test suite)"
+    verifying_quote: "pytest pandas -n 4 -m 'not slow and not network and not db and not single_cpu' ... slow: any test taking long (think seconds rather than milliseconds) ... Tests marked high_memory ... are skipped unless you ask for them"
+    confidence: high
+  - id: gradle-int-suite
+    url: https://docs.gradle.org/current/userguide/jvm_test_suite_plugin.html
+    title: "Gradle JVM Test Suite Plugin"
+    verifying_quote: "this plugin can be used to define a group of Integration Tests, which might run much longer than unit tests and have different environmental requirements."
+    confidence: high
+  - id: nextjs-testing
+    url: https://raw.githubusercontent.com/vercel/next.js/canary/contributing/core/testing.md
+    title: "Next.js testing docs (repo)"
+    verifying_quote: "unit: Very fast tests that should run without a browser or run `next` ... e2e: Runs against next dev, next start, and deployed to Vercel"
+    confidence: high
+  - id: vscode-smoke
+    url: "https://github.com/microsoft/vscode (test/smoke/README.md)"
+    title: "VS Code smoke tests"
+    verifying_quote: "--shard INDEX/TOTAL runs only one part of the suites ... You must always run the smoketest version that matches the release you are testing"
+    confidence: high
+  - id: testcontainers
+    url: https://testcontainers.com/getting-started/
+    title: "Testcontainers"
+    verifying_quote: "bootstrapping local development and test dependencies with real services wrapped in Docker containers ... without mocks or in-memory services"
+    confidence: high
+  - id: pact
+    url: https://docs.pact.io/
+    title: "Pact contract testing"
+    verifying_quote: "code-first tool for testing HTTP and message integrations using contract tests ... safely confirm that your applications will work together without having to deploy the world first"
+    confidence: high
+  - id: pitest
+    url: https://pitest.org/
+    title: "PIT mutation testing"
+    verifying_quote: "Traditional test coverage ... measures only which code is executed ... It does not check that your tests are actually able to detect faults ... mutation testing is the gold standard"
+    confidence: high
+  - id: goog-test-sizes-2010
+    url: https://testing.googleblog.com/2010/12/test-sizes.html
+    title: "Test Sizes (Simon Stewart, Google Testing Blog)"
+    published: 2010-12-13
+    verifying_quote: "comment-thread verification only; engages the stated 60-second small-test limit (S/M/L table)"
+    confidence: medium
+
+# ---- Findings (merged) ----
+findings:
+  - id: F1
+    finding: "ANTIPATTERN CONFIRMED (heavy default suite): Google isolates large tests to build/release stages explicitly 'so as not to impact developer workflow'; the per-commit gate is small tests only (single process, no I/O; ~60s small-test ceiling in Google's own S/M/L regime)."
+    tier: 1
+    sources: [swe-book-ch11, goog-test-sizes-2010]
+  - id: F2
+    finding: "TIER MECHANISM is per-toolchain and documented: pytest registered markers + strict_markers (-m 'not slow'), Rust #[ignore]/-- --ignored, Gradle integrationTest suite, Maven Failsafe, Jest/Vitest projects, Go build tags. Heavy tests are opt-in everywhere; exclusion-from-default is the documented convention (pandas ships the canonical marker string: 'not slow and not network and not db and not single_cpu')."
+    tier: 1
+    sources: [pytest-markers, rust-ignore, pandas-markers, gradle-int-suite]
+  - id: F3
+    finding: "TAXONOMY: pyramid (Cohn/Vocke) — unit/service(UI); fewer tests per higher level; E2E reduced 'to a bare minimum'; Google's orthogonal size-vs-scope grid (small/medium/large × narrow/medium/broad, 80/15/5 mix); subcut tests test end-to-end behavior just under the UI; contract tests guard third-party seams where doubles would lie. Terminology is NOT unified — both Vocke and Fowler 2021 say the community hasn't settled terms; no 'SmokeTest' bliki exists (verified 404)."
+    tier: 2
+    sources: [vocke-pyramid, swe-book-ch11, fowler-subcut, fowler-tags]
+  - id: F4
+    finding: "SMOKE = operational 'does the SUT start and its critical path work' (Google: 'If the SUT starts successfully, the test passes'; probers = production smoke; Vocke: 1-2 core user journeys; Shore: 'one or two end-to-end tests that make sure your code starts up and runs a common workflow'; VS Code ships a separate sharded test/smoke suite as its release gate; K8s probes budget health checks in seconds). No universal smoke-duration number exists in any fetched primary source — the documented granularity is seconds-vs-minutes (unit=ms per Microsoft playbook; 'slow' = 'seconds rather than milliseconds' per pandas)."
+    tier: 2
+    sources: [swe-book-ch14, vocke-pyramid, shore-twm, vscode-smoke]
+  - id: F5
+    finding: "REGRESSION SUITE = accumulated story/bug tests (Fowler); 'correct granularity' = push tests as far down the pyramid as possible; when a high-level test fails, add the missing lower-level test; integration tests live at serialize/deserialize seams; assert only what lower levels couldn't cover."
+    tier: 2
+    sources: [fowler-tags, vocke-pyramid]
+  - id: F6
+    finding: "RUN-THE-REAL-CODE ANCHOR (strongest evidence): SWE-book ch13 — real implementations are the first choice, 'higher fidelity when they execute code as it will be executed in production', mocking-framework overuse 'rarely finding bugs' with 'constant effort', interaction testing validates calls not behavior; Fowler — mockist tests 'run green but mask inherent errors', real objects if possible; Shore — state-based tests over interaction-based, real files/databases, overlapping sociable tests run real dependency chains; Spotify honeycomb — 'the Microservice has become our new Unit', real DB + real API per test; Testcontainers/Pact/Playwright document the real-service/real-browser mechanisms with mocks as opt-in."
+    tier: 2
+    sources: [swe-book-ch13, fowler-mocks, shore-twm, spotify-honeycomb, testcontainers, pact]
+  - id: F7
+    finding: "AGENT-RUN ANCHOR (vendor-confirmed): Anthropic's long-running-agents post — unit tests + curl 'against a development server' is insufficient; explicitly prompting full end-to-end verification with browser automation 'as a human user would' 'dramatically improved performance', surfacing bugs 'not obvious from the code alone'; OpenAI Codex docs — 're-run the repro steps after the fix' and 'run lint + the smallest relevant test suite' (repro-run vs minimal suite distinct); Claude Code workflows — 'tell Claude the command to reproduce the issue', 'run the new tests and fix any failures'; Aider /run shares real program output into the loop; hooks make run-on-edit non-optional."
+    tier: 2
+    sources: [anthropic-harness, codex-prompting, cc-workflows, aider-lint-test, cc-hooks]
+  - id: F8
+    finding: "LIGHT-DEFAULT / HEAVY-ON-DEMAND POLICY (supported): Böckeler's lifecycle split — fast controls pre-commit, expensive ones (mutation testing, broad review) post-integration only; Aider's per-file-recompile vs full-rebuild tiers; Codex's 'smallest relevant test suite' wording; Rust's --ignored on demand 'when you have time to wait'; pandas' marker-excluded default; Next.js 'very fast' unit tier default with isolated e2e scripts."
+    tier: 2
+    sources: [boeckeler-harness, aider-lint-test, codex-prompting, rust-ignore, pandas-markers, nextjs-testing]
+  - id: F9
+    finding: "NO public vendor/framework standard defines marker tags like 'validation-only'/'ephemeral' for agent-generated tests, nor an explicit test-promotion human checkpoint — verified absent from Claude Code docs, Codex docs, Cursor rules docs, and practitioner posts (2026-11-06). Nearest precedent for governing agents' edits to existing tests: Anthropic's test-tamper rule ('It is unacceptable to remove or edit tests...'). A lifecycle vocabulary here would be novel-but-grounded: tiering evidence is strong, the ticket-scoped lifecycle is team policy territory (deck governance)."
+    tier: 2
+    sources: [anthropic-tamper]
+  - id: F10
+    finding: "MUTATION TESTING as the presence-vs-value countermeasure: coverage only measures execution, 'not that your tests are actually able to detect faults' — mutation score is 'the gold standard' check on agent-authored suites; positioned as post-integration/scheduled, never default-gate (Böckeler)."
+    tier: 2
+    sources: [pitest, boeckeler-harness]
+
+# ---- Card-ready material (draft anchors for the eventual governed artifact) ----
+card_ready_material:
+  target_options:
+    - "programming-principles card update (description should add: reference when creating SPECs and PLANs so SC-matching tests are marked by tier — description-level hook per floor's match-your-intent rule)"
+    - "dedicated test-tier skill card owned by/adjacent to programming-principles"
+  rewrite_surfaces_in_deck:
+    - ".opencode/skills/implement/SKILL.md L32 — 'Test tiers: smoke + regression are the default for every cycle and PR' (needs the validation-only class added)"
+    - ".opencode/skills/implement/references/implementation-workflow.md tier table + suite-green row (smoke, regression, full-suite rows; needs on-demand/heavy tier and marker-on-creation discipline)"
+    - "systematic-debugging #5 ('Add the failing case as a behavioral test') — needs a tier/disposition tag"
+  draft_anchors:
+    - name: run-real-code
+      anchor: "Verify the updated code path by executing the real implementation (repro command, real dependencies, real app boot); test suites and mock-interaction reads are secondary evidence, never the only evidence. Mocks are the fallback for awkward/dangerous collaborators only."
+      sources: [anthropic-harness, swe-book-ch13, fowler-mocks, shore-twm]
+    - name: mark-on-creation
+      anchor: "Every test an agent writes is classified at write time and carries its tier marker: ephemeral (scratch observation, never committed as a test file), pr-validation (proves this PR for this ticket; runs at PR-check only; dispositioned promote/consolidate/retire at merge), smoke (default always-run; SUT-starts + critical path; seconds-scale), regression (changed-area coverage; default gate), heavy-regression (permitted, opt-in only: marker-excluded from the default run; scheduled/on-demand)."
+      sources: [pandas-markers, rust-ignore, vocke-pyramid, fowler-tags]
+    - name: light-default
+      anchor: "The always-run gate (pre-commit + PR) stays in seconds-to-low-minutes: unit + smoke + changed-area regression. Full suite, benchmarks, mutation testing, broad e2e: release boundaries, scheduled jobs, or explicit developer request."
+      sources: [swe-book-ch11, boeckeler-harness, ms-playbook(pass1)]
+    - name: granularity
+      anchor: "Push verification as far down the tiers as the change allows; a heavier-tier test earns its place only when lower tiers cannot reach the behavior; ticket-scoped PR-validation tests are not promoted by default — promotion is an explicit reviewer decision."
+      sources: [vocke-pyramid, swe-book-ch13]
+    - name: no-test-tampering
+      anchor: "Agents may not delete or edit pre-existing tests to make gates pass (Anthropic precedent); disposition of any existing test changed by agent work is stated in the PR."
+      sources: [anthropic-tamper]
+  novelty_flag: "The ephemeral/pr-validation marker vocabulary is novel (F9); tiering, run-real-code, light-default, and granular-evidence anchors are industry-grounded and vendor-confirmed (F6-F8)."
+
+gaps:
+  - "ISTQB glossary fetch returned empty; its canned smoke/sanity definitions remain unverified (commonly-cited v4.0 text unconfirmed)."
+  - "No canonical Fowler smoke bliki (verified 404); smoke's authoritative homes are the CD book, Google ch14, Shore, VS Code practice."
+  - "'Testing strawberry' diagram unlocatable (CDX-checked); honeycomb verified only via Wayback of Spotify Labs."
+  - "No universal smoke-duration budget number exists in fetched primaries; only Google's S/M/L 60s ceiling, ch14 15min/1hr large-test timeouts, pandas' seconds-vs-ms 'slow', K8s probe seconds."
+  - "Ephemeral/pr-validation marker tags: documented nowhere (F9) — novelty, not consensus."
+  - "Meta engineering-blog primary not obtained; Devin/Cursor/Windsurf/GitLab Duo/Amazon Q test-specific docs either unfetched or without test-budget guidance."
+  - "Prior-pass gaps still standing: per-ticket test accrual documented only anecdotally; Bun conventions unverified; pass-1 practitioner per-model stats verified only via the blog citing arXiv:2602.07900."
