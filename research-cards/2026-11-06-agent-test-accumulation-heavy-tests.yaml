@@ -170,6 +170,41 @@ sources_pass2:
     published: 2010-12-13
     verifying_quote: "comment-thread verification only; engages the stated 60-second small-test limit (S/M/L table)"
     confidence: medium
+  - id: arxiv-value
+    url: https://arxiv.org/abs/2602.07900
+    title: "Rethinking the Value of Agent-Generated Tests for LLM-Based Software Engineering Agents (Chen et al.)"
+    published: "2026-02-08 (v2 2026-04-09); abstract spot-verified in session"
+    verifying_quote: "test writing is common, but resolved and unresolved tasks within the same model exhibit similar test-writing frequencies ... value-revealing print statements appearing much more often than assertion-based checks ... GPT-5.2 writes almost no new tests yet achieves performance comparable to top-ranking agents"
+    confidence: high
+  - id: arxiv-debt
+    url: https://arxiv.org/abs/2607.12068
+    title: "Beyond Test Presence: Assessing the Quality and Robustness of Agent-Generated Tests in Open-Source Projects"
+    published: "2026-07-13; abstract spot-verified in session"
+    verifying_quote: "the possibility of 'stealth technical debt', in which test suites pass execution but do not offer comprehensive coverage or semantic value ... agent-generated tests exhibited a higher risk of flakiness (Candidate Rate: 0.41 vs. 0.30)" # noqa — 204,673 test artifacts (AIDev dataset)
+    confidence: high
+  - id: toolversus
+    url: https://www.toolversus.dev/2026/08/how-to-stop-ai-generated-code-from.html
+    title: "How to Stop AI-Generated Code From Bloating Your Codebase"
+    published: 2026-08-08
+    verifying_quote: "Repeated test scaffolding. The same mock setup pasted into a dozen test files ... Test folders bloat faster than source folders in most repositories using assistants."
+    confidence: medium
+  - id: proandroid
+    url: https://proandroiddev.com/ai-generated-tests-the-hidden-cost-983e22743f70
+    title: "AI-Generated Tests: The Hidden Cost (G. Barbosa)"
+    published: 2026-04-22
+    verifying_quote: "Redundancy happens when the AI generates multiple tests for the same logical branch with different inputs ... The result is a bloated test suite with no real coverage gain."
+    confidence: medium
+  - id: testing-mag
+    url: https://www.softwaretestingmagazine.com/knowledge/why-duplicate-unit-tests-are-undermining-test-quality-in-the-age-of-ai/
+    title: "Why Duplicate Unit Tests Are Undermining Test Quality in the Age of AI (E. Lopian)"
+    verifying_quote: "AI assistants contribute additional tests that resemble existing ones without recognizing that the behavior has already been verified elsewhere."
+    confidence: medium
+  - id: codex-practice
+    url: https://codex.danielvaughan.com/2026/06/23/rethinking-agent-generated-tests-observational-feedback-codex-cli-scaffold-testing-strategy/
+    title: "Rethinking Agent-Generated Tests (Codex CLI practice guide)"
+    published: 2026-06-23
+    verifying_quote: "The print-to-assertion ratio of 4.8:1 reveals something fundamental about how LLMs use tests" — prescribes "Do NOT write new test files to observe intermediate values" in AGENTS.md
+    confidence: medium
 
 # ---- Findings (merged) ----
 findings:
@@ -213,6 +248,15 @@ findings:
     finding: "MUTATION TESTING as the presence-vs-value countermeasure: coverage only measures execution, 'not that your tests are actually able to detect faults' — mutation score is 'the gold standard' check on agent-authored suites; positioned as post-integration/scheduled, never default-gate (Böckeler)."
     tier: 2
     sources: [pitest, boeckeler-harness]
+  - id: FA
+    finding: "RESTORED (pass-1). BLOAT/ACCUMULATION: practitioner sources measure test-folder bloat ('Test folders bloat faster than source folders in most repositories using assistants'; 'the same mock setup pasted into a dozen test files'), redundant branch-per-input tests ('a bloated test suite with no real coverage gain'), and dedup-blindness ('assessors contribute additional tests that resemble existing ones without recognizing that the behavior has already been verified elsewhere'). Cross-session per-ticket accrual stays ANECDOTAL (gaps)."
+    sources: [toolversus, proandroid, testing-mag]
+  - id: FB
+    finding: "RESTORED (pass-1). LOW-VALUE OBSERVATIONAL: agent-written tests serve as observation channels — print statements dominate assertion checks (practitioner print:assertion ratio 4.8:1), test-writing frequency does not distinguish resolved from unresolved tasks within the same model, prompt-induced test-volume changes do not alter outcomes, GPT-5.2 writes almost no tests yet matches top agents."
+    sources: [arxiv-value, codex-practice]
+  - id: FC
+    finding: "RESTORED (pass-1). FLAKINESS/DEBT: 204,673-test-artifact study (AIDev dataset) — agent-generated files flakier than human ones (candidate rate 0.41 vs 0.30, driven by file-I/O and non-determinism) and framed as 'stealth technical debt' — suites that pass without semantic value."
+    sources: [arxiv-debt]
 
 # ---- Card-ready material (draft anchors for the eventual governed artifact) ----
 card_ready_material:
