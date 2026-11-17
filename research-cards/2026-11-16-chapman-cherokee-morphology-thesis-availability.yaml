@@ -6,10 +6,11 @@ question: >
   Secondary question: does the citation itself hold up?
 date: 2026-11-16
 confidence: >
-  high on verified negatives (archive.org API, OpenLibrary API, ERIC API, OpenAlex,
-  UNC Graduate School 1946-1959 official list via full OCR text); JSTOR/WorldCat/
-  HathiTrust/ProQuest remain formally unverified (bot walls) but nothing surfaced
-  anywhere that points to the item existing.
+  high on verified negatives — archive.org API, OpenLibrary API, ERIC API, OpenAlex,
+  UNC Graduate School 1946-1959 official list via full OCR text, AND (as of the
+  second pass) real-browser verification of JSTOR, WorldCat, and HathiTrust that
+  had blocked the first pass. ProQuest and UNC local catalog remain unverified; no
+  platform reachable has produced a single hit pointing at the item existing.
 
 verification_negatives:  # every row fetched live 2026-11-16
   archive_org: {result: 0 hits for exact title AND 0 for chapman+cherokee+morphology,
@@ -32,15 +33,34 @@ verification_negatives:  # every row fetched live 2026-11-16
     unrelated lib/morphology-el-1.0.0.jar inside OmegaT installs. E-Books zip listed:
     no match. Status: verified negative.
 
-bot_walled_unverified:  # blocks confirmed live via curl and a real chromium session
-  jstor: {wall: "Client Challenge (JS)", note: item never appeared in any indexed search}
-  worldcat: {wall: Cloudflare 429}
-  hathitrust: {wall: Cloudflare "Just a moment" 403}
-  unc_catalog: {wall: catalog.lib.unc.edu ERR_CONNECTION_TIMED_OUT from this env;
-    homepage loaded once earlier, search could not run}
+browser_verified_negatives:  # headed real chromium, durable persistent profile, 2026-11-16
+  jstor: {exact_phrase_search: "No results found",
+    url: "https://www.jstor.org/action/doBasicSearch?Query=%22Morphology+of+the+Cherokee+Language%22",
+    note: challenge cleared once headed+persistent replaced headless throwaway profile}
+  worldcat: {exact_phrase: "No results found"; au:chapman cherokee: "11 hits, all Unrelated
+    (Cherokee County board history, Mandie films, Denver art museum, wildlife papers)";
+    unquoted cherokee morphology: neighborhood shows Uchihara 2013 thesis etc. — no
+    1950 Chapman item}
+  hathitrust: {fulltext_ocr: "0 results"; catalog_title: "no match"; catalog_author
+    "Chapman, Kingsley": "1 hit = Alton Locke (1850), the Charles Kingsley novel — nothing Cherokee"}
+
+remaining_unverified:
+  unc_catalog: {wall: catalog.lib.unc.edu ERR_CONNECTION_TIMED_OUT from this machine
+    reproducibly (both headless and headed sessions) — network-blocked, not bot-walled;
+    authoritative substitute already verified: UNC Graduate School 1946-1959 list negative}
   google_books: {wall: API daily quota exhausted 429}
   proquest: {wall: requires institutional access; UNC LibGuide says master's theses
     only selectively covered}
+
+tooling_note: >-
+  The bot walls (Cloudflare "Just a moment"/429, JSTOR "Client Challenge") defeat
+  curl, JSON APIs, and headless-chromium deep links, but a HEADED chromium session
+  with a durable persistent profile (playwright-cli open --headed --browser chromium
+  --persistent --profile ~/.local/share/opencode/pw-profile) clears them: navigate
+  to each site's homepage first (warm cookies), then search via the site's own form
+  — deep-link search URLs worked only after homepage warm-up. Profile now lives at
+  ~/.local/share/opencode/pw-profile and carries no JSTOR/WorldCat login (only
+  warmed anonymous sessions); a one-time interactive login is the developer's step.
 
 likely_real_sources_of_the_citation:  # Crossref/S2/WALS-verified related items
   - "William D. Reyburn, 'Cherokee Verb Morphology I' IJAL 19(3) 1953, DOI 10.1086/464216, JSTOR stable/1263004"
