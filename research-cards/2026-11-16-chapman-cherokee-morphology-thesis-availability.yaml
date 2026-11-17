@@ -1,0 +1,62 @@
+# Research card: availability of "Morphology of the Cherokee Language" (Kingsley H. Chapman, UNC 1950)
+# (YAML)
+question: >
+  Any downloadable/full-text copy of "Morphology of the Cherokee Language",
+  Kingsley H. Chapman, UNC-Chapel Hill, 1950 — on archive.org, JSTOR, or elsewhere?
+  Secondary question: does the citation itself hold up?
+date: 2026-11-16
+confidence: >
+  high on verified negatives (archive.org API, OpenLibrary API, ERIC API, OpenAlex,
+  UNC Graduate School 1946-1959 official list via full OCR text); JSTOR/WorldCat/
+  HathiTrust/ProQuest remain formally unverified (bot walls) but nothing surfaced
+  anywhere that points to the item existing.
+
+verification_negatives:  # every row fetched live 2026-11-16
+  archive_org: {result: 0 hits for exact title AND 0 for chapman+cherokee+morphology,
+    method: advancedsearch.php JSON API, url: https://archive.org/advancedsearch.php, status: verified}
+  unt_1946_1959_list: >-
+    UNC Graduate School "Dissertations and Theses, First Supplement 1946-1959"
+    (UNC Library Studies No. 3, 1960), digitized on archive.org at
+    https://archive.org/details/graduateschooldi00univ — full OCR read: no Cherokee
+    linguistics thesis, no Kingsley Chapman (Chapman entries are Francis W. Jr.
+    chemistry 1950, Margaret L., Emily D.M.). A 1950 UNC thesis would be listed.
+    Status: verified against full OCR text — the strongest negative.
+  openlibrary: {result: 0, url: https://openlibrary.org/search.json, status: verified}
+  eric: {result: 0 for Cherokee AND Chapman, method: api.ies.ed.gov/eric JSON, status: verified}
+  openalex: {result: 0 authors named Kingsley Chapman index-wide; exact-phrase fulltext
+    search hits only an unrelated 2019 paper (Bourns, Cherokee Syllabary Texts,
+    DOI 10.4230/OASIcs.LDK.2019.18) that contains the phrase, status: verified}
+  local_drive: >-
+    /media/muksihs/drive-data-1/Cherokee (user's "/media/drive-data-1/Cherokee") —
+    case-insensitive find for *chapman*/*morpholog*/*kingsley*: no match; only
+    unrelated lib/morphology-el-1.0.0.jar inside OmegaT installs. E-Books zip listed:
+    no match. Status: verified negative.
+
+bot_walled_unverified:  # blocks confirmed live via curl and a real chromium session
+  jstor: {wall: "Client Challenge (JS)", note: item never appeared in any indexed search}
+  worldcat: {wall: Cloudflare 429}
+  hathitrust: {wall: Cloudflare "Just a moment" 403}
+  unc_catalog: {wall: catalog.lib.unc.edu ERR_CONNECTION_TIMED_OUT from this env;
+    homepage loaded once earlier, search could not run}
+  google_books: {wall: API daily quota exhausted 429}
+  proquest: {wall: requires institutional access; UNC LibGuide says master's theses
+    only selectively covered}
+
+likely_real_sources_of_the_citation:  # Crossref/S2/WALS-verified related items
+  - "William D. Reyburn, 'Cherokee Verb Morphology I' IJAL 19(3) 1953, DOI 10.1086/464216, JSTOR stable/1263004"
+  - "Reyburn 'Cherokee Verb Morphology II' IJAL 19(4) 1953, DOI 10.1086/464231"
+  - "Reyburn 'Cherokee Verb Morphology III' IJAL 20(1) 1954 pp.44-64, DOI 10.1086/464251 (fieldwork Qualla 1951-52)"
+  - "Ernest Bender & Zellig S. Harris, 'The Phonemes of North Carolina Cherokee', IJAL 1946, DOI 10.1086/463882"
+  - "William Cook, dissertation draft 'Morphology and Syntax of North Carolina Cherokee' — photocopy at American Philosophical Society, https://diglib.amphilsoc.org/node/669312 (snippet-level only; APS diglib bot-walled)"
+
+conclusion: >
+  No downloadable copy exists on any verified platform, and the citation itself is
+  likely garbled or invented: it is absent from UNC's own complete official list of
+  1946-1959 graduate work. If a 1950s Cherokee-morphology source is what the
+  requester actually wants, it is almost certainly Reyburn's IJAL series (paywalled
+  JSTOR; obtainable via ILL) — or Cook's APS-held dissertation draft.
+
+if_pursuing_the_physical_copy: >
+  UNC North Carolina Collection (Wilson Library) reference desk holds paper copies
+  of most UNC theses; WorldCat OCLC lookup from a JS-capable browser opens ILL and
+  HathiTrust bibliographic-API routes; ProQuest PQDT via a subscribing library.
