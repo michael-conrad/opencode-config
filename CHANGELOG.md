@@ -30,6 +30,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- **Release v0.3.0: submodule pointer update + release-gate command declaration** (#378): `.opencode` pointer updated to the merged deck PR (michael-conrad/.opencode#2749, hash-permanence tag `opencode-config/378-.opencode`) — delivered deck changes: post-replacement README rewrite, retired `.guidelines/` fragment-registry removal, `.gitignore` dedupe, plugin auto-discovery verification. AGENTS.md now declares this repository's canonical build/test commands (`cd .opencode && uv sync`, `cd .opencode && uv run pytest`) — the declared source the release clean-room gate resolves first. README submodule guidance corrected: `main`-branch tracking; pointer updates ride with real parent changes.
+
 - **Default Test Model Update** (#2425): bump parent root AGENTS.md default test model reference to `ollama/qwen3.8:27b-256k-gguf4` and update `.opencode` submodule pointer to the merged submodule PR
 - **Gitignore Enhancement** (#336): comprehensive `.gitignore` for mixed Python/LaTeX/Node.js project with standard ignores
 - **Specs-Not-Tracking-Docs** (#329): update AGENTS.md and submodule pointer — specs and plans are NOT tracking documents

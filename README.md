@@ -20,10 +20,15 @@ A **test harness and integration surface** for the [`.opencode`](https://github.
 
 ```
 opencode-config/
-├── .opencode/        ← git submodule (michael-conrad/.opencode, dev branch)
+├── .opencode/        ← git submodule (michael-conrad/.opencode, tracked branch: main)
+├── .github/          ← Issue templates
+├── .gitmodules       ← Submodule registration (branch = main)
 ├── AGENTS.md         ← Repo-purpose context for AI agents
+├── CHANGELOG.md      ← Keep a Changelog release notes
 ├── README.md         ← This file
 ├── LICENSE           ← MIT
+├── docs/             ← Auditor-model qualification research artifacts
+├── skills/           ← Historical top-level skill-task content (tracked)
 └── .gitignore
 ```
 
@@ -44,17 +49,14 @@ git submodule update
 git submodule add git@github.com:michael-conrad/.opencode.git .opencode
 ```
 
-The submodule must track the `dev` branch — never detached HEAD or `main`.
+The submodule tracks the `main` branch — the single trunk; never operate on
+a detached HEAD.
 
 ## Submodule Discipline
 
-- **Edit inside `.opencode/`**: All changes to guidelines, skills, etc. happen inside the submodule directory
+- **Edit inside `.opencode/`**: All changes to the deck (guidelines, skills, tools, etc.) happen inside the submodule directory and are authored upstream in `michael-conrad/.opencode` through its own PR process
 - **Push from `.opencode/`**: Commit and push from inside `.opencode/` to the `michael-conrad/.opencode` remote
-- **Update parent pointer**: After pushing submodule changes, update the parent repo's submodule SHA:
-  ```bash
-  git add .opencode
-  git commit -m "chore: update .opencode submodule pointer"
-  ```
+- **Update parent pointer — rides with real changes**: The parent's submodule pointer update lands in the same commit as the real parent-repo change it accompanies (a CHANGELOG entry, an AGENTS.md update, a release) — never as a pointer-only commit. Record the parent-repo change and the delivered submodule PR; each recorded pointer SHA carries its hash-permanence tag (`opencode-config/<issue>-.opencode`) in the submodule repository.
 
 ## License
 

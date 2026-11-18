@@ -15,6 +15,16 @@ deck's own governance card and its repository's PR process.
 
 Main is the single trunk. Dev branch has been removed.
 
+## Canonical Build and Test Commands
+
+The repository's canonical build and test commands — the declared source
+the release clean-room gate resolves first (#378):
+
+- **Build:** `cd .opencode && uv sync` — provisions the deck's test
+  environment (uv-managed pytest dependencies).
+- **Test:** `cd .opencode && uv run pytest` — the deck tool unit suite
+  (`local-issues`, `session-init`), running in the composed parent layout.
+
 ## Submodule Pointer Discipline
 
 Submodule pointer updates ride with real parent-repo changes in the same
