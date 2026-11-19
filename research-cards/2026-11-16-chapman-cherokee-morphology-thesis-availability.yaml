@@ -24,9 +24,11 @@ verification_negatives:  # every row fetched live 2026-11-16
     Status: verified against full OCR text — the strongest negative.
   openlibrary: {result: 0, url: https://openlibrary.org/search.json, status: verified}
   eric: {result: 0 for Cherokee AND Chapman, method: api.ies.ed.gov/eric JSON, status: verified}
-  openalex: {result: 0 authors named Kingsley Chapman index-wide; exact-phrase fulltext
-    search hits only an unrelated 2019 paper (Bourns, Cherokee Syllabary Texts,
-    DOI 10.4230/OASIcs.LDK.2019.18) that contains the phrase, status: verified}
+  openalex:
+    result: 0 authors named Kingsley Chapman index-wide; exact-phrase fulltext
+      search hits only an unrelated 2019 paper (Bourns, Cherokee Syllabary Texts,
+      DOI 10.4230/OASIcs.LDK.2019.18) that contains the phrase
+    status: verified
   local_drive: >-
     /media/muksihs/drive-data-1/Cherokee (user's "/media/drive-data-1/Cherokee") —
     case-insensitive find for *chapman*/*morpholog*/*kingsley*: no match; only
@@ -37,20 +39,27 @@ browser_verified_negatives:  # headed real chromium, durable persistent profile,
   jstor: {exact_phrase_search: "No results found",
     url: "https://www.jstor.org/action/doBasicSearch?Query=%22Morphology+of+the+Cherokee+Language%22",
     note: challenge cleared once headed+persistent replaced headless throwaway profile}
-  worldcat: {exact_phrase: "No results found"; au:chapman cherokee: "11 hits, all Unrelated
-    (Cherokee County board history, Mandie films, Denver art museum, wildlife papers)";
+  worldcat:
+    exact_phrase: "No results found"
+    au:chapman cherokee: "11 hits, all Unrelated
+      (Cherokee County board history, Mandie films, Denver art museum, wildlife papers)"
     unquoted cherokee morphology: neighborhood shows Uchihara 2013 thesis etc. — no
-    1950 Chapman item}
-  hathitrust: {fulltext_ocr: "0 results"; catalog_title: "no match"; catalog_author
-    "Chapman, Kingsley": "1 hit = Alton Locke (1850), the Charles Kingsley novel — nothing Cherokee"}
+      1950 Chapman item
+  hathitrust:
+    fulltext_ocr: "0 results"
+    catalog_title: "no match"
+    'catalog_author "Chapman, Kingsley"': "1 hit = Alton Locke (1850), the Charles
+      Kingsley novel — nothing Cherokee"
 
 remaining_unverified:
-  unc_catalog: {wall: catalog.lib.unc.edu ERR_CONNECTION_TIMED_OUT from this machine
-    reproducibly (both headless and headed sessions) — network-blocked, not bot-walled;
-    authoritative substitute already verified: UNC Graduate School 1946-1959 list negative}
+  unc_catalog:
+    wall: catalog.lib.unc.edu ERR_CONNECTION_TIMED_OUT from this machine
+      reproducibly (both headless and headed sessions) — network-blocked, not bot-walled
+    authoritative substitute already verified: UNC Graduate School 1946-1959 list negative
   google_books: {wall: API daily quota exhausted 429}
-  proquest: {wall: requires institutional access; UNC LibGuide says master's theses
-    only selectively covered}
+  proquest:
+    wall: requires institutional access; UNC LibGuide says master's theses
+      only selectively covered
 
 tooling_note: >-
   The bot walls (Cloudflare "Just a moment"/429, JSTOR "Client Challenge") defeat

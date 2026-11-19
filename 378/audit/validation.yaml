@@ -27,9 +27,9 @@ implementation:
   verdict: PASS
   findings: []
   adjudicated_classes: []
-  outcome: zero-finding round — SC-1/SC-2/SC-3 verified PASS by the reviewer's
+  outcome: "zero-finding round — SC-1/SC-2/SC-3 verified PASS by the reviewer's
     own executed instruments (gitlink == deck PR #2749 mergeCommit via live
     API; tag peel verified; four-file diff content checked; no drift);
     SC-4 (post-merge tag/release) out of scope per review contract; consumed
     gate evidence: CHECKOUT_OK 08d422fc, DRIFT_OK, declared-manifest command
-    source, build exit 0, 194 passed in clean room, tree 38242518eb
+    source, build exit 0, 194 passed in clean room, tree 38242518eb"
