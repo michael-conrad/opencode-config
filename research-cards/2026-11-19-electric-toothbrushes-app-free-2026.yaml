@@ -106,14 +106,14 @@ app_free_shortlist:  # per-model app/pressure-sensor status verified 2026-11-19;
       magnetic mount. Core 1.0 = same cleaning, no travel case, 28,000 BPM.
 
 skip_for_app_free_users:
-  - Oral-B iO Series 9/10 — the premium IS the app/position tracking (Expert
-    Reviews: iO10 tracking "isn't very accurate — we were so distracted…")
+  - "Oral-B iO Series 9/10 — the premium IS the app/position tracking (Expert
+    Reviews: iO10 tracking \"isn't very accurate — we were so distracted…\")"
   - Sonicare 9900 Prestige Next-Gen (~$300) — "best smart brush"; smart
     features wasted app-free
   - Dyson CameraJet ($499) — camera/app-centric hybrid; QC issues per CNET/CR
     (via Wirecutter 2026-11-03); in/out of stock since Aug 2026 launch
-  - Quip smart/subscription models — Wirecutter: basic Quip is "a manual
-    toothbrush that vibrates — weakly"
+  - "Quip smart/subscription models — Wirecutter: basic Quip is \"a manual
+    toothbrush that vibrates — weakly\""
 
 market_shifts_2025_26:
   - Philips Sonicare full range refresh Feb 2026 (1100→7300 renumbered, app
