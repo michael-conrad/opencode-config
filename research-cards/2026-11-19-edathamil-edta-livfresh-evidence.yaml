@@ -1,0 +1,151 @@
+# Research card: Edathamil (EDTA) in oral care — LIVFRESH/Livionex evidence audit
+# (YAML)
+question: >
+  What is "edathamil" (requester's spelling; standard: edathamil) — chemical
+  identity, its use in LIVFRESH dental gel (Livionex Inc., Los Gatos CA),
+  what the evidence supports including the "250% better plaque removal" and
+  "400% better gum bleeding" claims, safety/regulatory status, product
+  reality, and whether any alternate referent exists.
+date: 2026-11-19
+confidence: >
+  high on identity (PubChem compound API, Sigma-Aldrich, USP monograph,
+  Miller-Keane — all fetched live 2026-11-19) and on the evidence trace (all
+  trial full texts via PMC / NCBI E-utilities). Medium on aggregator-reported
+  product facts (Amazon/Trustpilot counts, NDC listing via snippet,
+  company-asserted CE mark). Gaps below.
+
+identity:
+  edathamil: >-
+    Obsolete mid-20th-century North American generic name for EDTA (edetic
+    acid; edetate salts). PubChem CID 6049 resolves the name "edathamil"
+    directly (CAS 60-00-4; disodium salt dihydrate CAS 6381-92-6, Sigma
+    synonym). Historical use: "edathamil calcium disodium" = the 1950s
+    lead-poisoning chelation drug; replaced in modern nomenclature by INN
+    "edetic acid"/"edetate".
+    https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/name/edathamil/synonyms/JSON
+  in_livfresh: >-
+    "Activated Edathamil" = 2.6% EDTA + MSM (methylsulfonylmethane) permeability
+    carrier; no abrasives, no SLS, no antimicrobials (hence the "squeaky clean"
+    user feel). EDTA is already a common low-level chelator in tartar-control
+    pastes — the novelty is concentration + delivery, not the molecule
+    (Geisinger 2023 states this in print, PMC10524004).
+  mechanism: >-
+    Chelation of calcium/iron cations destabilizes plaque biofilm attachment
+    (plaque "un-glued" for brushing to lift). Zeta-potential repulsion claim is
+    an unpublished in vitro study only (cited in Kaur 2021).
+  alternate_referents: >-
+    None prominent — a Malayalam worship-lyric fragment and an EPFL
+    people-search hit only. Oral-care reading is primary; "edamathil" is a
+    misspelling of "edathamil".
+
+claims_trace:
+  "250%_more_plaque_removal": >-
+    Derived, not printed: 2014 RCT (Dadkhah, Dentistry 2014;4(6):239, 25
+    subjects, 21 days vs Colgate Total/triclosan) — plaque index fell 86% with
+    the gel vs 33% with Colgate; marketing ratio 86/33 ≈ 2.6 → "250% better".
+    PMC4454341. Comparator was the discontinued US triclosan formula.
+  "400%_better_gum_bleeding": >-
+    From Geisinger 2023 (150 subjects, 5 arms): stannous-fluoride LIVFRESH arm
+    −47.4% bleeding vs −8.3% for the weakest comparator (budget AIM NaF
+    paste) ≈ 5.7× → "400%"; vs the strongest comparator (Crest Pro-Health) the
+    margin was 1.7×. PMC10524004 Table 2.
+  "163%_better_tartar_control": >-
+    Mouthwash claim; NO publication located behind it — likely company
+    data/unpublished.
+
+study_set:  # every trial manufacturer-funded; single research group (Wilder-Smith, Beckman Laser Inst., UC Irvine)
+  flagship:
+    kaur_2021: "RCT 65 subj., 6 mo, Stage I/II periodontitis vs 0.454% SnF2:
+      pocket depth −1.18 vs −0.93 mm (between-group 0.21 mm, p=0.0126);
+      all indices better; no AEs. J Periodontol, PMC9984250"
+    geisinger_2023: "RCT 150 subj. (5 arms, 3 mo, gingivitis): best on plaque
+      (−53.3% vs −9.9% control / −23.2% Crest), GI, bleeding; no AEs.
+      J Periodontol, PMC10524004"
+  early_small:
+    dadkhah_2014: "25 subj., 21 d → the 250% claim. Dentistry (OMICS), PMC4454341"
+    ajdaharian_2014: "imaging arm, 22+ subj. Lasers Surg Med, PMC4140948"
+    nayudu_2016: "crossover 22 subj., 45% less plaque. Dentistry (OMICS), PMC5342977"
+    lam_2016: "144 enamel chips: NO significant difference vs Colgate Total on
+      erosion recovery (i.e. no worse, no better). PMC5364811"
+    anbarali_2017: "180 chips microhardness: 'recovered fully, no significant
+      difference'. J Clin Dent, PMID 29211951"
+    anbarali_2018: "overnight plaque ~2× less surface coverage. J Clin Dent,
+      PMID 30211989"
+    lin_2019: "interim 33 subj. 6 mo periodontitis. J Dent Oral Sci, PMC6938303"
+independence_audit:
+  funding: >-
+    ALL trials acknowledge Livionex funding; several co-authors (Novy,
+    Wilder-Smith, Cobb, Otomo-Corgel, Geurs, Jacobsen, Geisinger) are on
+    Livionex's own team/advisor roster (livionex.com/team/), yet each paper
+    states no COI.
+  venues: >-
+    Three early studies in Dentistry (Sunnyvale), an OMICS Group journal —
+    publisher subject to FTC $50.1M judgment (2019) for deceptive peer-review
+    claims. 2021/2023 papers in J Periodontol (flagship venue).
+  replication: >-
+    NO independent replication by any unaffiliated group exists (matches
+    dentalroundup.com's independent assessment + own literature search).
+  unpublished: >-
+    UCSF pediatric pilot NCT04368533 (12 mo, plaque AND caries vs 1500-ppm
+    fluoride paste) registered 2020, reportedly completed, results never
+    published — the caries question is open.
+  company_claims: >-
+    "40+ studies", "40+ patents", "$20M invested", "3,000 dental
+    professionals" are company marketing, unverified; published record ≈ 9
+    trials above.
+
+safety_regulatory:
+  edta_status: >-
+    Disodium EDTA = FDA food additive (21 CFR 172.135, concentration-limited —
+    NOT a blanket GRAS); standard cosmetic/dentifrice sequestrant; JECFA ADI
+    0–2.5 mg/kg (calcium disodium salt).
+  products: >-
+    Fluoride-free gels = cosmetics under US law; Gum Protect+ (0.454% SnF2 +
+    2.6% EDTA) = routine OTC-monograph drug (21 CFR 356) like every stannous
+    paste — not a special approval. EU CE Mark (2021 press release, medical
+    device route via BfArM) company-asserted, certificate unverified.
+  hard_tissue: >-
+    Company's own enamel studies: no worse AND no better than fluoride paste
+    (no remineralization benefit). No published support for a "toxicity
+    build-up" claim seen on Reddit — absence of evidence.
+  fluoride_gap: >-
+    Real documented concern: fluoride-free line has no caries-prevention
+    evidence; the UCSF children's caries trial never published results.
+  sensitivity_signal: >-
+    Recurring user reports of NEW tooth sensitivity — a careful third-party
+    review (dentalroundup) calls it "a pattern, not noise". Trials report no
+    AEs. No ADA Seal of Acceptance held (comparators Crest Pro-Health /
+    Colgate Total hold it). No FDA warning letters found (absence of findings).
+
+product_reality:
+  lineup: fluoride-free Dental Gel (Peppermint/Wintergreen/Cinnamon/Mild/Kids
+    Bubblegum), Gum Protect+ (SnF2), mouthwash (2 flavors), whitening strips
+  price: "$24.95 per 50 g tube (~$14/oz vs ~$2/oz mainstream); Buy-2-Get-2
+    bundles $59.99; Amazon ~$18.95 during Nov 2026"
+  reviews: "Amazon ~10.4k ratings @ 4.2; Trustpilot polarized (23 five-star vs
+    21 one-star, mostly billing/shipping complaints); BBB not accredited, 8
+    complaints/3 yr"
+  company: >-
+    Livionex Inc. (Los Gatos CA), founder/CEO Amit Goswamy (Stanford MBA),
+    chief scientist Rajiv Bhushan; heavyweight advisory board incl. past AAP
+    president, past ADA president — several also trial co-authors.
+gaps:
+  - EU CE certificate unverified (EUDAMED/BfArM not queried — walls)
+  - ClinicalTrials.gov pages bot-walled; trial statuses via snippets +
+    dentalroundup (Aug–Oct 2026)
+  - Company scale numbers unverified; patent portfolio not enumerable
+  - Mouthwash 163% figure has no located publication
+  - Advisor-appointment timing vs study dates unknown (team page undated)
+  - Amazon/Trustpilot counts aggregator-reported, not independently scraped
+sources_primary:
+  - "PubChem compound API (edathamil → CID 6049), 2026-11-19"
+  - "Dadkhah 2014 PMC4454341; Ajdaharian 2014 PMC4140948; Nayudu 2016 PMC5342977;
+    Lam 2016 PMC5364811; Lin 2019 PMC6938303; Kaur 2021 PMC9984250; Geisinger
+    2023 PMC10524004 — all via NCBI PMC/E-utilities, 2026-11-19"
+  - "Livionex team/research pages + getlivfresh.com product pages, 2026-11-19
+    (manufacturer claims, labeled as such)"
+  - "dentalroundup.com LivFresh review (independent claims-trace + ADA Seal
+    check + community professional sentiment), accessed 2026-11-19"
+  - "comparison.co LivFresh review, updated 2026-07-23"
+  - "FTC v. OMICS Group case page; eCFR 21 CFR 172.135 + 21 CFR 356 history,
+    accessed 2026-11-19"

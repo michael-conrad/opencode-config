@@ -1,0 +1,152 @@
+# Research card: electric toothbrush landscape (late 2026) — app-free filter applied
+# (YAML)
+question: >
+  Late-2026 electric toothbrush landscape: recommended models, technology
+  evidence (oscillating vs sonic vs ultrasonic vs ionic), features that
+  matter vs marketing, cost reality, 2025-26 launches. Requester constraint
+  (2026-11-19): NO phone app for brushing — app-free operation is a hard
+  selection criterion; smart/app features are pure waste for this user.
+date: 2026-11-19
+confidence: >
+  high — all findings verified live 2026-11-19 (research sub-agent plus a
+  primary-session verification pass closing app-connectivity gaps on the four
+  shortlist models). Reviewer base: Wirecutter (updated 2026-11-03), Electric
+  Teeth (published 2026-11-19, dentist-reviewed, hands-on with per-criterion
+  scores), Expert Reviews UK (2026-11-19), Guardian hands-on (2026-08-27),
+  TechAdvisor (2024-02, dated but the only hands-on generic-head test).
+  Clinical: Cochrane + open-access peer-reviewed. Gaps below.
+
+evidence:
+  powered_vs_manual:
+    cochrane: >-
+      CD002281.pub3 (Yaacob et al., 56 studies, evidence current to Jan 2014):
+      plaque −11% (1–3 mo) / −21% (>3 mo); gingivitis −6% / −11% vs manual;
+      moderate quality; long-term dental-health benefit unclear.
+      https://www.cochrane.org/evidence/CD002281_poweredelectric-toothbrushes-compared-manual-toothbrushes-maintaining-oral-health
+    nma_2026: >-
+      Luo et al., Clin Oral Investig, published 2026-06-03, open access (19
+      RCTs, 1996–2025): all electric types beat manual; oscillating-rotating
+      largest (≈18% greater plaque reduction); plaque SUCRA ranking
+      oscillating 89.2 > sonic 72.4 > ultrasonic 54.1 > other-electric 45.3 >
+      manual 18.3. Authors' caveats: only 2 direct oscillating-vs-sonic RCTs,
+      majority of trials manufacturer-funded, ranking "provisional".
+      https://link.springer.com/article/10.1007/s00784-026-06955-z
+  oscillating_vs_sonic: >-
+    Modest oscillating edge: Cochrane CD004971 (Deacon 2010, 17 trials)
+    "difference small, clinical importance unclear"; van der Sluijs 2022 meta
+    (Int J Dent Hyg 2023;21(1):77–94): small but potentially clinically
+    relevant advantage, reporting bias likely (industry-financed studies).
+    Reviewer consensus: personal preference decides.
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC10084121/
+  ultrasonic: >-
+    Sparse evidence, mid-table in 2026 NMA; the one good motionless RCT
+    (Chulalongkorn, Angle Orthod 2017;87(2):279–285, 25 ortho patients) had
+    Emmi-dent perform WORSE than a manual brush around brackets.
+    https://pmc.ncbi.nlm.nih.gov/articles/PMC8384361/
+  ionic: >-
+    No independent evidence of superiority; marketing niche. Evidence
+    snippet-level only (NCT00167466 negative; doi 10.1111/idh.12475 Wiley
+    403-unverified). Not represented as a technology in the 2026 NMA.
+  features_that_matter: >-
+    Essentials per reviewer consensus: strong motor, 2-min timer + 30-s
+    quadpacer, pressure sensor (CR scores these "most useful extra features").
+    >3 cleaning modes = marketing. Apps/AI: split verdict — Wirecutter (apps
+    buggy; recommend smart brushes only for coaching-needs users), Electric
+    Teeth ("not worth paying extra for unless you'll use the features"),
+    Expert Reviews (iO10 position tracking inaccurate + distracting).
+
+app_free_shortlist:  # per-model app/pressure-sensor status verified 2026-11-19; prices Black-Friday-season snapshots
+  oral_b_pro_1000:
+    price: "$50 (eBay ~$40); 3-yr TCO $95–98 (Electric Teeth + Wirecutter agree)"
+    essentials: timer + audible pressure sensor (hard to trigger, Wirecutter)
+    app: none — fully standalone
+    heads: classic Oral-B ~$5/head bulk (~$20/yr), 3rd-party compatible
+    notes: Wirecutter top pick; oscillating; NiMH; Smart/Genius lines being
+      phased out but Pro line continues (Oral-B rep via Wirecutter 2026-11-03)
+  sonicare_4100:
+    price: "$30–40; 1-yr $90 / 3-yr $170 (Wirecutter math)"
+    essentials: pressure sensor + SmarTimer/QuadPacer + 14-day battery
+      (manual HX3681 via manuals.plus; Amazon listing)
+    app: no Bluetooth listed in manual/specs — standalone
+    notes: Wirecutter runner-up; CNN Underscored "Best overall"; budget sonic
+  oral_b_io3:
+    price: "$59.99 SRP; 3-yr TCO $158 (Electric Teeth)"
+    essentials: timer/pacer/pressure-sensor set (Electric Teeth
+      recommended-features score 66/100); iO light-ring sensor
+    app: "explicitly none — 'the iO Series 3 is effectively the brilliant iO
+      Series 4, only without the smart features and Bluetooth connectivity'
+      (Expert Reviews, https://www.expertreviews.co.uk/beauty-wellness/dental-care/oral-b-io-series-3-review)"
+    heads: iO-only heads ~$8–15/head (~$32–44/yr); iO head lock-in; generic
+      iO heads exist ($3.25–4.25) but glitchy (one set stuck the pressure
+      sensor red, TechAdvisor 2024-02)
+    notes: Electric Teeth "best Oral-B" (score 4.7, 2025-08-12 review);
+      Li-ion, battery replaceable via iFixit guide 136696
+  sonicare_5950:
+    price: "$59.96 deal / $89.99 SRP"
+    essentials: pressure sensor with haptic feedback + BrushPacer/SmartTimer,
+      6 settings × 3 intensities, 21-day battery, travel case (mouthmedix
+      review HX7133/03 + Amazon listings HX7130/31/03)
+    app: none — Feb-2026 range has app connectivity only from the 7100 up
+      (Compendium 2026-03-06 launch report,
+      https://compendiumlive.com/news/?newsID=105050)
+    heads: Sonicare heads fit all Sonicare handles (~$8/head)
+    notes: Electric Teeth "Best Sonicare" (2026-11-19); Feb-2026 next-gen
+      motor (62,000 movements/min claim); heads 70% bio-based plastic
+  suri_pro_2_0:
+    price: "~$110 US / £105 (Core 1.0 £65)"
+    essentials: "pressure sensor: yes (Guardian spec box 2026-08-27; trysuri.com
+      confirms built-in sensor); timer/pacer built in; battery 1+ month;
+      2 modes, 33,000 BPM"
+    app: "no — Guardian spec box 'App: no'; Telegraph: 'proves you don't need
+      AI and Bluetooth in a brush'"
+    heads: ~$6/head US (£14.99/3 UK); free take-back recycling (heads not
+      home-recyclable); heads shared across Suri 1.0/2.0/Core
+    notes: Electric Teeth Editor's Choice; Expert Reviews Best overall (UK);
+      certified B Corp (88.9); aluminium handle, plant-based heads; USB-C +
+      magnetic mount. Core 1.0 = same cleaning, no travel case, 28,000 BPM.
+
+skip_for_app_free_users:
+  - Oral-B iO Series 9/10 — the premium IS the app/position tracking (Expert
+    Reviews: iO10 tracking "isn't very accurate — we were so distracted…")
+  - Sonicare 9900 Prestige Next-Gen (~$300) — "best smart brush"; smart
+    features wasted app-free
+  - Dyson CameraJet ($499) — camera/app-centric hybrid; QC issues per CNET/CR
+    (via Wirecutter 2026-11-03); in/out of stock since Aug 2026 launch
+  - Quip smart/subscription models — Wirecutter: basic Quip is "a manual
+    toothbrush that vibrates — weakly"
+
+market_shifts_2025_26:
+  - Philips Sonicare full range refresh Feb 2026 (1100→7300 renumbered, app
+    from 7100 up, 70% bio-based heads, 100% recyclable packaging)
+  - Dyson entered category Aug/Sept 2026 (CameraJet, $499, sonic + flosser +
+    0.1MP camera)
+  - Oral-B consolidating on iO ($50–380), Smart/Genius phased out
+  - Suri mainstreamed sustainability positioning (B Corp, repair program,
+    take-back) — now top pick at Electric Teeth AND Expert Reviews
+  - Brush+flosser+camera hybrids multiplying at mid prices (Soocas NEOS II
+    Ultra $200, Waterpik Sonic-Fusion 2.0 $180, Usmile D50 $180) — no reviewer
+    pick yet
+gaps:
+  consumer_reports_ranked_picks: member-gated; only methodology + "includes
+    Burst, Oral-B, Philips" summary verified
+  cnn_underscored: fetched via r.jina.ai text proxy (site HTTP 451) — content
+    consistent with own 2026-06-28 dates, transparency-noted
+  ionic_evidence: snippet-level only (Wiley/MDPI 403)
+  which_uk_telegraph: paywalled; Telegraph used for headline only
+  battery_chemistry_per_model: confirmed iO (Li-ion) + classic Oral-B (NiMH);
+    Sonicare per-model medium confidence (Electric Teeth chart mid-revision)
+  prices: volatile Black-Friday snapshots 2026-11-19
+sources_primary:
+  - "Wirecutter, The Best Electric Toothbrush, updated 2026-11-03,
+    https://www.nytimes.com/wirecutter/reviews/best-electric-toothbrush/"
+  - "Electric Teeth, Best Electric Toothbrush, published 2026-11-19,
+    https://www.electricteeth.com/best-electric-toothbrush/ (+ iO3 review
+    2025-08-12, Suri Pro vs Core 2026-11-03)"
+  - "Expert Reviews UK best-of + iO3 review, 2026-11-19,
+    https://www.expertreviews.co.uk/beauty-wellness/dental-care/best-electric-toothbrush"
+  - "Guardian (Alan Martin), Suri Pro 2.0 review, updated 2026-08-27,
+    https://www.theguardian.com/thefilter/2025/sep/03/suri-20-electric-toothbrush-review"
+  - "Compendium Sonicare 2026 refresh report, 2026-03-06,
+    https://compendiumlive.com/news/?newsID=105050"
+  - "TechAdvisor generic iO heads hands-on, 2024-02-15,
+    https://www.techadvisor.com/article/2236279/are-generic-electric-toothbrush-heads-worth-it.html"
