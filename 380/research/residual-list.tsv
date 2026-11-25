@@ -1,0 +1,424 @@
+number	reason	detail
+10	title-mismatch: tracker='[SPEC-FIX] AGENTS.md Submodule Discipline Must State No Separate Pointer-Bump PRs'	'Phase 2: Add DISPATCH_GATE to routing-only template'
+100	title-mismatch: tracker='[SPEC] Wire Declared Adversarial Audit Gates Into Implementation Pipeline'	"[SPEC] Consolidate multi-issue PR branch strategy to stacked-only"
+1000	no-tracker-number	Test Issue
+1001	no-tracker-number	Test Issue
+1002	no-tracker-number	Test Issue
+1003	no-tracker-number	After Corruption
+1004	no-tracker-number	Test Issue
+1005	no-tracker-number	Test Issue
+1006	no-tracker-number	Test Issue
+1007	no-tracker-number	''
+1008	no-tracker-number	Test Issue
+1009	no-tracker-number	Test Issue
+101	title-mismatch: tracker='[SPEC-FIX] Behavioral test infra: XDG runtime, sourcing guard, model pool, and deepseek-v3.2 tool-path aversion'	"[SPEC-FIX] Restore git-workflow frontmatter triggers and submodule check-pr"
+1010	no-tracker-number	Test Issue
+1011	no-tracker-number	Test Issue
+1012	no-tracker-number	Test Issue
+1013	no-tracker-number	Test Issue
+1014	no-tracker-number	Test Issue
+1015	no-tracker-number	Test Issue
+1016	no-tracker-number	Test Issue
+1017	no-tracker-number	Test Issue
+1018	no-tracker-number	Test Issue
+1019	no-tracker-number	After Corruption
+102	title-mismatch: tracker='[SPEC-FIX] Bash guard for PEP 723 scripts — mandate + remediation'	'[SPEC-FIX] Bash guard for PEP 723 scripts — mandate + remediation'
+1020	no-tracker-number	Test Issue
+1021	no-tracker-number	Test Issue
+1022	no-tracker-number	Test Issue
+1023	no-tracker-number	''
+1024	no-tracker-number	Test Issue
+1025	no-tracker-number	Branch test
+1026	no-tracker-number	Push test
+1027	no-tracker-number	First issue
+1028	no-tracker-number	Second issue
+1029	no-tracker-number	TestDD21Issue
+103	title-mismatch: tracker='[SPEC] Skill cards must specify correct invocation for PEP 723 scripts'	'[SPEC] Skill cards must specify correct invocation for PEP 723 scripts'
+1030	no-tracker-number	NoFrontmatterCheck
+1031	no-tracker-number	Test Issue
+1032	no-tracker-number	Test Issue
+1033	no-tracker-number	Test Issue
+1034	no-tracker-number	Test Issue
+1035	no-tracker-number	Test Issue
+1036	no-tracker-number	Test Issue
+1037	no-tracker-number	Test Issue
+1038	no-tracker-number	Test Issue
+1039	no-tracker-number	Test Issue
+1040	no-tracker-number	Test Issue
+1041	no-tracker-number	After Corruption
+1042	no-tracker-number	Test Issue
+1043	no-tracker-number	Test Issue
+1044	no-tracker-number	Test Issue
+1045	no-tracker-number	''
+1046	no-tracker-number	Test Issue
+1048	no-tracker-number	Push test
+1049	no-tracker-number	First issue
+105	title-mismatch: tracker='[SPEC] Remove Pre-Response Gate carveout — agent routing-bypass rationalization enabled by Step 4 exception'	'[SPEC] Remove Pre-Response Gate carveout — agent routing-bypass rationalization
+1050	no-tracker-number	Second issue
+1051	no-tracker-number	TestDD21Issue
+1052	no-tracker-number	NoFrontmatterCheck
+1053	no-tracker-number	Test Issue
+1054	no-tracker-number	Test Issue
+1055	no-tracker-number	Test Issue
+1056	no-tracker-number	Test Issue
+1057	no-tracker-number	Test Issue
+1058	no-tracker-number	Test Issue
+1059	no-tracker-number	Test Issue
+106	title-mismatch: tracker='[SPEC-FIX] Skill card validator overhaul: metadata fields, online schema ref, dark prose descriptions, semantic audit'	'[SPEC-FIX] Skill card validator overhaul: metadata fields, online schema ref,
+1060	no-tracker-number	Test Issue
+1061	no-tracker-number	Test Issue
+1062	no-tracker-number	Test Issue
+1063	no-tracker-number	After Corruption
+1064	no-tracker-number	Test Issue
+1065	no-tracker-number	Test Issue
+1066	no-tracker-number	Test Issue
+1067	no-tracker-number	''
+1068	no-tracker-number	Test Issue
+1069	no-tracker-number	Branch test
+1070	no-tracker-number	Push test
+1071	no-tracker-number	First issue
+1072	no-tracker-number	Second issue
+1073	no-tracker-number	TestDD21Issue
+1074	no-tracker-number	NoFrontmatterCheck
+108	title-mismatch: tracker='[SPEC] Exploration as default floor mode — agent defaults to discuss/explore when intent is ambiguous'	'[SPEC] Exploration as default floor mode — agent defaults to discuss/explore
+1089	no-tracker-number	''
+109	title-mismatch: tracker='[SPEC] Brainstorming skill lacks research dispatch — relies on memory and training data'	'[SPEC] Brainstorming skill lacks research dispatch — relies on memory and
+1091	no-tracker-number	Test Issue
+1092	no-tracker-number	Test Issue
+1093	no-tracker-number	Test Issue
+1094	no-tracker-number	Test Issue
+1095	no-tracker-number	Test Issue
+1096	no-tracker-number	Test Issue
+1098	no-tracker-number	Test Issue
+11	title-mismatch: tracker='chore: update .opencode submodule — pointer handling docs (#224 #225)'	'Phase 4: Migrate procedure content to tasks/*.md'
+110	title-mismatch: tracker='[SPEC] Intent and Executive Summary Preamble for Specs'	'[SPEC] Intent and Executive Summary Preamble for Specs'
+1100	no-tracker-number	Test Issue
+1101	no-tracker-number	After Corruption
+1102	no-tracker-number	Test Issue
+1103	no-tracker-number	Test Issue
+1104	no-tracker-number	Test Issue
+1105	no-tracker-number	''
+1106	no-tracker-number	Test Issue
+111	title-mismatch: tracker='[SPEC] Cost-Frame Reformation — dark-prose-007 pattern and global injection into specs and plans'	'[SPEC] Cost-Frame Reformation — dark-prose-007 pattern and global injection
+1110	no-tracker-number	Test Issue
+112	title-mismatch: tracker='[SPEC] Non-adversarial double-check gate after RED/GREEN before audit'	'[SPEC] Non-adversarial double-check gate after RED/GREEN before audit'
+1121	no-tracker-number	''
+114	title-mismatch: tracker='[BUG] Sub-agents creating individual PRs instead of returning to orchestrator when pr_strategy=stacked'	'[BUG] Sub-agents creating individual PRs instead of returning to orchestrator
+1158	no-tracker-number	
+116	title-mismatch: tracker='[SPEC] Redesign divide-and-conquer skill: single-branch pipeline with orchestrator-as-router architecture'	'[SPEC] Redesign divide-and-conquer skill: single-branch pipeline with orchestrator-as-router
+1163	no-tracker-number	
+117	title-mismatch: tracker='[SPEC] Adversarial Auditor Artifact Pre-Check and Clean FAIL on Missing Artifacts'	'[SPEC] Adversarial Auditor Artifact Pre-Check and Clean FAIL on Missing Artifacts'
+118	title-mismatch: tracker='[SPEC] Replace BRE regex assertions with semantic AI inspection in behavioral tests'	'[SPEC] Replace BRE regex assertions with semantic AI inspection in behavioral
+1188	no-tracker-number	
+119	title-mismatch: tracker='[SPEC] tmp/ Cleanup in PR Merge Workflow and Age-Based Sweep'	'[SPEC] tmp/ Cleanup in PR Merge Workflow and Age-Based Sweep'
+12	title-mismatch: tracker='Bug: Question-Response Gate — Agent Collapses Interrogative Premise Into Authorization Directive'	'Phase 3: Audit all 39 SKILL.md files for procedure content'
+120	title-mismatch: tracker='[SPEC-FIX] local-issues autosetup for worktrees and main repo migration'	'[SPEC-FIX] local-issues autosetup for worktrees and main repo migration'
+122	title-mismatch: tracker='[SPEC] Phase 2: Bright-Line Audit — Rewrite All Guidelines'	'[SPEC] Phase 2: Bright-Line Audit — Rewrite All Guidelines'
+123	title-mismatch: tracker='[SPEC] Phase 1: Bright-Line Mandate — default.txt + Dark Prose Reference Card'	'[SPEC] Phase 1: Bright-Line Mandate — default.txt + Dark Prose Reference Card'
+124	title-mismatch: tracker='[SPEC] Phase 3: Per-Skill/Task Bright-Line Re-Anchors'	'[SPEC] Phase 3: Per-Skill/Task Bright-Line Re-Anchors'
+1244	no-tracker-number	Test Fixture: Issue #1244
+1246	no-tracker-number	
+125	title-mismatch: tracker='[SPEC] LaTeX Paper: Bright-Line Rules for AI Agent Instruction Compliance'	'[SPEC] LaTeX Paper: Bright-Line Rules for AI Agent Instruction Compliance'
+126	title-mismatch: tracker='[SPEC] Add Ollama web-search-mcp.py as PEP 723 MCP server for agent research'	'[SPEC] Add Ollama web-search-mcp.py as PEP 723 MCP server for agent research'
+1266	no-tracker-number	[SPEC-FIX] check-pr: fix phase ordering
+127	title-mismatch: tracker='[SPEC-FIX] Preserve existing AI co-authored bylines — prevent identity overwrite on edit'	'[SPEC-FIX] Preserve existing AI co-authored bylines — prevent identity overwrite
+128	title-mismatch: tracker='[SPEC-FIX] local-issues setup: report stale worktree state for AI agent remediation, not auto-repair'	'[SPEC-FIX] local-issues setup: report stale worktree state for AI agent remediation,
+1284	no-tracker-number	
+1297	no-tracker-number	
+13	title-mismatch: tracker='chore: update .opencode submodule for #227 #228'	'Phase 5: Add DISPATCH_GATE to defective cards'
+130	title-mismatch: tracker='[SPEC] Remove commit-per-issue enforcement from pre-push hook — defer to PR-time enforcement'	'[SPEC] Remove commit-per-issue enforcement from pre-push hook — defer to PR-time
+1307	no-tracker-number	
+1314	no-tracker-number	"Spec: Playwright CLI as First-Class Browser Automation Entry Point"
+132	title-mismatch: tracker='[SPEC] Runtime-Behavioral Evidence Classification Gate'	'[SPEC] Runtime-Behavioral Evidence Classification Gate'
+1320	no-tracker-number	
+1346	no-tracker-number	
+1347	no-tracker-number	
+135	title-mismatch: tracker='[SPEC] Git-Workflow Skill Restructure: Self-Enforcing Pipeline with Verification-Gate'	'[SPEC] Git-Workflow Skill Restructure: Self-Enforcing Pipeline with Verification-Gate'
+1355	no-tracker-number	
+1357	no-tracker-number	
+136	title-mismatch: tracker='[SPEC] Distribution-Shifting Reference Card (255-distribution-shifting-reference.md) — Sibling to Dark Prose'	'[SPEC] Distribution-Shifting Reference Card (255-distribution-shifting-reference.md)
+1364	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+137	title-mismatch: tracker='[SPEC] Mandatory Co-Application Policy — Both 250-Dark-Prose and 255-Distribution-Shifting Required for All AI-Agent-Facing Text'	'[SPEC] Mandatory Co-Application Policy — Both 250-Dark-Prose and 255-Distribution-Shifting
+138	title-mismatch: tracker='[SPEC] Spec/Plan Writer Injection — Dark Prose and Distribution-Shifting Requirements in Spec and Plan Outputs'	'[SPEC] Spec/Plan Writer Injection — Dark Prose and Distribution-Shifting Requirements
+1384	no-tracker-number	Spec: Add Secret/Secrets Protection Patterns to Both OpenCode Config Files
+1385	no-tracker-number	Bad Description Skill
+139	title-mismatch: tracker='[SPEC] Systematic Embedding — Backfill All AI-Agent-Facing Output Touchpoints with Dark Prose and Distribution-Shifting Patterns'	'[SPEC] Systematic Embedding — Backfill All AI-Agent-Facing Output Touchpoints
+14	title-mismatch: tracker='chore(#219): update .opencode submodule pointer for Phase 1'	'Phase 6: Update validation script'
+140	title-mismatch: tracker='[SPEC-FIX] Change default BEHAVIOR_MODEL from glm-5.1:cloud to deepseek-v4-flash:cloud'	'[SPEC-FIX] Change default BEHAVIOR_MODEL from glm-5.1:cloud to deepseek-v4-flash:cloud'
+141	title-mismatch: tracker='[SPEC-FIX] Minimal Adversarial Auditor Dispatch — Reference-Based Context, SC Conflict Detection'	'[SPEC-FIX] Minimal Adversarial Auditor Dispatch — Reference-Based Context,
+1413	no-tracker-number	
+1414	no-tracker-number	[SPEC-FIX] Add one-step-at-a-time protocol admonishment to plan files
+1442	no-tracker-number	[SPEC-FIX] Auditor gate bypass — next_step: proceed on FAIL criteria allows orchestrator to skip mandatory remediation
+1447	no-tracker-number	[SPEC-FIX] Plan phase structure inconsistency — structure.md and write.md disagree on pre/post phase organization
+1448	no-tracker-number	[SPEC-FIX] Orchestrator bypasses cross-validate FAIL — hard gate treated as advisory note
+1449	no-tracker-number	
+146	title-mismatch: tracker='[SPEC] Gate 4: content-based submodule-pointer-only commit blocker in pre-commit hook'	'[SPEC] Gate 4: content-based submodule-pointer-only commit blocker in pre-commit
+147	title-mismatch: tracker='[SPEC-FIX] Cross-Validate Output-Integrity Gate — Zero-Tolerance Verdict Agreement, No Fail Reclassification'	'[SPEC-FIX] Cross-Validate Output-Integrity Gate — Zero-Tolerance Verdict Agreement,
+148	title-mismatch: tracker='[SPEC] Orchestrator-Serial Pipeline — Replace divide-and-conquer monolithic sub-agent dispatch with 11-step orchestrator-routed serial pipeline'	'[SPEC] Orchestrator-Serial Pipeline — Replace divide-and-conquer monolithic
+149	title-mismatch: tracker='[RESEARCH] Two-Role Context Cost Model for AI Agent Orchestration — Industry Validation, Novel Contributions, and Architectural Analysis'	'[RESEARCH] Two-Role Context Cost Model for AI Agent Orchestration — Industry
+15	title-mismatch: tracker='fix(#234): unify project root detection across all scripts'	'Phase 7: Behavioral enforcement tests'
+150	title-mismatch: tracker='[SPEC-FIX] .issues/ issues-data remote push — setup verification + pipeline integration'	'[SPEC-FIX] .issues/ issues-data remote push — setup verification + pipeline
+151	title-mismatch: tracker='[SPEC] Promote inline issue-content-creation violation table row to deterministic symbolic yaml rule'	'[SPEC] Promote inline issue-content-creation violation table row to deterministic
+154	title-mismatch: tracker='[SPEC] Split cross-validate into deterministic consensus tool + bounded semantic sub-agent'	'[SPEC] Split cross-validate into deterministic consensus tool + bounded semantic
+155	title-mismatch: tracker='[SPEC-FIX] Remove "texted" MCP plugin from opencode.jsonc'	'[SPEC-FIX] Remove "texted" MCP plugin from opencode.jsonc'
+157	title-mismatch: tracker='[SPEC] Behavioral Testing of LLM Agents: Artifact-Only Generator Paradigm and Clean-Room Semantic Inspection — LaTeX Paper'	'[SPEC] Behavioral Testing of LLM Agents: Artifact-Only Generator Paradigm
+158	title-mismatch: tracker='[SPEC] session-init: emit all repo entries including .issues worktrees'	'[SPEC] session-init: emit all repo entries including .issues worktrees'
+1587	no-tracker-number	
+1589	no-tracker-number	[SPEC] Pre-Response Gate re-entry for gap-fill cascade — skill dispatch on sub-decisions
+1590	no-tracker-number	Spec: Local-First Skill Fixes for spec-creation → writing-plans Pipeline
+16	title-mismatch: tracker='chore: update .opencode submodule pointer for #234 root detection fix (CLOSED - violates #225)'	'Phase 8: Pre-commit structural gate'
+160	title-mismatch: tracker='[SPEC] Fix submodule tag protocol — codify suffix convention, prevent ad-hoc tag names, enforce dev-tip anchor'	'[SPEC] Fix submodule tag protocol — codify suffix convention, prevent ad-hoc
+161	title-mismatch: tracker='[SPEC] LLM Control Language: Formalized Subset of English for Reliable Agent Task Dispatch'	'[SPEC] LLM Control Language: Formalized Subset of English for Reliable Agent
+162	title-mismatch: tracker='[SPEC] LaTeX Paper: Same-Model Adversarial Auditor Divergence via Role-Differentiated Agent Chains'	'[SPEC] LaTeX Paper: Same-Model Adversarial Auditor Divergence via Role-Differentiated
+163	title-mismatch: tracker='[SPEC-FIX] Update auditor agent card temperature values per model recommendations'	'[SPEC-FIX] Update auditor agent card temperature values per model recommendations'
+164	title-mismatch: tracker='[SPEC] Auditor Agent Card Documentation and Parameter Optimization'	'[SPEC] Auditor Agent Card Documentation and Parameter Optimization'
+165	title-mismatch: tracker='[SPEC-FIX] Remove github MCP perms from all auditor agent cards'	'[SPEC-FIX] Remove github MCP perms from all auditor agent cards'
+166	title-mismatch: tracker='[SPEC-FIX] Mandatory pre-flight: use behavior_run before custom test env construction'	'[SPEC-FIX] Mandatory pre-flight: use behavior_run before custom test env construction'
+1674	no-tracker-number	[SPEC] Fix implementation pipeline workflow model
+1679	no-tracker-number	[SPEC-FIX] Orchestrator MUST revise defective sub-agent deliverables, not replace or inline-fix them
+168	title-mismatch: tracker='SPEC: .opencode/tools/plan — unified-planning PEP 723 tool'	'SPEC: .opencode/tools/plan — unified-planning PEP 723 tool'
+1690	no-tracker-number	
+17	title-mismatch: tracker='[SPEC] Remove dispatch-table.yaml cruft and stale references'	'Phase 9: Update guidelines'
+170	title-mismatch: tracker='[SPEC] Re-evaluate and replace authorization scope model'	'[SPEC] Re-evaluate and replace authorization scope model'
+171	title-mismatch: tracker='[SPEC] Add Agent Tools injection to default.txt'	'[SPEC] Add Agent Tools injection to default.txt'
+1712	no-tracker-number	
+1713	no-tracker-number	Replace Research-First Mandate with Pre-Response Factual Claim Gate in 065-verification-honesty.md
+1714	no-tracker-number	Apply DiMo same-model role-differentiated audit to audit skill
+173	title-mismatch: tracker='[SPEC-FIX] local-issues tool: support .issues/ worktree setup for submodules'	'[SPEC-FIX] local-issues tool: support .issues/ worktree setup for submodules'
+1735	no-tracker-number	"[SPEC] Add input validation to the parser module"
+1736	no-tracker-number	"[SPEC] Add logging middleware to HTTP handlers"
+176	title-mismatch: tracker='[SPEC] AGENTS.md — Add Reference Files table'	'[SPEC] AGENTS.md — Add Reference Files table'
+177	title-mismatch: tracker='[BUG] Remove `memory` tool — causes AI agent misbehavior and incorrect analysis'	'[BUG] Remove `memory` tool — causes AI agent misbehavior and incorrect analysis'
+179	title-mismatch: tracker='[SPEC] Add plan-file format reference to .opencode/tools/plan'	'[SPEC] Add plan-file format reference to .opencode/tools/plan'
+1799	no-tracker-number	[SPEC-FIX] Authorization Scope ≠ Implementation Trigger
+180	title-mismatch: tracker='[SPEC] TDD: RED/GREEN Sequential Pair Discipline — explicit prohibition against combined or parallel phases'	'[SPEC] TDD: RED/GREEN Sequential Pair Discipline — explicit prohibition against
+182	title-mismatch: tracker='[SPEC] Self-describing tool contract: --description flag for all .opencode/tools/'	'[SPEC] Self-describing tool contract: --description flag for all .opencode/tools/'
+183	title-mismatch: tracker='[SPEC] local-issues: print available repo qualifiers on repo-not-found errors'	'[SPEC] local-issues: print available repo qualifiers on repo-not-found errors'
+184	title-mismatch: tracker='[SPEC-FIX] Issue Comment Churn Regression — restore channel-routing table, fix completion-core templates, re-harden verification enforcement'	'[SPEC-FIX] Issue Comment Churn Regression — restore channel-routing table,
+185	title-mismatch: tracker='[SPEC] Replace .issues/ worktree and wiki submodule with sibling peer repos'	'[SPEC] Replace .issues/ worktree and wiki submodule with sibling peer repos'
+186	title-mismatch: tracker='[BUG] session-init emits spurious "Could not resolve hooks dir" errors for issues-data worktrees'	'[BUG] session-init emits spurious "Could not resolve hooks dir" errors for
+187	title-mismatch: tracker='[SPEC] Add `## Local Issue Artifacts` section to session-init output'	'[SPEC] Add `## Local Issue Artifacts` section to session-init output'
+188	title-mismatch: tracker='[SPEC] Update viewport-editor to v0.3.2 and incorporate AGENTS.md guidance'	'[SPEC] Update viewport-editor to v0.3.2 and incorporate AGENTS.md guidance'
+189	title-mismatch: tracker='[SPEC] Agent-local spec artifact routing: session-init labels, local-issues locate, and repo information prose'	'[SPEC] Agent-local spec artifact routing: session-init labels, local-issues
+190	title-mismatch: tracker='[SPEC-FIX] Remove slug padding from .issues/ directory naming — /{issue-N}/ not /{issue-N}-slug/'	'[SPEC-FIX] Remove slug padding from .issues/ directory naming — /{issue-N}/
+192	title-mismatch: tracker='[SPEC-FIX] Remove "authoritative spec lives in the issues-data branch" from issue body template'	'[SPEC-FIX] Remove "authoritative spec lives in the issues-data branch" from
+194	title-mismatch: tracker='[SPEC-FIX] Single source of truth for implementation pipeline checklist — remove embedded duplicate from writing-plans'	'[SPEC-FIX] Single source of truth for implementation pipeline checklist —
+195	title-mismatch: tracker='[SPEC] Restructure .issues/{N}/ folder layout — flatten spec-artifacts/'	'[SPEC] Restructure .issues/{N}/ folder layout — flatten spec-artifacts/'
+196	title-mismatch: tracker='[SPEC] Replace .gitmodules-based submodule detection with filesystem glob scan in git-workflow tasks'	'[SPEC] Replace .gitmodules-based submodule detection with filesystem glob
+1969	no-tracker-number	'[SPEC-FIX] Mandatory full compliance with spec-creation task procedure — no exceptions, no bypasses, no escape hatches'
+197	title-mismatch: tracker='[SPEC] Enforcement-Gated Contract Schema — standardized hand-off contracts with Z3-enforced gate_result, verifier identity, and evidence-type checking'	
+198	title-mismatch: tracker='[SPEC-FIX] spec-creation/write: post-SC uplift check after initial creation with remediation and recheck'	'[SPEC-FIX] spec-creation/write: post-SC uplift check after initial creation
+200	title-mismatch: tracker='[SPEC-FIX] Decouple state tracking from design artifacts — remove STATUS markers from plans, move lifecycle manifest, labels advisory only, add checklist generation'	'[SPEC-FIX] Decouple state tracking from design artifacts — remove STATUS markers
+201	title-mismatch: tracker='[SPEC-FIX] Remove unconditional per-turn diagnostic from session-enforcement.ts'	'[SPEC-FIX] Remove unconditional per-turn diagnostic from session-enforcement.ts'
+202	title-mismatch: tracker='[SPEC-FIX] Add micro-management prohibition admonishment to spec-creation and writing-plans Persona sections'	
+203	title-mismatch: tracker='[SPEC-FIX] Fix Persona identity framing, add unified checklists, add solve/plan tool steps to spec-creation and writing-plans skill cards'	'[SPEC-FIX] Fix Persona identity framing, add unified checklists, add solve/plan
+207	title-mismatch: tracker='[SPEC-FIX] Add `.opencode/` issue routing guidance to /AGENTS.md'	'[SPEC-FIX] Add `.opencode/` issue routing guidance to /AGENTS.md'
+208	title-mismatch: tracker='[SPEC] Adversarial audit pre-flight validation gate — BLOCKED with remediation on missing inputs'	'[SPEC] Adversarial audit pre-flight validation gate — BLOCKED with remediation
+2081	no-tracker-number	"[SPEC] Replace writing-plans skill with flat architecture (routing-table plan artifact)"
+209	title-mismatch: tracker='[SPEC] Plan file format: master ToC + per-phase sub-plans with dispatch contracts'	'[SPEC] Plan file format: master ToC + per-phase sub-plans with dispatch contracts'
+21	title-mismatch: tracker='[SPEC] Fork Detection — Resolve Parent Repo for Submodule/Forked Repo Identity'	'[SPEC] Fork Detection — Resolve Parent Repo for Submodule/Forked Repo Identity'
+210	title-mismatch: tracker='[SPEC-FIX] env-loader.ts: change default export to named export per plugin API'	'[SPEC-FIX] env-loader.ts: change default export to named export per plugin
+211	title-mismatch: tracker='[SPEC-FIX] Auditors and plan writer must BLOCK with dispatch directive when local spec file is missing'	'[SPEC-FIX] Auditors and plan writer must BLOCK with dispatch directive when
+2116	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+212	title-mismatch: tracker='[SPEC] Audit: Skill Card "Use When" Description Compliance'	'[SPEC] Audit: Skill Card "Use When" Description Compliance'
+2127	no-tracker-number	
+213	title-mismatch: tracker='[SPEC-FIX] Fix A: playwright-cli description format (D1)'	'[SPEC-FIX] Fix A: playwright-cli description format (D1)'
+214	title-mismatch: tracker='[SPEC-FIX] Fix B: approval-gate Trigger Dispatch Table (D3)'	'[SPEC-FIX] Fix B: approval-gate Trigger Dispatch Table (D3)'
+215	title-mismatch: tracker='[SPEC-FIX] Fix C1: Pipeline skill descriptions — mandatory language + narrative cleanup (D4, D5)'	'[SPEC-FIX] Fix C1: Pipeline skill descriptions — mandatory language + narrative
+216	title-mismatch: tracker='[SPEC-FIX] Fix C2: Remaining skill descriptions — mandatory language + narrative cleanup (D4, D5)'	'[SPEC-FIX] Fix C2: Remaining skill descriptions — mandatory language + narrative
+2161	no-tracker-number	"[SPEC] Add dark mode toggle to settings page"
+217	title-mismatch: tracker='[SPEC-FIX] Fix D: Skill card linting rules — structural checks (SC-LINT-001 through 004)'	'[SPEC-FIX] Fix D: Skill card linting rules — structural checks (SC-LINT-001
+218	title-mismatch: tracker='[SPEC-FIX] Fix E: Skill card semantic auditor criteria (SC-SEM-001 through 005)'	'[SPEC-FIX] Fix E: Skill card semantic auditor criteria (SC-SEM-001 through
+219	title-mismatch: tracker='[SPEC-FIX] Deny glob tool on all sub-agent cards and replace glob references in skill deck'	'[SPEC-FIX] Deny glob tool on all sub-agent cards and replace glob references
+220	title-mismatch: tracker='[SPEC-FIX] Implementation pipeline nested sub-agent dispatch and contradictory dispatch classification'	'[SPEC-FIX] Implementation pipeline nested sub-agent dispatch and contradictory
+221	title-mismatch: tracker='[SPEC-FIX] Add one-step-at-a-time protocol admonishment to all output plan files'	'[SPEC-FIX] Add one-step-at-a-time protocol admonishment to all output plan
+2211	no-tracker-number	
+222	title-mismatch: tracker='[SPEC] Self-Detection Gate — current-violation remediation before new work'	'[SPEC] Self-Detection Gate — current-violation remediation before new work'
+223	title-mismatch: tracker="[SPEC] Mandatory spec-audit on first encounter — specs not from spec-creation pipeline are 86'ed"	'[SPEC] Mandatory spec-audit on first encounter — specs not from spec-creation
+2230	no-tracker-number	[SPEC] Rewrite pre-work trunk-tip verification and submodule workflow
+224	title-mismatch: tracker="[SPEC] Mandatory spec-provenance gate — specs not from spec-creation pipeline are 86'ed"	'[SPEC] Mandatory spec-provenance gate — specs not from spec-creation pipeline
+2241	no-tracker-number	'[SPEC] Authorization tracking: local issue.yaml is canonical source, not remote API labels'
+2242	no-tracker-number	
+225	title-mismatch: tracker='[SPEC-FIX] Plan-fidelity auditor hard-codes evaluation criteria instead of reading from authoritative skill cards'	'[SPEC-FIX] Plan-fidelity auditor hard-codes evaluation criteria instead of
+226	title-mismatch: tracker='[SPEC] Holistic inline-execution prevention — DISPATCH_GATE blocks + Persona identity-anchoring for all skills'	'[SPEC] Holistic inline-execution prevention — DISPATCH_GATE blocks + Persona
+2263	no-tracker-number	
+2267	no-tracker-number	"[SPEC] git-workflow-pr: replace no-op comment 'trigger mergeability' with local merge-base check"
+227	title-mismatch: tracker='[SPEC-FIX] local-issues tool prints wrong spec_path in list/search commands'	'[SPEC-FIX] local-issues tool prints wrong spec_path in list/search commands'
+2270	no-tracker-number	'[SPEC] Add a --validate-only flag to the opencode run command'
+2272	no-tracker-number	"[SPEC] Add structured logging to the repository"
+228	title-mismatch: tracker='[SPEC] Add lessons-learned tracking system to AGENTS.md and .issues/'	'[SPEC] Add lessons-learned tracking system to AGENTS.md and .issues/'
+2283	no-tracker-number	Spec: Implement a Multi-Phase Logging Enhancement
+229	title-mismatch: tracker='[SPEC-FIX] Add secret/secret protection patterns to both opencode.jsonc configs'	'[SPEC-FIX] Add secret/secret protection patterns to both opencode.jsonc configs'
+2295	no-tracker-number	[SPEC] Prevent agents from storing source/tests/fixtures in `.issues/` worktree
+2298	no-tracker-number	[SPEC] TDD RED/GREEN Abort Protocol for Irregular Test Conditions
+23	title-mismatch: tracker='[SPEC] Paper edits — Unix Philosophy Skill Deck Architecture analysis'	'[SPEC] Paper edits — Unix Philosophy Skill Deck Architecture analysis'
+230	title-mismatch: tracker='[SPEC-FIX] Update default model for CLI opencode test runs to ollama/qwen3.6:35b-256k'	'[SPEC-FIX] Update default model for CLI opencode test runs to ollama/qwen3.6:35b-256k'
+2301	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+2302	no-tracker-number	
+231	title-mismatch: tracker='[SPEC-FIX] Clean-room plan generator overwrites plan being audited'	'[SPEC-FIX] Clean-room plan generator overwrites plan being audited'
+2311	no-tracker-number	
+2313	no-tracker-number	'[SPEC] Submodule merged-commit verification gate for implementation and PR-creation
+232	title-mismatch: tracker='[SPEC] Remove phantom Z3 check steps from writing-plans pipeline'	'[SPEC] Remove phantom Z3 check steps from writing-plans pipeline'
+233	title-mismatch: tracker='[SPEC] Add secret/secret protection patterns to both opencode.jsonc configs'	'[SPEC] Add secret/secret protection patterns to both opencode.jsonc configs'
+234	title-mismatch: tracker='[SPEC] Workflow Philosophy Paper — LaTeX Document for Agent Tandem Model'	'[SPEC] Workflow Philosophy Paper — LaTeX Document for Agent Tandem Model'
+235	title-mismatch: tracker='[SPEC] Replace mandatory three-branch model with single-path branch workflow — eliminate auto-created dev, unified PR path, standardized squash+commit messaging'	'[SPEC] Replace mandatory three-branch model with single-path branch workflow
+236	title-mismatch: tracker='Bug: critical-rules-044 symbolic condition overbroad — catches legitimate verification dispatches'	'Bug: critical-rules-044 symbolic condition overbroad — catches legitimate
+237	title-mismatch: tracker='[SPEC] Plan writer injects step status instruction block'	'[SPEC] Plan writer injects step status instruction block'
+239	title-mismatch: tracker='[SPEC] Apply farmage YAML description pattern to all skill cards'	'[SPEC] Apply farmage YAML description pattern to all skill cards'
+24	title-mismatch: tracker='[SPEC] Paper Artifact Maintenance Mandate — Sync Implementation Progress with Paper'	'[SPEC] Paper Artifact Maintenance Mandate — Sync Implementation Progress with
+240	title-mismatch: tracker='[SPEC-FIX] Pipeline-readiness gate not explicitly positioned in spec-creation Operating Protocol'	'[SPEC-FIX] Pipeline-readiness gate not explicitly positioned in spec-creation
+2402	no-tracker-number	"[SPEC-FIX] finishing-a-development-branch checklist mis-applies rules: missing co-authored-by commit trailers classified as blocking FAIL forcing a force-push authorization decision"
+241	title-mismatch: tracker='[SPEC-FIX] Document BEHAVIOR_SUBMODULE_COMMIT precondition in behavioral test harness'	'[SPEC-FIX] Document BEHAVIOR_SUBMODULE_COMMIT precondition in behavioral test
+2413	no-tracker-number	'[BUG] interface-compatibility.yaml artifact missing dependency_contract section
+242	title-mismatch: tracker='[SPEC-FIX] Add direct SC-to-plan coverage gate after plan creation'	'[SPEC-FIX] Add direct SC-to-plan coverage gate after plan creation'
+243	title-mismatch: tracker='[SPEC-FIX] local-issues init fails for repos on master branch with no issues-data branch'	'[SPEC-FIX] local-issues init fails for repos on master branch with no issues-data
+2431	no-tracker-number	
+2432	no-tracker-number	'[SPEC] md tool: --json output flag for the read action'
+244	title-mismatch: tracker='[SPEC-FIX] local-issues init fails for repos on master branch with no issues-data branch'	
+2444	no-tracker-number	'[SPEC] Fixture: log-rotation policy for the report generator service'
+2454	no-tracker-number	Spec — Greeting utility (mixed dispatch-mode fixture)
+25	title-mismatch: tracker='[BUG] Agent Made Unauthorized File Edits During Discussion/Feedback Mode'	'[BUG] Agent Made Unauthorized File Edits During Discussion/Feedback Mode'
+250	title-mismatch: tracker='[SPEC] Remove all dev branch auto-creation and references for trunk-based development'	'[SPEC] Remove all dev branch auto-creation and references for trunk-based
+253	title-mismatch: tracker='[SPEC] DiMo-Aligned Adversarial Audit — Replace Cross-Model Auditor Dispatch with Role-Differentiated Agent Chaining'	'[SPEC] DiMo-Aligned Adversarial Audit — Replace Cross-Model Auditor Dispatch
+254	title-mismatch: tracker='[SPEC-FIX] Add mandatory rebase-before-push gate to prevent stale branch development'	'[SPEC-FIX] Add mandatory rebase-before-push gate to prevent stale branch development'
+255	title-mismatch: tracker='[SPEC-FIX] Reorder pre-work steps — submodule sync must precede feature branch creation'	'[SPEC-FIX] Reorder pre-work steps — submodule sync must precede feature branch
+256	title-mismatch: tracker='[SPEC-FIX] Upgrade viewport-editor MCP plugin to v0.3.4 and adopt new config key "editor"'	'[SPEC-FIX] Upgrade viewport-editor MCP plugin to v0.3.4 and adopt new config
+257	title-mismatch: tracker='[SPEC] Move submodule-pointer-only gate from pre-commit to pre-push'	'[SPEC] Move submodule-pointer-only gate from pre-commit to pre-push'
+258	title-mismatch: tracker='[SPEC] Fix writing-plans skill contradiction — Programmatic Invocation vs DISPATCH_GATE'	'[SPEC] Fix writing-plans skill contradiction — Programmatic Invocation vs
+264	title-mismatch: tracker='[SPEC-FIX] pre-push hook silent failure on branches without numeric issue segment'	'[SPEC-FIX] pre-push hook silent failure on branches without numeric issue
+2656	no-tracker-number	[SPEC] Root-repo PRs include every dirty submodule pointer — pre-create disposition gate
+266	title-mismatch: tracker='[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt git state'	'[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt
+267	title-mismatch: tracker='[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt git state'	'[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt
+268	title-mismatch: tracker='[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt git state'	'[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt
+2681	no-tracker-number	Spec — Issues-data hygiene at the prep gate
+2683	no-tracker-number	[SPEC] Restore the submodule tag-pointer discipline in the impacted git-workflow cards
+269	title-mismatch: tracker='[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt git state'	'[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt
+27	title-mismatch: tracker='[SPEC-FIX] Git hook root detection — walk-up hangs when hooks execute outside .opencode/'	'[SPEC-FIX] Git hook root detection — walk-up hangs when hooks execute outside
+270	title-mismatch: tracker='[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt git state'	'[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt
+271	title-mismatch: tracker='[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt git state'	'[SPEC-FIX] .issues/ gitignore enforcement — agents ignore .gitignore and corrupt
+272	title-mismatch: tracker='[SPEC-FIX] .issues/ worktree-only enforcement — stop tracking in parent repo git'	'[SPEC-FIX] .issues/ worktree-only enforcement — stop tracking in parent repo
+273	title-mismatch: tracker='[SPEC-FIX] .issues/ worktree-only enforcement — stop tracking in parent repo git'	'[SPEC-FIX] .issues/ worktree-only enforcement — stop tracking in parent repo
+277	title-mismatch: tracker='Verify #1799'	'Verify #1799'
+28	title-mismatch: tracker='[SPEC-FIX] Walk-up root detection loops lack filesystem-root guard — infinite loop on missing .opencode/'	'[SPEC-FIX] Walk-up root detection loops lack filesystem-root guard — infinite
+280	title-mismatch: tracker='[SPEC-FIX] Reinforce substantive comment gate in issue-operations and correspondence skill descriptions'	'[SPEC-FIX] Reinforce substantive comment gate in issue-operations and correspondence
+281	title-mismatch: tracker='[SPEC] session-init: CLI Auth Status Reporting (gh, gb)'	'[SPEC] session-init: CLI Auth Status Reporting (gh, gb)'
+282	title-mismatch: tracker='[SPEC] session-init: rename Local Issue Artifacts section, change output format, reorder sections, remove path field'	SPEC: session-init — Local Issue Artifacts Format and Section Reorganization
+283	title-mismatch: tracker='[SPEC] Audit and Remediation: Split Overloaded Skill Cards (issue-operations, approval-gate, git-workflow, writing-plans, spec-creation)'	'[SPEC] Audit and Remediation: Split Overloaded Skill Cards (issue-operations,
+285	title-mismatch: tracker='[SPEC-FIX] implementation-pipeline Step-Level Dispatch Mandate — eliminate phase-level batching modes'	'[SPEC] Remove git config watchdog and all git calls from session-enforcement.ts
+286	title-mismatch: tracker='.opencode#1897: add Phase 10 behavioral tests + AGENTS.md references'	'[SPEC-FIX] DiMo audit chain: per-step remediation check with chain restart'
+288	title-mismatch: tracker='[SPEC] Cross-Reference Load Directive Band-Aid — Mandate in default.txt and AGENTS.md'	'[SPEC] Cross-Reference Load Directive Band-Aid — Mandate in default.txt and
+289	title-mismatch: tracker='[SPEC] Holistic Cross-Reference Load Directive Fix — Rewrite All Guideline Cross-References'	'[SPEC-FIX] Prefer built-ins/libraries/add-ons over bespoke code'
+290	title-mismatch: tracker='[SPEC] Cross-Reference Load Directive Band-Aid'	'SPEC: Universal discussion discipline — no question tool, no pigeon-holing,
+291	title-mismatch: tracker='[SPEC] Holistic Cross-Reference Load Directive Fix — Rewrite All Citation-Style Cross-References'	'SPEC-FIX: 28 task cards referenced in Trigger Dispatch Tables are missing
+292	title-mismatch: tracker='[SPEC-FIX] Rewrite test framework from scratch: opencode-cli → opencode, correct test env setup'	'SPEC-FIX: 42 orphaned task card files not referenced by any Trigger Dispatch
+293	title-mismatch: tracker='[#1881] Split overloaded skill cards into dispatcher + sub-skill architecture'	'SPEC-FIX: 6 skills have task directories but no Trigger Dispatch Table in
+294	title-mismatch: tracker='AGENTS.md: replace See with Read-Link cross-reference pattern + submodule update'	'SPEC-FIX: 4 naming inconsistency patterns across skill deck task cards'
+295	title-mismatch: tracker='[SPEC-FIX] Remove old test framework (.opencode/tests/) — tests-v2 is now the default'	'SPEC-FIX: 28 task cards referenced in Trigger Dispatch Tables are missing
+296	title-mismatch: tracker='#1881 Split 5 overloaded skills into dispatcher + sub-skill architecture'	'SPEC: vibeguard redaction plugin settings — exclude builtin patterns'
+297	title-mismatch: tracker='[SPEC] Replace bare §N Read links with descriptive link text across .opencode/ and AGENTS.md'	'SPEC-FIX: Remediate audit findings from #2020/#2032 — task card section headers,
+298	title-mismatch: tracker='[SPEC-FIX] Plugins fail in snap sandbox — bun cannot find git binary'	'[BUG] Cleanup task cards must detect and reject orchestrator context pollution'
+299	title-mismatch: tracker='[SPEC-FIX] Gate per-turn git config watchdog to first-turn-only'	'[SPEC] Specs and plans are NOT tracking documents — remove STATUS tracking
+300	title-mismatch: tracker='[SPEC] Remove all stderr/diagnostic noise from plugins and session-init'	'[SPEC-FIX] Remediate .opencode#2076 implementation audit FAILs'
+301	title-mismatch: tracker='[SPEC] Rewrite session-enforcement plugin from scratch — eliminate all terminal output leakage'	'[SPEC] Audit .opencode/ for line-count/word-count metrics used as proxy for
+302	title-mismatch: tracker='[SPEC] env-loader.ts — remove git commands that run every bash turn'	'Fix: Authorization Workflow — Record Session Authorization Before Verifying'
+303	title-mismatch: tracker='[SPEC] Per-SC RED/GREEN Decomposition — Fix spec writer and plan writer to pair each SC with its own RED/GREEN cycle'	'[SPEC] Fix .issues/ worktree vs remote API confusion in AGENTS.md files'
+304	title-mismatch: tracker='[SPEC] Test isolation mandates — snap run ban, no bash timeout, USER env, isolation verification'	'[SPEC] Merge upstream research methodology into existing research skill'
+305	title-mismatch: tracker='[SPEC] Prohibit `timeout` command usage in AGENTS.md — mandate bash tool timeout parameter only'	'[SPEC] Move verify-plan-pipeline from approval-gate-scope to writing-plans'
+306	title-mismatch: tracker='Add test framework discipline section to AGENTS.md files'	'[SPEC] Move verify-plan-pipeline from approval-gate-scope to writing-plans'
+307	title-mismatch: tracker='Update .opencode submodule pointer to include test framework discipline section'	test-issue
+308	title-mismatch: tracker='[SPEC-FIX] Agent MUST NOT merge PRs — human-only merge enforcement gap in git-workflow-pr and approval-gate'	TEST
+31	title-mismatch: tracker='[SPEC-FIX] Sub-Agent Per-Turn Injection Gating — Add isSubAgent Guards to Context-Dependent Runtime Probes'	'[SPEC-FIX] Sub-Agent Per-Turn Injection Gating — Add isSubAgent Guards to
+311	title-mismatch: tracker='[SPEC-FIX] read-link-pattern-clean-room.sh bypasses with-test-home isolation'	'[SPEC-FIX] read-link-pattern-clean-room.sh bypasses with-test-home isolation'
+312	title-mismatch: tracker='[SPEC-FIX] Update viewport-editor from v0.3.4 to v0.4.2'	'[SPEC-FIX] Update viewport-editor from v0.3.4 to v0.4.2'
+313	title-mismatch: tracker='[SPEC] writing-plans holistic remediation — 9 defect categories matching #1993 pattern'	'[SPEC] writing-plans holistic remediation — 9 defect categories matching #1993
+314	title-mismatch: tracker='[SPEC] local-issues: scope repo discovery to .gitmodules instead of filesystem glob'	'[SPEC] local-issues: scope repo discovery to .gitmodules instead of filesystem
+315	title-mismatch: tracker='SPEC: Fix post-merge cleanup workflow — submodule-first depth-first cleanup'	'SPEC: Fix post-merge cleanup workflow — submodule-first depth-first cleanup'
+316	title-mismatch: tracker='[SPEC] Canonical task card structure template — dispatch contract, output contract, frugal contract'	'[SPEC] Canonical task card structure template — dispatch contract, output
+318	title-mismatch: tracker='[SPEC] Canonical skill card structure template — pre-flight gate, enumerated workflows, per-step dispatch'	'[SPEC] Canonical skill card structure template — pre-flight gate, enumerated
+319	title-mismatch: tracker='[SPEC] Fix approval-gate + approval-gate-scope — remove sub-skill indirection, per-step dispatch'	'[SPEC] Fix approval-gate + approval-gate-scope — remove sub-skill indirection,
+32	title-mismatch: tracker='[SPEC] Protanomaly-Friendly Gnome Terminal Color Scheme Script'	'[SPEC] Protanomaly-Friendly Gnome Terminal Color Scheme Script'
+320	title-mismatch: tracker='[SPEC] Fix git-workflow family — remove sub-skill indirection, per-step dispatch'	'[SPEC] Fix git-workflow family — remove sub-skill indirection, per-step dispatch'
+321	title-mismatch: tracker='[SPEC] Fix writing-plans family — remove 2 sub-skill stubs, per-step dispatch'	'[SPEC] Fix writing-plans family — remove 2 sub-skill stubs, per-step dispatch'
+322	title-mismatch: tracker='[SPEC] Fix spec-creation family — remove 5 sub-skill stubs, per-step dispatch'	'[SPEC] Fix spec-creation family — remove 5 sub-skill stubs, per-step dispatch'
+323	title-mismatch: tracker='[SPEC] Remove 13 sub-skill SKILL.md files from available_skills — cleanup after per-step dispatch fix'	'[SPEC] Remove 13 sub-skill SKILL.md files from available_skills — cleanup
+324	title-mismatch: tracker='[SPEC] Fix implementation-pipeline — update TDT for per-step dispatch'	'[SPEC] Fix implementation-pipeline — update TDT for per-step dispatch'
+325	title-mismatch: tracker='[SPEC] Fix remaining ~28 standalone skill cards — per-step dispatch, pre-flight gate'	'[SPEC] Fix remaining ~28 standalone skill cards — per-step dispatch, pre-flight
+326	title-mismatch: tracker='[SPEC] Behavioral enforcement tests for per-step dispatch — orchestrator dispatches task files, not SKILL.md'	'[SPEC] Behavioral enforcement tests for per-step dispatch — orchestrator dispatches
+33	title-mismatch: tracker='[SPEC-FIX] engineering-approach and guideline-auditor: Remediate broken task structures and stray tasks/SKILL.md files'	'[SPEC-FIX] engineering-approach and guideline-auditor: Remediate broken task
+332	title-mismatch: tracker='[SPEC] Update AGENTS.md files to cross-reference new .opencode/reference/ documentation standards'	'[SPEC] Update AGENTS.md files to cross-reference new .opencode/reference/
+34	title-mismatch: tracker='[SPEC] Frontmatter conformance remediation for all skill SKILL.md files'	'[SPEC] Frontmatter conformance remediation for all skill SKILL.md files'
+348	title-mismatch: tracker='[SPEC] Compact 000-critical-rules.md from 88KB to ~15-20KB'	
+35	title-mismatch: tracker='[SPEC-FIX] Frontmatter validation warnings ignored by agent — promote to fatal halt'	'[SPEC-FIX] Frontmatter validation warnings ignored by agent — promote to fatal
+356	title-mismatch: tracker='[SPEC] Configure opencode-vibeguard@0.1.0 to be less aggressive'	Objective
+360	title-mismatch: tracker='[SPEC-FIX] Document submodule-only push bypass as CRITICAL VIOLATION in AGENTS.md'	'[SPEC-FIX] Document submodule-only push bypass as CRITICAL VIOLATION in AGENTS.md'
+365	title-mismatch: tracker='[SPEC] Shallow temp-copy build/test gate for release verification'	
+369	title-mismatch: tracker='[SPEC-FIX] git-workflow-cleanup: orchestrator pre-investigation reverses submodule-first ordering'	'[SPEC-FIX] git-workflow-cleanup: orchestrator pre-investigation reverses submodule-first
+37	title-mismatch: tracker='[SPEC] Shell Composition for Agent Orchestration — Unix Pipeline Model Investigation'	'[SPEC] Shell Composition for Agent Orchestration — Unix Pipeline Model Investigation'
+372	title-mismatch: tracker='[BUG] Root AGENTS.md Test Framework Discipline lacks repo-scope qualifier'	"[BUG] Root AGENTS.md Test Framework Discipline lacks repo-scope qualifier"
+374	title-mismatch: tracker='[SPEC] Fix parent-repo defects exposed by the .opencode deck rewrite'	'[SPEC] Fix parent-repo defects exposed by the .opencode deck rewrite'
+378	title-mismatch: tracker='[SPEC] Release PR: .opencode pointer update, release-gate command declaration, README/CHANGELOG reconciliation'	'[SPEC] Release PR: .opencode pointer update, release-gate command declaration,
+38	title-mismatch: tracker='[RESEARCH] Read-Only Orchestrator Paradigm: Structural Isolation of AI Agent Execution from File Modification'	'[RESEARCH] Read-Only Orchestrator Paradigm: Structural Isolation of AI Agent
+39	title-mismatch: tracker='[SPEC] Phase-Checkpoint Git Tags for Multi-Phase Plan Rollback Anchors (parent repo)'	'[SPEC] Phase-Checkpoint Git Tags for Multi-Phase Plan Rollback Anchors (parent
+4	title-mismatch: tracker='[SPEC-FIX] Remove duplicate top-level directories, clarify repo purpose in AGENTS.md'	'[SPEC-FIX] Remove duplicate top-level directories, clarify repo purpose in
+40	title-mismatch: tracker='[SPEC] Capability-Aware Auditor Selection &amp; Dispatch — Thinking Levels and Multimodal Awareness'	'[SPEC] Capability-Aware Auditor Selection &amp; Dispatch — Thinking Levels
+42	title-mismatch: tracker='[SPEC-FIX] Remove duplicate plugin injections that opencode-cli already provides natively'	'[SPEC-FIX] Remove duplicate plugin injections that opencode-cli already provides
+4299	no-tracker-number	'[SPEC] Fixture: analyze-step R-13 gate target for 2450 SC-3'
+43	title-mismatch: tracker='[SPEC-FIX] Blacklist deepseek-v4-pro (expense) and devstral-2 (performance) from auditor pool'	'[SPEC-FIX] Blacklist deepseek-v4-pro (expense) and devstral-2 (performance)
+46	title-mismatch: tracker='[SPEC] Track and commit pending local work: .issues/ cleanup, auditor qualification docs, behavioral tests'	'[SPEC] Track and commit pending local work: .issues/ cleanup, auditor qualification
+49	title-mismatch: tracker='[SPEC-FIX] Plugin export pattern: env-loader.ts fails to load'	'[SPEC-FIX] Plugin export pattern: env-loader.ts fails to load'
+5	title-mismatch: tracker='fix: restore .gitmodules with correct submodule URL'	"Add rate limiting to API endpoints"
+51	title-mismatch: tracker='[SPEC] Purge branch status trigger noise (protected_branch_with_changes, on_main_branch, stale_submodule) and resulting dead code'	'[SPEC] Purge branch status trigger noise (protected_branch_with_changes, on_main_branch,
+52	title-mismatch: tracker='[SPEC] needs-approval label lifecycle — restore as default, not deprecated'	'[SPEC] needs-approval label lifecycle — restore as default, not deprecated'
+56	title-mismatch: tracker='[SPEC] Remove Identity Validation from session-enforcement.ts — Circular Self-Check with Broken Parser'	'[SPEC] Remove Identity Validation from session-enforcement.ts — Circular Self-Check
+57	title-mismatch: tracker='[SPEC-FIX] GREEN phase allows structural verification as proxy for execution-based SC verification'	'[SPEC-FIX] GREEN phase allows structural verification as proxy for execution-based
+579	no-tracker-number	
+60	title-mismatch: tracker='[SPEC] Consolidate All Auditor Skills into adversarial-audit with Unified Architecture'	'[SPEC] Consolidate All Auditor Skills into adversarial-audit with Unified
+62	title-mismatch: tracker='chore: update .opencode submodule — implement #86 local-first issue architecture'	'chore: update .opencode submodule — implement #86 local-first issue architecture'
+66	title-mismatch: tracker='Spec: Remediate Sub-Agent/Sub-Task Dispatch Haphazardness'	'Spec: Remediate Sub-Agent/Sub-Task Dispatch Haphazardness'
+69	title-mismatch: tracker='[SPEC] Plugin: Replace mode-switch reminders with authorization-gate anchors'	'[SPEC] Plugin: Replace mode-switch reminders with authorization-gate anchors'
+7	title-mismatch: tracker='chore: update .opencode submodule for #219 Phase 1'	'[SPEC-FIX] Remove ''simple specs may omit'' documentation sources escape hatch
+7000	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+74	title-mismatch: tracker='[SPEC] Functional/Behavioral Test Substitution Prohibition — critical-rules-049'	'[SPEC] Functional/Behavioral Test Substitution Prohibition — critical-rules-049'
+76	title-mismatch: tracker='[SPEC] Cross-repo cleanup — submodule issue closure, branch cleanup, dev-tip verification'	'[SPEC] Cross-repo cleanup — submodule issue closure, branch cleanup, dev-tip
+78	title-mismatch: tracker='[SPEC-FIX] Cleanup pipeline: auto-authorize destructive git ops on non-protected branches'	'[SPEC-FIX] Cleanup pipeline: auto-authorize destructive git ops on non-protected
+80	title-mismatch: tracker='[RESEARCH] Weaponizing Dark Patterns in Skill Deck Design — Exploiting LLM Susceptibility to Get Instructions Followed'	'[RESEARCH] Weaponizing Dark Patterns in Skill Deck Design — Exploiting LLM
+82	title-mismatch: tracker='[RESEARCH] Dark Pattern Worm/Virus Propagation — Containing RPC-Dispatched Sub-Agents via Pattern-Infused Orchestration'	'[RESEARCH] Dark Pattern Worm/Virus Propagation — Containing RPC-Dispatched
+84	title-mismatch: tracker='[SPEC-FIX] Adversarial re-verification for re-approved completed specs + no-PR cleanup handler'	'[SPEC-FIX] Adversarial re-verification for re-approved completed specs + no-PR
+85	title-mismatch: tracker='[SPEC] Phase-level plans with TDD as mandate (not micromanagement script)'	'[SPEC] Phase-level plans with TDD as mandate (not micromanagement script)'
+853	no-tracker-number	[SPEC] Procedural Discipline Reference Card — Execution-Layer Sibling to Dark Prose and Distribution Shifting
+86	title-mismatch: tracker='[SPEC] Remove skilldeck-subverting content from parent AGENTS.md'	'[SPEC] Remove skilldeck-subverting content from parent AGENTS.md'
+87	title-mismatch: tracker='[SPEC] Trim parent AGENTS.md to repo purpose only'	'[SPEC] Trim parent AGENTS.md to repo purpose only'
+884	no-tracker-number	
+89	title-mismatch: tracker='[SPEC] Adversarial Audit: SC Test Dimension Coverage and Binary Result Enforcement'	'[SPEC] Adversarial Audit: SC Test Dimension Coverage and Binary Result Enforcement'
+9	title-mismatch: tracker='chore: update .opencode submodule pointer (post-merge #223)'	"[SPEC-FIX] Infrastructure Failure Claim Proof Mandate — evidence + user report + hard halt for all workflows"
+9001	no-tracker-number	'[BUG] session-init emits spurious hooks-dir errors for worktrees'
+9002	no-tracker-number	'[BUG] stale cache invalidation drops writes on early exit'
+9003	no-tracker-number	'[FEAT] add export-to-CSV for the metrics report'
+9004	no-tracker-number	'[SPEC] README contributing-section link check'
+9005	no-tracker-number	'[SPEC] Release-announcement draft'
+9051	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+9052	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+91	title-mismatch: tracker='[SPEC] adversarial-audit-022 + dark pattern prose for complete correct workflow execution'	'[SPEC] adversarial-audit-022 + dark pattern prose for complete correct workflow
+92	title-mismatch: tracker='[SPEC] Confirmshaming weave — routing layer dark pattern prose for intrinsic completion motivation'	'[SPEC] Confirmshaming weave — routing layer dark pattern prose for intrinsic
+93	title-mismatch: tracker='[SPEC] Revert SSE timeout auto-retry plugin (PR .opencode#611, #612)'	'[SPEC] Revert SSE timeout auto-retry plugin (PR .opencode#611, #612)'
+932	no-tracker-number	Fixture Spec — auditor-disk-offload
+94	title-mismatch: tracker='[SPEC] SC Enforcement Gate for Spec Writer, Plan Writer, and Auditors'	'[SPEC] SC Enforcement Gate for Spec Writer, Plan Writer, and Auditors'
+95	title-mismatch: tracker='[SPEC] Weave behavioral test infrastructure references into verification task files (#627 dark prose compliance)'	'[SPEC] Weave behavioral test infrastructure references into verification task
+956	no-tracker-number	Fixture Spec — auditor-dispatch-fields
+96	title-mismatch: tracker='[SPEC-FIX] Use opencode-cli models for behavioral testing model discovery'	'[SPEC-FIX] Use opencode-cli models for behavioral testing model discovery'
+97	title-mismatch: tracker='[SPEC-FIX] Auditor verdict self-consistency — PASS must mean clean PASS'	'[SPEC-FIX] Auditor verdict self-consistency — PASS must mean clean PASS'
+972	no-tracker-number	[SPEC] Add input validation helper
+99	title-mismatch: tracker='[SPEC] Auditor Clean-Room Integrity: Prior-Result Contamination, Biased Task Naming, and Test Execution Evidence'	'[SPEC] Auditor Clean-Room Integrity: Prior-Result Contamination, Biased Task
+9901	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+9902	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+9905	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+9906	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+9907	no-tracker-number	SPDX-FileCopyrightText: 2026 michael-conrad
+991	no-tracker-number	''
+993	no-tracker-number	Test Issue
+994	no-tracker-number	Test Issue
+995	no-tracker-number	Test Issue
+996	no-tracker-number	Test Issue
+997	no-tracker-number	Test Issue
+998	no-tracker-number	Test Issue
+999	no-tracker-number	Test Issue
