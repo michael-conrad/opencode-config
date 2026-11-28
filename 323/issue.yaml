@@ -57,6 +57,7 @@ body: "---\ntitle: '[SPEC] Remove 13 sub-skill SKILL.md files from available_ski
   \ after fix specs complete\nPhase 5: Behavioral enforcement tests (issue #326)\n\
   ```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:37:16+00:00'
+updated_at: '2026-11-28T04:24:01+00:00'
 number: 323
 github_url: https://github.com/michael-conrad/opencode-config/issues/323
+remote_url: https://github.com/michael-conrad/opencode-config/issues/323
