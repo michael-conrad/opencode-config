@@ -6,5 +6,3 @@ title: '[SPEC-FIX] local-issues setup: report stale worktree state for AI agent 
   not auto-repair'
 github_url: https://github.com/michael-conrad/opencode-config/issues/128
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/128
-updated_at: '2026-11-28T04:20:59+00:00'

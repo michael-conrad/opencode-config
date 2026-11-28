@@ -6,5 +6,3 @@ title: '[SPEC-FIX] .issues/ issues-data remote push — setup verification + pip
   integration'
 github_url: https://github.com/michael-conrad/opencode-config/issues/150
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/150
-updated_at: '2026-11-28T04:21:17+00:00'

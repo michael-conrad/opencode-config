@@ -4,5 +4,3 @@ number: 62
 title: 'chore: update .opencode submodule — implement #86 local-first issue architecture'
 github_url: https://github.com/michael-conrad/opencode-config/issues/62
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/62
-updated_at: '2026-11-28T04:20:01+00:00'

@@ -4,5 +4,3 @@ number: 97
 title: '[SPEC-FIX] Auditor verdict self-consistency — PASS must mean clean PASS'
 github_url: https://github.com/michael-conrad/opencode-config/issues/97
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/97
-updated_at: '2026-11-28T04:20:27+00:00'

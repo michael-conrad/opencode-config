@@ -6,5 +6,3 @@ title: '[SPEC] Replace mandatory three-branch model with single-path branch work
   — eliminate auto-created dev, unified PR path, standardized squash+commit messaging'
 github_url: https://github.com/michael-conrad/opencode-config/issues/235
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/235
-updated_at: '2026-11-28T04:22:44+00:00'

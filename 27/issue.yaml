@@ -5,5 +5,3 @@ title: '[SPEC-FIX] Git hook root detection — walk-up hangs when hooks execute 
   .opencode/'
 github_url: https://github.com/michael-conrad/opencode-config/issues/27
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/27
-updated_at: '2026-11-28T04:19:35+00:00'

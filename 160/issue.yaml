@@ -5,5 +5,3 @@ title: '[SPEC] Fix submodule tag protocol — codify suffix convention, prevent 
   tag names, enforce dev-tip anchor'
 github_url: https://github.com/michael-conrad/opencode-config/issues/160
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/160
-updated_at: '2026-11-28T04:21:25+00:00'

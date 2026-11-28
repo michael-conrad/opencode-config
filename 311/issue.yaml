@@ -3,5 +3,3 @@ number: 311
 title: '[SPEC-FIX] read-link-pattern-clean-room.sh bypasses with-test-home isolation'
 github_url: https://github.com/michael-conrad/opencode-config/issues/311
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/311
-updated_at: '2026-11-28T04:23:47+00:00'

@@ -5,5 +5,3 @@ number: 227
 title: '[SPEC-FIX] local-issues tool prints wrong spec_path in list/search commands'
 github_url: https://github.com/michael-conrad/opencode-config/issues/227
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/227
-updated_at: '2026-11-28T04:22:34+00:00'

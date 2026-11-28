@@ -4,5 +4,3 @@ title: '[SPEC-FIX] Remove slug padding from .issues/ directory naming — /{issu
   not /{issue-N}-slug/'
 github_url: https://github.com/michael-conrad/opencode-config/issues/190
 status: closed
-remote_url: https://github.com/michael-conrad/opencode-config/issues/190
-updated_at: '2026-11-28T04:21:55+00:00'
