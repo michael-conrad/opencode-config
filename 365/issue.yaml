@@ -1,6 +1,6 @@
 labels:
 - needs-approval
-updated_at: '2026-08-26T18:28:57+00:00'
+updated_at: '2026-11-28T04:24:11+00:00'
 body: '> Full spec and plan artifacts: https://github.com/michael-conrad/opencode-config/tree/issues-data/.issues/N/
 
 
@@ -112,3 +112,4 @@ body: '> Full spec and plan artifacts: https://github.com/michael-conrad/opencod
   🤖 OpenCode (deepseek-v4-flash) created
 
   '
+remote_url: https://github.com/michael-conrad/opencode-config/issues/365
