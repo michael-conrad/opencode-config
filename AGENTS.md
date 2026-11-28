@@ -13,7 +13,7 @@ Always use `.opencode/tools/local-issues` for issue-tracking operations in this 
 All issue-store doctrine is defined once in the canonical guide:
 [`.opencode/.issues/AGENTS.md`](../../.opencode/.issues/AGENTS.md) — remote-first issue-number reservation (MANDATORY when a remote tracker exists; every issue type), local-counter fallback (remoteless stores only), mirror precedence (the local `{N}/` folder holds the full spec and all artifacts; the remote body's required shape is defined by the deck's remote-body-format reference, `.opencode/skills/spec/references/remote-body-format.md`), directory layout, the hygiene mandate, and the exclusions boundary.
 
-This guide deliberately carries no doctrine copy. It was a full mirror, drifted from the canonical guide (it still taught counter-first reservation after the canonical guide mandated remote-first), and was collapsed to a pointer on 2026-10-05.
+This guide deliberately carries no doctrine copy. It was a full mirror, drifted from the canonical guide (it still taught counter-first reservation after the canonical guide mandated remote-first), and was collapsed to a pointer on 2026-10-05. The canonical guide's hygiene mandate covers `.issues/` store-mount worktree/branch state defects (`.opencode#2781`) with the same authorization-free reading — state defects of THIS store are repaired on discovery under that doctrine, not gated.
 
 ## Session start
 
