@@ -3,3 +3,5 @@ number: 257
 title: '[SPEC] Move submodule-pointer-only gate from pre-commit to pre-push'
 github_url: https://github.com/michael-conrad/opencode-config/issues/257
 status: closed
+remote_url: https://github.com/michael-conrad/opencode-config/issues/257
+updated_at: '2026-11-28T04:23:03+00:00'
