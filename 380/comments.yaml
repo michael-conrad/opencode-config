@@ -1,1 +1,9 @@
-comments: []
+comments:
+- type: internal
+  body: 'Episode 2026-11-28: 225 number-validated remote_url writes ran before this
+    ticket''s research grounds were fully consulted — misanchored (R-2/R-4); reverted
+    in full (issues-data 8100aa5e inverse-applies the 225 diffs; post-revert sweep
+    = recorded 423+1 state). Tool finding for this stream: update --remote-url on
+    artifact-only dirs creates phantom issue.yaml manifests (revert removed them).
+    Full grounds + the record-682/root-index entanglement: research/episode-2026-11-28.md'
+  timestamp: '2026-11-28T04:28:59+00:00'
