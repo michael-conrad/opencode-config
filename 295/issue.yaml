@@ -5,6 +5,7 @@ labels:
 - SPEC-FIX
 body: ''
 created_at: '2026-07-21T00:36:43+00:00'
-updated_at: '2026-07-21T00:37:54+00:00'
+updated_at: '2026-11-28T04:23:33+00:00'
 closed_at: '2026-07-21T00:37:54+00:00'
 close_reason: completed
+remote_url: https://github.com/michael-conrad/opencode-config/issues/295
