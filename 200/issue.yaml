@@ -6,3 +6,5 @@ title: '[SPEC-FIX] Decouple state tracking from design artifacts — remove STAT
   from plans, move lifecycle manifest, labels advisory only, add checklist generation'
 github_url: https://github.com/michael-conrad/opencode-config/issues/200
 status: closed
+remote_url: https://github.com/michael-conrad/opencode-config/issues/200
+updated_at: '2026-11-28T04:22:04+00:00'
