@@ -29,3 +29,5 @@ body: "## Plan for #196: Replace .gitmodules detection with filesystem glob scan
   \ phase)\n- Target: dev\n"
 github_url: https://github.com/michael-conrad/opencode-config/issues/196
 status: closed
+remote_url: https://github.com/michael-conrad/opencode-config/issues/196
+updated_at: '2026-11-28T04:22:00+00:00'
