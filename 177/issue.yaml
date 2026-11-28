@@ -3,3 +3,5 @@ number: 177
 title: '[BUG] Remove `memory` tool — causes AI agent misbehavior and incorrect analysis'
 github_url: https://github.com/michael-conrad/opencode-config/issues/177
 status: closed
+remote_url: https://github.com/michael-conrad/opencode-config/issues/177
+updated_at: '2026-11-28T04:21:42+00:00'
