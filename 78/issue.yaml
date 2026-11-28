@@ -6,3 +6,5 @@ title: '[SPEC-FIX] Cleanup pipeline: auto-authorize destructive git ops on non-p
   branches'
 github_url: https://github.com/michael-conrad/opencode-config/issues/78
 status: closed
+remote_url: https://github.com/michael-conrad/opencode-config/issues/78
+updated_at: '2026-11-28T04:20:08+00:00'
