@@ -63,6 +63,7 @@ body: "---\ntitle: '[SPEC] Canonical skill card structure template — pre-fligh
   \ spec (T-1) — complete\nPhase 2: All fix specs reference this template when restructuring\
   \ skill cards\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:37:16+00:00'
+updated_at: '2026-11-28T04:23:55+00:00'
 number: 318
 github_url: https://github.com/michael-conrad/opencode-config/issues/318
+remote_url: https://github.com/michael-conrad/opencode-config/issues/318
