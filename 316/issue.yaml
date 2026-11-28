@@ -58,6 +58,7 @@ body: "---\ntitle: '[SPEC] Canonical task card structure template — dispatch c
   \n```\nPhase 1: Write this spec (T-2) — complete\nPhase 2: All fix specs reference\
   \ this template when adding contract sections to task files\n```\n"
 created_at: '2026-07-21T17:33:30+00:00'
-updated_at: '2026-07-21T17:37:16+00:00'
+updated_at: '2026-11-28T04:23:53+00:00'
 number: 316
 github_url: https://github.com/michael-conrad/opencode-config/issues/316
+remote_url: https://github.com/michael-conrad/opencode-config/issues/316
